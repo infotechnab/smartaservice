@@ -66,6 +66,7 @@
                         <div style="background-color: red; width: 100px;" id="addToCartDiv" >
                             <input type="button" value="<?php echo $product->id ?>" class="addToCart">  
                             <img style="width: 80px;" src="<?php echo base_url() . "content/images/shopping-cart-icon-614x460.png" ?>" alt="cart image" />
+>>>>>>> working add to cart
                         </div>
 
                     </div>
