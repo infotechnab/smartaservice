@@ -1,105 +1,92 @@
- <div id="contentBackground">
-                <div id='contentWrapper'>
-                    <div id='content'>
-                        <div class='contentHeader'>
-                            
-                        </div>
-                        <div class='contentContainer'>
-                            
-                        </div>
-                        <div class='contentHeader'>
-                            
-                        </div>
-                        
-                        <?php foreach($product_info as $product)
-                        {?>
-                        <div class='contentContainerBox'>
-                            <?php echo form_open('view/add'); ?>
-                            <div class='contentContainerHeader'><?php echo $product->name; ?></div>
-                            <div class='contentContainerImage'>
-                             <img src="<?php echo base_url() . "content/images/raincoat.png"; ?>"/>   
-                            </div>
-                            
+<script src="<?php echo base_url() . 'content/jquery.js'; ?>" type="text/javascript"></script>
 
-                            <div class='contentContainerFooterLeft'></div>
-                            <div class='contentContainerFooterRight'></div>
+<script>
+    var base_url = "http://localhost/smartaservice/";
+    $(document).ready(function() {
+        //alert ("sajdfa");
+        $(".addToCart").click(function() {
+            var id = $(this).val();
+            //alert(id);
+            var dataString = 'itemid=' + id;
+            $.ajax({
+                type: "POST",
+                url: base_url + 'index.php/view/add',
+                data: dataString,
+                success: function(msgs)
+                {
 
-                            <div class='contentContainerFooterLeft'></div>
-                            <div class="redColouredDiv" id='contentContainerFooterRight'>
-                                <?php echo form_hidden('id',$product->id); ?>
-                                <?php echo form_submit('action','Add To Cart'); ?>
-                            </div>
-                        <?php echo form_close(); ?>
-                           
-                        </div>
-                        
-                        <?php } ?>
-                        
-                        
+                    $("#shopping_cart").html(msgs);
 
-                    </div>  
-                    
-                    <!-- left side content closed here -->
-                    
-                    <div id='sidebar'>
-                        <div class="redColouredDiv" id='sidebarContent'>
-                            <div id="sideBarImage"><img src="<?php echo base_url() . "content/images/shopping-cart-icon-614x460.png"; ?>"/> </div>   
-                           <h3>Shopping Cart</h3>
-                           <div id="total_item"><?php echo $this->cart->total_items(); ?></div>
-                        </div>
-                        <div class='sidebarContentNext'>
-                        <table width="100%">
-                            <tr>
-                                <th>Name</th>
-                                <th>Qty</th>
-                                <th>Price</th>
-                                <th> </th>
-                        
-                         <?php if($cart = $this->cart->contents()) {?>
-                         <?php foreach($cart as $item) { ?>
-                                                
-                        
-                            <tr>
-                                <td><?php echo $item['name']; ?> </td>
-                                <td><input type="text" size="3" value="<?php echo $item['qty'] ?>" name="quantity"></td>
-                         <td><?php echo $item['price'] ?></td>
-                         <td><?php echo anchor('view/remove/'.$item['rowid'],'X') ?></td>
-                            </tr>
-                            
-                       
-                        
-                         <?php } } ?>
-                            <tr>
-                                <td><b>Total</b>:</td>
-                                <td></td>
-                                <td> <b><?php echo $this->cart->total();  ?></b></td>
-                                <td></td>
-                            </tr>
-                            <tr style="text-align: center; background: #cccccc;">
-                                <td colspan="2"><b><?php echo anchor('view/clear','Clear') ?></b></td>
-                                
-                                <td colspan="2"> <b>Check Out</b></td>
-                                
-                            </tr>
-                             </table>
-                        </div>
-                        <div class="redColouredDiv" id='sidebarContent'><h3>Popular Posts</h3></div>
-                        <?php for($i=0; $i<4; $i++)
-                        {?>
-                        <div class='sidebarContentNext'></div>
-                      
-                        <?php } ?>
-                        
-                        <div class="redColouredDiv" id='sidebarContent'><h3>Sponsors</h3></div>
-                        <?php for($i=0; $i<4; $i++)
-                        {?>
-                        <div class='sidebarContentNext'></div>
-                      
-                        <?php } ?>
 
-                    </div>  
- <div class="clear"> </div>
+                },
+                complete: function() {
 
-                </div> 
+                }
+            });
+        });
+
+    });
+
+</script>
+
+
+
+<div id="contentBackground">
+    <div id='contentWrapper'>
+        <div id='content'>
+            <div class='contentHeader'>
 
             </div>
+            <div class='contentContainer'>
+
+            </div>
+            <div class='contentHeader'>
+
+            </div>
+
+            <?php foreach ($product_info as $product) {
+                ?>
+                <div class='contentContainerBox'>
+
+                    <div class='contentContainerHeader'><?php echo $product->name; ?></div>
+                    <div class='contentContainerImage'>
+                        <img src="<?php echo base_url() . "content/images/raincoat.png"; ?>"/>   
+                    </div>
+
+
+                    <div class='contentContainerFooterLeft'></div>
+                    <div class='contentContainerFooterRight'></div>
+
+                    <div class='contentContainerFooterLeft'><span>Rs.<?php echo $product->price; ?></span></div>
+                    <div class="redColouredDiv" id='contentContainerFooterRight'>
+
+
+
+
+                        <div style="background-color: red; width: 100px;" id="addToCartDiv" >
+                            <input type="button" value="<?php echo $product->id ?>" class="addToCart">  
+                            <img style="width: 80px;" src="<?php echo base_url() . "content/images/shopping-cart-icon-614x460.png" ?>" alt="cart image" />
+                        </div>
+
+                    </div>
+
+
+                </div>
+
+            <?php } ?>
+
+
+
+        </div>  
+
+        <!-- left side content closed here -->
+   
+        <div id='sidebar'>
+            <div class="redColouredDiv" id='sidebarContent'>
+                <div id="sideBarImage"><img src="<?php echo base_url() . "content/images/shopping-cart-icon-614x460.png"; ?>"/> </div>   
+                <h3>Shopping Cart</h3>
+            </div>
+                <div class='sidebarContentNext' id="shopping_cart">
+                    
+                
+       
