@@ -80,7 +80,7 @@ body
     width: 100%;
     height: 50px;
     z-index: 100;
-    background-color: #c0021c;
+  
     top: 80px;
     border-radius: 5px;
     position: relative;
@@ -165,16 +165,7 @@ body
     float: left;
     width: 30%;
 }
-.contentContainerBoxLast
-{
-    margin: 20px 0px 0px 0px;
-    padding: 0px;
-    background-color: #fff;
-    min-height: 200px;
-    border-radius: 5px;
-    float: left;
-    width: 30%;
-}
+
 .contentContainerHeader, .contentContainerFooter
 {
     margin: 0px;
@@ -191,14 +182,17 @@ body
     background-color: #333;
      min-height: 30px;
 }
-.contentContainerFooterRight
+#contentContainerFooterRight
 {
     width: 40%;
     margin: 0px;
     padding: 5px;
-    float: left;
-    background-color: #ca021e;
+    float: left;  
     min-height: 30px;
+}
+.redColouredDiv{
+     background-color: #ca021e;
+     color: #fff;
 }
 .contentContainerImage
 {
@@ -219,13 +213,32 @@ body
     margin-left: 5%;
     min-height: 300px;
 }
-.sidebarContent
+#sidebarContent
 {
     margin: 0px 0px 5px 0px;
     padding: 0px;
-    background-color: #fff;
     min-height: 40px;
     border-radius: 5px;
+}
+#sideBarImage
+{
+    margin: 0px 0px 0px 10px;
+    width: 25%;
+    padding: 0px;
+    float: left;
+    height: 25px;
+}
+#sideBarImage img
+{
+    margin: 0px;
+    padding: 0px;
+    width: 70px;
+ 
+}
+#sidebarContent h3 
+{
+    margin: 0px;
+    padding: 10px 0px 0px 10px;
 }
 .sidebarContentNext
 {

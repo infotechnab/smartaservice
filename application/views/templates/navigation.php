@@ -1,4 +1,4 @@
-<div id="navigation">
+<div class="redColouredDiv" id="navigation">
                         <ul>
                             <li><a href="#">HOME</a></li>
                             <li><a href="#">ABOUT US</a></li>
