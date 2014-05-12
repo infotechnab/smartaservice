@@ -169,7 +169,6 @@ body
     margin: 0px;
     padding: 5px;
     min-height: 30px;
-    background-color: #333;
 }
 .contentContainerFooterLeft
 {
@@ -177,7 +176,7 @@ body
     margin: 0px;
     padding: 5px;
     float: left;
-    background-color: #333;
+   
      min-height: 30px;
 }
 #contentContainerFooterRight
