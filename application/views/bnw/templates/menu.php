@@ -1,6 +1,13 @@
 <div class="leftSide">
             <div class="menuItems">
                 <ul class="menu">
+                    <li class="mainMenuItem"> <a href="#">Product</a><?php //echo anchor('bnw', 'Control Panel') ?>
+                        <ul class="subMenu">
+                            <li><?php echo anchor('bnw/product', 'Add New Product') ?></li>
+                            <li><?php echo anchor('bnw/productList', 'List All Products') ?></li>
+                            
+                        </ul>
+                    </li>
                     <li class="mainMenuItem"> <a href="#">Control Panel</a><?php //echo anchor('bnw', 'Control Panel') ?>
                         <ul class="subMenu">
                             <li><?php echo anchor('bnw/product', 'Product') ?></li>
