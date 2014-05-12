@@ -12,51 +12,22 @@ class View extends CI_Controller {
         $this->load->helper('url');
         $this->load->library('cart');
         $this->load->helper(array('form', 'url', 'date'));
-<<<<<<< HEAD
+
     }
 
-    public function index() {
-
-        $data['product_info'] = $this->productModel->product_info();
-
-
-
-        $this->load->view('templates/header');
-        $this->load->view('templates/navigation');
-        $this->load->view('templates/content', $data);
-        $this->load->view('templates/cart');
-        $this->load->view('templates/sidebarview');
-        $this->load->view('templates/footer');
-    }
-
-    public function details() {
-        $this->load->view('templates/header');
-        $this->load->view('templates/navigation');
-        $this->load->view('templates/details');
-        $this->load->view('templates/sidebar');
-        $this->load->view('templates/footer');
-    }
-
-    function add() {
-
-        $id = $_POST['itemid'];
-
-=======
-     
-      
- }
  
  
 	public function index()
 	{
             
-             $data['product_info'] = $this->productModel->product_info();
-        
-           
-        
+             $data['product_info'] = $this->productModel->product_info();     
+                  
 		$this->load->view('templates/header');
                 $this->load->view('templates/navigation');
                 $this->load->view('templates/content',$data);
+                                $this->load->view('templates/cart');
+                $this->load->view('templates/sidebarview');
+
                 $this->load->view('templates/footer');
                 
 	}
@@ -81,11 +52,10 @@ class View extends CI_Controller {
         
          function add() {
         
-        $id = $this->input->post('id');
-       //die($id);
->>>>>>> f98e7988ec3cf9109c35e75122633c1e4eab6030
+        $id = $_POST['itemid'];
+
         $product = $this->productModel->getProductById($id);
-        //var_dump($product);
+        
         foreach ($product as $prod) {
             $name = $prod->name;
             $price = $prod->price;
@@ -108,6 +78,7 @@ if ($this->cart->contents()) {
                         }
    
 }
+         
 
    
         $insert = array(
