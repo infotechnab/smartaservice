@@ -28,6 +28,15 @@ class bnw extends CI_Controller {
             redirect('login', 'refresh');
         }
     }
+    
+    //============= for smart service =================//
+    
+    function product(){
+        $this->load->view('template/msgUnderConstruction');
+    }
+
+
+    //=========== end smart service ====================//
 
     function logout() {
         $this->session->sess_destroy();
