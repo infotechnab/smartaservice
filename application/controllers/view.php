@@ -5,25 +5,35 @@ class View extends CI_Controller {
 	 function __construct()
  {
    parent::__construct();  
-     //   $this->load->library('session');
-       // $this->load->model('dbmodel');
+      
+        $this->load->model('productModel');
         $this->load->helper('url');
-      //  $this->load->helper('date');
+     $this->load->library('cart');
         $this->load->helper(array('form', 'url', 'date'));
-      //  $this->load->library("pagination");
+     
       
  }
  
  
 	public function index()
 	{
+            
+             $data['product_info'] = $this->productModel->product_info();
+        
+             var_dump($data);
+        
 		$this->load->view('templates/header');
                 $this->load->view('templates/navigation');
-                $this->load->view('templates/content');
+                $this->load->view('templates/content',$data);
                 $this->load->view('templates/footer');
                 
 	}
-        
+        public function details(){
+            $this->load->view('templates/header');
+                $this->load->view('templates/navigation');
+                $this->load->view('templates/details');
+                $this->load->view('templates/footer');
+        }
         
         
         
