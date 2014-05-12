@@ -11,7 +11,7 @@
                             
                         </div>
                         
-                        <?php foreach($product_info as $products)
+                        <?php foreach($product_info as $product)
                         {?>
                         <div class='contentContainerBox'>
                             <div class='contentContainerHeader'><?php echo $product->name; ?></div>
@@ -19,13 +19,13 @@
                              <img src="<?php echo base_url() . "contents/images/raincoat.png"; ?>"/>   
                             </div>
                             
-<<<<<<< HEAD
+
                             <div class='contentContainerFooterLeft'>Details</div>
                             <div class='contentContainerFooterRight'><?php form_submit('action','Add to Cart');  ?></div>
-=======
+
                             <div class='contentContainerFooterLeft'></div>
                             <div class="redColouredDiv" id='contentContainerFooterRight'><p>Details</p></div>
->>>>>>> ad9e151a95c0d4806fbe65a910a194a3546535d1
+
                            
                         </div>
                         

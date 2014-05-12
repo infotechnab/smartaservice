@@ -17,10 +17,7 @@ class addToCart extends CI_Controller {
 	
 	public function index(){ 
                 
-              $data['product_info'] = $this->productModel->product_info();
-        
-               
-        $this->load->view('content', $data);
+             
           
         }
         
