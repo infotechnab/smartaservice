@@ -10,7 +10,7 @@
                             <li><a href="#">CONTACT US</a></li>
 
                             <div id='searchbox'>
-
+<input type="text" placeholder="Search" size="23" style="box-shadow: inset 0px  #888, inset 0px  #888; outline: none; border: 1px solid #dddddd; padding: 6px;" required/>
                             </div>
                         </ul>
                     </div>

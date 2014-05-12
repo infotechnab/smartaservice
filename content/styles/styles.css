@@ -13,6 +13,7 @@ body
     margin: 0px;
     padding: 0px;
     background-color: #fff;
+    font-family:"Trebuchet MS", Arial, Helvetica, sans-serif;
 }
 .clear{
     clear: both;
@@ -26,20 +27,21 @@ body
 {
     margin: 0px;
     padding: 0px;
-    background-color: #fff;
+    background: url('../images/headerBackground.png'); 
+    background-repeat: repeat;
     width: 100%;
     height: 110px;
     z-index: 0;
 }
 #headerContent
 {
-    width: 70%;
+    width: 80%;
     margin: 0 auto 0 auto;
     padding: 0px;
 }
 #contentWrapper
 {
-    width: 70%;
+    width: 80%;
     margin: 0 auto 0 auto;
     padding: 50px 0px 0px 0px;
    height: auto;
@@ -101,16 +103,16 @@ body
     margin: 0px 1px 0px 1px;
     padding: 15px 5px 15px 5px;
 }
+#navigation ul li:hover
+{
+    background-color: #a80017;
+}
 #navigation ul li a
 {
     color: #fff;
     text-decoration: none;
 }
-#navigation ul li a:hover
-{
-    background-color: #a80017;
-    
-}
+
 #searchbox
 {
     width: 15%;
@@ -123,7 +125,8 @@ body
 {
      margin: 0;
     padding: 0px 0px 15px 0px;
-    background-color: #efeee9;
+    background: url('../images/ContentBackGround.png'); 
+    background-repeat: repeat;
     width: 100%;
     min-height:500px;
     z-index: 0;
@@ -136,7 +139,7 @@ body
 }
 #content
 {
-   width: 72%;
+   width: 62%;
    min-height: 500px;
 }
 .contentHeader
@@ -148,6 +151,11 @@ body
     border-radius: 5px;
     
 }
+.contentHeader h2, .contentContainerDetails h2
+{
+    margin: 0px;
+    padding: 10px 0px 10px 20px;
+}
 .contentHeaderDetails
 {
     margin: 0 auto 0 auto;
@@ -157,12 +165,37 @@ body
     border-radius: 5px;
     margin-bottom: 25px;
 }
+#login
+{
+    margin: 0 auto 0 auto;
+    padding: 0px;
+    background-color: #fff;
+    min-height: 400px;
+    margin-bottom: 25px;
+}
+#outerBorder
+{
+    margin: 25px;
+    padding: 0px;
+    border: 1px solid #e1dfdf;
+    min-height: 350px;
+   border-radius: 5px;
+    position: absolute;
+    width: 66%;
+}
+.loginLeft
+{
+    width: 45%;
+    margin: 12px;
+    padding: 10px;
+    float: left;
+}
 .contentContainer
 {
     margin: 20px 0px 20px 0px;
     padding: 0px;
     background-color: #fff;
-    min-height: 200px;
+    min-height: 100px;
     border-radius: 5px;
 }
 .contentContainerDetails
@@ -170,7 +203,7 @@ body
     margin: 0px 0px 20px 0px;
     padding: 0px;
     background-color: #fff;
-    min-height: 300px;
+    min-height: 230px;
     border-radius: 5px;
 }
 .contentContainerBox
@@ -244,7 +277,7 @@ body
 }
 #sidebar
 {
-    width: 23%;
+    width: 33%;
     margin-left: 5%;
     min-height: 300px;
 }
@@ -258,7 +291,7 @@ body
 #sideBarImage
 {
     margin: 0px 0px 0px 10px;
-    width: 25%;
+    width: 17%;
     padding: 0px;
     float: left;
     height: 25px;
@@ -307,4 +340,50 @@ body
      font-size: 14px;
      margin: 0px;
      padding: 0px;
+}
+
+// for login//
+#nav
+{
+    width: 0%;
+    background-color: #c9c1bf;
+}
+
+#mainNav
+{
+    width: 100%;
+    margin-left:50px;
+    position: relative;
+    top: -25px;
+}
+
+#nav_description
+{
+    position: relative;top:30px;float: left;font-size: 12px;right:45px; 
+}
+.number
+{
+    font-size:16px;
+    font-weight: bold;
+    text-decoration:none;
+    text-shadow:0px 1px 0px #bcbcbc;  
+    float: left;
+    border-radius: 55px;
+    background:#999999;
+    color: #f1faf7;
+    padding: 10px 10px 10px 10px;
+    cursor:pointer;
+    height: 20px;
+}
+div.vertical-line{
+  width: 1px; 
+  background-color: black; 
+  height: 270px; 
+  float: left;
+  margin: 40px 0px 40px 0px;
+}
+#verticalOr
+{
+    position: absolute;
+    margin: 120px 0px 0px -20px;
 }

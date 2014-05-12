@@ -29,14 +29,101 @@ class bnw extends CI_Controller {
         }
     }
     
-    //============= for smart service =================//
+    //========================== for smart service =======================================================//
     
     function product(){
-        $this->load->view('template/msgUnderConstruction');
+         if ($this->session->userdata('logged_in')) {
+        $data['username'] = Array($this->session->userdata('logged_in'));
+            $data['meta'] = $this->dbmodel->get_meta_data();
+        
+         $this->load->view('bnw/templates/header', $data);
+         $this->load->view('bnw/templates/menu');
+         $this->load->view('template/msgUnderConstruction');
+         $this->load->view('bnw/templates/footer', $data);
+    }
+     else {
+            redirect('login', 'refresh');
+        }
+    }
+    
+    function addproduct()
+    {
+        if ($this->session->userdata('logged_in')) 
+            {
+                $config['upload_path'] = './content/images/';
+            $config['allowed_types'] = 'gif|jpg|png';
+            $config['max_size'] = '2000';
+            $config['max_width'] = '2000';
+            $config['max_height'] = '2000';
+
+            $this->load->library('upload', $config);
+                $data['meta'] = $this->dbmodel->get_meta_data();
+           
+            $this->load->view('bnw/templates/header', $data);
+            $this->load->view('bnw/templates/menu');
+            $this->load->helper('form');
+            $this->load->library(array('form_validation', 'session'));
+            $this->form_validation->set_rules('pName', 'Name', 'required|xss_clean|max_length[200]');
+            $this->form_validation->set_rules('pPrice', 'Price', 'required|xss_clean|max_length[200]');
+            
+             if (($this->form_validation->run() == FALSE)) {
+                $data['error'] = $this->upload->display_errors();
+                  
+               $this->load->view('template/msgUnderConstruction',$data);
+            } else {
+
+                //if valid
+                if($this->upload->do_upload('myfile'))
+                {
+                 $data = array('upload_data' => $this->upload->data('myfile'));
+                 $productImg = $data['upload_data']['file_name'];
+                }
+                else{$productImg=" ";}
+                if($this->upload->do_upload('myfileTwo'))
+                {
+                    $data = array('upload_data' => $this->upload->data('myfileTwo'));
+                    $productImgTwo = $data['upload_data']['file_name'];
+                }
+ else {
+     $productImgTwo = " ";
+ }
+                if($this->upload->do_upload('myfileThree'))
+                {
+                    $data = array('upload_data' => $this->upload->data('myfileThree'));
+                    $productImgThree = $data['upload_data']['file_name'];
+                }else{
+                    $productImgThree = " ";
+                }
+                 //$data = array('upload_data' => $this->upload->data('myfile'));
+                 
+                 //$productImgTwo = $data['upload_data']['file_name_one'];
+                 //$productImgThree = $data['upload_data']['file_name_one'];
+                
+                $proID = $this->dbmodel->get_proID();
+                foreach ($proID as $pID)
+                {
+                    $id =  $pID->id;
+                }
+               $id = $id+1;
+                $qty = $this->input->post('qty');
+                $productName = $this->input->post('pName');
+                $productPrice = $this->input->post('pPrice');
+                
+                $this->dbmodel->add_new_product($qty,$productName,$productPrice,$productImg,$productImgTwo,$productImgThree);
+               // $this->dbmodel->add_images($id,$productImg);
+                $this->session->set_flashdata('message', 'One Product added sucessfully');
+                redirect('bnw/product');
+            }
+             $this->load->view('bnw/templates/footer', $data);
+            }
+     else {
+            redirect('login', 'refresh');
+        }
+        
     }
 
 
-    //=========== end smart service ====================//
+    //=================================== end smart service ========================================================//
 
     function logout() {
         $this->session->sess_destroy();
@@ -2625,6 +2712,29 @@ public function delphoto($photoid) {
    
     */
    
-    
+    public function aanbiedingenadd() //functie om ze toe te voegen aan de database
+{       
+    $files = $_FILES;
+    echo '<pre>';
+    print_r($files);
+    $cpt = count($_FILES['userfile']['name']);
+    for($i=0; $i<$cpt; $i++)
+    {
+
+        $_FILES['userfile']['name']= $files['userfile']['name'][$i];
+        $_FILES['userfile']['type']= $files['userfile']['type'][$i];
+        $_FILES['userfile']['tmp_name']= $files['userfile']['tmp_name'][$i];
+        $_FILES['userfile']['error']= $files['userfile']['error'][$i];
+        $_FILES['userfile']['size']= $files['userfile']['size'][$i];    
+
+        $this->upload->initialize($this->set_upload_options());
+        $this->upload->do_upload();
+        $image_data = $this->upload->data();
+    }
+    print_r($image_data);
+    print_r($this->upload->display_errors());
+    $this->dbmodel->addaanbieding($image_data);
+   // redirect("bnw/aanbiedingen");
+}
  
     }

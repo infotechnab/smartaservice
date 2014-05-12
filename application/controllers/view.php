@@ -12,6 +12,7 @@ class View extends CI_Controller {
         $this->load->helper('url');
         $this->load->library('cart');
         $this->load->helper(array('form', 'url', 'date'));
+<<<<<<< HEAD
     }
 
     public function index() {
@@ -40,6 +41,49 @@ class View extends CI_Controller {
 
         $id = $_POST['itemid'];
 
+=======
+     
+      
+ }
+ 
+ 
+	public function index()
+	{
+            
+             $data['product_info'] = $this->productModel->product_info();
+        
+           
+        
+		$this->load->view('templates/header');
+                $this->load->view('templates/navigation');
+                $this->load->view('templates/content',$data);
+                $this->load->view('templates/footer');
+                
+	}
+        
+        
+        
+        public function details(){
+            $this->load->view('templates/header');
+                $this->load->view('templates/navigation');
+                $this->load->view('templates/details');
+                $this->load->view('templates/sidebar');
+                $this->load->view('templates/footer');
+        }
+        
+        public function login(){
+            $this->load->view('templates/header');
+                $this->load->view('templates/navigation');
+                $this->load->view('templates/login');
+             
+                $this->load->view('templates/footer');
+        }
+        
+         function add() {
+        
+        $id = $this->input->post('id');
+       //die($id);
+>>>>>>> f98e7988ec3cf9109c35e75122633c1e4eab6030
         $product = $this->productModel->getProductById($id);
         //var_dump($product);
         foreach ($product as $prod) {

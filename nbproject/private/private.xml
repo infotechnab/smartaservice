@@ -3,8 +3,13 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/wamp/www/smartaservice/application/controllers/addTOCart.php</file>
+            <file>file:/C:/wamp/www/smartaservice/application/views/templates/login.php</file>
+            <file>file:/C:/wamp/www/smartaservice/application/controllers/view.php</file>
+            <file>file:/C:/wamp/www/smartaservice/application/views/templates/details.php</file>
             <file>file:/C:/wamp/www/smartaservice/application/views/templates/content.php</file>
+            <file>file:/C:/wamp/www/smartaservice/application/views/templates/header.php</file>
+            <file>file:/C:/wamp/www/smartaservice/application/views/templates/navigation.php</file>
+            <file>file:/C:/wamp/www/smartaservice/content/styles/styles.css</file>
         </group>
     </open-files>
 </project-private>

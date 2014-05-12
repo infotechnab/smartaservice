@@ -52,7 +52,30 @@ class Dbmodel extends CI_Model {
     }
 
 
+//============================                       ========================================//
+    function add_new_product($qty,$name,$price,$img1,$img2,$img3)
+    {
+        $data = array(
+            'qty'=>$qty,
+            'price'=>$price,
+            'name'=>$name,
+            'image1'=>$img1,
+            'image2'=>$img2,
+            'image3'=>$img3);
+        
+        $this->db->insert('product', $data);
+    }
 
+    function get_proID()
+    {
+        $this->db->select('id');
+        
+    $this->db->order_by("id","desc");
+        $this->db->limit(1);
+        $proID = $this->db->get('product');
+        return $proID->result();
+    }
+    //==========================                         ====================================//
 
 
 
@@ -1266,6 +1289,26 @@ function delete_favicone($id) {
             'user_auth_key' => $file);
         $this->db->where('user_email', $email);
         $this->db->update('user', $data);
+    }
+    
+    
+    
+    
+    
+    
+    function addaanbieding()
+    {
+        $insert_data = array(
+            'fotonaam' => $image_data['file_name']
+        );
+        print_r($insert_data);
+        die;
+        $input = $this->input->post('userfile');
+        if(isset($input)){
+            $this->db->insert('fotoaanbiedingen', $insert_data);
+        }else{
+            return FALSE;
+        }
     }
     
        }
