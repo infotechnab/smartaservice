@@ -39,7 +39,13 @@ class View extends CI_Controller {
                 $this->load->view('templates/footer');
         }
         
-        
+        public function login(){
+            $this->load->view('templates/header');
+                $this->load->view('templates/navigation');
+                $this->load->view('templates/login');
+             
+                $this->load->view('templates/footer');
+        }
         
          function add() {
         

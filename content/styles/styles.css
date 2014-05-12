@@ -157,6 +157,31 @@ body
     border-radius: 5px;
     margin-bottom: 25px;
 }
+#login
+{
+    margin: 0 auto 0 auto;
+    padding: 0px;
+    background-color: #fff;
+    min-height: 400px;
+    margin-bottom: 25px;
+}
+#outerBorder
+{
+    margin: 25px;
+    padding: 0px;
+    border: 1px solid #e1dfdf;
+    min-height: 350px;
+   border-radius: 5px;
+    position: absolute;
+    width: 66%;
+}
+.loginLeft
+{
+    width: 45%;
+    margin: 12px;
+    padding: 10px;
+    float: left;
+}
 .contentContainer
 {
     margin: 20px 0px 20px 0px;
@@ -307,4 +332,50 @@ body
      font-size: 14px;
      margin: 0px;
      padding: 0px;
+}
+
+// for login//
+#nav
+{
+    width: 0%;
+    background-color: #c9c1bf;
+}
+
+#mainNav
+{
+    width: 100%;
+    margin-left:50px;
+    position: relative;
+    top: -25px;
+}
+
+#nav_description
+{
+    position: relative;top:30px;float: left;font-size: 12px;right:45px; 
+}
+.number
+{
+    font-size:16px;
+    font-weight: bold;
+    text-decoration:none;
+    text-shadow:0px 1px 0px #bcbcbc;  
+    float: left;
+    border-radius: 55px;
+    background:#999999;
+    color: #f1faf7;
+    padding: 10px 10px 10px 10px;
+    cursor:pointer;
+    height: 20px;
+}
+div.vertical-line{
+  width: 1px; 
+  background-color: black; 
+  height: 270px; 
+  float: left;
+  margin: 40px 0px 40px 0px;
+}
+#verticalOr
+{
+    position: absolute;
+    margin: 120px 0px 0px -20px;
 }
