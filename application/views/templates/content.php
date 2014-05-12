@@ -2,13 +2,33 @@
                 <div id='contentWrapper'>
                     <div id='content'>
                         <div class='contentHeader'>
-                            
+                            <h2>Featured Products</h2>  
                         </div>
                         <div class='contentContainer'>
-                            
+                            <!-- now by default from details -->
+                            <div class='contentContainerDetails'>
+       <?php $data=array("image"=>'image', "title"=>'This is title', "details"=>'This jacket is best suited for moderate climatic condition. This is wind proof jacket and easy to wear.', "price"=>'RS. 500/-'); ?>   
+            <div id='detailsImage'>
+                             <img src="<?php echo base_url() . "content/images/raincoat.png"; ?>"/>   
+            </div>  
+            
+            <div id="detailsDetail">
+                <h2>Venture Jacket</h2> 
+                <p> <?php echo $data['details']; ?> </p> 
+                
+            </div>
+            
+            <div class='contentContainerFooterLeft'>
+                <h4> Price: <?php echo $data['price']; ?></h4>
+            </div>
+            <div class="redColouredDiv" id='contentContainerFooterRight'><p>Buy Now</p></div>
+            
+        </div>
+                            <div class='clear'></div>
+                            <!-- details view closed -->
                         </div>
                         <div class='contentHeader'>
-                            
+                           <h2>Recent Products</h2>   
                         </div>
                         
                         <?php foreach($product_info as $product)
