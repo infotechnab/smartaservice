@@ -32,6 +32,7 @@ class View extends CI_Controller {
             $this->load->view('templates/header');
                 $this->load->view('templates/navigation');
                 $this->load->view('templates/details');
+                $this->load->view('templates/sidebar');
                 $this->load->view('templates/footer');
         }
         

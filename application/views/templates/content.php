@@ -39,7 +39,7 @@
                     
                     <div id='sidebar'>
                         <div class="redColouredDiv" id='sidebarContent'>
-                            <div id="sideBarImage"><img src="<?php echo base_url() . "contents/images/shopping-cart-icon-614x460.png"; ?>"/> </div>   
+                            <div id="sideBarImage"><img src="<?php echo base_url() . "content/images/shopping-cart-icon-614x460.png"; ?>"/> </div>   
                            <h3>Shopping Cart</h3>
                         </div>
                          <?php for($i=0; $i<2; $i++)
