@@ -120,8 +120,8 @@ body
 }
 #contentBackground
 {
-     margin: 0px;
-    padding: 0px;
+     margin: 0;
+    padding: 0px 0px 15px 0px;
     background-color: #efeee9;
     width: 100%;
     min-height:1050px;
@@ -186,9 +186,14 @@ body
 {
     width: 40%;
     margin: 0px;
-    padding: 5px;
+    padding: 0px;
     float: left;  
-    min-height: 30px;
+    height: 40px;
+}
+#contentContainerFooterRight p
+{
+    margin: 0px;
+    padding: 10px 0px 10px 10px;
 }
 .redColouredDiv{
      background-color: #ca021e;
