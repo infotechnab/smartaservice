@@ -11,16 +11,16 @@
                             
                         </div>
                         
-                        <?php for($i=0; $i<9; $i++)
+                        <?php foreach($product_info as $products)
                         {?>
                         <div class='contentContainerBox'>
-                            <div class='contentContainerHeader'></div>
+                            <div class='contentContainerHeader'><?php echo $product->name; ?></div>
                             <div class='contentContainerImage'>
                              <img src="<?php echo base_url() . "contents/images/raincoat.png"; ?>"/>   
                             </div>
                             
-                            <div class='contentContainerFooterLeft'></div>
-                            <div class='contentContainerFooterRight'></div>
+                            <div class='contentContainerFooterLeft'>Details</div>
+                            <div class='contentContainerFooterRight'><?php form_submit('action','Add to Cart');  ?></div>
                            
                         </div>
                         
