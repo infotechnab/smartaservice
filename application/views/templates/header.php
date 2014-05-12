@@ -17,7 +17,5 @@
                     <div id="headerLogoContent">
                         <h1>Smart Access Services</h1>
                     </div>
-                    <div id="shoppingCart">
-                        <p>add cart here</p>
-                    </div>
+                    
                     <div class="clear"></div>

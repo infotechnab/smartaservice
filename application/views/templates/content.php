@@ -19,8 +19,13 @@
                              <img src="<?php echo base_url() . "contents/images/raincoat.png"; ?>"/>   
                             </div>
                             
+<<<<<<< HEAD
                             <div class='contentContainerFooterLeft'>Details</div>
                             <div class='contentContainerFooterRight'><?php form_submit('action','Add to Cart');  ?></div>
+=======
+                            <div class='contentContainerFooterLeft'></div>
+                            <div class="redColouredDiv" id='contentContainerFooterRight'><p>Details</p></div>
+>>>>>>> ad9e151a95c0d4806fbe65a910a194a3546535d1
                            
                         </div>
                         
@@ -33,14 +38,21 @@
                     <!-- left side content closed here -->
                     
                     <div id='sidebar'>
-                        <div class='sidebarContent'></div>
+                        <div class="redColouredDiv" id='sidebarContent'>
+                            <div id="sideBarImage"><img src="<?php echo base_url() . "contents/images/shopping-cart-icon-614x460.png"; ?>"/> </div>   
+                           <h3>Shopping Cart</h3>
+                        </div>
+                         <?php for($i=0; $i<2; $i++)
+                        {?>
                         <div class='sidebarContentNext'></div>
+                      
+                        <?php } ?>
+                        <div class="redColouredDiv" id='sidebarContent'><h3>Popular Posts</h3></div>
+                        <?php for($i=0; $i<4; $i++)
+                        {?>
                         <div class='sidebarContentNext'></div>
-                        <div class='sidebarContentNext'></div>
-                        <div class='sidebarContentNext'></div>
-                        <div class='sidebarContentNext'></div>
-                        
-                        
+                      
+                        <?php } ?>
 
                     </div>  
  <div class="clear"> </div>
