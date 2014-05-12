@@ -13,6 +13,7 @@ body
     margin: 0px;
     padding: 0px;
     background-color: #fff;
+    font-family:"Trebuchet MS", Arial, Helvetica, sans-serif;
 }
 .clear{
     clear: both;
@@ -33,13 +34,13 @@ body
 }
 #headerContent
 {
-    width: 70%;
+    width: 80%;
     margin: 0 auto 0 auto;
     padding: 0px;
 }
 #contentWrapper
 {
-    width: 70%;
+    width: 80%;
     margin: 0 auto 0 auto;
     padding: 50px 0px 0px 0px;
    height: auto;
@@ -136,7 +137,7 @@ body
 }
 #content
 {
-   width: 72%;
+   width: 62%;
    min-height: 500px;
 }
 .contentHeader
@@ -269,7 +270,7 @@ body
 }
 #sidebar
 {
-    width: 23%;
+    width: 33%;
     margin-left: 5%;
     min-height: 300px;
 }
