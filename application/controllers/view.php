@@ -20,7 +20,7 @@ class View extends CI_Controller {
             
              $data['product_info'] = $this->productModel->product_info();
         
-             var_dump($data);
+           
         
 		$this->load->view('templates/header');
                 $this->load->view('templates/navigation');
@@ -28,6 +28,9 @@ class View extends CI_Controller {
                 $this->load->view('templates/footer');
                 
 	}
+        
+        
+        
         public function details(){
             $this->load->view('templates/header');
                 $this->load->view('templates/navigation');
