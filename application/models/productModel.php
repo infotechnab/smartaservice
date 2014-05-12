@@ -12,12 +12,10 @@ public function product_info(){
             return $query->result();
     }
     
-    public function getProductById($productId)
+    public function getProductById($id)
     {
-          $this->db->where('id', $productId);
-         $this->db->order_by("id", "desc");
-            $query = $this->db->get('product');
-           
+         $query = $this->db->get_where('product', array('id'=>$id))->result();
+           return $query;
             return $query->result();
     }
 }
