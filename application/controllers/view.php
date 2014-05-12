@@ -41,23 +41,47 @@ class View extends CI_Controller {
         
         
         
+         function add() {
+        
+        $id = $this->input->post('id');
+       //die($id);
+        $product = $this->productModel->getProductById($id);
+        //var_dump($product);
+        foreach($product as $prod)
+        {
+            $name = $prod->name;
+            $price = $prod->price;
+        }
         
         
+        //echo $product->price;
+        $insert = array (
+           'id' => $id, 
+            'qty' => '1',
+            'price' => $price,
+            'name' => $name
+        );
+        //var_dump($insert);
         
+        $this->cart->insert($insert);
+       redirect('view');
         
+    }
         
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
+       function remove($rowid)
+       {
+           $this->cart->update(array(
+               'rowid'=>$rowid,
+               'qty'=>0
+           ));
+           redirect('view');
+       }
+       
+       function clear()
+       {
+           $this->cart->destroy();
+           redirect('view');
+       }
 }
 
 /* End of file welcome.php */

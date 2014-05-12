@@ -14,8 +14,10 @@ public function product_info(){
     
     public function getProductById($id)
     {
-         $query = $this->db->get_where('product', array('id'=>$id))->result();
-           return $query;
+          $this->db->where('id', $id);
+         
+            $query = $this->db->get('product');
+           
             return $query->result();
     }
 }

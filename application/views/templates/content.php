@@ -14,7 +14,7 @@
                         <?php foreach($product_info as $product)
                         {?>
                         <div class='contentContainerBox'>
-                            <?php echo form_open('addTOCart/add'); ?>
+                            <?php echo form_open('view/add'); ?>
                             <div class='contentContainerHeader'><?php echo $product->name; ?></div>
                             <div class='contentContainerImage'>
                              <img src="<?php echo base_url() . "content/images/raincoat.png"; ?>"/>   
@@ -45,12 +45,44 @@
                         <div class="redColouredDiv" id='sidebarContent'>
                             <div id="sideBarImage"><img src="<?php echo base_url() . "content/images/shopping-cart-icon-614x460.png"; ?>"/> </div>   
                            <h3>Shopping Cart</h3>
+                           <div id="total_item"><?php echo $this->cart->total_items(); ?></div>
                         </div>
+                        <div class='sidebarContentNext'>
+                        <table width="100%">
+                            <tr>
+                                <th>Name</th>
+                                <th>Qty</th>
+                                <th>Price</th>
+                                <th> </th>
+                        
                          <?php if($cart = $this->cart->contents()) {?>
-                        echo print_r($cart);
-                        <div class='sidebarContentNext'></div>
-                      
-                        <?php } ?>
+                         <?php foreach($cart as $item) { ?>
+                                                
+                        
+                            <tr>
+                                <td><?php echo $item['name']; ?> </td>
+                                <td><input type="text" size="3" value="<?php echo $item['qty'] ?>" name="quantity"></td>
+                         <td><?php echo $item['price'] ?></td>
+                         <td><?php echo anchor('view/remove/'.$item['rowid'],'X') ?></td>
+                            </tr>
+                            
+                       
+                        
+                         <?php } } ?>
+                            <tr>
+                                <td><b>Total</b>:</td>
+                                <td></td>
+                                <td> <b><?php echo $this->cart->total();  ?></b></td>
+                                <td></td>
+                            </tr>
+                            <tr style="text-align: center; background: #cccccc;">
+                                <td colspan="2"><b><?php echo anchor('view/clear','Clear') ?></b></td>
+                                
+                                <td colspan="2"> <b>Check Out</b></td>
+                                
+                            </tr>
+                             </table>
+                        </div>
                         <div class="redColouredDiv" id='sidebarContent'><h3>Popular Posts</h3></div>
                         <?php for($i=0; $i<4; $i++)
                         {?>

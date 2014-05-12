@@ -16,29 +16,19 @@ class addToCart extends CI_Controller {
     }
 	
 	public function index(){ 
-                
+            
+             $data['product_info'] = $this->productModel->product_info();
+        
+           
+        
+		$this->load->view('templates/header');
+                $this->load->view('templates/navigation');
+                $this->load->view('templates/content',$data);
+                $this->load->view('templates/footer');
+                     
              
           
         }
         
-        function add() {
         
-        $id = $this->input->post('id');
-        
-        $product = $this->productModel->getProductById($id);
-        $insert = array (
-           'id' => $id, 
-            'qty' => '1',
-            'price' => $product->price,
-            'name' => $product->name
-        );
-        
-        $this->cart->insert($insert);
-        $this->load->view('templates/header');
-                $this->load->view('templates/navigation');
-                $this->load->view('templates/content');
-                $this->load->view('templates/footer');
-      
-        
-    }
 }
