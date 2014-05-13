@@ -51,11 +51,14 @@ class Dbmodel extends CI_Model {
          $this->db->insert('comment_store', $data);
     }
 
+    
 
 //============================                       ========================================//
-    function add_new_product($qty,$name,$price,$img1,$img2,$img3)
+    function add_new_product($des,$sum,$qty,$name,$price,$img1,$img2,$img3)
     {
         $data = array(
+            'description'=>$des,
+            'summary'=>$sum,
             'qty'=>$qty,
             'price'=>$price,
             'name'=>$name,
@@ -74,6 +77,71 @@ class Dbmodel extends CI_Model {
         $this->db->limit(1);
         $proID = $this->db->get('product');
         return $proID->result();
+    }
+    
+    function record_count_product()
+    {
+        return $this->db->count_all("product");
+    }
+    
+    function get_all_product($limit, $start)
+    {
+        $this->db->limit($limit, $start);
+           // $this->db->order_by('id','DESC');
+        $query = $this->db->get('product');
+        return $query->result();
+    }
+    
+    function findproduct($id)
+    {
+       // $this->db->select();
+        $this->db->from('product');
+        $this->db->where('id', $id);
+        $query = $this->db->get();
+        return $query->result();
+    }
+    
+    function delete_product_photo($id,$image) {
+       //die($image);
+       // $this->db->delete('product', array('media_type' => $a)); 
+       if($image == "image1")
+       {$data = array(
+            'image1' => " "
+            );
+       }
+       if($image == "image2")
+       {$data = array(
+            'image2' => " "
+            );
+       }
+       if($image == "image3")
+       {$data = array(
+            'image3' => " "
+            );
+       }
+       $this->db->where('id', $id);
+     
+        $this->db->update('product', $data);
+    }
+    
+    function update_product($id,$name,$description,$summary,$price,$productImg,$productImgTwo,$productImgThree)
+    {
+        $data = array(
+            'name'=>$name,
+            'description'=>$description,
+            'summary'=>$summary,
+            'price'=>$price,
+            'image1'=>$productImg,
+            'image2'=>$productImgTwo,
+            'image3'=>$productImgThree
+        );
+        
+        $this->db->where('id',$id);
+        $this->db->update('product',$data);
+    }
+    
+    function delProduct($id){
+         $this->db->delete('product', array('id' => $id));
     }
     //==========================                         ====================================//
 

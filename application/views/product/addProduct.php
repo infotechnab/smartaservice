@@ -1,10 +1,7 @@
 <div class="rightSide">
  <h2>Add new Product</h2>
  <hr class="hr-gradient"/>
-<?php
-echo" this menu is under construction! <br/>
-    thank you for visit."
-?>
+
   <?php echo validation_errors(); ?>
 <p id="sucessmsg">
   <?php if($this->session->flashdata('message')){echo $this->session->flashdata('message');}?>
@@ -14,7 +11,8 @@ echo" this menu is under construction! <br/>
     <input type="hidden" name="qty" value="1" />
  <p>Name:<br />
       <input type="text" name="pName" /> </p>
- 
+ <p> Description : <br/>
+<textarea name="pDescription" id="area1" cols="50" rows="5" ><?php echo set_value('pDescription'); ?></textarea> </p>
  <p>Price:<br />
       <input type="text" name="pPrice" /> </p>
  <p> Image 1 : <br/> <input type="file" name="myfile" id="file" /> </p>

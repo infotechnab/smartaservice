@@ -38,7 +38,7 @@ class bnw extends CI_Controller {
         
          $this->load->view('bnw/templates/header', $data);
          $this->load->view('bnw/templates/menu');
-         $this->load->view('template/msgUnderConstruction');
+         $this->load->view('product/addProduct');
          $this->load->view('bnw/templates/footer', $data);
     }
      else {
@@ -108,8 +108,9 @@ class bnw extends CI_Controller {
                 $qty = $this->input->post('qty');
                 $productName = $this->input->post('pName');
                 $productPrice = $this->input->post('pPrice');
-                
-                $this->dbmodel->add_new_product($qty,$productName,$productPrice,$productImg,$productImgTwo,$productImgThree);
+                $description = $this->input->post('pDescription');
+                  $summary= substr("$description", 0, 100);
+                $this->dbmodel->add_new_product($description,$summary,$qty,$productName,$productPrice,$productImg,$productImgTwo,$productImgThree);
                // $this->dbmodel->add_images($id,$productImg);
                 $this->session->set_flashdata('message', 'One Product added sucessfully');
                 redirect('bnw/product');
@@ -122,7 +123,145 @@ class bnw extends CI_Controller {
         
     }
 
+    function productList(){
+    
+    if ($this->session->userdata('logged_in')) {
+$data['username'] = Array($this->session->userdata('logged_in'));
+            $config = array();
+            $config["base_url"] = base_url() . "index.php/bnw/productList";
+            $config["total_rows"] = $this->dbmodel->record_count_product();
+            $config["per_page"] = 6;
+            $this->pagination->initialize($config);
+            $page = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
 
+            $data["query"] = $this->dbmodel->get_all_product($config["per_page"], $page);
+            $data["links"] = $this->pagination->create_links();
+            $data['meta'] = $this->dbmodel->get_meta_data();            
+           
+            $this->load->view('bnw/templates/header', $data);
+         $this->load->view('bnw/templates/menu');
+         $this->load->view('product/listProduct');
+         $this->load->view('bnw/templates/footer', $data);
+        } else {
+            redirect('login', 'refresh');
+        }
+    }
+    
+    function editproduct($id)
+    {
+        if ($this->session->userdata('logged_in')) {
+            $data['query'] = $this->dbmodel->findproduct($id);
+            $data['meta'] = $this->dbmodel->get_meta_data();
+              //$data['miscSetting'] = $this->dbmodel->get_misc_setting();
+            $data['id'] = $id;
+            $this->load->view("bnw/templates/header", $data);
+            $this->load->view("bnw/templates/menu");
+            $this->load->view('product/editProduct', $data);
+
+            $this->load->view('bnw/templates/footer', $data);
+        } else {
+            redirect('login', 'refresh');
+        }
+    }
+    
+    function updateproduct()
+    {
+        if ($this->session->userdata('logged_in')) {
+
+            $config['upload_path'] = './content/images/';
+            $config['allowed_types'] = 'gif|jpg|png';
+            $config['max_size'] = '500';
+            $config['max_width'] = '1024';
+            $config['max_height'] = '768';
+            $this->load->library('upload', $config);
+            $data['meta'] = $this->dbmodel->get_meta_data();
+              $data['miscSetting'] = $this->dbmodel->get_misc_setting();
+            $username = $this->session->userdata( 'username' );
+            $this->load->view("bnw/templates/header", $data);
+            $this->load->view("bnw/templates/menu");
+            $this->load->helper('form');
+            $this->load->library(array('form_validation', 'session'));
+           
+            //set validation rules
+            $this->form_validation->set_rules('pName', 'Product Name', 'required|xss_clean|max_length[200]');
+            $this->form_validation->set_rules('pdescription', 'Description', 'required|xss_clean');
+            $this->form_validation->set_rules('price', 'Price', 'required|xss_clean');
+
+
+
+            if (($this->form_validation->run() == TRUE)) {
+                 
+                       $id = $this->input->post('id');
+                        $name = $this->input->post('pName');
+                        $description = $this->input->post('description');
+                        $summary= substr("$description", 0, 100);
+                        $price = $this->input->post('price');
+                        
+                         //if valid
+                if($this->upload->do_upload('myfile'))
+                {
+                 $data = array('upload_data' => $this->upload->data('myfile'));
+                 $productImg = $data['upload_data']['file_name'];
+                }
+                else{$productImg= $this->input->post('firstImg');}
+                if($this->upload->do_upload('myfileTwo'))
+                {
+                    $data = array('upload_data' => $this->upload->data('myfileTwo'));
+                    $productImgTwo = $data['upload_data']['file_name'];
+                }
+ else {
+     $productImgTwo = $this->input->post('secondImg');
+ }
+                if($this->upload->do_upload('myfileThree'))
+                {
+                    $data = array('upload_data' => $this->upload->data('myfileThree'));
+                    $productImgThree = $data['upload_data']['file_name'];
+                }else{
+                    $productImgThree = $this->input->post('thirdImg');
+                }
+                        
+                       // $this->dbmodel->update_page($id, $name, $body, $page_author_id, $summary, $status, $order, $type, $tags, $allowComment, $allowLike, $allowShare);
+                         $this->dbmodel->update_product($id,$name,$description,$summary,$price,$productImg,$productImgTwo,$productImgThree);
+                        $this->session->set_flashdata('message', 'Data Modified Sucessfully');
+                        redirect('bnw/productList');
+              
+            } else {
+                $id = $this->input->post('id');
+                $data['query'] = $this->dbmodel->findproduct($id);
+                $this->load->view('bnw/product/editProduct', $data);
+            }
+
+            $this->load->view('bnw/templates/footer', $data);
+        } else {
+            redirect('login', 'refresh');
+        }
+    }
+    
+    public function productImgdelete() {
+       if ($this->session->userdata('logged_in')) {
+           $image=$_GET['image'];
+           $id = $_GET['id'];
+          // die($image);
+           unlink('./content/images/'.$image);
+            $this->dbmodel->delete_product_photo($id,$image);
+            $this->session->set_flashdata('message', 'Data Delete Sucessfully');
+            redirect('bnw/editproduct/'.$id);
+        } else {
+            redirect('login', 'refresh');
+        }
+       
+    }
+    
+    function delProduct($id)
+    {
+         if ($this->session->userdata('logged_in')) {
+            $this->dbmodel->delProduct($id);
+            $this->session->set_flashdata('message', 'Data Deleted Sucessfully');
+            redirect('bnw/productList');
+        } else {
+            redirect('login', 'refresh');
+        }
+    }
     //=================================== end smart service ========================================================//
 
     function logout() {
