@@ -96,6 +96,7 @@
 
 
 <!-- facebook checking -->
+
 <script>
   // This is called with the results from from FB.getLoginStatus().
   function statusChangeCallback(response) {
@@ -132,9 +133,9 @@
   window.fbAsyncInit = function() {
   FB.init({
     appId      : '798589833503780',
-    cookie     : true,  
-    xfbml      : true,  
-    status     : true,
+    cookie     : true,  // enable cookies to allow the server to access 
+                        // the session
+    xfbml      : true,  // parse social plugins on this page
     version    : 'v2.0' // use version 2.0
   });
 
@@ -165,6 +166,8 @@
     fjs.parentNode.insertBefore(js, fjs);
   }(document, 'script', 'facebook-jssdk'));
 
+  // Here we run a very simple test of the Graph API after login is
+  // successful.  See statusChangeCallback() for when this call is made.
   function testAPI() {
     console.log('Welcome!  Fetching your information.... ');
     FB.api('/me', function(response) {
@@ -175,7 +178,15 @@
   }
 </script>
 
+<!--
+  Below we include the Login Button social plugin. This button uses
+  the JavaScript SDK to present a graphical Login button that triggers
+  the FB.login() function when clicked.
+-->
 
 <fb:login-button scope="public_profile,email" onlogin="checkLoginState();">
 </fb:login-button>
+
+<div id="status">
+</div>
 
