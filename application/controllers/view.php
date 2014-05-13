@@ -60,7 +60,7 @@ class View extends CI_Controller {
             $price = $prod->price;
             
         }
-       
+       $newQnt = 1;
 if ($this->cart->contents()) { 
     $cart = $this->cart->contents();
   
@@ -74,10 +74,10 @@ if ($this->cart->contents()) {
                                
                            }
                                     
-                                    else 
-                                    {
-                                        $newQnt = '1';
-                                    }
+                                  //  else 
+                                  //  {
+                                       // $newQnt = '1';
+                                  //  }
                                     }
                         }
    
