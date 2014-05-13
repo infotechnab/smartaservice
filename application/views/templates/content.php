@@ -1,4 +1,6 @@
-
+  <?php
+$this->load->helper('currency');
+?>
 
 
 <script>
@@ -84,7 +86,7 @@
                         <img src="<?php echo base_url() . "content/images/".$product->image1; ?>" alt="No images" height="150px" width="130px"/>   
                     </div></a>
 
-                    <div class='contentContainerFooterLeft'><h4>Rs.<?php echo $product->price; ?></h4></div>
+                    <div class='contentContainerFooterLeft'><h4><?php get_currency($product->price); ?></h4></div>
                     <div class="redColouredDiv" id='contentContainerFooterRight'>
 
                         <input type="button" value="<?php echo $product->id ?>" class="addToCart" id="addToCartBtn">  
