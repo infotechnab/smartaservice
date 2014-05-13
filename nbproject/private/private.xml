@@ -5,13 +5,11 @@
         <group>
             <file>file:/C:/wamp/www/smartaservice/application/controllers/view.php</file>
             <file>file:/C:/wamp/www/smartaservice/application/views/templates/cart.php</file>
+            <file>file:/C:/wamp/www/smartaservice/application/views/templates/details.php</file>
             <file>file:/C:/wamp/www/smartaservice/application/views/templates/sidebarview.php</file>
             <file>file:/C:/wamp/www/smartaservice/application/views/templates/content.php</file>
-            <file>file:/C:/wamp/www/smartaservice/application/views/templates/header.php</file>
             <file>file:/C:/wamp/www/smartaservice/application/models/productModel.php</file>
-            <file>file:/C:/wamp/www/smartaservice/content/styles/me.css</file>
             <file>file:/C:/wamp/www/smartaservice/content/styles/styles.css</file>
-            <file>file:/C:/wamp/www/smartaservice/application/views/templates/sidebar.php</file>
         </group>
     </open-files>
 </project-private>
