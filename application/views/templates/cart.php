@@ -2,6 +2,7 @@
 <div id="total_item"><h4>Total: <?php echo $this->cart->total_items(); ?> items</h4></div>
                 <table width="100%">
                     <tr>
+                        <th width='55px'></th>
                         <th style="text-align: left; padding: 0px 0px 0px 15px;">Name</th>
                         <th>Qty</th>
                         <th>Price</th>
@@ -11,17 +12,13 @@
                         <?php foreach ($cart as $item) { ?>                                      
 
                             <tr>
+                                <td><img src="<?php echo base_url().'content/images/'.$item['image1']; ?>" height="50px" width="50px"> </td>
                                 <td style="padding: 0px 0px 0px 15px;"><?php echo $item['name']; ?> </td>
                                 <td style="text-align: center;"><?php echo $item['qty'] ?></td>
                                 <td style="text-align: center;"><?php echo $item['price'] ?></td>
                                 <td style="text-align: center;"><?php echo anchor('view/remove/' . $item['rowid'], 'X') ?></td>
                             </tr>
-                            <tr id="temp">
-
-                            </tr>
-
-
-
+                            
                         <?php }
                     } ?>
                             <tr >
@@ -33,7 +30,7 @@
                     <tr style="text-align: center; background: #cccccc;">
                         <td colspan="2"><b><?php echo anchor('view/clear', 'Clear') ?></b></td>
 
-                        <td colspan="2"> <b>Check Out</b></td>
+                        <td colspan="2"> <b><?php echo anchor('view/cart_details', 'Check Out') ?></b></td>
 
                     </tr>
                 </table>

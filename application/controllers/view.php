@@ -58,7 +58,7 @@ class View extends CI_Controller {
         foreach ($product as $prod) {
             $name = $prod->name;
             $price = $prod->price;
-            
+            $image1 = $prod->image1;
         }
        $newQnt = 1;
 if ($this->cart->contents()) { 
@@ -89,7 +89,8 @@ if ($this->cart->contents()) {
             'id' => $id,
             'qty' => $newQnt,
             'price' => $price,
-            'name' => $name
+            'name' => $name,
+            'image1' => $image1
         );
    $this->cart->insert($insert);
         $this->load->view('templates/cart');

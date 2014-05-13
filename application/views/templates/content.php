@@ -80,7 +80,7 @@
 
                     <div class='contentContainerHeader'><h3><?php echo $product->name; ?></h3></div>
                     <div class='contentContainerImage'>
-                        <img src="<?php echo base_url() . "content/images/raincoat.png"; ?>"/>   
+                        <img src="<?php echo base_url() . "content/images/".$product->image1; ?>" alt="No images" height="150px" width="130px"/>   
                     </div>
 
                     <div class='contentContainerFooterLeft'><h4>Rs.<?php echo $product->price; ?></h4></div>

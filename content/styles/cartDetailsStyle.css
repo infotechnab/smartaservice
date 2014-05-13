@@ -1,5 +1,42 @@
 #cart_detail
 {
     width: 100%;
-    background: white;
+    background-color: white;
+    height: auto;
+    padding: 10px;
+}
+
+#cart_items
+{
+    width: 70%;
+    float: left;
+}
+
+#order_summary
+{
+    width:30%;
+    float: left;
+}
+
+#continue_shop{
+    
+ background: black;
+ color: white;
+ padding: 5px;
+ text-decoration: none;
+}
+
+.txtright
+{
+    text-align: right;
+}
+
+#order_summary
+{
+    float: left;
+}
+
+#forTopBorder
+{
+    border-top: thin solid #cccccc;
 }
