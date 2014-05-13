@@ -65,7 +65,13 @@
                         </div>
 
                         <div id='detailsImage'>
+                            <img src="<?php echo base_url() . "content/images/" . $productDet->image1; ?>" alt="<?php echo $productDet->name; ?>"/>   
+                        </div>
+                        <div id='detailsImage'>
                             <img src="<?php echo base_url() . "content/images/" . $productDet->image2; ?>" alt="<?php echo $productDet->name; ?>"/>   
+                        </div>
+                        <div id='detailsImage'>
+                            <img src="<?php echo base_url() . "content/images/" . $productDet->image3; ?>" alt="<?php echo $productDet->name; ?>"/>   
                         </div>
                       <div class="clear"></div>
                     </div>

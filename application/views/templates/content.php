@@ -36,14 +36,14 @@
     <div id='contentWrapper'>
         <div id='content'>
             <div class='contentHeader'>
-                <h2>Featured products</h2>
+                <h3>Featured products</h3>
 
             </div>
             <div class='contentContainer'>
                 <!-- from here the details starts and it must be replaced by slider-->
                 
        <?php $data=array("image"=>'image', "title"=>'Venture Jacket', "details"=>'This jacket is the best suited for moderate climatic condition. This is wind proof jacket and made in indonesia by jack and jones company. It protects you from wind while travelling in bike not only that it also orotects from rain too.', "price"=>'RS. 500/-'); ?>   
-            <div id='detailsImage'>
+            <div id='detailsImageLarge'>
                              <img src="<?php echo base_url() . "content/images/raincoat.png"; ?>"/>   
             </div>  
             
@@ -70,7 +70,7 @@
             
             
             <div class='contentHeader'>
-                 <h2>Recent products</h2>
+                 <h3>Recent products</h3>
 
             </div>
             <div id="itemContent">

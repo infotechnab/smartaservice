@@ -152,23 +152,28 @@ body
     margin: 0 auto 0 auto;
     padding: 0px;
     background-color: #fff;
-    min-height: 50px;
+    min-height: 25px;
     border-radius: 5px;
     
 }
-.contentHeader h2, .contentContainerDetails h2
+.contentHeader h3, .contentContainerDetails h2
 {
     margin: 0px;
-    padding: 10px 0px 10px 20px;
+    padding: 5px 0px 5px 20px;
 }
 .contentHeaderDetails
 {
     margin: 0 auto 0 auto;
     padding: 0px;
     background-color: #fff;
-    min-height: 50px;
+    min-height: 35px;
     border-radius: 5px;
     margin-bottom: 25px;
+}
+.contentHeaderDetails p
+{
+     margin: 0px;
+    padding: 5px 0px 5px 20px;
 }
 #login
 {
@@ -297,7 +302,7 @@ body
      margin: 0px;
     padding: 5px;
     min-height: 150px;
-    width: 93%;
+    width:50%;
     float: left;
 }
 #detailsImageLarge img
@@ -305,7 +310,15 @@ body
     padding: 8px;
    
     width: 300px;
-   
+   float: left;
+}
+#detailLargeImage
+{
+    min-height: 50px;
+    float: left;
+    width: 100%;
+    margin: 0px;
+    padding: 0px;
 }
 .contentContainerImage img, #detailsImage img
 {
@@ -316,7 +329,13 @@ body
 #detailsDetail p
 {
     margin: 0px;
-    padding: 5px;
+    padding: 10px;
+    text-align: justify;
+}
+#detailsDetail h2
+{
+    margin: 0px;
+    padding: 15px 0px 15px 0px;
 }
 #sidebar
 {
