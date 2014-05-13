@@ -1,9 +1,5 @@
 
 <div class="rightSide">
-<?php
-echo" this menu is under construction! <br/>
-    thank you for visit."
-?>
    <?php 
 //if ($miscSetting)
 //    
