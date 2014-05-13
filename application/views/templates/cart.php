@@ -34,9 +34,9 @@ $this->load->helper('currency');
                         
                     </tr>
                     <tr style="margin-top:20px;">
-                        <td colspan="2" style="text-align: center;"><b><div class="updateBtnStyle"><?php echo anchor('view/clear', 'Clear') ?></div></b></td>
+                        <td colspan="2" style="text-align: center;"><b><div class="updateBtnStyle" style="background: black;"><?php echo anchor('view/clear', 'Clear') ?></div></b></td>
                         <td> &nbsp;</td>
-                        <td colspan="2" style="text-align: center;"> <b><div class="updateBtnStyle"><?php echo anchor('view/cart_details', 'Check Out') ?></div></b></td>
+                        <td colspan="2" style="text-align: center;"> <b><div class="updateBtnStyle" style="background:black;"><?php echo anchor('view/cart_details', 'Check Out') ?></div></b></td>
 
                     </tr>
                 </table>
