@@ -75,13 +75,14 @@
             </div>
             <div id="itemContent">
             <?php foreach ($product_info as $product) {
+                
                 ?>
                 <div class='contentContainerBox'>
 
-                    <div class='contentContainerHeader'><h3><?php echo $product->name; ?></h3></div>
+                    <div class='contentContainerHeader'><a href='<?php echo base_url() . "/index.php/view/details/". $product->id ?>'><h3><?php echo $product->name; ?></h3></div>
                     <div class='contentContainerImage'>
                         <img src="<?php echo base_url() . "content/images/".$product->image1; ?>" alt="No images" height="150px" width="130px"/>   
-                    </div>
+                    </div></a>
 
                     <div class='contentContainerFooterLeft'><h4>Rs.<?php echo $product->price; ?></h4></div>
                     <div class="redColouredDiv" id='contentContainerFooterRight'>

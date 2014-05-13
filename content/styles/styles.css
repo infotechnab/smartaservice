@@ -18,6 +18,11 @@ body
 .clear{
     clear: both;
 }
+#itemContent a:link, a:visited, a:active
+{
+    text-decoration: none;
+    color: #222;
+}
 #container
 {
     margin: 0 auto 0 auto;
@@ -140,7 +145,7 @@ body
 #content
 {
    width: 62%;
-   min-height: 500px;
+   height: auto;
 }
 .contentHeader
 {
@@ -203,9 +208,18 @@ body
     margin: 0px 0px 20px 0px;
     padding: 0px;
     background-color: #fff;
-    min-height: 270px;
+    min-height: 400px;
     border-radius: 5px;
 }
+#detailLargeImage
+{
+    margin: 0px;
+    padding: 0px;
+    background-color: #fff;
+    min-height: 210px;
+}
+
+
 .contentContainerBox
 {
     margin: 20px 22px 0px 0px;
@@ -277,6 +291,21 @@ body
     min-height: 150px;
     width: 30%;
     float: left;
+}
+#detailsImageLarge
+{
+     margin: 0px;
+    padding: 5px;
+    min-height: 150px;
+    width: 93%;
+    float: left;
+}
+#detailsImageLarge img
+{
+    padding: 8px;
+   
+    width: 300px;
+   
 }
 .contentContainerImage img, #detailsImage img
 {
@@ -404,16 +433,23 @@ div.vertical-line{
 
 #addToCartBtn
 {
-    background-image: url('../images/shopping-cart-icon-614x460.png');
+    background-image: url('../images/shopping-cart-icon-614x460.png') ;
     background-repeat: no-repeat;
-    background-size: 100%;
-    width: 50px;
+    background-size: 65%;
+    width: 89px;
     height:45px;
     text-indent: 100px;
     border: none;
     background-color: #ca021e;
-    padding: 0px 10px 0px 50px;
+    padding: 0px;
+    margin-left: -15px;
+    background-position: 60%;
+    border-radius: 0px 0px 5px 0px;
     
+}
+#addToCartBtn:hover
+{
+    background-color: #f61938;
 }
 
 #total_item

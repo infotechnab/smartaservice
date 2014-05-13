@@ -33,11 +33,14 @@ class View extends CI_Controller {
         
         
         
-        public function details(){
+        public function details($id){
+            $data['product'] = $this->productModel->getProductById($id);
+           
             $this->load->view('templates/header');
                 $this->load->view('templates/navigation');
-                $this->load->view('templates/details');
-                $this->load->view('templates/sidebar');
+                $this->load->view('templates/details', $data);
+                $this->load->view('templates/cart');
+                $this->load->view('templates/sidebarview');
                 $this->load->view('templates/footer');
         }
         
