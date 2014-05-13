@@ -3,6 +3,15 @@ $this->load->helper('currency');
 ?>
 
 
+<script>
+    $(document).ready(function(){
+      
+    });
+    
+    
+</script>
+
+
 <div id="contentBackground">
     <div id='contentWrapper'>
        
@@ -14,13 +23,14 @@ $this->load->helper('currency');
     <?php if ($this->cart->contents()) {  ?>
          
          <div id="cart_items">
-                <table width='100%'>
+                <table width='100%' cellpadding='15px'>
                     <tr class="forTopBorder">
-                        <th></th>
-                        <th>Name</th>
-                        <th>Qty</th>
-                        <th>Price</th>
-                        <th> </th>
+                        <th width='8%'></th>
+                        <th width='35%'>Name</th>
+                        <th width='5%'>Qty</th>
+                        <th width='18%'>Price</th>
+                        <th width='9%'>Sub-Total</th>
+                        <th width='2%'> </th>
                     </tr>
                     <?php if ($cart = $this->cart->contents()) { ?>
                         <?php foreach ($cart as $item) { ?>                                      
@@ -28,9 +38,11 @@ $this->load->helper('currency');
                             <tr class='forTopBorder'>
                                 <td><img src="<?php echo base_url().'content/images/'.$item['image1']; ?>" height="50px" width="50px"> </td>
                                 <td><?php echo $item['name']; ?> </td>
-                                <td><input type="text" value="<?php echo $item['qty'] ?>"></td>
+                                <td><input type="text" value="<?php echo $item['qty'] ?>" id="update_qty" size="3"></td>
                                 <td> <?php get_currency($item['price']); ?></td>
+                                <td>sdf </td>
                                 <td><div id="closeSymbol"><?php echo anchor('cartDetails/remove/' . $item['rowid'], 'X') ?></div></td>
+                                
                             </tr>
                             
 
@@ -39,9 +51,10 @@ $this->load->helper('currency');
                         <?php }
                     } ?>
                     <tr class='forTopBorder'>
+                        <td><input type="button" id="updateCartBtn" class="updateBtnStyle" value='Update Cart'></td>
+                        <td></td>
                         <td></td>
                         <td><b>Total</b>:</td>
-                        <td></td>
                         <td> <b><?php get_currency($this->cart->total()); ?></b></td>
                         <td></td>
                     </tr>
@@ -62,24 +75,24 @@ else { ?>
          </div>
          <div id="order_summary">
     <table width="100%">
-        <tr>
-            <td class='txtright'>Sub Total:</td>
+        <tr class='amt_summary'>
+            <td class='txtright' width='50%'>Total:</td>
             <td></td>
         </tr>
-         <tr>
+         <tr class='amt_summary'>
             <td class='txtright'>Shipping Cost:</td>
             <td></td>
         </tr>
-         <tr>
+         <tr class='amt_summary'>
             <td class='txtright'>Discount:</td>
             <td></td>
         </tr>
-         <tr>
+         <tr class='amt_summary'>
             <td class='txtright'>Total:</td>
             <td></td>
         </tr>
     </table>
-             <div><?php echo anchor('#', 'Check Out') ?></div>
+             <div id="order_checkout"  class="updateBtnStyle"><?php echo anchor('cartDetails/checkout', 'Check Out') ?></div>
          </div>
  <div class="clear"></div>
  </div>

@@ -14,7 +14,8 @@
 
 #order_summary
 {
-    width:30%;
+    margin-left: 100px;
+    width:20%;
     float: left;
 }
 
@@ -34,6 +35,7 @@
 #order_summary
 {
     float: left;
+    border: dashed thin #ccc;
 }
 
 table{
@@ -82,4 +84,36 @@ tr.forTopBorder
 a
 {
     text-decoration: none;
+}
+
+.amt_summary
+{
+    height:40px;
+}
+
+#order_checkout{
+    
+    text-align: center;
+    
+    width:100px;
+    margin-left: 50px;
+    padding:5px;
+    border-radius: 5px;
+}
+
+#order_checkout a{
+    text-decoration: none;
+    color: white;
+}
+
+.updateBtnStyle
+{
+    background: #ca021e;
+    padding:5px;
+}
+
+#updateCartBtn{
+    border: none;
+    border-radius: 5px;
+    color: white;
 }

@@ -42,6 +42,15 @@ class CartDetails extends CI_Controller {
         $this->cart->destroy();
         redirect('cartDetails');
     }
+    
+    function checkout() {
+        $this->load->view('templates/header');
+                $this->load->view('templates/navigation');
+              
+                $this->load->view('templates/checkout_form');
+              
+                $this->load->view('templates/footer');
+    }
 }
 
 /* End of file welcome.php */

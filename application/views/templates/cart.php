@@ -21,7 +21,7 @@ $this->load->helper('currency');
                                 <td style="padding: 0px 0px 0px 15px;"><?php echo $item['name']; ?> </td>
                                 <td style="text-align: center;"><?php echo $item['qty'] ?></td>
                                 <td style="text-align: center;"><?php get_currency($item['price']); ?></td>
-                                <td style="text-align: center;"><?php echo anchor('view/remove/' . $item['rowid'], 'X') ?></td>
+                                <td style="text-align: center;"><div id="closeSymbol"><?php echo anchor('view/remove/' . $item['rowid'], 'X') ?></div></td>
                             </tr>
                             
                         <?php }

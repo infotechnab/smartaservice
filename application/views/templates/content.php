@@ -1,5 +1,5 @@
 
-<script src="<?php echo base_url() . 'content/jquery.js'; ?>" type="text/javascript"></script>
+
 
 <script>
     var base_url = "http://localhost/smartaservice/";
