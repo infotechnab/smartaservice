@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: May 13, 2014 at 06:58 AM
+-- Generation Time: May 13, 2014 at 11:46 AM
 -- Server version: 5.5.16
 -- PHP Version: 5.3.8
 
@@ -194,7 +194,7 @@ CREATE TABLE IF NOT EXISTS `menu` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `menu_name` varchar(100) NOT NULL DEFAULT 'Required',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=9 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=7 ;
 
 --
 -- Dumping data for table `menu`
@@ -402,27 +402,30 @@ CREATE TABLE IF NOT EXISTS `product` (
   `qty` int(11) NOT NULL,
   `price` int(11) NOT NULL,
   `name` varchar(200) NOT NULL,
+  `description` varchar(2000) NOT NULL,
+  `summary` varchar(200) NOT NULL,
   `image1` varchar(255) NOT NULL,
   `image2` varchar(255) NOT NULL,
   `image3` varchar(255) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=23 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=26 ;
 
 --
 -- Dumping data for table `product`
 --
 
-INSERT INTO `product` (`id`, `qty`, `price`, `name`, `image1`, `image2`, `image3`) VALUES
-(1, 8, 3000, 'sweater', '', '', ''),
-(2, 8, 5000, 'jacket', '', '', ''),
-(3, 1, 2000, 'HOOD', '', '', ''),
-(4, 2, 4000, 'adidas shoe', '', '', ''),
-(17, 1, 1010, 'abce`', 'food2.jpg', '', ''),
-(18, 1, 2020, 'abc', 'food31.jpg', '', ''),
-(19, 1, 2010, 'abc', '', '', ''),
-(20, 1, 500, 'abcd', 'flag15.jpg', '', ''),
-(21, 1, 250, 'abc', 'food21.jpg', '', ''),
-(22, 1, 999, 'a', 'flag18.jpg', 'flag23.jpg', ' ');
+INSERT INTO `product` (`id`, `qty`, `price`, `name`, `description`, `summary`, `image1`, `image2`, `image3`) VALUES
+(1, 8, 3000, 'sweater', '', '', '', '', ''),
+(2, 8, 5000, 'jacket', '', '', '', '', ''),
+(3, 1, 2000, 'HOOD', '', '', '', '', ''),
+(4, 2, 4000, 'adidas shoe', '', '', '', '', ''),
+(17, 1, 1010, 'abce`', '', '', 'food2.jpg', '', ''),
+(18, 1, 2020, 'abc', '', '', 'food31.jpg', '', ''),
+(20, 1, 500, 'abcd', '', '', 'flag15.jpg', '', ''),
+(21, 1, 250, 'abc', '', '', 'food21.jpg', '', ''),
+(22, 1, 999, 'a', '0', '0', 'flag24.jpg', ' ', 'food23.jpg'),
+(23, 1, 500, 'abcdefg', '', '', 'food22.jpg', ' ', ' '),
+(24, 1, 555, 'aaaa', 'dfsafsdfsdfdsfsdfsdfsdfsdfsdfsdfk<br>flkdsjfldsjfsdlfjsdlfjsdlfjsdf<br>sdfjsdflsdjfjsdfjsdlfjsdflksdjf<br>sdflksdjflsdjflsdkjfsldjfsdlkjflsdjf<br>sdlfkjsdlfjsdlfsdlfjsdlfjsdf<br>sdflkjsdlfjsdlfkjsdfjlk<br>', 'sdfdsfsdfsdfsdfsdf', ' ', ' ', ' ');
 
 -- --------------------------------------------------------
 
@@ -550,8 +553,8 @@ ALTER TABLE `product_oder`
 -- Constraints for table `product_oder_detail`
 --
 ALTER TABLE `product_oder_detail`
-  ADD CONSTRAINT `product_oder_detail_ibfk_2` FOREIGN KEY (`o_id`) REFERENCES `product_oder` (`o_id`),
-  ADD CONSTRAINT `product_oder_detail_ibfk_1` FOREIGN KEY (`p_id`) REFERENCES `product` (`id`);
+  ADD CONSTRAINT `product_oder_detail_ibfk_1` FOREIGN KEY (`p_id`) REFERENCES `product` (`id`),
+  ADD CONSTRAINT `product_oder_detail_ibfk_2` FOREIGN KEY (`o_id`) REFERENCES `product_oder` (`o_id`);
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
