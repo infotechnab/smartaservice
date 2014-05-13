@@ -193,9 +193,9 @@ body
 .contentContainer
 {
     margin: 20px 0px 20px 0px;
-    padding: 0px;
+    padding: 0px 0px 10px 0px;
     background-color: #fff;
-    min-height: 100px;
+    min-height: 150px;
     border-radius: 5px;
 }
 .contentContainerDetails
@@ -203,7 +203,7 @@ body
     margin: 0px 0px 20px 0px;
     padding: 0px;
     background-color: #fff;
-    min-height: 230px;
+    min-height: 270px;
     border-radius: 5px;
 }
 .contentContainerBox
@@ -305,7 +305,7 @@ body
 #sideBarImage
 {
     margin: 0px 0px 0px 10px;
-    width: 17%;
+    width: 15%;
     padding: 0px;
     float: left;
     height: 25px;
@@ -314,7 +314,7 @@ body
 {
     margin: 0px;
     padding: 0px;
-    width: 70px;
+    width: 53px;
  
 }
 #sidebarContent h3 
@@ -414,4 +414,16 @@ div.vertical-line{
     background-color: #ca021e;
     padding: 0px 10px 0px 50px;
     
+}
+
+#total_item
+{
+    margin: 0px;
+    padding: 0px;
+    min-height: 15px;
+}
+#total_item h4
+{
+    padding: 2px 100px 2px 15px;
+    text-align: right;
 }
