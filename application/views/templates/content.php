@@ -49,22 +49,14 @@
                 ?>
                 <div class='contentContainerBox'>
 
-                    <div class='contentContainerHeader'><?php echo $product->name; ?></div>
+                    <div class='contentContainerHeader'><h3><?php echo $product->name; ?></h3></div>
                     <div class='contentContainerImage'>
                         <img src="<?php echo base_url() . "content/images/raincoat.png"; ?>"/>   
                     </div>
 
-
-                    <div class='contentContainerFooterLeft'></div>
-                    <div class='contentContainerFooterRight'></div>
-
-                    <div class='contentContainerFooterLeft'><span>Rs.<?php echo $product->price; ?></span></div>
+                    <div class='contentContainerFooterLeft'><h4>Rs.<?php echo $product->price; ?></h4></div>
                     <div class="redColouredDiv" id='contentContainerFooterRight'>
 
-
-
-
-                        
                         <input type="button" value="<?php echo $product->id ?>" class="addToCart" id="addToCartBtn">  
                         
                             
@@ -80,7 +72,7 @@
 
         </div>
 
-        </div>  
+        
 
         <!-- left side content closed here -->
    
@@ -91,5 +83,4 @@
             </div>
                 <div class='sidebarContentNext' id="shopping_cart">
                     
-                
-       
+    

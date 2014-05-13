@@ -223,22 +223,36 @@ body
     padding: 5px;
     min-height: 30px;
 }
+.contentContainerHeader h3
+{
+    margin: 0px;
+    padding: 5px 0px 5px 0px;
+    text-align: center;
+}
 .contentContainerFooterLeft
 {
     width: 50%;
     margin: 0px;
     padding: 5px;
     float: left;
-   
-     min-height: 30px;
+     height: 35px;
+    border-radius: 0px 0px 0px 5px;
+    background-color: #222222;
+    color: #fff;
+}
+.contentContainerFooterLeft h4
+{
+    margin: 0px;
+    padding: 7px 0px 5px 15px;
 }
 #contentContainerFooterRight
 {
-    width: 40%;
+    width: 37%;
     margin: 0px;
-    padding: 0px;
+    padding: 0px 0px 0px 16px;
     float: left;  
-    height: 40px;
+    height: 45px;
+    border-radius: 0px 0px 5px 0px;
 }
 #contentContainerFooterRight p
 {
@@ -277,8 +291,8 @@ body
 }
 #sidebar
 {
-    width: 33%;
-    margin-left: 5%;
+    width: 35%;
+    margin-left:3%;
     min-height: 300px;
 }
 #sidebarContent
@@ -339,7 +353,7 @@ body
     color: #fff;
      font-size: 14px;
      margin: 0px;
-     padding: 0px;
+     padding: 10px;
 }
 
 // for login//
@@ -394,9 +408,10 @@ div.vertical-line{
     background-repeat: no-repeat;
     background-size: 100%;
     width: 50px;
-    height:40px;
+    height:45px;
     text-indent: 100px;
     border: none;
-    background-color: red;
+    background-color: #ca021e;
+    padding: 0px 10px 0px 50px;
     
 }

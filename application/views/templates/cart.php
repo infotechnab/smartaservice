@@ -1,4 +1,3 @@
-       
 <?php if ($this->cart->contents()) {  ?>
          <div id="total_item"><?php echo $this->cart->total_items(); ?></div>
                 <table width="100%">
