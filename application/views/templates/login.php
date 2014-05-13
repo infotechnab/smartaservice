@@ -138,6 +138,14 @@
     xfbml      : true,  // parse social plugins on this page
     version    : 'v2.0' // use version 2.0
   });
+  FB.getLoginStatus(function(response) {
+  if (response.status === 'connected') {
+    console.log('Logged in.');
+  }
+  else {
+    FB.login();
+  }
+});
 
   // Now that we've initialized the JavaScript SDK, we call 
   // FB.getLoginStatus().  This function gets the state of the
@@ -190,3 +198,7 @@
 <div id="status">
 </div>
 
+<iframe src="https://www.facebook.com/plugins/registration?
+             client_id=798589833503780&
+             redirect_uri=http://www.salyani.com.np">
+</iframe>
