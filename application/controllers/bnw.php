@@ -194,7 +194,7 @@ $data['username'] = Array($this->session->userdata('logged_in'));
                        $id = $this->input->post('id');
                         $name = $this->input->post('pName');
                         $description = $this->input->post('pdescription');
-                        die($description);
+                        //die($description);
                         $summary= substr("$description", 0, 100);
                         $price = $this->input->post('price');
                         
