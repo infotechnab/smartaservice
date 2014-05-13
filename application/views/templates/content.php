@@ -44,7 +44,7 @@
             <div class='contentHeader'>
 
             </div>
-
+            <div id="itemContent">
             <?php foreach ($product_info as $product) {
                 ?>
                 <div class='contentContainerBox'>
@@ -64,21 +64,21 @@
 
 
 
-                        <div style="background-color: red; width: 100px;" id="addToCartDiv" >
-                            <input type="button" value="<?php echo $product->id ?>" class="addToCart">  
-                            <img style="width: 80px;" src="<?php echo base_url() . "content/images/shopping-cart-icon-614x460.png" ?>" alt="cart image" />
+                        
+                        <input type="button" value="<?php echo $product->id ?>" class="addToCart" id="addToCartBtn">  
+                        
                             
  
                         </div>
 
                     </div>
+            
 
-
-                </div>
-
+               
             <?php } ?>
+            </div>
 
-
+        </div>
 
         </div>  
 

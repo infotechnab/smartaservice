@@ -387,3 +387,16 @@ div.vertical-line{
     position: absolute;
     margin: 120px 0px 0px -20px;
 }
+
+#addToCartBtn
+{
+    background-image: url('../images/shopping-cart-icon-614x460.png');
+    background-repeat: no-repeat;
+    background-size: 100%;
+    width: 50px;
+    height:40px;
+    text-indent: 100px;
+    border: none;
+    background-color: red;
+    
+}

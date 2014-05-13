@@ -25,9 +25,8 @@ class View extends CI_Controller {
 		$this->load->view('templates/header');
                 $this->load->view('templates/navigation');
                 $this->load->view('templates/content',$data);
-                                $this->load->view('templates/cart');
+                $this->load->view('templates/cart');
                 $this->load->view('templates/sidebarview');
-
                 $this->load->view('templates/footer');
                 
 	}
@@ -61,14 +60,19 @@ class View extends CI_Controller {
             $price = $prod->price;
             
         }
-        $newQnt = '1';
+       
 if ($this->cart->contents()) { 
     $cart = $this->cart->contents();
   
                         foreach ($cart as $item) { 
                             if(isset($item['id'])){
                            if($item['id']==$id)
-                           { $newQnt = $item['qty']+1; }
+                           { 
+                             
+                               $newQnt = 1;
+                               $newQnt = $item['qty']+1; 
+                               
+                           }
                                     
                                     else 
                                     {
