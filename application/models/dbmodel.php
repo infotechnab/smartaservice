@@ -87,7 +87,7 @@ class Dbmodel extends CI_Model {
     function get_all_product($limit, $start)
     {
         $this->db->limit($limit, $start);
-           // $this->db->order_by('id','DESC');
+        $this->db->order_by('id','DESC');
         $query = $this->db->get('product');
         return $query->result();
     }
