@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: May 12, 2014 at 07:18 AM
+-- Generation Time: May 13, 2014 at 06:25 AM
 -- Server version: 5.5.16
 -- PHP Version: 5.3.8
 
@@ -402,20 +402,39 @@ CREATE TABLE IF NOT EXISTS `product` (
   `qty` int(11) NOT NULL,
   `price` int(11) NOT NULL,
   `name` varchar(200) NOT NULL,
+  `image1` varchar(255) NOT NULL,
+  `image2` varchar(255) NOT NULL,
+  `image3` varchar(255) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=7 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=23 ;
 
 --
 -- Dumping data for table `product`
 --
 
-INSERT INTO `product` (`id`, `qty`, `price`, `name`) VALUES
-(1, 8, 3000, 'sweater'),
-(2, 8, 5000, 'jacket'),
-(3, 1, 2000, 'HOOD'),
-(4, 2, 4000, 'adidas shoe'),
-(5, 1, 3000, 'converse'),
-(6, 1, 2000, 'YCKMD Lather Jacket');
+INSERT INTO `product` (`id`, `qty`, `price`, `name`, `image1`, `image2`, `image3`) VALUES
+(1, 8, 3000, 'sweater', '', '', ''),
+(2, 8, 5000, 'jacket', '', '', ''),
+(3, 1, 2000, 'HOOD', '', '', ''),
+(4, 2, 4000, 'adidas shoe', '', '', ''),
+(17, 1, 1010, 'abce`', 'food2.jpg', '', ''),
+(18, 1, 2020, 'abc', 'food31.jpg', '', ''),
+(19, 1, 2010, 'abc', '', '', ''),
+(20, 1, 500, 'abcd', 'flag15.jpg', '', ''),
+(21, 1, 250, 'abc', 'food21.jpg', '', ''),
+(22, 1, 999, 'a', 'flag18.jpg', 'flag23.jpg', ' ');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `product_image`
+--
+
+CREATE TABLE IF NOT EXISTS `product_image` (
+  `pimg_id` int(11) NOT NULL AUTO_INCREMENT,
+  `image` varchar(255) NOT NULL,
+  PRIMARY KEY (`pimg_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
