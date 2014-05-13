@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: May 13, 2014 at 06:25 AM
+-- Generation Time: May 13, 2014 at 06:58 AM
 -- Server version: 5.5.16
 -- PHP Version: 5.3.8
 
@@ -439,6 +439,42 @@ CREATE TABLE IF NOT EXISTS `product_image` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `product_oder`
+--
+
+CREATE TABLE IF NOT EXISTS `product_oder` (
+  `o_id` int(11) NOT NULL AUTO_INCREMENT,
+  `u_id` int(11) NOT NULL,
+  `date` date NOT NULL,
+  `user_name` varchar(255) NOT NULL,
+  `deliver_address` varchar(255) NOT NULL,
+  `city` varchar(255) NOT NULL,
+  `state` varchar(255) NOT NULL,
+  `zip` varchar(200) NOT NULL,
+  PRIMARY KEY (`o_id`),
+  KEY `u_id` (`u_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `product_oder_detail`
+--
+
+CREATE TABLE IF NOT EXISTS `product_oder_detail` (
+  `od_id` int(11) NOT NULL AUTO_INCREMENT,
+  `o_id` int(11) NOT NULL,
+  `p_id` int(11) NOT NULL,
+  `qty` varchar(255) NOT NULL,
+  `price` double NOT NULL,
+  PRIMARY KEY (`od_id`),
+  KEY `p_id` (`p_id`),
+  KEY `o_id` (`o_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `slide`
 --
 
@@ -478,14 +514,15 @@ CREATE TABLE IF NOT EXISTS `user` (
   `user_status` varchar(64) DEFAULT NULL,
   `user_type` varchar(64) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=12 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=13 ;
 
 --
 -- Dumping data for table `user`
 --
 
 INSERT INTO `user` (`id`, `user_name`, `user_fname`, `user_lname`, `user_email`, `user_pass`, `user_url`, `user_registered_date`, `user_auth_key`, `user_status`, `user_type`) VALUES
-(11, 'admin', 'admin', 'admin', 'admin@ad.min', '21232f297a57a5a743894a0e4a801fc3', NULL, '2014-05-11 11:27:48', ' ', '1', '0');
+(11, 'admin', 'admin', 'admin', 'admin@ad.min', '21232f297a57a5a743894a0e4a801fc3', NULL, '2014-05-11 11:27:48', ' ', '1', '0'),
+(12, 'ramji', 'ram', 'ram', 'ramji@salyani.com.np', 'ae3274d5bfa170ca69bb534be5a22467', NULL, '2014-05-13 06:56:32', NULL, '1', '1');
 
 --
 -- Constraints for dumped tables
@@ -502,6 +539,19 @@ ALTER TABLE `media`
 --
 ALTER TABLE `navigation`
   ADD CONSTRAINT `fk_navigation_menu` FOREIGN KEY (`menu_id`) REFERENCES `menu` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+--
+-- Constraints for table `product_oder`
+--
+ALTER TABLE `product_oder`
+  ADD CONSTRAINT `product_oder_ibfk_1` FOREIGN KEY (`u_id`) REFERENCES `user` (`id`);
+
+--
+-- Constraints for table `product_oder_detail`
+--
+ALTER TABLE `product_oder_detail`
+  ADD CONSTRAINT `product_oder_detail_ibfk_2` FOREIGN KEY (`o_id`) REFERENCES `product_oder` (`o_id`),
+  ADD CONSTRAINT `product_oder_detail_ibfk_1` FOREIGN KEY (`p_id`) REFERENCES `product` (`id`);
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
