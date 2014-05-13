@@ -51,6 +51,8 @@ tr.forTopBorder
 
 #closeSymbol
 {
+    display: block;
+    cursor: pointer;
      background-color: #CCCCCC;
     border: thin solid #CCCCCC;
     border-radius: 40px;
@@ -84,6 +86,7 @@ tr.forTopBorder
 a
 {
     text-decoration: none;
+    color: white;
 }
 
 .amt_summary
@@ -110,10 +113,42 @@ a
 {
     background: #ca021e;
     padding:5px;
-}
-
-#updateCartBtn{
     border: none;
     border-radius: 5px;
     color: white;
 }
+
+.updateBtnStyle a
+{
+   text-decoration: none;
+    color: white;
+}
+
+#updateCartBtn
+{
+    border: none;
+    border-radius: 5px;
+    color: white;
+}
+
+#checkOutForm
+{
+    margin-left: 375px;
+    text-align: center;
+}
+
+.txtstyle
+{
+    margin-bottom: 10px;
+    width: 300px;
+    height:40px;
+    border-radius: 5px;
+    border: solid thin #ccc;
+}
+
+
+
+::-webkit-input-placeholder { color: #eeeeee; padding-left:15px; font-size:20px; font-weight: bold;}
+::-moz-placeholder { color:#999; } /* firefox 19+ */
+:-ms-input-placeholder { color:#999; } /* ie */
+input:-moz-placeholder { color:#999; }

@@ -3,14 +3,6 @@ $this->load->helper('currency');
 ?>
 
 
-<script>
-    $(document).ready(function(){
-      
-    });
-    
-    
-</script>
-
 
 <div id="contentBackground">
     <div id='contentWrapper'>
@@ -25,12 +17,12 @@ $this->load->helper('currency');
          <div id="cart_items">
                 <table width='100%' cellpadding='15px'>
                     <tr class="forTopBorder">
-                        <th width='8%'></th>
+                        <th width='8%'>Image</th>
                         <th width='35%'>Name</th>
                         <th width='5%'>Qty</th>
                         <th width='18%'>Price</th>
                         <th width='9%'>Sub-Total</th>
-                        <th width='2%'> </th>
+                        <th width='2%'>Remove</th>
                     </tr>
                     <?php if ($cart = $this->cart->contents()) { ?>
                         <?php foreach ($cart as $item) { ?>                                      
@@ -38,7 +30,7 @@ $this->load->helper('currency');
                             <tr class='forTopBorder'>
                                 <td><img src="<?php echo base_url().'content/images/'.$item['image1']; ?>" height="50px" width="50px"> </td>
                                 <td><?php echo $item['name']; ?> </td>
-                                <td><input type="text" value="<?php echo $item['qty'] ?>" id="update_qty" size="3"></td>
+                                <td><input type="text" value="<?php echo $item['qty'] ?>" id="update_qty" size="3" name="updateQuantity"></td>
                                 <td> <?php get_currency($item['price']); ?></td>
                                 <td>sdf </td>
                                 <td><div id="closeSymbol"><?php echo anchor('cartDetails/remove/' . $item['rowid'], 'X') ?></div></td>
