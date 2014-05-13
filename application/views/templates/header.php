@@ -5,7 +5,7 @@
         <title>Welcome to Online Shopping</title>  
         <link rel="stylesheet" href="<?php echo base_url() . "content/styles/styles.css"; ?>">     
         <link rel="shortcut icon" href="<?php echo base_url() . "content/images/favicon1.jpg"; ?>" type="image/x-icon"> 
-        
+        <link rel="stylesheet" href="<?php echo base_url() . "content/styles/cartDetailsStyle.css"; ?>">    
     </head>
     <body>
         <div id="container">

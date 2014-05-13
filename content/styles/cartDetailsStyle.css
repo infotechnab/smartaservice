@@ -36,7 +36,50 @@
     float: left;
 }
 
-#forTopBorder
+table{
+    border-collapse:collapse;
+}
+
+tr.forTopBorder
 {
     border-top: thin solid #cccccc;
+    height: 50px;
+    text-align: left;
+}
+
+#closeSymbol
+{
+     background-color: #CCCCCC;
+    border: thin solid #CCCCCC;
+    border-radius: 40px;
+    color: #FFFFFF;
+    font-size: 10px;
+    padding: 3px 9px 3px 7px;
+    text-align: center;
+    width: 3px;   
+}
+
+
+#closeSymbol:hover
+{
+     background-color: #EEEEEE;
+    border: thin solid #CCCCCC;
+    border-radius: 40px;
+    color: #FFFFFF;
+    font-size: 10px;
+    padding: 3px 9px 3px 7px;
+    text-align: center;
+    width: 3px;   
+}
+
+
+
+#closeSymbol a
+{
+    text-decoration: none;
+}
+
+a
+{
+    text-decoration: none;
 }
