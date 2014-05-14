@@ -1,18 +1,6 @@
 
 <div class="rightSide">
-   <?php 
-//if ($miscSetting)
-//    
-//{
-//    $i=0;
- //   foreach ($miscSetting as $data)
- //   {        
-  //     $set_data[$i] = $data->description;
-  //     $i++;      
- //   }
-// }
- ?>
-    
+  
     <?php
  if(isset($error))
   {
@@ -24,7 +12,7 @@
             $name= $data->name;
             $description = $data->description;
             $price= $data->price;
-            
+            $cateID = $data->category;
            
             $first_image= $data->image1;
             $second_image = $data->image2;
@@ -58,6 +46,17 @@
             <input type="text" name="price" value="<?php echo $price; ?>" />
 
   </p>
+  
+  <p> Select Category : <br/>
+     
+     <select name="pCategory">
+         <?php foreach ($category as $catName)
+         {?>
+         <option value="<?php echo $catName->id; ?>" <?php if($catName->id == $cateID) echo"selected"; ?> ><?php echo $catName->category_name; ?></option>
+         <?php } ?>
+     </select>
+     
+ </p>
  
        <div style="height: 180px;"> 
   <div class="product_image_div">

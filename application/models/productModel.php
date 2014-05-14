@@ -7,7 +7,7 @@ class ProductModel extends CI_Model {
     }
     
 public function product_info(){
-    
+     $this->db->order_by('id','DESC');
          $query = $this->db->get('product');
             return $query->result();
     }

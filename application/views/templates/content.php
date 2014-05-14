@@ -56,11 +56,12 @@ $this->load->helper('currency');
             </div>
             
             
-                <h4> Price: <?php echo $data['price']; ?></h4>
-          
-            <div class="redColouredDiv" id='contentContainerFooterRight'><p>Buy Now</p></div>
+               <div class='contentContainerFooterLeft' style="width:90px;"><h4><?php get_currency(500); ?></h4></div>
+                             <div class="redColouredDiv" id='contentContainerFooterRight' style="width: 8px;">
+
+                        <input type="button" value="<?php ?>" class="addToCart" id="addToCartBtn">
             
-        
+                             </div>
                 
                 
                 <!-- here the details ends-->

@@ -53,10 +53,11 @@ class Dbmodel extends CI_Model {
 
     
 
-//============================                       ========================================//
-    function add_new_product($des,$sum,$qty,$name,$price,$img1,$img2,$img3)
+//============================    For smart service         ========================================//
+    function add_new_product($cat,$des,$sum,$qty,$name,$price,$img1,$img2,$img3)
     {
         $data = array(
+            'category'=>$cat,
             'description'=>$des,
             'summary'=>$sum,
             'qty'=>$qty,
@@ -87,7 +88,7 @@ class Dbmodel extends CI_Model {
     function get_all_product($limit, $start)
     {
         $this->db->limit($limit, $start);
-           // $this->db->order_by('id','DESC');
+        $this->db->order_by('id','DESC');
         $query = $this->db->get('product');
         return $query->result();
     }
@@ -124,9 +125,10 @@ class Dbmodel extends CI_Model {
         $this->db->update('product', $data);
     }
     
-    function update_product($id,$name,$description,$summary,$price,$productImg,$productImgTwo,$productImgThree)
+    function update_product($id,$cate,$name,$description,$summary,$price,$productImg,$productImgTwo,$productImgThree)
     {
         $data = array(
+            'category'=>$cate,
             'name'=>$name,
             'description'=>$description,
             'summary'=>$summary,
@@ -143,7 +145,8 @@ class Dbmodel extends CI_Model {
     function delProduct($id){
          $this->db->delete('product', array('id' => $id));
     }
-    //==========================                         ====================================//
+    
+    //==========================   End smart service               ====================================//
 
 
 
