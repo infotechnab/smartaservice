@@ -53,7 +53,7 @@ class Dbmodel extends CI_Model {
 
     
 
-//============================    For smart service         ========================================//
+//============================    For Cart System         ========================================//
     function add_new_product($cat,$des,$sum,$qty,$name,$price,$img1,$img2,$img3)
     {
         $data = array(
@@ -85,6 +85,20 @@ class Dbmodel extends CI_Model {
         return $this->db->count_all("product");
     }
     
+    function record_count_product_order()
+    {
+        return $this->db->count_all("product_oder_detail");
+    }
+    
+    function get_all_product_order()
+    {
+        $this->db->order_by('o_id','DESC');
+        $query = $this->db->get('product_oder_detail');
+        return $query->result();
+    }
+    
+    
+    
     function get_all_product($limit, $start)
     {
         $this->db->limit($limit, $start);
@@ -102,7 +116,14 @@ class Dbmodel extends CI_Model {
         return $query->result();
     }
     
-    function delete_product_photo($id,$image) {
+    function get_all_product_order_oid($id)
+    {
+         $this->db->where('o_id', $id);
+        $query = $this->db->get('product_oder');
+        return $query->result();
+    }
+    
+       function delete_product_photo($id,$image) {
        //die($image);
        // $this->db->delete('product', array('media_type' => $a)); 
        if($image == "image1")
@@ -146,7 +167,7 @@ class Dbmodel extends CI_Model {
          $this->db->delete('product', array('id' => $id));
     }
     
-    //==========================   End smart service               ====================================//
+    //==========================   End Cart System               ====================================//
 
 
 
