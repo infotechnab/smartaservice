@@ -1,6 +1,6 @@
 <div class="redColouredDiv" id="navigation">
                         <ul>
-                            <li><a href="#">HOME</a></li>
+                            <li><a href="<?php echo base_url().'index.php/view/index' ?>">HOME</a></li>
                             <li><a href="#">ABOUT US</a></li>
                             <li><a href="#">FEATURED</a></li>
                             <li><a href="#">ACCESSORIES</a></li>
