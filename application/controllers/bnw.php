@@ -27,9 +27,8 @@ class bnw extends CI_Controller {
         }
     }
 
-    //========================== for Cart System =======================================================//
+    //========================== for smart service =======================================================//
 
-    //========================== Add Product ======================================================//
     function product() {
         if ($this->session->userdata('logged_in')) {
             $data['username'] = Array($this->session->userdata('logged_in'));
@@ -184,9 +183,7 @@ class bnw extends CI_Controller {
             redirect('login', 'refresh');
         }
     }
-// ============================= End Add Product ====================================================//
-    
-    //============================ Product Listing =================================================//
+
     function productList() {
 
         if ($this->session->userdata('logged_in')) {
@@ -211,7 +208,6 @@ class bnw extends CI_Controller {
         }
     }
 
-    //================================ Product Editing ===================================================//
     function editproduct($id) {
         if ($this->session->userdata('logged_in')) {
             $data['query'] = $this->dbmodel->findproduct($id);
@@ -311,11 +307,6 @@ class bnw extends CI_Controller {
             redirect('login', 'refresh');
         }
     }
-    
-    function delProductOrder()
-    {
-        echo ' Processing ';
-    }
 
     function delProduct($id) {
         if ($this->session->userdata('logged_in')) {
@@ -339,33 +330,7 @@ class bnw extends CI_Controller {
         }
     }
 
-    function productOrderList(){
-        if ($this->session->userdata('logged_in')) {
-            $data['username'] = Array($this->session->userdata('logged_in'));
-            //$config = array();
-           // $config["base_url"] = base_url() . "index.php/bnw/productOrderList";
-            //$config["total_rows"] = $this->dbmodel->record_count_product_order();
-           // $config["per_page"] = 6;
-           // $this->pagination->initialize($config);
-           // $page = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
-
-            //$data["query"] = $this->dbmodel->get_all_product($config["per_page"], $page);
-            //$data["links"] = $this->pagination->create_links();
-            $data['query'] = $this->dbmodel->get_all_product_order();
-            $data['meta'] = $this->dbmodel->get_meta_data();
-
-            $this->load->view('bnw/templates/header', $data);
-            $this->load->view('bnw/templates/menu');
-            $this->load->view('product/listProductOrder');
-            $this->load->view('bnw/templates/footer', $data);
-        } else {
-            redirect('login', 'refresh');
-        }
-    
-    }
-    
-    
-    //=================================== end Cart System  ========================================================//
+    //=================================== end smart service ========================================================//
 
     function logout() {
         $this->session->sess_destroy();

@@ -36,7 +36,7 @@ $this->load->helper('currency');
                                 </td>
                                 <td> <?php get_currency($item['price']); ?></td>
                                 <td>sdf </td>
-                                <td><div id="closeSymbol"><?php echo anchor('cartDetails/remove/' . $item['rowid'], 'X') ?></div></td>
+                                <td><a href="<?php echo base_url(); ?>index.php/cartDetails/remove/<?php echo $item['rowid']; ?>"><div id="closeSymbol">X</div></a></td>
                                 
                             </tr>
                             
@@ -75,7 +75,7 @@ else { ?>
          <div id="order_summary">
     <table width="100%">
         <tr class='amt_summary'>
-            <td class='txtright' width='40%'>Total: </td>
+            <td class='txtright' width='50%'>Total: </td>
             <td><b><?php get_currency($this->cart->total()); ?></b></td>
         </tr>
          <tr class='amt_summary'>

@@ -6,10 +6,9 @@ $this->load->helper('currency');
 <script>
     var base_url = "http://localhost/smartaservice/";
     $(document).ready(function() {
-        //alert ("sajdfa");
         $(".addToCart").click(function() {
+           $(this).parent().parent().css({ opacity: 0.3 });
             var id = $(this).val();
-            //alert(id);
             var dataString = 'itemid=' + id;
             $.ajax({
                 type: "POST",
@@ -17,15 +16,16 @@ $this->load->helper('currency');
                 data: dataString,
                 success: function(msgs)
                 {
-
+                   
                     $("#shopping_cart").html(msgs);
 
 
                 },
                 complete: function() {
-
+                  $(".contentContainerBox").css({ opacity: 1 });
                 }
             });
+            
         });
 
     });
