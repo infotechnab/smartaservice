@@ -27,6 +27,7 @@ body
 {
     margin: 0 auto 0 auto;
     padding: 0px;
+    width: 1360px;
 }
 #headerBackground
 {
@@ -180,7 +181,7 @@ body
     margin: 0 auto 0 auto;
     padding: 0px;
     background-color: #fff;
-    min-height: 400px;
+    min-height: 410px;
     margin-bottom: 25px;
 }
 #outerBorder
@@ -191,7 +192,7 @@ body
     min-height: 350px;
    border-radius: 5px;
     position: absolute;
-    width: 66%;
+    width: 76%;
 }
 .loginLeft
 {
