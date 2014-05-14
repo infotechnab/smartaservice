@@ -2,7 +2,28 @@
 $this->load->helper('currency');
 ?>
 
+<script>
+    $(document).ready(function(){
+ $(".updateQuantity").keyup(function() {
+    
+    var price = $(this).parent().next().find('span.priceTag').text();
+    var subTotal = $(this).val() * price;
+    if (isNaN(subTotal)) subTotal = 0;
+    //assign subTotal to the td
+    $(this).parent().next().next().html(subTotal);
+});
 
+        $('.cart tr').each(function() {
+            var qty = $(this).find('input.updateQuantity').val();
+            var price = $(this).find('span.priceTag').text();
+            var sub_total = (qty * price);
+            $(this).find('.sub_total_price').html(sub_total);
+        }); //END .each
+       
+    });
+
+
+</script>
 
 <div id="contentBackground">
     <div id='contentWrapper'>
@@ -15,7 +36,7 @@ $this->load->helper('currency');
     <?php if ($this->cart->contents()) {  ?>
          
          <div id="cart_items">
-                <table width='100%' cellpadding='15px'>
+             <table width='100%' cellpadding='15px' class="cart">
                     <tr class="forTopBorder">
                         <th width='8%'>Image</th>
                         <th width='35%'>Name</th>
@@ -35,7 +56,7 @@ $this->load->helper('currency');
                                     <input type="hidden" value="<?php echo $item['rowid']; ?>" name="item_row_<?php echo $item['id']; ?>">
                                 </td>
                                 <td> <?php get_currency($item['price']); ?></td>
-                                <td>sdf </td>
+                                <td class="sub_total_price"></td>
                                 <td><a href="<?php echo base_url(); ?>index.php/cartDetails/remove/<?php echo $item['rowid']; ?>"><div id="closeSymbol">X</div></a></td>
                                 
                             </tr>
