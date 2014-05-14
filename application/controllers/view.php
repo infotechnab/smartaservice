@@ -53,11 +53,9 @@ class View extends CI_Controller {
         }
         
          function add() {
-        
+       // die('iam here');
         $id = $_POST['itemid'];
-
-        $product = $this->productModel->getProductById($id);
-        
+        $product = $this->productModel->getProductById($id);        
         foreach ($product as $prod) {
             $name = $prod->name;
             $price = $prod->price;

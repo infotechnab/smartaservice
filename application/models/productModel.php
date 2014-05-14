@@ -20,4 +20,5 @@ public function product_info(){
            
             return $query->result();
     }
+    
 }

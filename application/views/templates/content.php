@@ -81,7 +81,7 @@ $this->load->helper('currency');
                 ?>
                 <div class='contentContainerBox'>
 
-                    <div class='contentContainerHeader'><a href='<?php echo base_url() . "/index.php/view/details/". $product->id ?>'><h3><?php echo $product->name; ?></h3></div>
+                    <div class='contentContainerHeader'><a href='<?php echo base_url() . "index.php/view/details/". $product->id ?>'><h3><?php echo $product->name; ?></h3></div>
                     <div class='contentContainerImage'>
                         <img src="<?php echo base_url() . "content/images/".$product->image1; ?>" alt="No images" height="150px" width="130px"/>   
                     </div></a>
