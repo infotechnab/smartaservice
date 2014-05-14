@@ -13,10 +13,8 @@ class bnw extends CI_Controller {
         $this->load->library("pagination");
     }
 
-    
-
     public function index() {
-       // die("entered in bnw index!");
+        // die("entered in bnw index!");
         if ($this->session->userdata('logged_in')) {
             $data['username'] = Array($this->session->userdata('logged_in'));
             $data['meta'] = $this->dbmodel->get_meta_data();
@@ -28,105 +26,92 @@ class bnw extends CI_Controller {
             redirect('login', 'refresh');
         }
     }
-    
+
     //========================== for smart service =======================================================//
-    
-    function product(){
-         if ($this->session->userdata('logged_in')) {
-        $data['username'] = Array($this->session->userdata('logged_in'));
+
+    function product() {
+        if ($this->session->userdata('logged_in')) {
+            $data['username'] = Array($this->session->userdata('logged_in'));
             $data['meta'] = $this->dbmodel->get_meta_data();
-        
-         $this->load->view('bnw/templates/header', $data);
-         $this->load->view('bnw/templates/menu');
-         $this->load->view('product/addProduct');
-         $this->load->view('bnw/templates/footer', $data);
-    }
-     else {
+
+            $this->load->view('bnw/templates/header', $data);
+            $this->load->view('bnw/templates/menu');
+            $this->load->view('product/addProduct');
+            $this->load->view('bnw/templates/footer', $data);
+        } else {
             redirect('login', 'refresh');
         }
     }
-    
-    function addproduct()
-    {
-        if ($this->session->userdata('logged_in')) 
-            {
-                $config['upload_path'] = './content/images/';
+
+    function addproduct() {
+        if ($this->session->userdata('logged_in')) {
+            $config['upload_path'] = './content/images/';
             $config['allowed_types'] = 'gif|jpg|png';
             $config['max_size'] = '2000';
             $config['max_width'] = '2000';
             $config['max_height'] = '2000';
 
             $this->load->library('upload', $config);
-                $data['meta'] = $this->dbmodel->get_meta_data();
-           
+            $data['meta'] = $this->dbmodel->get_meta_data();
+
             $this->load->view('bnw/templates/header', $data);
             $this->load->view('bnw/templates/menu');
             $this->load->helper('form');
             $this->load->library(array('form_validation', 'session'));
             $this->form_validation->set_rules('pName', 'Name', 'required|xss_clean|max_length[200]');
             $this->form_validation->set_rules('pPrice', 'Price', 'required|xss_clean|max_length[200]');
-            
-             if (($this->form_validation->run() == FALSE)) {
+
+            if (($this->form_validation->run() == FALSE)) {
                 $data['error'] = $this->upload->display_errors();
-                  
-               $this->load->view('template/msgUnderConstruction',$data);
+
+                $this->load->view('template/msgUnderConstruction', $data);
             } else {
 
                 //if valid
-                if($this->upload->do_upload('myfile'))
-                {
-                 $data = array('upload_data' => $this->upload->data('myfile'));
-                 $productImg = $data['upload_data']['file_name'];
+                if ($this->upload->do_upload('myfile')) {
+                    $data = array('upload_data' => $this->upload->data('myfile'));
+                    $productImg = $data['upload_data']['file_name'];
+                } else {
+                    $productImg = " ";
                 }
-                else{$productImg=" ";}
-                if($this->upload->do_upload('myfileTwo'))
-                {
+                if ($this->upload->do_upload('myfileTwo')) {
                     $data = array('upload_data' => $this->upload->data('myfileTwo'));
                     $productImgTwo = $data['upload_data']['file_name'];
+                } else {
+                    $productImgTwo = " ";
                 }
- else {
-     $productImgTwo = " ";
- }
-                if($this->upload->do_upload('myfileThree'))
-                {
+                if ($this->upload->do_upload('myfileThree')) {
                     $data = array('upload_data' => $this->upload->data('myfileThree'));
                     $productImgThree = $data['upload_data']['file_name'];
-                }else{
+                } else {
                     $productImgThree = " ";
                 }
-                 //$data = array('upload_data' => $this->upload->data('myfile'));
-                 
-                 //$productImgTwo = $data['upload_data']['file_name_one'];
-                 //$productImgThree = $data['upload_data']['file_name_one'];
-                
+
                 $proID = $this->dbmodel->get_proID();
-                foreach ($proID as $pID)
-                {
-                    $id =  $pID->id;
+                foreach ($proID as $pID) {
+                    $id = $pID->id;
                 }
-               $id = $id+1;
+                $id = $id + 1;
                 $qty = $this->input->post('qty');
                 $productName = $this->input->post('pName');
                 $productPrice = $this->input->post('pPrice');
                 $description = $this->input->post('pDescription');
-                  $summary= substr("$description", 0, 100);
-                $this->dbmodel->add_new_product($description,$summary,$qty,$productName,$productPrice,$productImg,$productImgTwo,$productImgThree);
-               // $this->dbmodel->add_images($id,$productImg);
+                $summary = substr("$description", 0, 100);
+                $this->dbmodel->add_new_product($description, $summary, $qty, $productName, $productPrice, $productImg, $productImgTwo, $productImgThree);
+                // $this->dbmodel->add_images($id,$productImg);
                 $this->session->set_flashdata('message', 'One Product added sucessfully');
                 redirect('bnw/product');
             }
-             $this->load->view('bnw/templates/footer', $data);
-            }
-     else {
+            $this->load->view('bnw/templates/footer', $data);
+        } else {
             redirect('login', 'refresh');
         }
-        
     }
 
-    function productList(){
-    
-    if ($this->session->userdata('logged_in')) {
-$data['username'] = Array($this->session->userdata('logged_in'));
+    function productList() {
+
+        if ($this->session->userdata('logged_in')) {
+            $data['username'] = Array($this->session->userdata('logged_in'));
             $config = array();
             $config["base_url"] = base_url() . "index.php/bnw/productList";
             $config["total_rows"] = $this->dbmodel->record_count_product();
@@ -136,23 +121,22 @@ $data['username'] = Array($this->session->userdata('logged_in'));
 
             $data["query"] = $this->dbmodel->get_all_product($config["per_page"], $page);
             $data["links"] = $this->pagination->create_links();
-            $data['meta'] = $this->dbmodel->get_meta_data();            
-           
+            $data['meta'] = $this->dbmodel->get_meta_data();
+
             $this->load->view('bnw/templates/header', $data);
-         $this->load->view('bnw/templates/menu');
-         $this->load->view('product/listProduct');
-         $this->load->view('bnw/templates/footer', $data);
+            $this->load->view('bnw/templates/menu');
+            $this->load->view('product/listProduct');
+            $this->load->view('bnw/templates/footer', $data);
         } else {
             redirect('login', 'refresh');
         }
     }
-    
-    function editproduct($id)
-    {
+
+    function editproduct($id) {
         if ($this->session->userdata('logged_in')) {
             $data['query'] = $this->dbmodel->findproduct($id);
             $data['meta'] = $this->dbmodel->get_meta_data();
-              //$data['miscSetting'] = $this->dbmodel->get_misc_setting();
+            //$data['miscSetting'] = $this->dbmodel->get_misc_setting();
             $data['id'] = $id;
             $this->load->view("bnw/templates/header", $data);
             $this->load->view("bnw/templates/menu");
@@ -163,9 +147,8 @@ $data['username'] = Array($this->session->userdata('logged_in'));
             redirect('login', 'refresh');
         }
     }
-    
-    function updateproduct()
-    {
+
+    function updateproduct() {
         if ($this->session->userdata('logged_in')) {
 
             $config['upload_path'] = './content/images/';
@@ -175,13 +158,13 @@ $data['username'] = Array($this->session->userdata('logged_in'));
             $config['max_height'] = '768';
             $this->load->library('upload', $config);
             $data['meta'] = $this->dbmodel->get_meta_data();
-              $data['miscSetting'] = $this->dbmodel->get_misc_setting();
-            $username = $this->session->userdata( 'username' );
+            $data['miscSetting'] = $this->dbmodel->get_misc_setting();
+            $username = $this->session->userdata('username');
             $this->load->view("bnw/templates/header", $data);
             $this->load->view("bnw/templates/menu");
             $this->load->helper('form');
             $this->load->library(array('form_validation', 'session'));
-           
+
             //set validation rules
             $this->form_validation->set_rules('pName', 'Product Name', 'required|xss_clean|max_length[200]');
             $this->form_validation->set_rules('pdescription', 'Description', 'required|xss_clean');
@@ -190,42 +173,38 @@ $data['username'] = Array($this->session->userdata('logged_in'));
 
 
             if (($this->form_validation->run() == TRUE)) {
-                 
-                       $id = $this->input->post('id');
-                        $name = $this->input->post('pName');
-                        $description = $this->input->post('pdescription');
-                        //die($description);
-                        $summary= substr("$description", 0, 100);
-                        $price = $this->input->post('price');
-                        
-                         //if valid
-                if($this->upload->do_upload('myfile'))
-                {
-                 $data = array('upload_data' => $this->upload->data('myfile'));
-                 $productImg = $data['upload_data']['file_name'];
+
+                $id = $this->input->post('id');
+                $name = $this->input->post('pName');
+                $description = $this->input->post('pdescription');
+                //die($description);
+                $summary = substr("$description", 0, 100);
+                $price = $this->input->post('price');
+
+                //if valid
+                if ($this->upload->do_upload('myfile')) {
+                    $data = array('upload_data' => $this->upload->data('myfile'));
+                    $productImg = $data['upload_data']['file_name'];
+                } else {
+                    $productImg = $this->input->post('firstImg');
                 }
-                else{$productImg= $this->input->post('firstImg');}
-                if($this->upload->do_upload('myfileTwo'))
-                {
+                if ($this->upload->do_upload('myfileTwo')) {
                     $data = array('upload_data' => $this->upload->data('myfileTwo'));
                     $productImgTwo = $data['upload_data']['file_name'];
+                } else {
+                    $productImgTwo = $this->input->post('secondImg');
                 }
- else {
-     $productImgTwo = $this->input->post('secondImg');
- }
-                if($this->upload->do_upload('myfileThree'))
-                {
+                if ($this->upload->do_upload('myfileThree')) {
                     $data = array('upload_data' => $this->upload->data('myfileThree'));
                     $productImgThree = $data['upload_data']['file_name'];
-                }else{
+                } else {
                     $productImgThree = $this->input->post('thirdImg');
                 }
-                        
-                       // $this->dbmodel->update_page($id, $name, $body, $page_author_id, $summary, $status, $order, $type, $tags, $allowComment, $allowLike, $allowShare);
-                         $this->dbmodel->update_product($id,$name,$description,$summary,$price,$productImg,$productImgTwo,$productImgThree);
-                        $this->session->set_flashdata('message', 'Data Modified Sucessfully');
-                        redirect('bnw/productList');
-              
+
+                // $this->dbmodel->update_page($id, $name, $body, $page_author_id, $summary, $status, $order, $type, $tags, $allowComment, $allowLike, $allowShare);
+                $this->dbmodel->update_product($id, $name, $description, $summary, $price, $productImg, $productImgTwo, $productImgThree);
+                $this->session->set_flashdata('message', 'Data Modified Sucessfully');
+                redirect('bnw/productList');
             } else {
                 $id = $this->input->post('id');
                 $data['query'] = $this->dbmodel->findproduct($id);
@@ -237,25 +216,23 @@ $data['username'] = Array($this->session->userdata('logged_in'));
             redirect('login', 'refresh');
         }
     }
-    
+
     public function productImgdelete() {
-       if ($this->session->userdata('logged_in')) {
-           $image=$_GET['image'];
-           $id = $_GET['id'];
-          // die($image);
-           unlink('./content/images/'.$image);
-            $this->dbmodel->delete_product_photo($id,$image);
+        if ($this->session->userdata('logged_in')) {
+            $image = $_GET['image'];
+            $id = $_GET['id'];
+            // die($image);
+            unlink('./content/images/' . $image);
+            $this->dbmodel->delete_product_photo($id, $image);
             $this->session->set_flashdata('message', 'Data Delete Sucessfully');
-            redirect('bnw/editproduct/'.$id);
+            redirect('bnw/editproduct/' . $id);
         } else {
             redirect('login', 'refresh');
         }
-       
     }
-    
-    function delProduct($id)
-    {
-         if ($this->session->userdata('logged_in')) {
+
+    function delProduct($id) {
+        if ($this->session->userdata('logged_in')) {
             $this->dbmodel->delProduct($id);
             $this->session->set_flashdata('message', 'Data Deleted Sucessfully');
             redirect('bnw/productList');
@@ -263,6 +240,7 @@ $data['username'] = Array($this->session->userdata('logged_in'));
             redirect('login', 'refresh');
         }
     }
+
     //=================================== end smart service ========================================================//
 
     function logout() {
@@ -271,175 +249,148 @@ $data['username'] = Array($this->session->userdata('logged_in'));
         redirect('login', 'refresh');
     }
 
- public function menu_id_from_ajax(){
-   $this->load->helper('myHelper_helper'); 
-   
-    $menu_id_next = ($_POST['menu_id_next']);
-    
-    fetch_menu (query(0));
-  }
- 
+    public function menu_id_from_ajax() {
+        $this->load->helper('myHelper_helper');
+
+        $menu_id_next = ($_POST['menu_id_next']);
+
+        fetch_menu(query(0));
+    }
 
     public function addPageForNavigation() {
-        if ($this->session->userdata('logged_in')) {            
+        if ($this->session->userdata('logged_in')) {
             $data['meta'] = $this->dbmodel->get_meta_data();
-            $listOfPage = $this->dbmodel->get_list_of_pages();           
+            $listOfPage = $this->dbmodel->get_list_of_pages();
             $listOfMenu = $this->dbmodel->get_list_of_menu();
-            $data["listOfPage"] = $this->dbmodel->get_list_of_pages();           
+            $data["listOfPage"] = $this->dbmodel->get_list_of_pages();
             $data["listOfMenu"] = $this->dbmodel->get_list_of_menu();
             $data["listOfCategory"] = $this->dbmodel->get_list_of_category();
             $listOfNavigation = $this->dbmodel->get_list_of_navigation();
             $data["listOfNavigation"] = $this->dbmodel->get_list_of_navigation();
             $listOfSelectedMenu = Array();
-            
-            if(($_SERVER['REQUEST_METHOD'] == 'POST'))
-            {  
-                foreach ($listOfPage as $myData)
-            {
-                if(isset($_POST[preg_replace('/\s+/', '', $myData->page_name)]))
-                {
-                    
-                    array_push($listOfSelectedMenu, array($myData->id=>$myData->page_name));
+
+            if (($_SERVER['REQUEST_METHOD'] == 'POST')) {
+                foreach ($listOfPage as $myData) {
+                    if (isset($_POST[preg_replace('/\s+/', '', $myData->page_name)])) {
+
+                        array_push($listOfSelectedMenu, array($myData->id => $myData->page_name));
+                    }
                 }
-            }
-            $menuSelected = $_POST['departments'];
-            $menu_info = $this->dbmodel->get_menu_info($menuSelected);
-            foreach ($menu_info as $id)
-                 {
-                     $menu_id = $id->id;
-                 }
-            $navigationName = $_POST['jobs'];
-            if ($navigationName =='Make Parent')
-            $parent_id='0';
-         else {
-            $post_category_info = $this->dbmodel->get_navigation_info($navigationName);  
-                foreach($post_category_info as $pid)
-                {
-                    $parent_id= $pid->id;
+                $menuSelected = $_POST['departments'];
+                $menu_info = $this->dbmodel->get_menu_info($menuSelected);
+                foreach ($menu_info as $id) {
+                    $menu_id = $id->id;
                 }
-            }                
-                 
-            foreach ($listOfSelectedMenu as $myData)
-            {
-                foreach ($myData as $k=>$v)
-                {
-                     $navigation_type="page";
-                 $navigation_name= $v;
-                 $navigation_link= $navigation_type."/".$k;    
-                 $navigation_slug= preg_replace('/\s+/', '', $v);                 
-                }                
-                $this->dbmodel->add_new_navigation_item($navigation_name, $navigation_link, $parent_id, $navigation_type, $navigation_slug, $menu_id);
-                 
+                $navigationName = $_POST['jobs'];
+                if ($navigationName == 'Make Parent')
+                    $parent_id = '0';
+                else {
+                    $post_category_info = $this->dbmodel->get_navigation_info($navigationName);
+                    foreach ($post_category_info as $pid) {
+                        $parent_id = $pid->id;
+                    }
+                }
+
+                foreach ($listOfSelectedMenu as $myData) {
+                    foreach ($myData as $k => $v) {
+                        $navigation_type = "page";
+                        $navigation_name = $v;
+                        $navigation_link = $navigation_type . "/" . $k;
+                        $navigation_slug = preg_replace('/\s+/', '', $v);
+                    }
+                    $this->dbmodel->add_new_navigation_item($navigation_name, $navigation_link, $parent_id, $navigation_type, $navigation_slug, $menu_id);
+                }
+
+                redirect('bnw/navigation');
+            } else {
+                $data['meta'] = $this->dbmodel->get_meta_data();
+                $data["listOfPage"] = $this->dbmodel->get_list_of_pages();
+                $data["listOfCategory"] = $this->dbmodel->get_list_of_category();
+                $data["listOfMenu"] = $this->dbmodel->get_list_of_menu();
+                $this->load->view('bnw/templates/header', $data);
+                $this->load->view('bnw/templates/menu', $data);
+                $this->load->view('bnw/menu/listOfItems', $data);
+                $this->load->view('bnw/templates/footer', $data);
             }
-            
-            redirect('bnw/navigation');
-        }
-        else 
-        {
-            $data['meta'] = $this->dbmodel->get_meta_data();
-            $data["listOfPage"] = $this->dbmodel->get_list_of_pages();
-            $data["listOfCategory"] = $this->dbmodel->get_list_of_category();
-            $data["listOfMenu"] = $this->dbmodel->get_list_of_menu();
-            $this->load->view('bnw/templates/header', $data);
-            $this->load->view('bnw/templates/menu',$data);
-            $this->load->view('bnw/menu/listOfItems',$data);
-            $this->load->view('bnw/templates/footer', $data);
-        }
         } else {
             redirect('login', 'refresh');
         }
     }
-    public function addCategoryForNavigation()
-    {
-         if ($this->session->userdata('logged_in')) {
-             $data['meta'] = $this->dbmodel->get_meta_data();
-            $listOfPage = $this->dbmodel->get_list_of_pages();           
+
+    public function addCategoryForNavigation() {
+        if ($this->session->userdata('logged_in')) {
+            $data['meta'] = $this->dbmodel->get_meta_data();
+            $listOfPage = $this->dbmodel->get_list_of_pages();
             $listOfMenu = $this->dbmodel->get_list_of_menu();
-            $data["listOfPage"] = $this->dbmodel->get_list_of_pages();           
+            $data["listOfPage"] = $this->dbmodel->get_list_of_pages();
             $data["listOfMenu"] = $this->dbmodel->get_list_of_menu();
             $data["listOfCategory"] = $this->dbmodel->get_list_of_category();
-            $listOfCategory = $this->dbmodel->get_list_of_category(); 
+            $listOfCategory = $this->dbmodel->get_list_of_category();
             $listOfNavigation = $this->dbmodel->get_list_of_navigation();
             $data["listOfNavigation"] = $this->dbmodel->get_list_of_navigation();
-             
-            
-            if(($_SERVER['REQUEST_METHOD'] == 'POST'))
-            {               
-            $menuSelected = $_POST['departments'];
-            $menu_info = $this->dbmodel->get_menu_info($menuSelected);
-            foreach ($menu_info as $id)
-                 {
-                     $menu_id = $id->id;
-                 }
-            $navigationName = $_POST['jobs'];
-            if ($navigationName =='Make Parent')
-            $parent_id='0';
-         else {
-            $post_category_info = $this->dbmodel->get_navigation_info($navigationName);  
-                foreach($post_category_info as $pid)
-                {
-                    $parent_id= $pid->id;
-                }
-            }
-                
-            $categoryList = Array();
-            foreach ($listOfCategory as $myData) {
-                
-                 {
-                if(isset($_POST[preg_replace('/\s+/', '', $myData->category_name)]))
-                {
-                    
-                    array_push($categoryList, array($myData->id=>$myData->category_name));
-                }
-                    
-                }
-            }
-            
 
-            foreach ($categoryList as $myData)
-            {
-                foreach ($myData as $k=>$v)
-                {
-                $navigation_name= $v;
-                 $navigation_type="category";
-                 $navigation_link= $navigation_type."/".$k;
-                 $navigation_slug= preg_replace('/\s+/', '', $v); ;
-                 
+
+            if (($_SERVER['REQUEST_METHOD'] == 'POST')) {
+                $menuSelected = $_POST['departments'];
+                $menu_info = $this->dbmodel->get_menu_info($menuSelected);
+                foreach ($menu_info as $id) {
+                    $menu_id = $id->id;
                 }
-                 
-                $this->dbmodel->add_new_navigation_item($navigation_name, $navigation_link, $parent_id, $navigation_type, $navigation_slug, $menu_id);
-                 
-            }
-            
-            $this->load->view('bnw/templates/header', $data);
-            $this->load->view('bnw/templates/menu',$data);
-            $this->load->view('bnw/menu/listOfItems',$data);
-            $this->load->view('bnw/templates/footer', $data);
-            }
-            else 
-            {
+                $navigationName = $_POST['jobs'];
+                if ($navigationName == 'Make Parent')
+                    $parent_id = '0';
+                else {
+                    $post_category_info = $this->dbmodel->get_navigation_info($navigationName);
+                    foreach ($post_category_info as $pid) {
+                        $parent_id = $pid->id;
+                    }
+                }
+
+                $categoryList = Array();
+                foreach ($listOfCategory as $myData) { {
+                        if (isset($_POST[preg_replace('/\s+/', '', $myData->category_name)])) {
+
+                            array_push($categoryList, array($myData->id => $myData->category_name));
+                        }
+                    }
+                }
+
+
+                foreach ($categoryList as $myData) {
+                    foreach ($myData as $k => $v) {
+                        $navigation_name = $v;
+                        $navigation_type = "category";
+                        $navigation_link = $navigation_type . "/" . $k;
+                        $navigation_slug = preg_replace('/\s+/', '', $v);
+                        ;
+                    }
+
+                    $this->dbmodel->add_new_navigation_item($navigation_name, $navigation_link, $parent_id, $navigation_type, $navigation_slug, $menu_id);
+                }
+
+                $this->load->view('bnw/templates/header', $data);
+                $this->load->view('bnw/templates/menu', $data);
+                $this->load->view('bnw/menu/listOfItems', $data);
+                $this->load->view('bnw/templates/footer', $data);
+            } else {
                 $data['meta'] = $this->dbmodel->get_meta_data();
-            $data["listOfPage"] = $this->dbmodel->get_list_of_pages();
-            $data["listOfCategory"] = $this->dbmodel->get_list_of_category();
-            $data["listOfMenu"] = $this->dbmodel->get_list_of_menu();
-            $this->load->view('bnw/templates/header', $data);
-            $this->load->view('bnw/templates/menu',$data);
-            $this->load->view('bnw/menu/listOfItems',$data);
-            $this->load->view('bnw/templates/footer', $data);           
-        
+                $data["listOfPage"] = $this->dbmodel->get_list_of_pages();
+                $data["listOfCategory"] = $this->dbmodel->get_list_of_category();
+                $data["listOfMenu"] = $this->dbmodel->get_list_of_menu();
+                $this->load->view('bnw/templates/header', $data);
+                $this->load->view('bnw/templates/menu', $data);
+                $this->load->view('bnw/menu/listOfItems', $data);
+                $this->load->view('bnw/templates/footer', $data);
             }
+        } else {
+            redirect('login', 'refresh');
+        }
     }
-        
-    else{
-             redirect('login', 'refresh');
-    }
-         
-    }
-    
-    public function addCustomLink(){
-         if ($this->session->userdata('logged_in')) {
+
+    public function addCustomLink() {
+        if ($this->session->userdata('logged_in')) {
             $data['meta'] = $this->dbmodel->get_meta_data();
-            $listOfMenu = $this->dbmodel->get_list_of_menu();           
+            $listOfMenu = $this->dbmodel->get_list_of_menu();
             $data["listOfMenu"] = $this->dbmodel->get_list_of_menu();
             $data["listOfPage"] = $this->dbmodel->get_list_of_pages();
             $data["listOfCategory"] = $this->dbmodel->get_list_of_category();
@@ -449,17 +400,15 @@ $data['username'] = Array($this->session->userdata('logged_in'));
             $this->load->view('bnw/templates/menu');
             $this->load->helper('form');
             $this->load->library(array('form_validation', 'session'));
-            
-            if(($_SERVER['REQUEST_METHOD'] == 'POST'))
-            {
+
+            if (($_SERVER['REQUEST_METHOD'] == 'POST')) {
                 $menuSelected = $_POST['selectMenu'];
-                 $menu_info = $this->dbmodel->get_menu_info($menuSelected);
-                foreach ($menu_info as $id)
-                 {
-                     $menu_id = $id->id;
-                 }
+                $menu_info = $this->dbmodel->get_menu_info($menuSelected);
+                foreach ($menu_info as $id) {
+                    $menu_id = $id->id;
+                }
             }
-            
+
             $this->form_validation->set_rules('navigation_name', 'Name', 'required|xss_clean|max_length[200]');
             $this->form_validation->set_rules('navigation_link', 'Link', 'required|xss_clean|max_length[200]');
 
@@ -469,11 +418,11 @@ $data['username'] = Array($this->session->userdata('logged_in'));
             } else {
 
                 //if valid
-                $navigationName= $this->input->post('navigation_name');
-                $navigationLink= $this->input->post('navigation_link');
-                $parentID="0";
-                $navigationType= " ";
-                $navigation_slug= preg_replace('/\s+/', '', $navigationName); 
+                $navigationName = $this->input->post('navigation_name');
+                $navigationLink = $this->input->post('navigation_link');
+                $parentID = "0";
+                $navigationType = " ";
+                $navigation_slug = preg_replace('/\s+/', '', $navigationName);
                 $this->dbmodel->add_new_custom_link($navigationName, $navigationLink, $parentID, $navigationType, $navigation_slug, $menu_id);
                 $this->session->set_flashdata('message', 'One Navigation item added sucessfully');
                 redirect('bnw/navigation');
@@ -488,7 +437,7 @@ $data['username'] = Array($this->session->userdata('logged_in'));
     //=====================================================================================================
     //===================================Navigation========================================================
     //=====================================================================================================
-    
+
     public function navigation() {
         if ($this->session->userdata('logged_in')) {
 
@@ -496,7 +445,7 @@ $data['username'] = Array($this->session->userdata('logged_in'));
             $config["per_navigation"] = 6;
             $this->pagination->initialize($config);
             $navigation = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
-        
+
             $data["query"] = $this->dbmodel->get_navigation($config["per_navigation"], $navigation);
             $data["links"] = $this->pagination->create_links();
             $data['meta'] = $this->dbmodel->get_meta_data();
@@ -505,7 +454,7 @@ $data['username'] = Array($this->session->userdata('logged_in'));
             $data["listOfMenu"] = $this->dbmodel->get_list_of_menu();
             $data["listOfNavigation"] = $this->dbmodel->get_list_of_navigation();
             $data["listOfNavigationID"] = $this->dbmodel->get_list_of_navigationID();
-            
+
             $this->load->view('bnw/templates/header', $data);
             $this->load->view('bnw/templates/menu');
             $this->load->view('bnw/menu/listOfItems', $data);
@@ -517,13 +466,13 @@ $data['username'] = Array($this->session->userdata('logged_in'));
 
     //===========================================To Add Navigation=====================================================
 
-   
 
-   public function editnavigation($id) {
+
+    public function editnavigation($id) {
         if ($this->session->userdata('logged_in')) {
-           
+
             $data['query'] = $this->dbmodel->findnavigation($id);
-           
+
             $data['meta'] = $this->dbmodel->get_meta_data();
             $this->load->view("bnw/templates/header", $data);
             $this->load->view("bnw/templates/menu");
@@ -537,7 +486,7 @@ $data['username'] = Array($this->session->userdata('logged_in'));
     public function showNavigation($id) {
         if ($this->session->userdata('logged_in')) {
             $data['meta'] = $this->dbmodel->get_meta_data();
-            
+
             $data['query'] = $this->dbmodel->get_list_of_selected_menu_navigation($id);
             $this->load->view("bnw/templates/header", $data);
             $this->load->view("bnw/templates/menu");
@@ -557,23 +506,23 @@ $data['username'] = Array($this->session->userdata('logged_in'));
             $this->load->library(array('form_validation', 'session'));
             //set validation rules
             $this->form_validation->set_rules('navigation_name', 'Navigation Name', 'required|xss_clean|max_length[200]');
-           // $this->form_validation->set_rules('navigation_link', 'Link', 'required|xss_clean|max_length[200]');
-           // $this->form_validation->set_rules('navigation_type', 'Type', 'required|xss_clean|max_length[200]');
+            // $this->form_validation->set_rules('navigation_link', 'Link', 'required|xss_clean|max_length[200]');
+            // $this->form_validation->set_rules('navigation_type', 'Type', 'required|xss_clean|max_length[200]');
 
 
             if ($this->form_validation->run() == FALSE) {
-               
+                
             } else {
                 //if valid
                 $id = $this->input->post('id');
                 $navigationname = $this->input->post('navigation_name');
-               // $navigationlink = $this->input->post('navigation_link');
-              //  $pid = $this->input->post('parent_id');
-              //  $navigationtype = $this->input->post('navigation_type');
-               // $navigationslug = $this->input->post('navigation_slug');
-               // $mid = $this->input->post('menu_id');
+                // $navigationlink = $this->input->post('navigation_link');
+                //  $pid = $this->input->post('parent_id');
+                //  $navigationtype = $this->input->post('navigation_type');
+                // $navigationslug = $this->input->post('navigation_slug');
+                // $mid = $this->input->post('menu_id');
                 $this->dbmodel->update_edited_navigation($id, $navigationname);
-              //  $this->session->set_flashdata('message', 'Navigation Menu Modified Sucessfully');
+                //  $this->session->set_flashdata('message', 'Navigation Menu Modified Sucessfully');
 
                 redirect('bnw/navigation');
             }
@@ -583,20 +532,16 @@ $data['username'] = Array($this->session->userdata('logged_in'));
         }
     }
 
-    function deletenavigation($id){
-        if ($this->session->userdata('logged_in'))
-            {
+    function deletenavigation($id) {
+        if ($this->session->userdata('logged_in')) {
             $this->dbmodel->delnavigation($id);
             //die($id);
             $this->session->set_flashdata('message', 'Data Delete Sucessfully');
             //$this->showNavigation($id);
             redirect('bnw/navigation');
-            }
-             else {
+        } else {
             redirect('login', 'refresh');
         }
-        
-        
     }
 
     //======================================================================================================
@@ -616,7 +561,7 @@ $data['username'] = Array($this->session->userdata('logged_in'));
             $data["query"] = $this->dbmodel->get_all_category($config["per_category"], $category);
             $data["links"] = $this->pagination->create_links();
             $data['meta'] = $this->dbmodel->get_meta_data();
-           
+
 
             $this->load->view("bnw/templates/header", $data);
             $this->load->view("bnw/templates/menu");
@@ -641,7 +586,7 @@ $data['username'] = Array($this->session->userdata('logged_in'));
             $data['meta'] = $this->dbmodel->get_meta_data();
             $data["links"] = $this->pagination->create_links();
             $data['query'] = $this->dbmodel->get_category();
-           
+
             $this->load->view("bnw/templates/header", $data);
             $this->load->view("bnw/templates/menu");
             $this->load->helper('form');
@@ -694,7 +639,7 @@ $data['username'] = Array($this->session->userdata('logged_in'));
             $data['meta'] = $this->dbmodel->get_meta_data();
             $data["links"] = $this->pagination->create_links();
             $data['id'] = $id;
-            
+
             $this->load->view("bnw/templates/header", $data);
             $this->load->view("bnw/templates/menu");
             $this->load->view('bnw/category/edit', $data);
@@ -717,7 +662,7 @@ $data['username'] = Array($this->session->userdata('logged_in'));
             $data['meta'] = $this->dbmodel->get_meta_data();
             $data["links"] = $this->pagination->create_links();
 
-            
+
             $this->load->view("bnw/templates/header", $data);
             $this->load->view("bnw/templates/menu");
             $this->load->helper('form');
@@ -774,12 +719,12 @@ $data['username'] = Array($this->session->userdata('logged_in'));
             redirect('login', 'refresh');
         }
     }
-    
+
     //==========================================================================================================//
     //====================================POST==================================================================//
     //===========================================================================================================//
 
-    public function posts(){
+    public function posts() {
         if ($this->session->userdata('logged_in')) {
 
             $config = array();
@@ -791,8 +736,8 @@ $data['username'] = Array($this->session->userdata('logged_in'));
 
             $data["query"] = $this->dbmodel->get_all_posts($config["per_page"], $page);
             $data["links"] = $this->pagination->create_links();
-            $data['meta'] = $this->dbmodel->get_meta_data();            
-           
+            $data['meta'] = $this->dbmodel->get_meta_data();
+
             $this->load->view("bnw/templates/header", $data);
             $this->load->view("bnw/templates/menu");
             $this->load->view('bnw/posts/postListing', $data);
@@ -801,13 +746,12 @@ $data['username'] = Array($this->session->userdata('logged_in'));
             redirect('login', 'refresh');
         }
     }
-    
+
     //============================To Add New Post=======================================//
-    
-    public function addpost()
-    {
-         if ($this->session->userdata('logged_in')) {
-            $username = $this->session->userdata( 'username' );
+
+    public function addpost() {
+        if ($this->session->userdata('logged_in')) {
+            $username = $this->session->userdata('username');
             $data['username'] = ($this->session->userdata('logged_in'));
             $config['upload_path'] = './content/images/';
             $config['allowed_types'] = 'gif|jpg|png';
@@ -821,25 +765,23 @@ $data['username'] = Array($this->session->userdata('logged_in'));
             $this->load->view("bnw/templates/header", $data);
             $this->load->view("bnw/templates/menu");
             $this->load->helper('form');
-             $this->load->helper('date');
+            $this->load->helper('date');
             $this->load->library(array('form_validation', 'session'));
-             $listOfCategory = $this->dbmodel->get_list_of_category();
-             $data["listOfCategory"] = $this->dbmodel->get_list_of_category();
-                               
-            if(($_SERVER['REQUEST_METHOD'] == 'POST'))
-            {
+            $listOfCategory = $this->dbmodel->get_list_of_category();
+            $data["listOfCategory"] = $this->dbmodel->get_list_of_category();
+
+            if (($_SERVER['REQUEST_METHOD'] == 'POST')) {
                 $categoryName = $_POST['selectCategory'];
-                 $post_category_info = $this->dbmodel->get_post_category_info($categoryName);
-                foreach($post_category_info as $pid)
-                {
-                    $post_category_id= $pid->id;
+                $post_category_info = $this->dbmodel->get_post_category_info($categoryName);
+                foreach ($post_category_info as $pid) {
+                    $post_category_id = $pid->id;
                 }
             }
-           
+
             //set validation rules
             $this->form_validation->set_rules('post_title', 'Page Name', 'required|xss_clean|max_length[200]');
             $this->form_validation->set_rules('post_content', 'Body', 'required|xss_clean');
-          
+
 
 
             if (($this->form_validation->run() == TRUE)) {
@@ -850,32 +792,31 @@ $data['username'] = Array($this->session->userdata('logged_in'));
                     } else {
                         $data = array('upload_data' => $this->upload->data('file'));
                         $image = $data['upload_data']['file_name'];
-                        
+
                         $this->dbmodel->add_new_post($post_title, $post_content, $post_author_id, $post_summary, $post_status, $post_comment_status, $post_tags, $post_category_id);
                         $this->session->set_flashdata('message', 'One pages added sucessfully');
                         redirect('bnw/posts/postListing');
                     }
                 } else {
-                     $post_title = $this->input->post('post_title');
-            $post_content = $this->input->post('post_content');
-            $post_author_info = $this->dbmodel->get_post_author_id($username);
-                 foreach($post_author_info as $pid)
-                 {    
-                 $post_author_id= $pid->id;
-                 }
-            $string = $this->input->post('post_content');
-                           $post_summary= substr("$string", 0, 100);
-            $post_status = $this->input->post('post_status');
-            $post_comment_status = $this->input->post('comment_status');
-            $post_tags = $this->input->post('post_tags');
-            $post_category_info = $this->dbmodel->get_post_category_info($categoryName);
-            $allowComment = $this->input->post('allow_comment');
-            $allowLike = $this->input->post('allow_like');
-            $allowShare = $this->input->post('allow_share');
-             
-            $this->dbmodel->add_new_post($post_title, $post_content, $post_author_id, $post_summary, $post_status, $post_comment_status, $post_tags, $post_category_id, $allowComment, $allowLike, $allowShare);
-            $this->session->set_flashdata('message', 'One post added sucessfully');
-               redirect('bnw/posts/postListing');
+                    $post_title = $this->input->post('post_title');
+                    $post_content = $this->input->post('post_content');
+                    $post_author_info = $this->dbmodel->get_post_author_id($username);
+                    foreach ($post_author_info as $pid) {
+                        $post_author_id = $pid->id;
+                    }
+                    $string = $this->input->post('post_content');
+                    $post_summary = substr("$string", 0, 100);
+                    $post_status = $this->input->post('post_status');
+                    $post_comment_status = $this->input->post('comment_status');
+                    $post_tags = $this->input->post('post_tags');
+                    $post_category_info = $this->dbmodel->get_post_category_info($categoryName);
+                    $allowComment = $this->input->post('allow_comment');
+                    $allowLike = $this->input->post('allow_like');
+                    $allowShare = $this->input->post('allow_share');
+
+                    $this->dbmodel->add_new_post($post_title, $post_content, $post_author_id, $post_summary, $post_status, $post_comment_status, $post_tags, $post_category_id, $allowComment, $allowLike, $allowShare);
+                    $this->session->set_flashdata('message', 'One post added sucessfully');
+                    redirect('bnw/posts/postListing');
                 }
             } else {
 
@@ -887,14 +828,14 @@ $data['username'] = Array($this->session->userdata('logged_in'));
             redirect('login', 'refresh');
         }
     }
-    
+
     //======================================To Edit Post===========================================================//
-    
+
     function editpost($id) {
         if ($this->session->userdata('logged_in')) {
             $data['query'] = $this->dbmodel->findpost($id);
             $data['meta'] = $this->dbmodel->get_meta_data();
-              $data['miscSetting'] = $this->dbmodel->get_misc_setting();
+            $data['miscSetting'] = $this->dbmodel->get_misc_setting();
             $data['id'] = $id;
             $this->load->view("bnw/templates/header", $data);
             $this->load->view("bnw/templates/menu");
@@ -905,7 +846,7 @@ $data['username'] = Array($this->session->userdata('logged_in'));
             redirect('login', 'refresh');
         }
     }
-    
+
     //=========================================To Delete Post======================================================//
     public function deletepost($id) {
         if ($this->session->userdata('logged_in')) {
@@ -916,10 +857,9 @@ $data['username'] = Array($this->session->userdata('logged_in'));
             redirect('login', 'refresh');
         }
     }
-    
+
     //===================================To Update Edited Post======================================================//
-    public function updatepost()
-    {
+    public function updatepost() {
         if ($this->session->userdata('logged_in')) {
 
             $config['upload_path'] = './content/images/';
@@ -929,32 +869,30 @@ $data['username'] = Array($this->session->userdata('logged_in'));
             $config['max_height'] = '768';
             $this->load->library('upload', $config);
             $data['meta'] = $this->dbmodel->get_meta_data();
-              $data['miscSetting'] = $this->dbmodel->get_misc_setting();
+            $data['miscSetting'] = $this->dbmodel->get_misc_setting();
             $data['query'] = $this->dbmodel->get_posts();
-            $username = $this->session->userdata( 'username' );         
+            $username = $this->session->userdata('username');
             $this->load->view("bnw/templates/header", $data);
             $this->load->view("bnw/templates/menu");
             $this->load->helper('form');
             $this->load->library(array('form_validation', 'session'));
             $listOfCategory = $this->dbmodel->get_list_of_category();
-            
-            $data["listOfCategory"] = $this->dbmodel->get_list_of_category(); 
+
+            $data["listOfCategory"] = $this->dbmodel->get_list_of_category();
             $id = $this->input->post('id');
             $data['query'] = $this->dbmodel->findpost($id);
-            
-            if(($_SERVER['REQUEST_METHOD'] == 'POST'))
-                        {
-                        $categoryName = $_POST['selectCategory'];
-                        $post_category_info = $this->dbmodel->get_post_category_info($categoryName);
-                            foreach($post_category_info as $pid)
-                        {
-                        $post_category_id= $pid->id;
-                             }
-                        }
+
+            if (($_SERVER['REQUEST_METHOD'] == 'POST')) {
+                $categoryName = $_POST['selectCategory'];
+                $post_category_info = $this->dbmodel->get_post_category_info($categoryName);
+                foreach ($post_category_info as $pid) {
+                    $post_category_id = $pid->id;
+                }
+            }
             //set validation rules
-             $this->form_validation->set_rules('post_title', 'Page Name', 'required|xss_clean|max_length[200]');
+            $this->form_validation->set_rules('post_title', 'Page Name', 'required|xss_clean|max_length[200]');
             $this->form_validation->set_rules('post_content', 'Body', 'required|xss_clean');
-            
+
 
             if (($this->form_validation->run() == TRUE)) {
                 if ($_FILES && $_FILES['file']['name'] !== "") {
@@ -964,17 +902,16 @@ $data['username'] = Array($this->session->userdata('logged_in'));
                         $data['query'] = $this->dbmodel->findpost($id);
                         $this->load->view('bnw/posts/editPost', $data);
                     } else {
-                        
+
                         $id = $this->input->post('id');
                         $post_title = $this->input->post('post_title');
                         $post_content = $this->input->post('post_content');
                         $post_author_info = $this->dbmodel->get_post_author_id($username);
-                            foreach($post_author_info as $pid)
-                        {    
-                            $post_author_id= $pid->id;
-                         }
+                        foreach ($post_author_info as $pid) {
+                            $post_author_id = $pid->id;
+                        }
                         $string = $this->input->post('post_content');
-                           $post_summary= substr("$string", 0, 100);
+                        $post_summary = substr("$string", 0, 100);
                         $post_status = $this->input->post('page_status');
                         $post_comment_status = $this->input->post('comment_status');
                         $post_tags = $this->input->post('post_tags');
@@ -985,27 +922,26 @@ $data['username'] = Array($this->session->userdata('logged_in'));
                         $this->session->set_flashdata('message', 'Data Modified Sucessfully');
                         redirect('bnw/posts/postListing');
                     }
-                } else {     
-                        $id = $this->input->post('id');
-                        $post_title = $this->input->post('post_title');
-                        $post_content = $this->input->post('post_content');
-                        $post_author_info = $this->dbmodel->get_post_author_id($username);
-                            foreach($post_author_info as $pid)
-                        {    
-                            $post_author_id= $pid->id;
-                         }
-                         $string = $this->input->post('post_content');
-                           $post_summary= substr("$string", 0, 100);
-                        $post_status = $this->input->post('page_status');
-                        $post_comment_status = $this->input->post('comment_status');
-                        $post_tags = $this->input->post('post_tags');
-                        $allowComment = $this->input->post('allow_comment');
-                        $allowLike = $this->input->post('allow_like');
-                        $allowShare = $this->input->post('allow_share');
-                        $this->dbmodel->update_post($id, $post_title, $post_content, $post_author_id, $post_summary, $post_status, $post_comment_status, $post_tags, $post_category_id, $allowComment, $allowLike, $allowShare);
-                        $this->session->set_flashdata('message', 'Data Modified Sucessfully');
-                        redirect('bnw/posts/postListing');
-                } 
+                } else {
+                    $id = $this->input->post('id');
+                    $post_title = $this->input->post('post_title');
+                    $post_content = $this->input->post('post_content');
+                    $post_author_info = $this->dbmodel->get_post_author_id($username);
+                    foreach ($post_author_info as $pid) {
+                        $post_author_id = $pid->id;
+                    }
+                    $string = $this->input->post('post_content');
+                    $post_summary = substr("$string", 0, 100);
+                    $post_status = $this->input->post('page_status');
+                    $post_comment_status = $this->input->post('comment_status');
+                    $post_tags = $this->input->post('post_tags');
+                    $allowComment = $this->input->post('allow_comment');
+                    $allowLike = $this->input->post('allow_like');
+                    $allowShare = $this->input->post('allow_share');
+                    $this->dbmodel->update_post($id, $post_title, $post_content, $post_author_id, $post_summary, $post_status, $post_comment_status, $post_tags, $post_category_id, $allowComment, $allowLike, $allowShare);
+                    $this->session->set_flashdata('message', 'Data Modified Sucessfully');
+                    redirect('bnw/posts/postListing');
+                }
             } else {
                 $id = $this->input->post('id');
                 $data['query'] = $this->dbmodel->findpost($id);
@@ -1017,7 +953,6 @@ $data['username'] = Array($this->session->userdata('logged_in'));
             redirect('login', 'refresh');
         }
     }
-
 
     //==================================== Page ============================//
 
@@ -1034,7 +969,7 @@ $data['username'] = Array($this->session->userdata('logged_in'));
             $pagedata["query"] = $this->dbmodel->get_all_pages($config["per_page"], $page);
             $data["links"] = $this->pagination->create_links();
             $data['meta'] = $this->dbmodel->get_meta_data();
-           
+
 
             $this->load->view("bnw/templates/header", $data);
             $this->load->view("bnw/templates/menu");
@@ -1048,7 +983,7 @@ $data['username'] = Array($this->session->userdata('logged_in'));
     //============== ADD PAGE ==============//
     public function addpage() {
         if ($this->session->userdata('logged_in')) {
-            $username = $this->session->userdata( 'username' );
+            $username = $this->session->userdata('username');
             $data['username'] = ($this->session->userdata('logged_in'));
             $config['upload_path'] = './content/images/';
             $config['allowed_types'] = 'gif|jpg|png';
@@ -1062,18 +997,17 @@ $data['username'] = Array($this->session->userdata('logged_in'));
             $this->load->view("bnw/templates/header", $data);
             $this->load->view("bnw/templates/menu");
             $this->load->helper('form');
-             $this->load->helper('date');
+            $this->load->helper('date');
             $this->load->library(array('form_validation', 'session'));
             //set validation rules
             $name = $this->input->post('page_name');
             $body = $this->input->post('page_content');
             $page_author_info = $this->dbmodel->get_page_author_id($username);
-                 foreach($page_author_info as $id)
-                 {    
-                 $page_author_id= $id->id;
-                 }
-                 $string = $this->input->post('page_content');
-                  $summary= substr("$string", 0, 100);
+            foreach ($page_author_info as $id) {
+                $page_author_id = $id->id;
+            }
+            $string = $this->input->post('page_content');
+            $summary = substr("$string", 0, 100);
             $status = $this->input->post('page_status');
             $order = $this->input->post('page_order');
             $type = $this->input->post('page_type');
@@ -1083,7 +1017,7 @@ $data['username'] = Array($this->session->userdata('logged_in'));
             $allowShare = $this->input->post('allow_share');
             $this->form_validation->set_rules('page_name', 'Page Name', 'required|xss_clean|max_length[200]');
             $this->form_validation->set_rules('page_content', 'Body', 'required|xss_clean');
-            
+
 
 
             if (($this->form_validation->run() == TRUE)) {
@@ -1094,32 +1028,31 @@ $data['username'] = Array($this->session->userdata('logged_in'));
                     } else {
                         $data = array('upload_data' => $this->upload->data('file'));
                         $image = $data['upload_data']['file_name'];
-                        $this->dbmodel->add_new_page($name, $body,$page_author_id, $summary, $status, $order, $type, $tags, $allowComment, $allowLike, $allowShare);
+                        $this->dbmodel->add_new_page($name, $body, $page_author_id, $summary, $status, $order, $type, $tags, $allowComment, $allowLike, $allowShare);
                         $this->session->set_flashdata('message', 'One pages added sucessfully');
                         redirect('bnw/pages/pageListing');
                     }
                 } else {
-                    
+
                     $name = $this->input->post('page_name');
                     $body = $this->input->post('page_content');
                     $page_author_info = $this->dbmodel->get_page_author_id($username);
-                        foreach($page_author_info as $id)
-                        {   
-                            $page_author_id= $id->id;
-                        } 
-                        
-                      $string = $this->input->post('page_content');
-                           $summary= substr("$string", 0, 100);
-                         
+                    foreach ($page_author_info as $id) {
+                        $page_author_id = $id->id;
+                    }
+
+                    $string = $this->input->post('page_content');
+                    $summary = substr("$string", 0, 100);
+
                     $status = $this->input->post('page_status');
                     $order = $this->input->post('page_order');
-                    
+
                     $type = $this->input->post('page_type');
                     $tags = $this->input->post('page_tags');
                     $allowComment = $this->input->post('allow_comment');
                     $allowLike = $this->input->post('allow_like');
                     $allowShare = $this->input->post('allow_share');
-                   $this->dbmodel->add_new_page($name, $body,$page_author_id, $summary, $status, $order, $type, $tags, $allowComment, $allowLike, $allowShare);
+                    $this->dbmodel->add_new_page($name, $body, $page_author_id, $summary, $status, $order, $type, $tags, $allowComment, $allowLike, $allowShare);
 
                     $page = $this->dbmodel->find_page_id($name);
                     $this->session->set_flashdata('message', 'One pages added sucessfully');
@@ -1141,11 +1074,11 @@ $data['username'] = Array($this->session->userdata('logged_in'));
     function editpage($id) {
         if ($this->session->userdata('logged_in')) {
             $data['query'] = $this->dbmodel->findpage($id);
-            
+
             $data['meta'] = $this->dbmodel->get_meta_data();
-             $data['miscSetting'] = $this->dbmodel->get_misc_setting();
+            $data['miscSetting'] = $this->dbmodel->get_misc_setting();
             $data['id'] = $id;
-           
+
             $this->load->view("bnw/templates/header", $data);
             $this->load->view("bnw/templates/menu");
             $this->load->view('bnw/pages/edit', $data);
@@ -1169,17 +1102,17 @@ $data['username'] = Array($this->session->userdata('logged_in'));
             $config['max_height'] = '768';
             $this->load->library('upload', $config);
             $data['meta'] = $this->dbmodel->get_meta_data();
-              $data['miscSetting'] = $this->dbmodel->get_misc_setting();
-            $username = $this->session->userdata( 'username' );
+            $data['miscSetting'] = $this->dbmodel->get_misc_setting();
+            $username = $this->session->userdata('username');
             $this->load->view("bnw/templates/header", $data);
             $this->load->view("bnw/templates/menu");
             $this->load->helper('form');
             $this->load->library(array('form_validation', 'session'));
-           
+
             //set validation rules
             $this->form_validation->set_rules('page_name', 'Page Name', 'required|xss_clean|max_length[200]');
             $this->form_validation->set_rules('page_content', 'Body', 'required|xss_clean');
-         
+
 
 
 
@@ -1191,18 +1124,17 @@ $data['username'] = Array($this->session->userdata('logged_in'));
                         $data['query'] = $this->dbmodel->findpage($id);
                         $this->load->view('bnw/pages/edit', $data);
                     } else {
-                       
+
 
                         $id = $this->input->post('id');
                         $name = $this->input->post('page_name');
                         $body = $this->input->post('page_content');
                         $page_author_info = $this->dbmodel->get_page_author_id($username);
-                        foreach($page_author_info as $pid)
-                        {   
-                            $page_author_id= $pid->id;
+                        foreach ($page_author_info as $pid) {
+                            $page_author_id = $pid->id;
                         }
-                         $string = $this->input->post('page_content');
-                           $summary= substr("$string", 0, 100);
+                        $string = $this->input->post('page_content');
+                        $summary = substr("$string", 0, 100);
                         $status = $this->input->post('page_status');
                         $order = $this->input->post('page_order');
                         $type = $this->input->post('page_type');
@@ -1210,12 +1142,12 @@ $data['username'] = Array($this->session->userdata('logged_in'));
                         $allowComment = $this->input->post('allow_comment');
                         $allowLike = $this->input->post('allow_like');
                         $allowShare = $this->input->post('allow_share');
-                        $navigationName= $name;
-                        $navigationLink='page/'.$id;
-                        $navigationSlug= preg_replace('/\s+/', '', $name);
-                        $pageid=$id;
+                        $navigationName = $name;
+                        $navigationLink = 'page/' . $id;
+                        $navigationSlug = preg_replace('/\s+/', '', $name);
+                        $pageid = $id;
                         $this->dbmodel->update_page($id, $name, $body, $page_author_id, $summary, $status, $order, $type, $tags, $allowComment, $allowLike, $allowShare);
-                         $this->dbmodel->update_navigation_on_page_update($pageid,$navigationName,$navigationLink,$navigationSlug);
+                        $this->dbmodel->update_navigation_on_page_update($pageid, $navigationName, $navigationLink, $navigationSlug);
                         $this->session->set_flashdata('message', 'Data Modified Sucessfully');
                         redirect('bnw/pages/pageListing');
                     }
@@ -1225,12 +1157,11 @@ $data['username'] = Array($this->session->userdata('logged_in'));
                     $name = $this->input->post('page_name');
                     $body = $this->input->post('page_content');
                     $page_author_info = $this->dbmodel->get_page_author_id($username);
-                        foreach($page_author_info as $pid)
-                        {   
-                            $page_author_id= $pid->id;
-                        }
-                     $string = $this->input->post('page_content');
-                           $summary= substr("$string", 0, 100);
+                    foreach ($page_author_info as $pid) {
+                        $page_author_id = $pid->id;
+                    }
+                    $string = $this->input->post('page_content');
+                    $summary = substr("$string", 0, 100);
                     $status = $this->input->post('page_status');
                     $order = $this->input->post('page_order');
                     $type = $this->input->post('page_type');
@@ -1238,12 +1169,12 @@ $data['username'] = Array($this->session->userdata('logged_in'));
                     $allowComment = $this->input->post('allow_comment');
                     $allowLike = $this->input->post('allow_like');
                     $allowShare = $this->input->post('allow_share');
-                    $navigationName= $name;
-                    $navigationLink='page/'.$id;
-                    $navigationSlug= preg_replace('/\s+/', '', $name);
-                    $pageid=$id;
+                    $navigationName = $name;
+                    $navigationLink = 'page/' . $id;
+                    $navigationSlug = preg_replace('/\s+/', '', $name);
+                    $pageid = $id;
                     $this->dbmodel->update_page($id, $name, $body, $page_author_id, $summary, $status, $order, $type, $tags, $allowComment, $allowLike, $allowShare);
-                    $this->dbmodel->update_navigation_on_page_update($pageid,$navigationName,$navigationLink,$navigationSlug);
+                    $this->dbmodel->update_navigation_on_page_update($pageid, $navigationName, $navigationLink, $navigationSlug);
                     $this->session->set_flashdata('message', 'Data Modified Sucessfully');
                     redirect('bnw/pages/pageListing');
                 }
@@ -1289,7 +1220,7 @@ $data['username'] = Array($this->session->userdata('logged_in'));
             $data["links"] = $this->pagination->create_links();
             $data['query'] = $this->dbmodel->get_user();
             $data['meta'] = $this->dbmodel->get_meta_data();
-            
+
             $this->load->view("bnw/templates/header", $data);
             $this->load->view("bnw/templates/menu");
             $this->load->view('bnw/users/userListing', $data);
@@ -1301,7 +1232,7 @@ $data['username'] = Array($this->session->userdata('logged_in'));
 
     public function adduser() {
         if ($this->session->userdata('logged_in')) {
-            
+
             $data['meta'] = $this->dbmodel->get_meta_data();
             $this->load->view('bnw/templates/header', $data);
             $this->load->view("bnw/templates/menu");
@@ -1312,7 +1243,7 @@ $data['username'] = Array($this->session->userdata('logged_in'));
             $this->form_validation->set_rules('user_lname', 'Last Name', 'required|xss_clean|max_length[200]');
             $this->form_validation->set_rules('user_email', 'User email', 'required|xss_clean|max_length[200]');
             $this->form_validation->set_rules('user_pass', 'Password', 'required|xss_clean|md5|max_length[200]');
-            $this->form_validation->set_rules('user_type', 'User Type', 'required|xss_clean|max_length[200]');   
+            $this->form_validation->set_rules('user_type', 'User Type', 'required|xss_clean|max_length[200]');
             if ($this->form_validation->run() == FALSE) {
 
                 $this->load->view('bnw/users/addNew');
@@ -1342,7 +1273,7 @@ $data['username'] = Array($this->session->userdata('logged_in'));
         if ($this->session->userdata('logged_in')) {
             $data['query'] = $this->dbmodel->finduser($id);
             $data['meta'] = $this->dbmodel->get_meta_data();
-            
+
             $this->load->view("bnw/templates/header", $data);
             $this->load->view("bnw/templates/menu");
             $this->load->view('bnw/users/editUser', $data);
@@ -1354,7 +1285,7 @@ $data['username'] = Array($this->session->userdata('logged_in'));
 
     public function updateuser() {
         if ($this->session->userdata('logged_in')) {
-           
+
             $data['meta'] = $this->dbmodel->get_meta_data();
             $this->load->view("bnw/templates/header", $data);
             $this->load->view("bnw/templates/menu");
@@ -1394,46 +1325,44 @@ $data['username'] = Array($this->session->userdata('logged_in'));
         }
     }
 
-   // public function deleteuser($id) {
+    // public function deleteuser($id) {
     //    if ($this->session->userdata('logged_in')) {
     //       $status =  $this->session->userdata('username');
-           
-          // if()
-     //       $this->dbmodel->delete_user($id);
-     //       $this->session->set_flashdata('message', 'Data Delete Sucessfully');
-     //       redirect('bnw/users');
-     //   } else {
-      //      redirect('login', 'refresh');
-     //   }
-  //  }
-    
-    
+    // if()
+    //       $this->dbmodel->delete_user($id);
+    //       $this->session->set_flashdata('message', 'Data Delete Sucessfully');
+    //       redirect('bnw/users');
+    //   } else {
+    //      redirect('login', 'refresh');
+    //   }
+    //  }
+
+
     public function deleteuser($id) {
         if ($this->session->userdata('logged_in')) {
-           $uNAme =  $this->session->userdata('username');
-           //die($uNAme);
-        $uNAme = "admin";
-        //die($id);
-          $userKey = $this->dbmodel->check_user($id);
-         // print_r($userKey);
-          foreach ($userKey as $user)
-          {
-              $userid = $user->user_name;
-          }
-          if($uNAme !== $userid){
-              die($uNAme);
-            $this->dbmodel->delete_user($id);
-            $this->session->set_flashdata('message', 'Data Delete Sucessfully');
-          redirect('bnw/users');}
-          else{
-              echo 'Sory you can not be delete this user because user is Login!';
-          }
-       } else {
+            $uNAme = $this->session->userdata('username');
+            //die($uNAme);
+            $uNAme = "admin";
+            //die($id);
+            $userKey = $this->dbmodel->check_user($id);
+            // print_r($userKey);
+            foreach ($userKey as $user) {
+                $userid = $user->user_name;
+            }
+            if ($uNAme !== $userid) {
+                die($uNAme);
+                $this->dbmodel->delete_user($id);
+                $this->session->set_flashdata('message', 'Data Delete Sucessfully');
+                redirect('bnw/users');
+            } else {
+                echo 'Sory you can not be delete this user because user is Login!';
+            }
+        } else {
             redirect('login', 'refresh');
         }
     }
-    
-    public function profile(){
+
+    public function profile() {
         if ($this->session->userdata('logged_in')) {
 
             $config = array();
@@ -1447,10 +1376,10 @@ $data['username'] = Array($this->session->userdata('logged_in'));
             $user = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
             $data["query"] = $this->dbmodel->get_all_user($config["per_user"], $user);
             $data["links"] = $this->pagination->create_links();
-            $username=  $this->session->userdata('username');
+            $username = $this->session->userdata('username');
             $data['query'] = $this->dbmodel->get_user_info($username);
             $data['meta'] = $this->dbmodel->get_meta_data();
-            
+
             $this->load->view("bnw/templates/header", $data);
             $this->load->view("bnw/templates/menu");
             $this->load->view('bnw/users/userProfiler', $data);
@@ -1504,23 +1433,21 @@ $data['username'] = Array($this->session->userdata('logged_in'));
             $this->load->view('bnw/templates/menu');
             $this->load->helper('form');
             $this->load->library(array('form_validation', 'session'));
-            
-            if(($_SERVER['REQUEST_METHOD'] == 'POST'))
-            {
+
+            if (($_SERVER['REQUEST_METHOD'] == 'POST')) {
                 $mediaName = $_POST['selectAlbum'];
-                 $media_association_info = $this->dbmodel->get_media_association_info($mediaName);
-                foreach($media_association_info as $id)
-                {
-                    $media_association_id= $id->id;
+                $media_association_info = $this->dbmodel->get_media_association_info($mediaName);
+                foreach ($media_association_info as $id) {
+                    $media_association_id = $id->id;
                 }
             }
             $this->form_validation->set_rules('media_name', 'media Name', 'required|xss_clean|max_length[200]');
-          
+
 
 
             if (($this->form_validation->run() == FALSE) || (!$this->upload->do_upload('file_name'))) {
                 $data['error'] = $this->upload->display_errors();
-                  
+
                 $this->load->view('bnw/media/addNew', $data);
             } else {
 
@@ -1528,7 +1455,7 @@ $data['username'] = Array($this->session->userdata('logged_in'));
                 $data = array('upload_data' => $this->upload->data('file'));
                 $medianame = $this->input->post('media_name');
                 $mediatype = $data['upload_data']['file_name'];
-                $medialink = base_url().'content/images/'.$mediatype;
+                $medialink = base_url() . 'content/images/' . $mediatype;
                 $this->dbmodel->add_new_media($medianame, $mediatype, $media_association_id, $medialink);
                 $this->session->set_flashdata('message', 'One media added sucessfully');
                 redirect('bnw/media/mediaListing');
@@ -1546,7 +1473,7 @@ $data['username'] = Array($this->session->userdata('logged_in'));
         if ($this->session->userdata('logged_in')) {
             $data['query'] = $this->dbmodel->findmedia($id);
             $data['meta'] = $this->dbmodel->get_meta_data();
-            
+
             $this->load->view("bnw/templates/header", $data);
             $this->load->view("bnw/templates/menu");
             $this->load->view('bnw/media/editMedia', $data);
@@ -1575,24 +1502,22 @@ $data['username'] = Array($this->session->userdata('logged_in'));
             $this->load->view('bnw/templates/menu');
             $this->load->helper('form');
             $this->load->library(array('form_validation', 'session'));
-            
-            if(($_SERVER['REQUEST_METHOD'] == 'POST'))
-            {
+
+            if (($_SERVER['REQUEST_METHOD'] == 'POST')) {
                 $mediaName = $_POST['selectAlbum'];
-                 $media_association_info = $this->dbmodel->get_media_association_info($mediaName);
-                foreach($media_association_info as $id)
-                {
-                    $media_association_id= $id->id;
+                $media_association_info = $this->dbmodel->get_media_association_info($mediaName);
+                foreach ($media_association_info as $id) {
+                    $media_association_id = $id->id;
                 }
             }
             $this->form_validation->set_rules('media_name', 'media Name', 'required|xss_clean|max_length[200]');
-            
+
 
             if (($this->form_validation->run() == FALSE) || (!$this->upload->do_upload('file_name'))) {
                 $data['error'] = $this->upload->display_errors();
-                
-                
-                
+
+
+
                 //if not valid
                 $data['query'] = $this->dbmodel->findmedia($id);
                 $this->load->view('bnw/media/mediaListing', $data);
@@ -1613,9 +1538,10 @@ $data['username'] = Array($this->session->userdata('logged_in'));
             redirect('login', 'refresh');
         }
     }
-public function delmedia($id) {
+
+    public function delmedia($id) {
         if ($this->session->userdata('logged_in')) {
-             $data['query'] = $this->dbmodel->findmedia($id);
+            $data['query'] = $this->dbmodel->findmedia($id);
             $data['meta'] = $this->dbmodel->get_meta_data();
             $this->load->view("bnw/templates/header", $data);
             $this->load->view("bnw/templates/menu");
@@ -1625,11 +1551,12 @@ public function delmedia($id) {
             redirect('login', 'refresh');
         }
     }
+
     public function deletemedia($id) {
         if ($this->session->userdata('logged_in')) {
-             $id=$_GET['image'];
-           unlink('./content/images/'.$id);  
-                
+            $id = $_GET['image'];
+            unlink('./content/images/' . $id);
+
             $this->dbmodel->delete_media($id);
             $this->session->set_flashdata('message', 'Data Delete Sucessfully');
             redirect('bnw/media');
@@ -1637,11 +1564,11 @@ public function delmedia($id) {
             redirect('login', 'refresh');
         }
     }
-    
+
     //==========================================================================================================//
     //===================================ALBUM==================================================================//
     //==========================================================================================================//
-    
+
     public function album() {
         if ($this->session->userdata('logged_in')) {
 
@@ -1690,7 +1617,7 @@ public function delmedia($id) {
             } else {
 
                 //if valid
-               
+
                 $name = $this->input->post('album_name');
 
                 $this->dbmodel->add_new_album($name);
@@ -1703,7 +1630,7 @@ public function delmedia($id) {
             redirect('login', 'refresh');
         }
     }
-    
+
     //===============================To Add Photo================================================================//
     public function addphoto() {
         if ($this->session->userdata('logged_in')) {
@@ -1720,20 +1647,20 @@ public function delmedia($id) {
             $this->load->helper('form');
             $this->load->library(array('form_validation', 'session'));
             $this->form_validation->set_rules('title', 'Title', 'required|xss_clean|max_length[200]');
-            
+
             $albumid = $this->input->post('id');
             $data['query'] = $this->dbmodel->get_album();
-            
-            
+
+
             if (($this->form_validation->run() == FALSE) || (!$this->upload->do_upload())) {
                 $data['error'] = $this->upload->display_errors();
-                
+
                 $this->load->view('bnw/album/index', $data);
             } else {
 
                 //if valid
                 $data = array('upload_data' => $this->upload->data());
-              
+
                 $mediatype = $data['upload_data']['file_name'];
                 $medianame = $this->input->post('title');
                 $albumid = $this->input->post('id');
@@ -1748,7 +1675,8 @@ public function delmedia($id) {
             redirect('login', 'refresh');
         }
     }
-public function delphoto($photoid) {
+
+    public function delphoto($photoid) {
         if ($this->session->userdata('logged_in')) {
             $data['query'] = $this->dbmodel->get_photo_media_id($photoid);
 
@@ -1761,12 +1689,13 @@ public function delphoto($photoid) {
             redirect('login', 'refresh');
         }
     }
+
     public function deletephoto($a) {
-       
+
         if ($this->session->userdata('logged_in')) {
-           $a=$_GET['image'];
-          
-           unlink('./content/images/'.$a);
+            $a = $_GET['image'];
+
+            unlink('./content/images/' . $a);
             $this->dbmodel->delete_photo($a);
             $this->session->set_flashdata('message', 'Data Delete Sucessfully');
             redirect('bnw/addalbum');
@@ -1774,7 +1703,7 @@ public function delphoto($photoid) {
             redirect('login', 'refresh');
         }
     }
-    
+
     //============================================================================================================//
     //====================================SLIDER==================================================================//
     //============================================================================================================/
@@ -1814,61 +1743,58 @@ public function delphoto($photoid) {
             $this->load->library('upload', $config);
 
             $data['meta'] = $this->dbmodel->get_meta_data();
-           
+
             $this->load->view('bnw/templates/header', $data);
             $this->load->view('bnw/templates/menu');
             $this->load->helper('form');
             $this->load->library(array('form_validation', 'session'));
             $this->form_validation->set_rules('slide_name', 'Title', 'required|xss_clean|max_length[200]');
-             if (($this->form_validation->run() == FALSE) || (!$this->upload->do_upload('file_name'))) {
+            if (($this->form_validation->run() == FALSE) || (!$this->upload->do_upload('file_name'))) {
                 $data['error'] = $this->upload->display_errors();
-                  
+
                 $this->load->view('bnw/slider/addnew', $data);
             } else {
 
                 //if valid
-                 $data = array('upload_data' => $this->upload->data('file'));
+                $data = array('upload_data' => $this->upload->data('file'));
                 $slidename = $this->input->post('slide_name');
                 $slideimage = $data['upload_data']['file_name'];
                 $slidecontent = $this->input->post('slide_content');
-               
+
                 //for cropper
                 //require_once(APPPATH.'ImageManipulator.php');
                 include_once 'ImageManipulator.php';
-                
-		$manipulator = new ImageManipulator($_FILES['file_name']['tmp_name']);
-		$width 	= $manipulator->getWidth();
-		$height = $manipulator->getHeight();
-                
-		
-                $slideWidth=  $this->dbmodel->get_slide_width();
-                foreach ($slideWidth as $a)
-                 {
-                     $fullWidth = $a->description;
-                 }    
-                $slideHeight=  $this->dbmodel->get_slide_height();
-                foreach ($slideHeight as $b)
-                 {
-                     $fullHeight = $b->description;
-                 }
-                $halfWidth =round($fullWidth / 2);
-		$halfHeight = round($fullHeight / 2);
-                
+
+                $manipulator = new ImageManipulator($_FILES['file_name']['tmp_name']);
+                $width = $manipulator->getWidth();
+                $height = $manipulator->getHeight();
+
+
+                $slideWidth = $this->dbmodel->get_slide_width();
+                foreach ($slideWidth as $a) {
+                    $fullWidth = $a->description;
+                }
+                $slideHeight = $this->dbmodel->get_slide_height();
+                foreach ($slideHeight as $b) {
+                    $fullHeight = $b->description;
+                }
+                $halfWidth = round($fullWidth / 2);
+                $halfHeight = round($fullHeight / 2);
+
                 $centreX = round($width / 2);
-                
-		$centreY = round($height / 2);
-                
-		// our dimensions will be 200x130
-		$x1 = $centreX - $halfWidth; // 200 / 2
-		$y1 = $centreY - $halfHeight; // 130 / 2
 
-		$x2 = $centreX + $halfWidth; // 200 / 2
-		$y2 = $centreY + $halfHeight; // 130 / 2
+                $centreY = round($height / 2);
 
-		// center cropping to 200x130
-		$newImage = $manipulator->crop($x1, $y1, $x2, $y2);
-		// saving file to uploads folder
-		$manipulator->save('./content/images/' . $_FILES['file_name']['name']);
+                // our dimensions will be 200x130
+                $x1 = $centreX - $halfWidth; // 200 / 2
+                $y1 = $centreY - $halfHeight; // 130 / 2
+
+                $x2 = $centreX + $halfWidth; // 200 / 2
+                $y2 = $centreY + $halfHeight; // 130 / 2
+                // center cropping to 200x130
+                $newImage = $manipulator->crop($x1, $y1, $x2, $y2);
+                // saving file to uploads folder
+                $manipulator->save('./content/images/' . $_FILES['file_name']['name']);
                 //cropper closed               
                 $this->dbmodel->add_new_slider($slidename, $slideimage, $slidecontent);
                 $this->session->set_flashdata('message', 'One slide added sucessfully');
@@ -1893,6 +1819,7 @@ public function delphoto($photoid) {
             redirect('login', 'refresh');
         }
     }
+
     public function delslider($id) {
         if ($this->session->userdata('logged_in')) {
             $data['query'] = $this->dbmodel->findslider($id);
@@ -1907,7 +1834,7 @@ public function delphoto($photoid) {
     }
 
     public function updateslider() {
-         if ($this->session->userdata('logged_in')) {
+        if ($this->session->userdata('logged_in')) {
 
             $config['upload_path'] = './content/images/';
             $config['allowed_types'] = 'gif|jpg|png';
@@ -1923,13 +1850,13 @@ public function delphoto($photoid) {
             $this->load->helper('form');
             $this->load->library(array('form_validation', 'session'));
             $this->form_validation->set_rules('slide_name', 'Title', 'required|xss_clean|max_length[200]');
-            
+
 
 
             if (($this->form_validation->run() == FALSE) || (!$this->upload->do_upload('file_name'))) {
                 $data['error'] = $this->upload->display_errors();
                 $id = $this->input->post('id');
-                $data['query'] = $this->dbmodel->findslider($id);  
+                $data['query'] = $this->dbmodel->findslider($id);
                 $this->load->view('bnw/slider/edit', $data);
             } else {
 
@@ -1939,7 +1866,7 @@ public function delphoto($photoid) {
                 $slidename = $this->input->post('slide_name');
                 $slideimage = $data['upload_data']['file_name'];
                 $slidecontent = $this->input->post('slide_content');
-                
+
                 $this->dbmodel->update_slider($id, $slidename, $slideimage, $slidecontent);
                 $this->session->set_flashdata('message', 'One slide modified sucessfully');
                 redirect('bnw/slider');
@@ -1953,11 +1880,11 @@ public function delphoto($photoid) {
 
     public function deleteslider($a) {
         if ($this->session->userdata('logged_in')) {
-            $a=$_GET['image'];
-          
-           unlink('./content/images/'.$a);  
-                
-            
+            $a = $_GET['image'];
+
+            unlink('./content/images/' . $a);
+
+
             $this->dbmodel->delete_slider($a);
             $this->session->set_flashdata('message', 'Data Delete Sucessfully');
             redirect('bnw/slider');
@@ -1966,11 +1893,10 @@ public function delphoto($photoid) {
         }
     }
 
-   
     //============================================================================================================//
     //================================Settings/ Setup ============================================================//
     //============================================================================================================//
-      
+
     public function setup() {
         if ($this->session->userdata('logged_in')) {
             $data['meta'] = $this->dbmodel->get_meta_data();
@@ -1985,9 +1911,9 @@ public function delphoto($photoid) {
     }
 
     public function deletefavicone($id) {
-       
+
         if ($this->session->userdata('logged_in')) {
-            
+
             $this->dbmodel->delete_favicone($id);
             $this->session->set_flashdata('message', 'Data Delete Sucessfully');
             redirect('bnw/setup');
@@ -1995,10 +1921,10 @@ public function delphoto($photoid) {
             redirect('login', 'refresh');
         }
     }
-    
+
     public function setupupdate() {
         if ($this->session->userdata('logged_in')) {
-            
+
             $config['upload_path'] = './content/images/';
             $config['allowed_types'] = 'gif|jpg|png|ico';
             $config['max_size'] = '500';
@@ -2020,54 +1946,51 @@ public function delphoto($photoid) {
                 $this->load->view('bnw/setup/index', $data);
                 $this->load->view('bnw/templates/footer', $data);
             } else {
-                if(!$this->upload->do_upload('file_name')){
-                   
-                
-                $favicone = $this->input->post('faviconeName');
-                //die($favicone);
-                $url = $this->input->post('url');
-                $title = $this->input->post('title');
-                $keyword = $this->input->post('keyword');
-                $description = $this->input->post('description');
-                $this->dbmodel->update_meta_data($url, $title, $keyword, $description,$favicone);
-               
-                }                
-                else{$data = array('upload_data' => $this->upload->data('file'));
-                
-                $favicone = $data['upload_data']['file_name'];
-                
-                $url = $this->input->post('url');
-                $title = $this->input->post('title');
-                $keyword = $this->input->post('keyword');
-                $description = $this->input->post('description');
-                $this->dbmodel->update_meta_data($url, $title, $keyword, $description,$favicone);
+                if (!$this->upload->do_upload('file_name')) {
+
+
+                    $favicone = $this->input->post('faviconeName');
+                    //die($favicone);
+                    $url = $this->input->post('url');
+                    $title = $this->input->post('title');
+                    $keyword = $this->input->post('keyword');
+                    $description = $this->input->post('description');
+                    $this->dbmodel->update_meta_data($url, $title, $keyword, $description, $favicone);
+                } else {
+                    $data = array('upload_data' => $this->upload->data('file'));
+
+                    $favicone = $data['upload_data']['file_name'];
+
+                    $url = $this->input->post('url');
+                    $title = $this->input->post('title');
+                    $keyword = $this->input->post('keyword');
+                    $description = $this->input->post('description');
+                    $this->dbmodel->update_meta_data($url, $title, $keyword, $description, $favicone);
                 }
-                 redirect('bnw/setup');
+                redirect('bnw/setup');
             }
         } else {
             redirect('login', 'refresh');
         }
     }
-    
-    public function header()
- {
-     if ($this->session->userdata('logged_in')) {
+
+    public function header() {
+        if ($this->session->userdata('logged_in')) {
             $data['meta'] = $this->dbmodel->get_meta_data();
             $set['query'] = $this->dbmodel->get_design_setup();
-           // var_dump($set);
-            $this->load->view("bnw/templates/header" , $data);
+            // var_dump($set);
+            $this->load->view("bnw/templates/header", $data);
             $this->load->view("bnw/templates/menu");
             $this->load->view('bnw/setup/addHeader', $set);
             $this->load->view('bnw/templates/footer', $data);
         } else {
             redirect('login', 'refresh');
         }
- }
- 
- 
- public function headerupdate(){
-     if ($this->session->userdata('logged_in')) {
-                     
+    }
+
+    public function headerupdate() {
+        if ($this->session->userdata('logged_in')) {
+
             $config['upload_path'] = './content/images/';
             $config['allowed_types'] = 'gif|jpg|png';
             $config['max_size'] = '500';
@@ -2082,21 +2005,21 @@ public function delphoto($photoid) {
             $this->load->helper('form');
             $this->load->library(array('form_validation', 'session'));
             $this->form_validation->set_rules('header_title', 'Title', 'required|xss_clean|max_length[200]');
-            
-            
+
+
             if (($this->form_validation->run() == FALSE) || (!$this->upload->do_upload('file_name'))) {
                 //die('not image');
                 $data['error'] = $this->upload->display_errors();
-                
+
                 $this->load->view('bnw/setup/addHeader', $data);
             } else {
 
                 //if valid
                 $data = array('upload_data' => $this->upload->data('file'));
-                
+
                 $headerTitle = $this->input->post('header_title');
                 $headerLogo = $data['upload_data']['file_name'];
-                
+
                 $headerDescription = $this->input->post('header_description');
                 $headerBgColor = $this->input->post('header_bgcolor');
                 $this->dbmodel->update_design_header_setup($headerTitle, $headerLogo, $headerDescription, $headerBgColor);
@@ -2107,37 +2030,34 @@ public function delphoto($photoid) {
         } else {
 
             redirect('login', 'refresh');
-        
-     }
- }
+        }
+    }
 
-
- public function sidebar()
- {
-     if ($this->session->userdata('logged_in')) {
+    public function sidebar() {
+        if ($this->session->userdata('logged_in')) {
             $data['meta'] = $this->dbmodel->get_meta_data();
             $set['query'] = $this->dbmodel->get_design_setup();
-            $this->load->view("bnw/templates/header" , $data);
+            $this->load->view("bnw/templates/header", $data);
             $this->load->view("bnw/templates/menu");
             $this->load->view('bnw/setup/addSidebar', $set);
             $this->load->view('bnw/templates/footer', $data);
         } else {
             redirect('login', 'refresh');
         }
- }
- 
- public function sidebarupdate(){
-     if ($this->session->userdata('logged_in')) {
+    }
+
+    public function sidebarupdate() {
+        if ($this->session->userdata('logged_in')) {
 
             $this->load->library(array('form_validation', 'session'));
             $this->form_validation->set_rules('sidebar_title', 'Title', 'required|xss_clean|max_length[200]');
             $this->form_validation->set_rules('sidebar_description', 'Description', 'required|xss_clean');
             $this->form_validation->set_rules('sidebar_bgcolor', 'Background Color', 'required|xss_clean');
-           // $this->form_validation->set_rules('header_bgcolor', 'Description', 'required|xss_clean');
+            // $this->form_validation->set_rules('header_bgcolor', 'Description', 'required|xss_clean');
             if (($this->form_validation->run() == FALSE)) {
 
                 $data['meta'] = $this->dbmodel->get_meta_data();
-                $this->load->view("bnw/templates/header" , $data);
+                $this->load->view("bnw/templates/header", $data);
                 $this->load->view("bnw/templates/menu");
                 $this->load->view('bnw/setup/addSidebar');
                 $this->load->view('bnw/templates/footer', $data);
@@ -2145,60 +2065,55 @@ public function delphoto($photoid) {
                 $sideBarTitle = $this->input->post('sidebar_title');
                 $sideBarDescription = $this->input->post('sidebar_description');
                 $sideBarBgColor = $this->input->post('sidebar_bgcolor');
-                
+
                 $this->dbmodel->update_design_sidebar_setup($sideBarTitle, $sideBarDescription, $sideBarBgColor);
                 redirect('bnw');
             }
         } else {
             redirect('login', 'refresh');
         }
- }
- 
- //=====================================Miscellaneous Setting===============================================/
- public function miscsetting()
- {
-     if ($this->session->userdata('logged_in')) {
+    }
+
+    //=====================================Miscellaneous Setting===============================================/
+    public function miscsetting() {
+        if ($this->session->userdata('logged_in')) {
             $data['meta'] = $this->dbmodel->get_meta_data();
             $data['query'] = $this->dbmodel->get_misc_setting();
-            $this->load->view("bnw/templates/header" , $data);
+            $this->load->view("bnw/templates/header", $data);
             $this->load->view("bnw/templates/menu");
             $this->load->view('bnw/setup/miscSetting');
             $this->load->view('bnw/templates/footer', $data);
         } else {
             redirect('login', 'refresh');
         }
- }
- 
- public function miscsettingupdate(){
-     if ($this->session->userdata('logged_in')) {
+    }
 
-            $this->load->library('session');    
+    public function miscsettingupdate() {
+        if ($this->session->userdata('logged_in')) {
+
+            $this->load->library('session');
             $data['query'] = $this->dbmodel->get_misc_setting();
-            
-                $allowComment = $this->input->post('allow_comment');
-                $allowLike = $this->input->post('allow_like');
-                $allowShare = $this->input->post('allow_share');
-                $maximunPost = $this->input->post('max_post_to_show');
-                $maximumPage = $this->input->post('max_page_to_show');
-                $slideHeight = $this->input->post('slide_height');
-                $slideWidth = $this->input->post('slide_width');
-              
-                
-                $this->dbmodel->update_misc_setting($allowComment, $allowLike, $allowShare,$maximunPost,$maximumPage, $slideHeight, $slideWidth );
-                redirect('bnw');
-            }
-         else {
+
+            $allowComment = $this->input->post('allow_comment');
+            $allowLike = $this->input->post('allow_like');
+            $allowShare = $this->input->post('allow_share');
+            $maximunPost = $this->input->post('max_post_to_show');
+            $maximumPage = $this->input->post('max_page_to_show');
+            $slideHeight = $this->input->post('slide_height');
+            $slideWidth = $this->input->post('slide_width');
+
+
+            $this->dbmodel->update_misc_setting($allowComment, $allowLike, $allowShare, $maximunPost, $maximumPage, $slideHeight, $slideWidth);
+            redirect('bnw');
+        } else {
             redirect('login', 'refresh');
         }
- }
- 
- 
-  
-    
+    }
+
     //============album=====
 
 
-    
+
     public function add_new_album() {
         if ($this->session->userdata('logged_in')) {
 
@@ -2238,8 +2153,8 @@ public function delphoto($photoid) {
             redirect('login', 'refresh');
         }
     }
-    
-    public function delalbum($id){
+
+    public function delalbum($id) {
         if ($this->session->userdata('logged_in')) {
             $data['photoquery'] = $this->dbmodel->get_all_photos($id);
             $data['albumquery'] = $this->dbmodel->get_selected_album($id);
@@ -2255,18 +2170,17 @@ public function delphoto($photoid) {
 
     function delete_album($id) {
         if ($this->session->userdata('logged_in')) {
-            
-             $data['photoquery'] = $this->dbmodel->get_all_photos($id);
-             foreach($data['photoquery'] as $photo)
-             {
-                 $image= $photo->media_type;
-                 unlink('./content/images/'.$image);
-             }
-                 
+
+            $data['photoquery'] = $this->dbmodel->get_all_photos($id);
+            foreach ($data['photoquery'] as $photo) {
+                $image = $photo->media_type;
+                unlink('./content/images/' . $image);
+            }
+
             $this->dbmodel->delete_photo($id);
             $this->dbmodel->delete_album($id);
             $this->session->set_flashdata('message', 'One album Deleted Sucessfully');
-           redirect('bnw/album');
+            redirect('bnw/album');
         } else {
             redirect('login', 'refresh');
         }
@@ -2307,11 +2221,6 @@ public function delphoto($photoid) {
         }
     }
 
-    
-    
-
-    
-
     // ==================  MENU  ============================ //
 
     public function menu() {
@@ -2325,10 +2234,10 @@ public function delphoto($photoid) {
 
             $this->pagination->initialize($config);
 
-            
+
             $data["query"] = $this->dbmodel->get_menu($config["per_page"], $page);
             $data["links"] = $this->pagination->create_links();
-           
+
             $data['meta'] = $this->dbmodel->get_meta_data();
             $this->load->view("bnw/templates/header", $data);
             $this->load->view("bnw/templates/menu");
@@ -2358,7 +2267,7 @@ public function delphoto($photoid) {
                 //if valid
 
                 $menuname = $this->input->post('menu_name');
-                $this->dbmodel->add_new_menu( $menuname);
+                $this->dbmodel->add_new_menu($menuname);
                 $this->session->set_flashdata('message', 'One menu added sucessfully');
                 redirect('bnw/menu/addnew');
             }
@@ -2385,11 +2294,11 @@ public function delphoto($photoid) {
     public function updatemenu() {
         if ($this->session->userdata('logged_in')) {
             $data['meta'] = $this->dbmodel->get_meta_data();
-            
+
             $this->load->view("bnw/templates/header", $data);
             $this->load->view('bnw/templates/menu');
             $this->load->helper('form');
-            
+
             $this->load->library(array('form_validation', 'session'));
             $id = $this->input->post('id');
             $data['query'] = $this->dbmodel->findmenu($id);
@@ -2427,454 +2336,452 @@ public function delphoto($photoid) {
         }
     }
 
-     //=========================notice==============================//
+    //=========================notice==============================//
 
-   /* public function notice() {
+    /* public function notice() {
 
-        if ($this->session->userdata('logged_in')) {
+      if ($this->session->userdata('logged_in')) {
 
-            $config = array();
-            $config["base_url"] = base_url() . "index.php/bnw/notice";
-            $config["total_rows"] = $this->dbmodel->record_count_notice();
-            $config["per_page"] = 6;
-            //$config["uri_segment"] = 3;
+      $config = array();
+      $config["base_url"] = base_url() . "index.php/bnw/notice";
+      $config["total_rows"] = $this->dbmodel->record_count_notice();
+      $config["per_page"] = 6;
+      //$config["uri_segment"] = 3;
 
-            $this->pagination->initialize($config);
+      $this->pagination->initialize($config);
 
-            $page = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
+      $page = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
 
-            $data["query"] = $this->dbmodel->get_all_notices($config["per_page"], $page);
-            $data["links"] = $this->pagination->create_links();
-            //$data['query'] = $this->dbmodel->get_all_notices();
-            $data['meta'] = $this->dbmodel->get_meta_data();
-            $header = "bnw/templates/";
+      $data["query"] = $this->dbmodel->get_all_notices($config["per_page"], $page);
+      $data["links"] = $this->pagination->create_links();
+      //$data['query'] = $this->dbmodel->get_all_notices();
+      $data['meta'] = $this->dbmodel->get_meta_data();
+      $header = "bnw/templates/";
 
-            $this->load->view($header . 'header', $data);
-            $this->load->view($header . 'menu');
-            $this->load->view('bnw/notice/index', $data);
-            $this->load->view('bnw/templates/footer', $data);
-        } else {
-            redirect('login', 'refresh');
+      $this->load->view($header . 'header', $data);
+      $this->load->view($header . 'menu');
+      $this->load->view('bnw/notice/index', $data);
+      $this->load->view('bnw/templates/footer', $data);
+      } else {
+      redirect('login', 'refresh');
+      }
+      }
+
+      public function addnotice() {
+      if ($this->session->userdata('logged_in')) {
+      $data['meta'] = $this->dbmodel->get_meta_data();
+      $header = "bnw/templates/header";
+      $this->load->view($header, $data);
+      $this->load->view('bnw/templates/menu');
+      $this->load->helper('form');
+      $this->load->library(array('form_validation', 'session'));
+      //set validation rules
+      $this->form_validation->set_rules('title', 'Title', 'required|xss_clean|max_length[200]');
+      $this->form_validation->set_rules('body', 'Body', 'required|xss_clean');
+
+      if ($this->form_validation->run() == FALSE) {
+      //if not valid
+      $this->load->view('bnw/notice/addnew');
+      } else {
+      //if valid
+      $type = $this->input->post('type');
+      $name = $this->input->post('title');
+      $body = $this->input->post('body');
+      $status = $this->input->post('status');
+      $this->dbmodel->add_new_notices($name, $body, $status, $type);
+      $this->session->set_flashdata('message', 'One notice added sucessfully');
+      redirect('bnw/notice');
+      }
+
+      $this->load->view('bnw/templates/footer', $data);
+      } else {
+      redirect('login', 'refresh');
+      }
+      }
+
+      public function editnotice($nid) {
+      if ($this->session->userdata('logged_in')) {
+      $data['query'] = $this->dbmodel->findnotice($nid);
+      $data['meta'] = $this->dbmodel->get_meta_data();
+      //$data['id'] = $pid;
+      $header = "bnw/templates/";
+      $this->load->view($header . 'header', $data);
+      $this->load->view($header . 'menu');
+      $this->load->view('bnw/notice/edit', $data);
+      $this->load->view('bnw/templates/footer', $data);
+      } else {
+      redirect('login', 'refresh');
+      }
+      }
+
+      public function updatenotice() {
+      if ($this->session->userdata('logged_in')) {
+      $data['meta'] = $this->dbmodel->get_meta_data();
+      $header = "bnw/templates/header";
+      $this->load->view($header, $data);
+      $this->load->view('bnw/templates/menu');
+      $this->load->helper('form');
+      $this->load->library(array('form_validation', 'session'));
+      //set validation rules
+      $this->form_validation->set_rules('title', 'Title', 'required|xss_clean|max_length[200]');
+      $this->form_validation->set_rules('body', 'Body', 'required|xss_clean');
+
+      if ($this->form_validation->run() == FALSE) {
+      //if not valid
+      $this->load->view('bnw/notice/edit');
+      } else {
+      //if valid
+      $id = $this->input->post('id');
+      $title = $this->input->post('title');
+      $body = $this->input->post('body');
+      $status = $this->input->post('status');
+      $this->dbmodel->update_notice($id, $title, $body, $status);
+      $this->session->set_flashdata('message', 'Data Modified Sucessfully');
+      redirect('bnw/notice');
+      }
+      $this->load->view('bnw/templates/footer', $data);
+      } else {
+      redirect('login', 'refresh');
+      }
+      }
+
+      public function deletenotice($nid) {
+      if ($this->session->userdata('logged_in')) {
+      $this->dbmodel->delete_notice($nid);
+      redirect('bnw/notice');
+      } else {
+     * 
+     * 
+     * 
+      redirect('login', 'refresh');
+      }
+      }
+
+      //=======================Activities controler=========================//
+      public function activities() {
+
+      if ($this->session->userdata('logged_in')) {
+      $config = array();
+      $config["base_url"] = base_url() . "index.php/bnw/activities";
+      $config["total_rows"] = $this->dbmodel->record_count_activities();
+      $config["per_page"] = 6;
+      //$config["uri_segment"] = 3;
+
+      $this->pagination->initialize($config);
+
+      $page = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
+      $data["query"] = $this->dbmodel->get_all_activities($config["per_page"], $page);
+      $data["links"] = $this->pagination->create_links();
+
+      //$data['query'] = $this->dbmodel->get_all_activities();
+      $data['meta'] = $this->dbmodel->get_meta_data();
+      $header = "bnw/templates/";
+
+      $this->load->view($header . 'header', $data);
+      $this->load->view($header . 'menu');
+      $this->load->view('bnw/activities/index', $data);
+      $this->load->view('bnw/templates/footer', $data);
+      } else {
+      redirect('login', 'refresh');
+      }
+      }
+
+      public function addactivity() {
+      if ($this->session->userdata('logged_in')) {
+
+      $config['upload_path'] = './uploads/';
+      $config['allowed_types'] = 'gif|jpg|png';
+      $config['max_size'] = '500';
+      $config['max_width'] = '1024';
+      $config['max_height'] = '768';
+      $this->load->library('upload', $config);
+      $data['meta'] = $this->dbmodel->get_meta_data();
+      $this->load->view('bnw/templates/header', $data);
+      $this->load->view('bnw/templates/menu');
+      $this->load->helper('form');
+      $this->load->library(array('form_validation', 'session'));
+      $this->form_validation->set_rules('title', 'Title', 'required|xss_clean|max_length[200]');
+      $this->form_validation->set_rules('body', 'Body', 'required|xss_clean');
+
+      if (($this->form_validation->run() == TRUE)) {
+      if ($_FILES && $_FILES['file']['name'] !== "") {
+      if (!$this->upload->do_upload('file')) {
+      $error = array('error' => $this->upload->display_errors('file'));
+      $this->load->view('bnw/activities/addnew', $error);
+      } else {
+      $data = array('upload_data' => $this->upload->data());
+      $image = $data['upload_data']['file_name'];
+      //$imagedata = Array($this->upload->data());
+      $name = $this->input->post('title');
+      $body = $this->input->post('body');
+      $type = $this->input->post('type');
+      //$image = $imagedata['file_name'];
+      $status = $this->input->post('status');
+      $this->dbmodel->add_new_activities($name, $body, $image, $status, $type);
+      $this->session->set_flashdata('message', 'One Activities added sucessfully');
+      redirect('bnw/activities');
+      }
+      } else {
+      $image = "";
+      $name = $this->input->post('title');
+      $body = $this->input->post('body');
+      //$image = $imagedata['file_name'];
+      $status = $this->input->post('status');
+      $type = $this->input->post('type');
+      $this->dbmodel->add_new_activities($name, $body, $image, $status, $type);
+      $this->session->set_flashdata('message', 'One Activities added sucessfully');
+      redirect('bnw/activities');
+      }
+      } else {
+
+      $this->load->view('bnw/activities/addnew');
+      }
+      $this->load->view('bnw/templates/footer', $data);
+      } else {
+
+      redirect('login', 'refresh');
+      }
+      }
+
+      function editactivities($id) {
+      if ($this->session->userdata('logged_in')) {
+      $data['query'] = $this->dbmodel->findactivities($id);
+      $data['meta'] = $this->dbmodel->get_meta_data();
+      //$data['id'] = $pid;
+      $header = "bnw/templates/";
+      $this->load->view($header . 'header', $data);
+      $this->load->view($header . 'menu');
+      $this->load->view('bnw/activities/edit', $data);
+      $this->load->view('bnw/templates/footer', $data);
+      } else {
+
+      redirect('login', 'refresh');
+      }
+      }
+
+      public function updateactivities() {
+      if ($this->session->userdata('logged_in')) {
+
+      $config['upload_path'] = './uploads/';
+      $config['allowed_types'] = 'gif|jpg|png';
+      $config['max_size'] = '500';
+      $config['max_width'] = '1024';
+      $config['max_height'] = '768';
+      $this->load->library('upload', $config);
+      $data['meta'] = $this->dbmodel->get_meta_data();
+      $header = "bnw/templates/header";
+      $this->load->view($header, $data);
+      $this->load->view('bnw/templates/menu');
+      $id = $this->input->post('id');
+      $this->load->helper('form');
+      $this->load->library(array('form_validation', 'session'));
+      //set validation rules
+      $this->form_validation->set_rules('title', 'Title', 'required|xss_clean|max_length[200]');
+      $this->form_validation->set_rules('body', 'Body', 'required|xss_clean');
+      if (($this->form_validation->run() == TRUE)) {
+      if ($_FILES && $_FILES['file']['name'] !== "") {
+      if (!$this->upload->do_upload('file')) {
+      $error = array('error' => $this->upload->display_errors('file'));
+      $this->load->view('bnw/activities/edit', $error);
+      } else {
+      //if valid
+
+
+      $data = array('upload_data' => $this->upload->data());
+      $image = $data['upload_data']['file_name'];
+      $id = $this->input->post('id');
+      $title = $this->input->post('title');
+      $body = $this->input->post('body');
+      $status = $this->input->post('status');
+      $this->dbmodel->update_activities($id, $title, $body, $image, $status);
+      $this->session->set_flashdata('message', 'Data Modified Sucessfully');
+      redirect('bnw/activities');
+      }
+      } else {
+      $image = "";
+      $id = $this->input->post('id');
+      $title = $this->input->post('title');
+      $body = $this->input->post('body');
+      $status = $this->input->post('status');
+      $this->dbmodel->update_activities($id, $title, $body, $image, $status);
+      $this->session->set_flashdata('message', 'Data Modified Sucessfully');
+      redirect('bnw/activities');
+      }
+      } else {
+      $id = $this->input->post('id');
+      $data['query'] = $this->dbmodel->findactivities($id);
+      $this->load->view('bnw/activities/edit', $data);
+      }
+      $this->load->view('bnw/templates/footer', $data);
+      } else {
+      redirect('login', 'refresh');
+      }
+      }
+
+      function deleteactivities($aid) {
+      if ($this->session->userdata('logged_in')) {
+
+      $this->dbmodel->deleteactivities($aid);
+      $this->session->set_flashdata('message', 'One Acticity deleted sucessfully');
+      redirect('bnw/activities');
+      } else {
+
+      redirect('login', 'refresh');
+      }
+      }
+
+      //==========================Result management controler
+
+
+      public function upload() {
+      if ($this->session->userdata('logged_in')) {
+
+      $config['upload_path'] = './downloads/';
+      $config['allowed_types'] = 'gif|jpg|png|pdf';
+      $config['max_size'] = '500';
+      //$config['max_width'] = '1024';
+      //$config['max_height'] = '768';
+      $this->load->library('upload', $config);
+      $data['meta'] = $this->dbmodel->get_meta_data();
+      $this->load->view('bnw/templates/header', $data);
+      $this->load->view('bnw/templates/menu');
+      $this->load->helper('form');
+      $this->load->library(array('form_validation', 'session'));
+      $this->form_validation->set_rules('title', 'Title', 'required|xss_clean|max_length[200]');
+      // $this->form_validation->set_rules('body', 'Body', 'required|xss_clean');
+
+      if (($this->form_validation->run() == FALSE) || (!$this->upload->do_upload())) {
+
+      //if not valid
+
+      $error = array('error' => $this->upload->display_errors());
+      $this->load->view('bnw/download/upload_form', $error);
+      } else {
+
+      //if valid
+      $data = array('upload_data' => $this->upload->data());
+      $image = $data['upload_data']['file_name'];
+      //$imagedata = Array($this->upload->data());
+      $name = $this->input->post('title');
+      //$body = $this->input->post('body');
+      //$image = $imagedata['file_name'];
+      $status = $this->input->post('status');
+      $this->dbmodel->upload_documents($name, $image, $status);
+      $this->session->set_flashdata('message', 'One Document added sucessfully');
+      redirect('bnw/download');
+      }
+      $this->load->view('bnw/templates/footer', $data);
+      } else {
+
+      redirect('login', 'refresh');
+      }
+      }
+
+      public function deletedocument($id) {
+      if ($this->session->userdata('logged_in')) {
+      $this->dbmodel->delete_document($id);
+      $this->session->set_flashdata('message', 'One Document deleted sucessfully');
+      redirect('bnw/download');
+      } else {
+
+      redirect('login', 'refresh');
+      }
+      }
+
+
+
+
+      public function blog() {
+      if ($this->session->userdata('logged_in')) {
+      $data['username'] = Array($this->session->userdata('logged_in'));
+      $data['query'] = $this->dbmodel->get_blog();
+      $data['meta'] = $this->dbmodel->get_meta_data();
+      $this->load->view("bnw/templates/header", $data);
+      $this->load->view("bnw/templates/menu");
+      $this->load->view('bnw/blogs/index', $data);
+      $this->load->view('bnw/templates/footer', $data);
+      } else {
+      redirect('login', 'refresh');
+      }
+      }
+
+      public function uploads() {
+      if ($this->session->userdata('logged_in')) {
+
+      $config['upload_path'] = './downloads/';
+      $config['allowed_types'] = 'gif|jpg|png|pdf';
+      $config['max_size'] = '500';
+      //$config['max_width'] = '1024';
+      //$config['max_height'] = '768';
+      $this->load->library('upload', $config);
+      $data['meta'] = $this->dbmodel->get_meta_data();
+      $this->load->view('bnw/templates/header', $data);
+      $this->load->view('bnw/templates/menu');
+      $this->load->helper('form');
+      $this->load->library(array('form_validation', 'session'));
+      $this->form_validation->set_rules('title', 'Title', 'required|xss_clean|max_length[200]');
+      // $this->form_validation->set_rules('body', 'Body', 'required|xss_clean');
+
+      if (($this->form_validation->run() == FALSE) || (!$this->upload->do_upload())) {
+
+      //if not valid
+
+      $error = array('error' => $this->upload->display_errors());
+      $this->load->view('bnw/blogs/upload_form', $error);
+      } else {
+
+      //if valid
+      $data = array('upload_data' => $this->upload->data());
+      $image = $data['upload_data']['file_name'];
+      //$imagedata = Array($this->upload->data());
+      $name = $this->input->post('title');
+      //$body = $this->input->post('body');
+      //$image = $imagedata['file_name'];
+      $status = $this->input->post('status');
+      $this->dbmodel->upload_blog($name, $image, $status);
+      $this->session->set_flashdata('message', 'One Document added sucessfully');
+      redirect('bnw/blog');
+      }
+      $this->load->view('bnw/templates/footer', $data);
+      } else {
+
+      redirect('login', 'refresh');
+      }
+      }
+
+      public function deleteblog($id) {
+      if ($this->session->userdata('logged_in')) {
+      $this->dbmodel->deleteblog($id);
+      $this->session->set_flashdata('message', 'Data Delete Sucessfully');
+      redirect('bnw/blog');
+      } else {
+      redirect('login', 'refresh');
+      }
+      }
+
+     */
+
+    public function aanbiedingenadd() { //functie om ze toe te voegen aan de database
+        $files = $_FILES;
+        echo '<pre>';
+        print_r($files);
+        $cpt = count($_FILES['userfile']['name']);
+        for ($i = 0; $i < $cpt; $i++) {
+
+            $_FILES['userfile']['name'] = $files['userfile']['name'][$i];
+            $_FILES['userfile']['type'] = $files['userfile']['type'][$i];
+            $_FILES['userfile']['tmp_name'] = $files['userfile']['tmp_name'][$i];
+            $_FILES['userfile']['error'] = $files['userfile']['error'][$i];
+            $_FILES['userfile']['size'] = $files['userfile']['size'][$i];
+
+            $this->upload->initialize($this->set_upload_options());
+            $this->upload->do_upload();
+            $image_data = $this->upload->data();
         }
+        print_r($image_data);
+        print_r($this->upload->display_errors());
+        $this->dbmodel->addaanbieding($image_data);
+        // redirect("bnw/aanbiedingen");
     }
 
-    public function addnotice() {
-        if ($this->session->userdata('logged_in')) {
-            $data['meta'] = $this->dbmodel->get_meta_data();
-            $header = "bnw/templates/header";
-            $this->load->view($header, $data);
-            $this->load->view('bnw/templates/menu');
-            $this->load->helper('form');
-            $this->load->library(array('form_validation', 'session'));
-            //set validation rules
-            $this->form_validation->set_rules('title', 'Title', 'required|xss_clean|max_length[200]');
-            $this->form_validation->set_rules('body', 'Body', 'required|xss_clean');
-
-            if ($this->form_validation->run() == FALSE) {
-                //if not valid
-                $this->load->view('bnw/notice/addnew');
-            } else {
-                //if valid
-                $type = $this->input->post('type');
-                $name = $this->input->post('title');
-                $body = $this->input->post('body');
-                $status = $this->input->post('status');
-                $this->dbmodel->add_new_notices($name, $body, $status, $type);
-                $this->session->set_flashdata('message', 'One notice added sucessfully');
-                redirect('bnw/notice');
-            }
-
-            $this->load->view('bnw/templates/footer', $data);
-        } else {
-            redirect('login', 'refresh');
-        }
-    }
-
-    public function editnotice($nid) {
-        if ($this->session->userdata('logged_in')) {
-            $data['query'] = $this->dbmodel->findnotice($nid);
-            $data['meta'] = $this->dbmodel->get_meta_data();
-            //$data['id'] = $pid;
-            $header = "bnw/templates/";
-            $this->load->view($header . 'header', $data);
-            $this->load->view($header . 'menu');
-            $this->load->view('bnw/notice/edit', $data);
-            $this->load->view('bnw/templates/footer', $data);
-        } else {
-            redirect('login', 'refresh');
-        }
-    }
-
-    public function updatenotice() {
-        if ($this->session->userdata('logged_in')) {
-            $data['meta'] = $this->dbmodel->get_meta_data();
-            $header = "bnw/templates/header";
-            $this->load->view($header, $data);
-            $this->load->view('bnw/templates/menu');
-            $this->load->helper('form');
-            $this->load->library(array('form_validation', 'session'));
-            //set validation rules
-            $this->form_validation->set_rules('title', 'Title', 'required|xss_clean|max_length[200]');
-            $this->form_validation->set_rules('body', 'Body', 'required|xss_clean');
-
-            if ($this->form_validation->run() == FALSE) {
-                //if not valid
-                $this->load->view('bnw/notice/edit');
-            } else {
-                //if valid
-                $id = $this->input->post('id');
-                $title = $this->input->post('title');
-                $body = $this->input->post('body');
-                $status = $this->input->post('status');
-                $this->dbmodel->update_notice($id, $title, $body, $status);
-                $this->session->set_flashdata('message', 'Data Modified Sucessfully');
-                redirect('bnw/notice');
-            }
-            $this->load->view('bnw/templates/footer', $data);
-        } else {
-            redirect('login', 'refresh');
-        }
-    }
-
-    public function deletenotice($nid) {
-        if ($this->session->userdata('logged_in')) {
-            $this->dbmodel->delete_notice($nid);
-            redirect('bnw/notice');
-        } else {
-    * 
-    * 
-    * 
-            redirect('login', 'refresh');
-        }
-    }
-
-    //=======================Activities controler=========================//
-    public function activities() {
-
-        if ($this->session->userdata('logged_in')) {
-            $config = array();
-            $config["base_url"] = base_url() . "index.php/bnw/activities";
-            $config["total_rows"] = $this->dbmodel->record_count_activities();
-            $config["per_page"] = 6;
-            //$config["uri_segment"] = 3;
-
-            $this->pagination->initialize($config);
-
-            $page = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
-            $data["query"] = $this->dbmodel->get_all_activities($config["per_page"], $page);
-            $data["links"] = $this->pagination->create_links();
-
-            //$data['query'] = $this->dbmodel->get_all_activities();
-            $data['meta'] = $this->dbmodel->get_meta_data();
-            $header = "bnw/templates/";
-
-            $this->load->view($header . 'header', $data);
-            $this->load->view($header . 'menu');
-            $this->load->view('bnw/activities/index', $data);
-            $this->load->view('bnw/templates/footer', $data);
-        } else {
-            redirect('login', 'refresh');
-        }
-    }
-
-    public function addactivity() {
-        if ($this->session->userdata('logged_in')) {
-
-            $config['upload_path'] = './uploads/';
-            $config['allowed_types'] = 'gif|jpg|png';
-            $config['max_size'] = '500';
-            $config['max_width'] = '1024';
-            $config['max_height'] = '768';
-            $this->load->library('upload', $config);
-            $data['meta'] = $this->dbmodel->get_meta_data();
-            $this->load->view('bnw/templates/header', $data);
-            $this->load->view('bnw/templates/menu');
-            $this->load->helper('form');
-            $this->load->library(array('form_validation', 'session'));
-            $this->form_validation->set_rules('title', 'Title', 'required|xss_clean|max_length[200]');
-            $this->form_validation->set_rules('body', 'Body', 'required|xss_clean');
-
-            if (($this->form_validation->run() == TRUE)) {
-                if ($_FILES && $_FILES['file']['name'] !== "") {
-                    if (!$this->upload->do_upload('file')) {
-                        $error = array('error' => $this->upload->display_errors('file'));
-                        $this->load->view('bnw/activities/addnew', $error);
-                    } else {
-                        $data = array('upload_data' => $this->upload->data());
-                        $image = $data['upload_data']['file_name'];
-                        //$imagedata = Array($this->upload->data());
-                        $name = $this->input->post('title');
-                        $body = $this->input->post('body');
-                        $type = $this->input->post('type');
-                        //$image = $imagedata['file_name'];
-                        $status = $this->input->post('status');
-                        $this->dbmodel->add_new_activities($name, $body, $image, $status, $type);
-                        $this->session->set_flashdata('message', 'One Activities added sucessfully');
-                        redirect('bnw/activities');
-                    }
-                } else {
-                    $image = "";
-                    $name = $this->input->post('title');
-                    $body = $this->input->post('body');
-                    //$image = $imagedata['file_name'];
-                    $status = $this->input->post('status');
-                    $type = $this->input->post('type');
-                    $this->dbmodel->add_new_activities($name, $body, $image, $status, $type);
-                    $this->session->set_flashdata('message', 'One Activities added sucessfully');
-                    redirect('bnw/activities');
-                }
-            } else {
-
-                $this->load->view('bnw/activities/addnew');
-            }
-            $this->load->view('bnw/templates/footer', $data);
-        } else {
-
-            redirect('login', 'refresh');
-        }
-    }
-
-    function editactivities($id) {
-        if ($this->session->userdata('logged_in')) {
-            $data['query'] = $this->dbmodel->findactivities($id);
-            $data['meta'] = $this->dbmodel->get_meta_data();
-            //$data['id'] = $pid;
-            $header = "bnw/templates/";
-            $this->load->view($header . 'header', $data);
-            $this->load->view($header . 'menu');
-            $this->load->view('bnw/activities/edit', $data);
-            $this->load->view('bnw/templates/footer', $data);
-        } else {
-
-            redirect('login', 'refresh');
-        }
-    }
-
-    public function updateactivities() {
-        if ($this->session->userdata('logged_in')) {
-
-            $config['upload_path'] = './uploads/';
-            $config['allowed_types'] = 'gif|jpg|png';
-            $config['max_size'] = '500';
-            $config['max_width'] = '1024';
-            $config['max_height'] = '768';
-            $this->load->library('upload', $config);
-            $data['meta'] = $this->dbmodel->get_meta_data();
-            $header = "bnw/templates/header";
-            $this->load->view($header, $data);
-            $this->load->view('bnw/templates/menu');
-            $id = $this->input->post('id');
-            $this->load->helper('form');
-            $this->load->library(array('form_validation', 'session'));
-            //set validation rules
-            $this->form_validation->set_rules('title', 'Title', 'required|xss_clean|max_length[200]');
-            $this->form_validation->set_rules('body', 'Body', 'required|xss_clean');
-            if (($this->form_validation->run() == TRUE)) {
-                if ($_FILES && $_FILES['file']['name'] !== "") {
-                    if (!$this->upload->do_upload('file')) {
-                        $error = array('error' => $this->upload->display_errors('file'));
-                        $this->load->view('bnw/activities/edit', $error);
-                    } else {
-                        //if valid
-
-
-                        $data = array('upload_data' => $this->upload->data());
-                        $image = $data['upload_data']['file_name'];
-                        $id = $this->input->post('id');
-                        $title = $this->input->post('title');
-                        $body = $this->input->post('body');
-                        $status = $this->input->post('status');
-                        $this->dbmodel->update_activities($id, $title, $body, $image, $status);
-                        $this->session->set_flashdata('message', 'Data Modified Sucessfully');
-                        redirect('bnw/activities');
-                    }
-                } else {
-                    $image = "";
-                    $id = $this->input->post('id');
-                    $title = $this->input->post('title');
-                    $body = $this->input->post('body');
-                    $status = $this->input->post('status');
-                    $this->dbmodel->update_activities($id, $title, $body, $image, $status);
-                    $this->session->set_flashdata('message', 'Data Modified Sucessfully');
-                    redirect('bnw/activities');
-                }
-            } else {
-                $id = $this->input->post('id');
-                $data['query'] = $this->dbmodel->findactivities($id);
-                $this->load->view('bnw/activities/edit', $data);
-            }
-            $this->load->view('bnw/templates/footer', $data);
-        } else {
-            redirect('login', 'refresh');
-        }
-    }
-
-    function deleteactivities($aid) {
-        if ($this->session->userdata('logged_in')) {
-
-            $this->dbmodel->deleteactivities($aid);
-            $this->session->set_flashdata('message', 'One Acticity deleted sucessfully');
-            redirect('bnw/activities');
-        } else {
-
-            redirect('login', 'refresh');
-        }
-    }
-
-    //==========================Result management controler
-
-   
-    public function upload() {
-        if ($this->session->userdata('logged_in')) {
-
-            $config['upload_path'] = './downloads/';
-            $config['allowed_types'] = 'gif|jpg|png|pdf';
-            $config['max_size'] = '500';
-            //$config['max_width'] = '1024';
-            //$config['max_height'] = '768';
-            $this->load->library('upload', $config);
-            $data['meta'] = $this->dbmodel->get_meta_data();
-            $this->load->view('bnw/templates/header', $data);
-            $this->load->view('bnw/templates/menu');
-            $this->load->helper('form');
-            $this->load->library(array('form_validation', 'session'));
-            $this->form_validation->set_rules('title', 'Title', 'required|xss_clean|max_length[200]');
-            // $this->form_validation->set_rules('body', 'Body', 'required|xss_clean');
-
-            if (($this->form_validation->run() == FALSE) || (!$this->upload->do_upload())) {
-
-                //if not valid
-
-                $error = array('error' => $this->upload->display_errors());
-                $this->load->view('bnw/download/upload_form', $error);
-            } else {
-
-                //if valid
-                $data = array('upload_data' => $this->upload->data());
-                $image = $data['upload_data']['file_name'];
-                //$imagedata = Array($this->upload->data());
-                $name = $this->input->post('title');
-                //$body = $this->input->post('body');
-                //$image = $imagedata['file_name'];
-                $status = $this->input->post('status');
-                $this->dbmodel->upload_documents($name, $image, $status);
-                $this->session->set_flashdata('message', 'One Document added sucessfully');
-                redirect('bnw/download');
-            }
-            $this->load->view('bnw/templates/footer', $data);
-        } else {
-
-            redirect('login', 'refresh');
-        }
-    }
-
-    public function deletedocument($id) {
-        if ($this->session->userdata('logged_in')) {
-            $this->dbmodel->delete_document($id);
-            $this->session->set_flashdata('message', 'One Document deleted sucessfully');
-            redirect('bnw/download');
-        } else {
-
-            redirect('login', 'refresh');
-        }
-    }
-
-    
-    
-    
-    public function blog() {
-        if ($this->session->userdata('logged_in')) {
-            $data['username'] = Array($this->session->userdata('logged_in'));
-            $data['query'] = $this->dbmodel->get_blog();
-            $data['meta'] = $this->dbmodel->get_meta_data();
-            $this->load->view("bnw/templates/header", $data);
-            $this->load->view("bnw/templates/menu");
-            $this->load->view('bnw/blogs/index', $data);
-            $this->load->view('bnw/templates/footer', $data);
-        } else {
-            redirect('login', 'refresh');
-        }
-    }
-
-    public function uploads() {
-        if ($this->session->userdata('logged_in')) {
-
-            $config['upload_path'] = './downloads/';
-            $config['allowed_types'] = 'gif|jpg|png|pdf';
-            $config['max_size'] = '500';
-            //$config['max_width'] = '1024';
-            //$config['max_height'] = '768';
-            $this->load->library('upload', $config);
-            $data['meta'] = $this->dbmodel->get_meta_data();
-            $this->load->view('bnw/templates/header', $data);
-            $this->load->view('bnw/templates/menu');
-            $this->load->helper('form');
-            $this->load->library(array('form_validation', 'session'));
-            $this->form_validation->set_rules('title', 'Title', 'required|xss_clean|max_length[200]');
-            // $this->form_validation->set_rules('body', 'Body', 'required|xss_clean');
-
-            if (($this->form_validation->run() == FALSE) || (!$this->upload->do_upload())) {
-
-                //if not valid
-
-                $error = array('error' => $this->upload->display_errors());
-                $this->load->view('bnw/blogs/upload_form', $error);
-            } else {
-
-                //if valid
-                $data = array('upload_data' => $this->upload->data());
-                $image = $data['upload_data']['file_name'];
-                //$imagedata = Array($this->upload->data());
-                $name = $this->input->post('title');
-                //$body = $this->input->post('body');
-                //$image = $imagedata['file_name'];
-                $status = $this->input->post('status');
-                $this->dbmodel->upload_blog($name, $image, $status);
-                $this->session->set_flashdata('message', 'One Document added sucessfully');
-                redirect('bnw/blog');
-            }
-            $this->load->view('bnw/templates/footer', $data);
-        } else {
-
-            redirect('login', 'refresh');
-        }
-    }
-
-    public function deleteblog($id) {
-        if ($this->session->userdata('logged_in')) {
-            $this->dbmodel->deleteblog($id);
-            $this->session->set_flashdata('message', 'Data Delete Sucessfully');
-            redirect('bnw/blog');
-        } else {
-            redirect('login', 'refresh');
-        }
-    }
-   
-    */
-   
-    public function aanbiedingenadd() //functie om ze toe te voegen aan de database
-{       
-    $files = $_FILES;
-    echo '<pre>';
-    print_r($files);
-    $cpt = count($_FILES['userfile']['name']);
-    for($i=0; $i<$cpt; $i++)
-    {
-
-        $_FILES['userfile']['name']= $files['userfile']['name'][$i];
-        $_FILES['userfile']['type']= $files['userfile']['type'][$i];
-        $_FILES['userfile']['tmp_name']= $files['userfile']['tmp_name'][$i];
-        $_FILES['userfile']['error']= $files['userfile']['error'][$i];
-        $_FILES['userfile']['size']= $files['userfile']['size'][$i];    
-
-        $this->upload->initialize($this->set_upload_options());
-        $this->upload->do_upload();
-        $image_data = $this->upload->data();
-    }
-    print_r($image_data);
-    print_r($this->upload->display_errors());
-    $this->dbmodel->addaanbieding($image_data);
-   // redirect("bnw/aanbiedingen");
 }
- 
-    }
