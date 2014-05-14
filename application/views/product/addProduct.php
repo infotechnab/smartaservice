@@ -15,12 +15,24 @@
 <textarea name="pDescription" id="area1" cols="50" rows="5" ><?php echo set_value('pDescription'); ?></textarea> </p>
  <p>Price:<br />
       <input type="text" name="pPrice" /> </p>
+ <p> Select Category : <br/>
+     
+     <select name="pCategory">
+         <?php foreach ($category as $catName)
+         {?>
+         <option value="<?php echo $catName->id; ?>"><?php echo $catName->category_name; ?></option>
+         <?php } ?>
+     </select>
+     
+ </p>
  <p> Image 1 : <br/> <input type="file" name="myfile" id="file" /> </p>
  <p> Image 2 : <br/> <input type="file" name="myfileTwo" id="file" /> </p>
  <p> Image 3 : <br/> <input type="file" name="myfileThree" id="file" /> </p>
  
  <input type="submit" value="Submit" />
   <?php echo form_close();?>
+ 
+ <p><b>Note:</b> Max file size: 500KB, Max Width: 1024px, Max Height: 768px </p>
  </div>
 <div class="clear"></div>
 </div>

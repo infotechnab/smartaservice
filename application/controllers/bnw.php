@@ -33,10 +33,11 @@ class bnw extends CI_Controller {
         if ($this->session->userdata('logged_in')) {
             $data['username'] = Array($this->session->userdata('logged_in'));
             $data['meta'] = $this->dbmodel->get_meta_data();
+            $data['category'] = $this->dbmodel->get_category();
 
             $this->load->view('bnw/templates/header', $data);
             $this->load->view('bnw/templates/menu');
-            $this->load->view('product/addProduct');
+            $this->load->view('product/addProduct',$data);
             $this->load->view('bnw/templates/footer', $data);
         } else {
             redirect('login', 'refresh');
@@ -71,18 +72,92 @@ class bnw extends CI_Controller {
                 if ($this->upload->do_upload('myfile')) {
                     $data = array('upload_data' => $this->upload->data('myfile'));
                     $productImg = $data['upload_data']['file_name'];
-                } else {
+                    
+                     //if valid
+                $data = array('upload_data' => $this->upload->data('file'));
+                $slidename = $this->input->post('slide_name');
+                $slideimage = $data['upload_data']['file_name'];
+                $slidecontent = $this->input->post('slide_content');
+
+                //for cropper
+                //require_once(APPPATH.'ImageManipulator.php');
+                include_once 'ImageManipulator.php';
+
+                $manipulator = new ImageManipulator($_FILES['myfile']['tmp_name']);
+                $width = $manipulator->getWidth();
+                $height = $manipulator->getHeight();
+
+                $centreX = round($width / 2);
+
+                $centreY = round($height / 2);
+
+                // our dimensions will be 200x130
+                $x1 = $centreX - 300; // 200 / 2
+                $y1 = $centreY - 400; // 130 / 2
+
+                $x2 = $centreX + 300; // 200 / 2
+                $y2 = $centreY + 400; // 130 / 2
+                // center cropping to 200x130
+                $newImage = $manipulator->crop($x1, $y1, $x2, $y2);
+                // saving file to uploads folder
+                $manipulator->save('./content/images/' . $_FILES['myfile']['name']);
+                //cropper closed               
+               } else {
                     $productImg = " ";
                 }
                 if ($this->upload->do_upload('myfileTwo')) {
                     $data = array('upload_data' => $this->upload->data('myfileTwo'));
                     $productImgTwo = $data['upload_data']['file_name'];
+                    
+                    //for cropper
+                //require_once(APPPATH.'ImageManipulator.php');
+                include_once 'ImageManipulator.php';
+
+                $manipulator = new ImageManipulator($_FILES['myfileTwo']['tmp_name']);
+                $width = $manipulator->getWidth();
+                $height = $manipulator->getHeight();
+
+                $centreX = round($width / 2);
+
+                $centreY = round($height / 2);
+
+                // our dimensions will be 200x130
+                $x1 = $centreX - 300; // 200 / 2
+                $y1 = $centreY - 400; // 130 / 2
+
+                $x2 = $centreX + 300; // 200 / 2
+                $y2 = $centreY + 400; // 130 / 2
+                // center cropping to 200x130
+                $newImage = $manipulator->crop($x1, $y1, $x2, $y2);
+                // saving file to uploads folder
+                $manipulator->save('./content/images/' . $_FILES['myfileTwo']['name']);
                 } else {
                     $productImgTwo = " ";
                 }
                 if ($this->upload->do_upload('myfileThree')) {
                     $data = array('upload_data' => $this->upload->data('myfileThree'));
                     $productImgThree = $data['upload_data']['file_name'];
+                    
+                    include_once 'ImageManipulator.php';
+
+                $manipulator = new ImageManipulator($_FILES['myfileThree']['tmp_name']);
+                $width = $manipulator->getWidth();
+                $height = $manipulator->getHeight();
+
+                $centreX = round($width / 2);
+
+                $centreY = round($height / 2);
+
+                // our dimensions will be 200x130
+                $x1 = $centreX - 300; // 200 / 2
+                $y1 = $centreY - 400; // 130 / 2
+
+                $x2 = $centreX + 300; // 200 / 2
+                $y2 = $centreY + 400; // 130 / 2
+                // center cropping to 200x130
+                $newImage = $manipulator->crop($x1, $y1, $x2, $y2);
+                // saving file to uploads folder
+                $manipulator->save('./content/images/' . $_FILES['myfileThree']['name']);
                 } else {
                     $productImgThree = " ";
                 }
@@ -95,9 +170,10 @@ class bnw extends CI_Controller {
                 $qty = $this->input->post('qty');
                 $productName = $this->input->post('pName');
                 $productPrice = $this->input->post('pPrice');
+                $productCategory = $this->input->post('pCategory');
                 $description = $this->input->post('pDescription');
                 $summary = substr("$description", 0, 100);
-                $this->dbmodel->add_new_product($description, $summary, $qty, $productName, $productPrice, $productImg, $productImgTwo, $productImgThree);
+                $this->dbmodel->add_new_product($productCategory,$description, $summary, $qty, $productName, $productPrice, $productImg, $productImgTwo, $productImgThree);
                 // $this->dbmodel->add_images($id,$productImg);
                 $this->session->set_flashdata('message', 'One Product added sucessfully');
                 redirect('bnw/product');
@@ -136,6 +212,7 @@ class bnw extends CI_Controller {
         if ($this->session->userdata('logged_in')) {
             $data['query'] = $this->dbmodel->findproduct($id);
             $data['meta'] = $this->dbmodel->get_meta_data();
+            $data['category'] = $this->dbmodel->get_category();
             //$data['miscSetting'] = $this->dbmodel->get_misc_setting();
             $data['id'] = $id;
             $this->load->view("bnw/templates/header", $data);
@@ -180,7 +257,7 @@ class bnw extends CI_Controller {
                 //die($description);
                 $summary = substr("$description", 0, 100);
                 $price = $this->input->post('price');
-
+                $category = $this->input->post('pCategory');
                 //if valid
                 if ($this->upload->do_upload('myfile')) {
                     $data = array('upload_data' => $this->upload->data('myfile'));
@@ -202,7 +279,7 @@ class bnw extends CI_Controller {
                 }
 
                 // $this->dbmodel->update_page($id, $name, $body, $page_author_id, $summary, $status, $order, $type, $tags, $allowComment, $allowLike, $allowShare);
-                $this->dbmodel->update_product($id, $name, $description, $summary, $price, $productImg, $productImgTwo, $productImgThree);
+                $this->dbmodel->update_product($id,$category, $name, $description, $summary, $price, $productImg, $productImgTwo, $productImgThree);
                 $this->session->set_flashdata('message', 'Data Modified Sucessfully');
                 redirect('bnw/productList');
             } else {
@@ -233,7 +310,19 @@ class bnw extends CI_Controller {
 
     function delProduct($id) {
         if ($this->session->userdata('logged_in')) {
+            
+            $delimages = $this->dbmodel->findproduct($id);
+            foreach ($delimages as $images)
+            {
+                $imgOne = $images->image1;
+                $imgTwo = $images->image2;
+                $imgThree = $images->image3;
+            }
+            unlink('./content/images/' . $imgOne);
+            unlink('./content/images/' . $imgTwo);
+            unlink('./content/images/' . $imgThree);
             $this->dbmodel->delProduct($id);
+            
             $this->session->set_flashdata('message', 'Data Deleted Sucessfully');
             redirect('bnw/productList');
         } else {
@@ -1314,6 +1403,7 @@ class bnw extends CI_Controller {
                 $pass = $this->input->post('user_pass');
                 $status = $this->input->post('user_status');
                 $user_type = $this->input->post('user_type');
+                
                 $this->dbmodel->update_user($id, $name, $fname, $lname, $email, $pass, $status, $user_type);
                 $this->session->set_flashdata('message', 'User data Modified Sucessfully');
 
