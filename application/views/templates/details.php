@@ -3,7 +3,82 @@
 $this->load->helper('currency');
 ?>
 <script src="<?php echo base_url() . 'content/jquery.js'; ?>" type="text/javascript"></script>
+<style type="text/css">
+    /* popup_box DIV-Styles*/
+    #popup_box { 
+        display:none; /* Hide the DIV */
+        position:fixed;  
+        _position:absolute; /* hack for internet explorer 6 */  
+        height:800px;  
+        width:600px;  
+        background:#FFFFFF;  
+        left: 300px;
+        top: 50px;
+        z-index:100; /* Layering ( on-top of others), if you have lots of layers: I just maximized, you can change it yourself */
+        margin-left: 15px;  
 
+        /* additional features, can be omitted */
+        border:2px solid #ff0000;  	
+        padding:25px;  
+        font-size:15px;  
+        -moz-box-shadow: 0 0 5px #ff0000;
+        -webkit-box-shadow: 0 0 5px #ff0000;
+        box-shadow: 0 0 5px #ff0000;
+
+    }
+    a{  
+        cursor: pointer;  
+        text-decoration:none;  
+    } 
+
+    /* This is for the positioning of the Close Link */
+    #popupBoxClose {
+        font-size:20px;  
+        line-height:15px;  
+        right:5px;  
+        top:5px;  
+        position:absolute;  
+        color:#6fa5e2;  
+        font-weight:500;  	
+    }</style>
+<script type="text/javascript">
+
+    $(document).ready( function() {
+        // When site loaded, load the Popupbox First
+        $('.srcimage').click(function(){
+            $('#popup_box').fadeIn(2500);
+            var srcimg = $(this).attr('src');
+			
+            $("#pqr").attr({
+                src: srcimg
+			
+            });
+            $('#popup_box').css({"display":"Block"});
+			
+            //$('#pqr').fadeIn(3000);
+            $('#detailsImage').css({"opacity":".3"});
+			
+        });
+		
+        $('#popupBoxClose').click( function() {
+            unloadPopupBox();
+        });
+		
+        function unloadPopupBox() {	// TO Unload the Popupbox
+            $('#popup_box').fadeOut("slow");
+            $("#detailsImage").css({ // this is just for style		
+                "opacity": "1"  
+            }); 
+        }		
+		
+		
+		
+        /**********************************************************/
+		
+    });
+	
+	
+</script>
 <script>
     var base_url = "http://localhost/smartaservice/";
     $(document).ready(function() {
@@ -73,7 +148,7 @@ $this->load->helper('currency');
                         </div>
 
                         <div id='detailsImage'>
-                            <img src="<?php echo base_url() . "content/images/" . $productDet->image1; ?>" alt="<?php echo $productDet->name; ?>"/>   
+                            <img class="srcimage" src="<?php echo base_url() . "content/images/" . $productDet->image1; ?>" alt="<?php echo $productDet->name; ?>"/>   
                         </div>
                         <div id='detailsImage'>
                             <img src="<?php echo base_url() . "content/images/" . $productDet->image2; ?>" alt="<?php echo $productDet->name; ?>"/>   
