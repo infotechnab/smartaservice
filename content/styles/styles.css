@@ -27,7 +27,7 @@ body
 {
     margin: 0 auto 0 auto;
     padding: 0px;
-    width: 1360px;
+    
 }
 #headerBackground
 {
@@ -41,13 +41,13 @@ body
 }
 #headerContent
 {
-    width: 80%;
+    
     margin: 0 auto 0 auto;
     padding: 0px;
 }
 #contentWrapper
 {
-    width: 80%;
+    
     margin: 0 auto 0 auto;
     padding: 50px 0px 0px 0px;
    height: auto;
@@ -57,7 +57,7 @@ body
     width: 10%;
     float: left;
     margin: 0px;
-    padding: 0px;
+    
 }
 #headerLogo img
 {
@@ -120,12 +120,10 @@ body
 }
 
 #searchbox
-{
-    width: 15%;
-    height: 30px;
-    margin: 10px 20px 10px 0px;
+{ 
+    height: 30px; 
     background-color: #fff;
-    float: right;
+    float: left;
 }
 #contentBackground
 {
@@ -228,13 +226,13 @@ body
 
 .contentContainerBox
 {
-    margin: 20px 22px 0px 0px;
+   
     padding: 0px;
     background-color: #fff;
     min-height: 200px;
     border-radius: 5px;
     float: left;
-    width: 30%;
+    
 }
 
 .contentContainerHeader, .contentContainerFooter
@@ -304,7 +302,7 @@ body
      margin: 6px;
     padding: 0px;
     min-height: 150px;
-    width:50%;
+    width: 50%;
     float: left;
      border: 1px solid #222;
 }
@@ -312,7 +310,7 @@ body
 {
     padding: 8px;
    
-    width: 300px;
+    
    float: left;
 }
 #detailLargeImage
@@ -484,4 +482,167 @@ div.vertical-line{
 {
     padding: 2px 100px 2px 15px;
     text-align: right;
+}
+
+/*for media screen 1025-1500px*/
+@media screen and (max-width : 1500px)
+{
+    .container
+    {
+        width: 95%;
+    }
+    #headerContent, #contentWrapper
+    {
+        width: 80%;
+    }
+      #headerLogo
+    {
+        padding: 0px;
+    }
+    #detailsImageLarge img
+    {
+        width: 300px;
+    }
+    #searchbox
+    {
+        width: 15%;
+        margin: 10px 20px 10px 0px;
+    }
+}
+@media screen and (max-width : 1350px)
+{
+    .container
+    {
+        width: 95%;
+    }
+    #headerContent, #contentWrapper
+    {
+        width: 82%;
+    }
+      #headerLogo
+    {
+        padding: 0px;
+    }
+     #detailsImageLarge img
+    {
+        width: 300px;
+    }
+    .contentContainerBox
+    {
+         margin: 20px 22px 0px 0px;
+         width: 30%;
+    }
+    #searchbox
+    {
+        width: 15%;
+        margin: 10px 20px 10px 0px;
+    }
+}
+@media screen and (max-width : 1280px)
+{
+    .container
+    {
+        width: 95%;
+    }
+    #headerContent, #contentWrapper
+    {
+        width: 85%;
+    }
+     #headerLogo
+    {
+        padding: 0px;
+    }
+     #detailsImageLarge img
+    {
+        width: 300px;
+    }
+    #searchbox
+    {
+        width: 15%;
+        margin: 10px 20px 10px 0px;
+    }
+}
+@media screen and (max-width : 1250px)
+{
+    .container
+    {
+        width: 95%;
+    }
+    #headerContent, #contentWrapper
+    {
+        width: 95%;
+    }
+    #headerLogo
+    {
+        padding: 0px 0px 0px 10px;
+    }
+    #detailsImageLarge img
+    {
+        width: 300px;
+    }
+    #searchbox
+    {
+        width: 15%;
+        margin: 10px 20px 10px 0px;
+    }
+}
+@media screen and (max-width : 1024px)
+{
+    .container
+    {
+        width: 95%;
+    }
+    #headerContent, #contentWrapper
+    {
+        width: 100%;
+    }
+    #headerLogo
+    {
+        padding: 0px 0px 0px 20px;
+    }
+    #detailsImageLarge img
+    {
+        width: 290px;
+    }
+    .contentContainerBox
+    {
+         margin: 2% 3.5% 0% 3.5%;
+         width: 43%;
+    }
+    #searchbox
+    {
+        width: 12%;
+        margin: 10px 20px 10px 0px;
+    }
+}
+@media screen and (max-width : 800px)
+{
+    .container
+    {
+        width: 95%;
+    }
+    #headerContent, #contentWrapper
+    {
+        width: 100%;
+    }
+    #headerLogo
+    {
+        padding: 0px 0px 0px 20px;
+    }
+    #detailsImageLarge img
+    {
+        width: 210px;
+    }
+    .contentContainerBox
+    {
+         margin: 2% 3.5% 0% 3.5%;
+         width: 43%;
+    }
+    #searchbox
+    {
+        width: 6%;
+        margin: 10px 0px 10px 0px;
+       
+          
+    }
 }

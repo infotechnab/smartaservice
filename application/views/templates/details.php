@@ -7,7 +7,7 @@ $this->load->helper('currency');
     /* popup_box DIV-Styles*/
     #popup_box { 
         display:none; /* Hide the DIV */
-        position:fixed;  
+        position:absolute;  
         _position:absolute; /* hack for internet explorer 6 */  
         height:800px;  
         width:600px;  
@@ -45,8 +45,8 @@ $this->load->helper('currency');
 
     $(document).ready( function() {
         // When site loaded, load the Popupbox First
-        $('.srcimage').click(function(){
-            $('#popup_box').fadeIn(2500);
+        $('#detailsImage').click(function(){
+            $('#popup_box').fadeIn(500);
             var srcimg = $(this).attr('src');
 			
             $("#pqr").attr({
@@ -148,16 +148,17 @@ $this->load->helper('currency');
                         </div>
 
                         <div id='detailsImage'>
-                            <img class="srcimage" src="<?php echo base_url() . "content/images/" . $productDet->image1; ?>" alt="no images found"/>   
+                            <img id="srcimage" src="<?php echo base_url() . "content/images/" . $productDet->image1; ?>" alt="no images found"/>   
                         </div>
                         <div id='detailsImage'>
-                            <img src="<?php echo base_url() . "content/images/" . $productDet->image2; ?>" alt="no images found"/>   
+                            <img id="srcimage" src="<?php echo base_url() . "content/images/" . $productDet->image2; ?>" alt="no images found"/>   
                         </div>
                         <div id='detailsImage'>
-                            <img src="<?php echo base_url() . "content/images/" . $productDet->image3; ?>" alt="no images found"/>   
+                            <img id="srcimage" src="<?php echo base_url() . "content/images/" . $productDet->image3; ?>" alt="no images found"/>   
                         </div>
                       <div class="clear"></div>
                     </div>
+            
                 <?php
                 }
             } else {
@@ -165,7 +166,10 @@ $this->load->helper('currency');
 <?php }
 ?>
 
-
+<div id="popup_box">	<!-- OUR PopupBox DIV-->
+<img  src="" width="600px" height="800px" id="pqr"  />
+ <a id="popupBoxClose">Close</a>	
+</div>
 
         </div>
 
