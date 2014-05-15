@@ -8,8 +8,7 @@
     
     
     <?php
-    
-    
+        
          if(!empty($query)){
              ?>
         <table border="1" cellpadding="10">
