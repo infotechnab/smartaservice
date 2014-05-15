@@ -1,13 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.0.4
+-- version 3.4.5
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: May 15, 2014 at 09:33 AM
--- Server version: 5.6.12-log
--- PHP Version: 5.4.12
+-- Generation Time: May 15, 2014 at 12:02 PM
+-- Server version: 5.5.16
+-- PHP Version: 5.3.8
 
-SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
 
 
@@ -19,8 +19,6 @@ SET time_zone = "+00:00";
 --
 -- Database: `smartaservice`
 --
-CREATE DATABASE IF NOT EXISTS `smartaservice` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
-USE `smartaservice`;
 
 -- --------------------------------------------------------
 
@@ -453,6 +451,9 @@ CREATE TABLE IF NOT EXISTS `product_oder` (
   `city` varchar(255) NOT NULL,
   `state` varchar(255) NOT NULL,
   `zip` varchar(200) NOT NULL,
+  `country` varchar(255) NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `contact` varchar(50) NOT NULL,
   PRIMARY KEY (`o_id`),
   KEY `u_id` (`u_id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
@@ -461,8 +462,8 @@ CREATE TABLE IF NOT EXISTS `product_oder` (
 -- Dumping data for table `product_oder`
 --
 
-INSERT INTO `product_oder` (`o_id`, `u_id`, `date`, `user_name`, `deliver_address`, `city`, `state`, `zip`) VALUES
-(1, 11, '2014-05-15', 'hello', 'naranghat', 'chitwan', 'chitwan', '12345');
+INSERT INTO `product_oder` (`o_id`, `u_id`, `date`, `user_name`, `deliver_address`, `city`, `state`, `zip`, `country`, `email`, `contact`) VALUES
+(1, 11, '2014-05-15', 'hello', 'naranghat', 'chitwan', 'chitwan', '12345', 'nepal', 'rsubedi@salyani.com.np', '123456');
 
 -- --------------------------------------------------------
 
@@ -542,7 +543,7 @@ CREATE TABLE IF NOT EXISTS `user` (
 --
 
 INSERT INTO `user` (`id`, `user_name`, `user_fname`, `user_lname`, `user_email`, `user_pass`, `user_url`, `user_registered_date`, `user_auth_key`, `user_status`, `user_type`) VALUES
-(11, 'admin', 'admin', 'admin', 'admin@ad.min', '21232f297a57a5a743894a0e4a801fc3', NULL, '2014-05-11 11:27:48', ' ', '1', '0'),
+(11, 'admin', 'ramji', 'subedi', 'admin@ad.min', '21232f297a57a5a743894a0e4a801fc3', NULL, '2014-05-11 11:27:48', ' ', '1', '0'),
 (12, 'ramji', 'ram', 'ram', 'ramji@salyani.com.np', 'ae3274d5bfa170ca69bb534be5a22467', NULL, '2014-05-13 06:56:32', NULL, '1', '1');
 
 --

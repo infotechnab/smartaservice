@@ -97,8 +97,31 @@ class Dbmodel extends CI_Model {
         return $query->result();
     }
     
+    function get_all_product_orderDis()
+    {
+        //$this->db->order_by('o_id','DESC');
+        $this->db->distinct();
+        $this->db->select("trans_id");
+        $query = $this->db->get('product_oder_detail');
+        return $query->result();
+    }
+    function TransDetail($id)
+    {
+        
+        $this->db->where('trans_id',$id);
+        $query = $this->db->get('product_oder_detail');
+        return $query->result();
+    }
     
-    
+    function get_product_id($id)
+    {
+        $this->db->where('id',$id);
+        $query = $this->db->get('product');
+        return $query->result();
+        
+    }
+
+
     function get_all_product($limit, $start)
     {
         $this->db->limit($limit, $start);

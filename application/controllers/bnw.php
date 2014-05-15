@@ -352,7 +352,7 @@ class bnw extends CI_Controller {
 
             //$data["query"] = $this->dbmodel->get_all_product($config["per_page"], $page);
             //$data["links"] = $this->pagination->create_links();
-            $data['query'] = $this->dbmodel->get_all_product_order();
+            $data['query'] = $this->dbmodel->get_all_product_orderDis();
             $data['meta'] = $this->dbmodel->get_meta_data();
 
             $this->load->view('bnw/templates/header', $data);
