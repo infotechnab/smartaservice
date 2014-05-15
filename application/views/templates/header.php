@@ -6,7 +6,12 @@
         <script src="<?php echo base_url() . 'content/jquery.js'; ?>" type="text/javascript"></script>
         <link rel="stylesheet" href="<?php echo base_url() . "content/styles/styles.css"; ?>">     
         <link rel="shortcut icon" href="<?php echo base_url() . "content/images/favicon1.jpg"; ?>" type="image/x-icon"> 
-        <link rel="stylesheet" href="<?php echo base_url() . "content/styles/cartDetailsStyle.css"; ?>">    
+        <link rel="stylesheet" href="<?php echo base_url() . "content/styles/cartDetailsStyle.css"; ?>">   
+        
+        
+        <meta name="title" content="Smart Access Services">
+        <meta name="description" content="Smart Access Services">
+        <meta name="keywords" content="Shopping cart, Cart, Jackek, Smart Access Services">
     </head>
     <body>
         <div id="container">

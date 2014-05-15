@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: May 13, 2014 at 11:46 AM
+-- Generation Time: May 15, 2014 at 06:49 AM
 -- Server version: 5.5.16
 -- PHP Version: 5.3.8
 
@@ -52,21 +52,16 @@ CREATE TABLE IF NOT EXISTS `category` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `category_name` varchar(100) NOT NULL DEFAULT 'Required',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=10 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=13 ;
 
 --
 -- Dumping data for table `category`
 --
 
 INSERT INTO `category` (`id`, `category_name`) VALUES
-(1, 'asdsa'),
-(2, 'asdasdsa'),
-(3, 'sadsadasdas'),
-(4, 'sadsadasda'),
-(6, 'fgyhtynvb'),
-(7, 'gbgfhncvv'),
-(8, 'abcd'),
-(9, 'dfsgfdgfdg');
+(10, 'file'),
+(11, 'hindi'),
+(12, 'nepali');
 
 -- --------------------------------------------------------
 
@@ -404,28 +399,26 @@ CREATE TABLE IF NOT EXISTS `product` (
   `name` varchar(200) NOT NULL,
   `description` varchar(2000) NOT NULL,
   `summary` varchar(200) NOT NULL,
+  `category` int(11) NOT NULL,
   `image1` varchar(255) NOT NULL,
   `image2` varchar(255) NOT NULL,
   `image3` varchar(255) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=26 ;
+  PRIMARY KEY (`id`),
+  KEY `category` (`category`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=33 ;
 
 --
 -- Dumping data for table `product`
 --
 
-INSERT INTO `product` (`id`, `qty`, `price`, `name`, `description`, `summary`, `image1`, `image2`, `image3`) VALUES
-(1, 8, 3000, 'sweater', '', '', '', '', ''),
-(2, 8, 5000, 'jacket', '', '', '', '', ''),
-(3, 1, 2000, 'HOOD', '', '', '', '', ''),
-(4, 2, 4000, 'adidas shoe', '', '', '', '', ''),
-(17, 1, 1010, 'abce`', '', '', 'food2.jpg', '', ''),
-(18, 1, 2020, 'abc', '', '', 'food31.jpg', '', ''),
-(20, 1, 500, 'abcd', '', '', 'flag15.jpg', '', ''),
-(21, 1, 250, 'abc', '', '', 'food21.jpg', '', ''),
-(22, 1, 999, 'a', '0', '0', 'flag24.jpg', ' ', 'food23.jpg'),
-(23, 1, 500, 'abcdefg', '', '', 'food22.jpg', ' ', ' '),
-(24, 1, 555, 'aaaa', 'dfsafsdfsdfdsfsdfsdfsdfsdfsdfsdfk<br>flkdsjfldsjfsdlfjsdlfjsdlfjsdf<br>sdfjsdflsdjfjsdfjsdlfjsdflksdjf<br>sdflksdjflsdjflsdkjfsldjfsdlkjflsdjf<br>sdlfkjsdlfjsdlfsdlfjsdlfjsdf<br>sdflkjsdlfjsdlfkjsdfjlk<br>', 'sdfdsfsdfsdfsdfsdf', ' ', ' ', ' ');
+INSERT INTO `product` (`id`, `qty`, `price`, `name`, `description`, `summary`, `category`, `image1`, `image2`, `image3`) VALUES
+(26, 1, 100, 'ramayan', '      nepali movie<br>', '      nepali movie<br>', 12, 'tickets-185x185.jpg', 'tickets-185x1851.jpg', 'tickets-185x1852.jpg'),
+(27, 1, 500, 'hood', 'hood<br>', 'hood<br>', 10, ' ', ' ', ' '),
+(28, 1, 5, 'cow', 'cow<br>', 'cow<br>', 10, 'Cow.calf-05_.jpg', ' ', ' '),
+(29, 1, 11, 'sdfdsf', '                  sdfdsf<br>', '                  sdfdsf<br>', 10, 'Forest-Animals-Deer-Leonid-Afremov-Antelope.jpg', ' ', ' '),
+(30, 1, 500, 'ramayan', 'ramayan<br>', 'ramayan<br>', 11, 'emerochino-tickets1.jpg', 'emerochino-tickets11.jpg', 'emerochino-tickets12.jpg'),
+(31, 1, 500, 'raghav', 'raghav<br>', 'raghav<br>', 12, 'tickets-185x1853.jpg', 'emerochino-tickets13.jpg', 'tickets-185x1854.jpg'),
+(32, 1, 888, 'last item', 'last item<br>', 'last item<br>', 12, 'tickets-185x1855.jpg', 'emerochino-tickets14.jpg', 'tickets-185x1856.jpg');
 
 -- --------------------------------------------------------
 
@@ -456,7 +449,14 @@ CREATE TABLE IF NOT EXISTS `product_oder` (
   `zip` varchar(200) NOT NULL,
   PRIMARY KEY (`o_id`),
   KEY `u_id` (`u_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+
+--
+-- Dumping data for table `product_oder`
+--
+
+INSERT INTO `product_oder` (`o_id`, `u_id`, `date`, `user_name`, `deliver_address`, `city`, `state`, `zip`) VALUES
+(1, 11, '2014-05-15', 'hello', 'naranghat', 'chitwan', 'chitwan', '12345');
 
 -- --------------------------------------------------------
 
@@ -473,7 +473,15 @@ CREATE TABLE IF NOT EXISTS `product_oder_detail` (
   PRIMARY KEY (`od_id`),
   KEY `p_id` (`p_id`),
   KEY `o_id` (`o_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+
+--
+-- Dumping data for table `product_oder_detail`
+--
+
+INSERT INTO `product_oder_detail` (`od_id`, `o_id`, `p_id`, `qty`, `price`) VALUES
+(1, 1, 28, '10', 500),
+(2, 1, 30, '50', 0);
 
 -- --------------------------------------------------------
 
@@ -542,6 +550,12 @@ ALTER TABLE `media`
 --
 ALTER TABLE `navigation`
   ADD CONSTRAINT `fk_navigation_menu` FOREIGN KEY (`menu_id`) REFERENCES `menu` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+--
+-- Constraints for table `product`
+--
+ALTER TABLE `product`
+  ADD CONSTRAINT `product_ibfk_1` FOREIGN KEY (`category`) REFERENCES `category` (`id`);
 
 --
 -- Constraints for table `product_oder`

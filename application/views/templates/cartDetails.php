@@ -58,7 +58,14 @@ $this->load->helper('currency');
                                 <td> <?php get_currency($item['price']); ?></td>
                                 <td class="sub_total_price"></td>
                                 <td><a href="<?php echo base_url(); ?>index.php/cartDetails/remove/<?php echo $item['rowid']; ?>"><div id="closeSymbol">X</div></a></td>
-                                
+                              <?php
+                              
+                              //
+                                echo '<input type="hidden" name="item_name['.$cart_items.']" value="'.$obj->product_name.'" />';
+			echo '<input type="hidden" name="item_code['.$cart_items.']" value="'.$product_code.'" />';
+			echo '<input type="hidden" name="item_desc['.$cart_items.']" value="'.$obj->product_desc.'" />';
+			echo '<input type="hidden" name="item_qty['.$cart_items.']" value="'.$cart_itm["qty"].'" />';
+                        ?>
                             </tr>
                             
 
@@ -112,7 +119,8 @@ else { ?>
             <td></td>
         </tr>
     </table>
-             <div id="order_checkout"  class="updateBtnStyle"><?php echo anchor('cartDetails/insert_cart_item', 'Check Out') ?></div>
+             <div id="order_checkout"  class="updateBtnStyle">
+                 <?php echo anchor('cartDetails/insert_cart_item', 'Pay Now') ?></div>
          </div>
    
  <div class="clear"></div>
