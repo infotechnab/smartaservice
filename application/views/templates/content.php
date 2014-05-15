@@ -1,4 +1,6 @@
-  <?php
+<link rel="stylesheet" href="<?php echo base_url().'content/styles/slider.css'?>" >
+
+ <?php
 $this->load->helper('currency');
 ?>
 
@@ -43,6 +45,7 @@ $this->load->helper('currency');
             </div>
             <div class='contentContainer'>
                 <!-- from here the details starts and it must be replaced by slider-->
+                <div class="containerss">
                 <?php foreach($featureItem as $f_item){ ?>
                 <div class="slider_main">
             <div id="detailsImageLarge">
@@ -66,6 +69,7 @@ $this->load->helper('currency');
                 <div class="clear"></div>
                 
                 <?php } ?>
+                </div>
                 <!-- here the details ends-->
                   
                 
