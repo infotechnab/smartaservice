@@ -14,60 +14,80 @@
              ?>
         <table border="1" cellpadding="10">
         <tr>
-            <th>Product Name</th>
-            <th>Quantity</th>
-            <th>Price</th>
-            
-           
-            <th>Date</th>
-            <th>User Name</th>
-            <th>Deliver Address</th>
+            <th>Transection ID</th>
+            <th>Product Detail</th>
+            <th>User Detail</th>
+            <th>Shipping Address</th>
+            <th>PayPal Information</th>
             <th>Action</th>
         </tr>
         <?php
             foreach ($query as $data){
             ?>
           <tr>
-            <td><?php $pid = $data->p_id ;
-            $pdetail = $this->dbmodel->findproduct($pid);
-            foreach ($pdetail as $pname)
-            {
-                $proName = $pname->name;
-            }
-                 echo $proName;   ?></td>
-            <td><?php echo $data->qty; ?></td>
-            <td><?php echo $data->price ?></td>
-            <td><?php $oid =  $data->o_id;
-            $oderDetail = $this->dbmodel->get_all_product_order_oid($oid);
-            foreach ($oderDetail as $orderDate)
-            {
-                $oDate = $orderDate->date;
-            }
-            echo $oDate;
-            ?></td>
-             <td><?php 
-             $oderDetailUser = $this->dbmodel->get_all_product_order_oid($oid);
+            <td><?php $tid = $data->trans_id ;
+             echo $tid;  
+             ?>
+            </td>
+            <?php $getTransData = $this->dbmodel->TransDetail($tid); ?>
+            <td> <div>
+                 <?php foreach ($getTransData as $trandetail)
+                     { 
+                 $pid = $trandetail->p_id;
+                 $oid = $trandetail->o_id;
+                 $qty = $trandetail->qty;
+                 
+                 $product_Detail = $this->dbmodel->get_product_id($pid); ?>
+                    <table>
+                        <?php foreach ($product_Detail as $pdetail) { ?>
+                        <tr>
+                            <td rowspan="2"> <img src="<?php echo base_url()."content/images/".$pdetail->image1; ?>" width="60px" height="40px" /></td>
+                            <td>
+                            <?php echo $pdetail->name;  ?>
+                            </td>
+                        </tr>
+                        <tr>
+<!--                            <td> <?php echo $pdetail->summary; ?></td>-->
+                            <td><?php echo "Qnt :".$qty." ($".$pdetail->price.") = $".$qty * $pdetail->price; ?></td>
+                        </tr>
+                        <?php  } ?>
+                    </table> <hr/>
+                <?php  } ?>
+                </div>
+            </td>
+            <!--<td></td>-->
+            <td><?php 
+//            $oderDetail = $this->dbmodel->get_all_product_order_oid($oid);
+//            foreach ($oderDetail as $orderDate)
+//            {
+//                $oDate = $orderDate->user_name;
+//            }
+//            echo $oDate;
+            $oderDetailUser = $this->dbmodel->get_all_product_order_oid($oid);
              foreach ($oderDetailUser as $orderUserID)
             {
                 $UserID = $orderUserID->u_id;
+                $country = $orderUserID->country;
+                $shpAddress = $orderUserID->deliver_address;
+                $city = $orderUserID->city;
+                $email = $orderUserID->email;
+                $contact = $orderUserID->contact;
             }
             $DetailUser = $this->dbmodel->finduser($UserID);
-            {
+            
                 foreach ($DetailUser as $Uname)
                 {
                     $userName = $Uname->user_name;
+                    $fname = $Uname->user_fname;
+                    $lname = $Uname->user_lname;
+                    $userEmail = $Uname->user_email;
                 }
-            }
-             echo $userName; ?></td>
-             <td><?php 
-             $oderDetailAddress = $this->dbmodel->get_all_product_order_oid($oid);
-             foreach ($oderDetailAddress as $orderAddress)
-            {
-                $deliver_address = $orderAddress->deliver_address;
-            }
-             echo $deliver_address;
-             ?></td>
-            <td><?php echo anchor('bnw/delProductOrder/'.$data->od_id,'Delete'); ?></td>
+            
+             echo $fname." ".$lname."<br/>".$email."<br/>".$contact."<br/>".$shpAddress.",".$city."<br/>".$country;
+            ?></td>
+            <td><?php echo $fname." ".$lname."<br/>".$email."<br/>".$contact."<br/>".$shpAddress.",".$city."<br/>".$country;  ?></td>
+            <td></td>
+             <td><?php echo anchor('bnw/delProductOrder/'.$tid,'Delete'); ?></td>
         </tr>
             <?php    
             }
