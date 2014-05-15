@@ -266,6 +266,7 @@ class bnw extends CI_Controller {
                 if ($this->upload->do_upload('myfile')) {
                     $data = array('upload_data' => $this->upload->data('myfile'));
                     $productImg = $data['upload_data']['file_name'];
+                    //die("selected file");
                 } else {
                     $productImg = $this->input->post('firstImg');
                 }
@@ -387,7 +388,31 @@ class bnw extends CI_Controller {
     
     }
     
-    
+        function catproduct()
+    {
+       if ($this->session->userdata('logged_in')) {
+            $data['username'] = Array($this->session->userdata('logged_in'));
+            $categoryValue = $this->input->post('categoryProduct');
+            $config = array();
+            $config["base_url"] = base_url() . "index.php/bnw/catproduct";
+            $config["total_rows"] = $this->dbmodel->record_count_catproduct($categoryValue);
+            $config["per_page"] = 6;
+            $this->pagination->initialize($config);
+            $page = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
+
+            $data["query"] = $this->dbmodel->get_all_cateproduct($config["per_page"], $page,$categoryValue);
+            $data["links"] = $this->pagination->create_links();
+            $data['meta'] = $this->dbmodel->get_meta_data();
+
+            $this->load->view('bnw/templates/header', $data);
+            $this->load->view('bnw/templates/menu');
+            $this->load->view('product/listProduct');
+            $this->load->view('bnw/templates/footer', $data);
+        } else {
+            redirect('login', 'refresh');
+        } 
+    }
+
     //=================================== end Cart System  ========================================================//
 
     function logout() {
