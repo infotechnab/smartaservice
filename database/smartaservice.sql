@@ -1,13 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 3.4.5
+-- version 4.0.4
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: May 15, 2014 at 06:49 AM
--- Server version: 5.5.16
--- PHP Version: 5.3.8
+-- Generation Time: May 15, 2014 at 09:33 AM
+-- Server version: 5.6.12-log
+-- PHP Version: 5.4.12
 
-SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
 
 
@@ -19,6 +19,8 @@ SET time_zone = "+00:00";
 --
 -- Database: `smartaservice`
 --
+CREATE DATABASE IF NOT EXISTS `smartaservice` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
+USE `smartaservice`;
 
 -- --------------------------------------------------------
 
@@ -52,7 +54,7 @@ CREATE TABLE IF NOT EXISTS `category` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `category_name` varchar(100) NOT NULL DEFAULT 'Required',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=13 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=14 ;
 
 --
 -- Dumping data for table `category`
@@ -61,7 +63,8 @@ CREATE TABLE IF NOT EXISTS `category` (
 INSERT INTO `category` (`id`, `category_name`) VALUES
 (10, 'file'),
 (11, 'hindi'),
-(12, 'nepali');
+(12, 'nepali'),
+(13, 'Featured Item');
 
 -- --------------------------------------------------------
 
@@ -405,7 +408,7 @@ CREATE TABLE IF NOT EXISTS `product` (
   `image3` varchar(255) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `category` (`category`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=33 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=37 ;
 
 --
 -- Dumping data for table `product`
@@ -418,7 +421,10 @@ INSERT INTO `product` (`id`, `qty`, `price`, `name`, `description`, `summary`, `
 (29, 1, 11, 'sdfdsf', '                  sdfdsf<br>', '                  sdfdsf<br>', 10, 'Forest-Animals-Deer-Leonid-Afremov-Antelope.jpg', ' ', ' '),
 (30, 1, 500, 'ramayan', 'ramayan<br>', 'ramayan<br>', 11, 'emerochino-tickets1.jpg', 'emerochino-tickets11.jpg', 'emerochino-tickets12.jpg'),
 (31, 1, 500, 'raghav', 'raghav<br>', 'raghav<br>', 12, 'tickets-185x1853.jpg', 'emerochino-tickets13.jpg', 'tickets-185x1854.jpg'),
-(32, 1, 888, 'last item', 'last item<br>', 'last item<br>', 12, 'tickets-185x1855.jpg', 'emerochino-tickets14.jpg', 'tickets-185x1856.jpg');
+(32, 1, 888, 'last item', 'last item<br>', 'last item<br>', 12, 'tickets-185x1855.jpg', 'emerochino-tickets14.jpg', 'tickets-185x1856.jpg'),
+(33, 1, 5000, 'Jacket', 'This jacket is made up of the leather and regzin. Its a high quality jacket made in indonesia. Its of YCKMD.', 'This jacket is made up of the leather and regzin. Its a high quality jacket made in indonesia. Its o', 13, '10151525_741063372611058_61122481_n.jpg', ' ', ' '),
+(34, 1, 2000, 'Paint', 'This paint is of pure jeans . made in nepal. sakjdfhas', 'This paint is of pure jeans . made in nepal. sakjdfhas', 13, 'hotel-reservation-widget-interface.png', ' ', ' '),
+(35, 1, 1000, 'Shirt', 'Shirt of roobin hod. askjdfhafe.. Its to sliky with 100% polister. daskjfak;', 'Shirt of roobin hod. askjdfhafe.. Its to sliky with 100% polister. daskjfak;', 13, 'elegant-blank-menu-13599460.jpg', ' ', ' ');
 
 -- --------------------------------------------------------
 
@@ -470,18 +476,22 @@ CREATE TABLE IF NOT EXISTS `product_oder_detail` (
   `p_id` int(11) NOT NULL,
   `qty` varchar(255) NOT NULL,
   `price` double NOT NULL,
+  `trans_id` varchar(11) NOT NULL,
+  `trans_num` int(10) NOT NULL,
   PRIMARY KEY (`od_id`),
   KEY `p_id` (`p_id`),
   KEY `o_id` (`o_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=83 ;
 
 --
 -- Dumping data for table `product_oder_detail`
 --
 
-INSERT INTO `product_oder_detail` (`od_id`, `o_id`, `p_id`, `qty`, `price`) VALUES
-(1, 1, 28, '10', 500),
-(2, 1, 30, '50', 0);
+INSERT INTO `product_oder_detail` (`od_id`, `o_id`, `p_id`, `qty`, `price`, `trans_id`, `trans_num`) VALUES
+(79, 1, 33, '1', 0, 'TRD1', 1),
+(80, 1, 34, '1', 0, 'TRD1', 1),
+(81, 1, 33, '1', 0, 'TRD2', 2),
+(82, 1, 34, '1', 0, 'TRD2', 2);
 
 -- --------------------------------------------------------
 

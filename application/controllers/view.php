@@ -17,7 +17,7 @@ class View extends CI_Controller {
     public function index() {     //fetching data from database of the product
 
         $data['product_info'] = $this->productModel->product_info();
-
+        $data['featureItem'] = $this->productModel->featured_item();
         $this->load->view('templates/header');
         $this->load->view('templates/navigation');
         $this->load->view('templates/content', $data);
@@ -81,9 +81,19 @@ class View extends CI_Controller {
             }
         }
 
-
+//        $tid = 0;
+//         $trans_id = $this->productModel->getTranId();
+//         foreach ($trans_id as $tranId)
+//         {
+//             $tid = $tranId->trans_id;
+//         }
+//         $a = "TRD";
+//         $tid++;
+//       $tid = $a.$tid;
+//        
 
         $insert = array(
+       //     'trans_id' => $tid,
             'id' => $id,
             'qty' => $newQnt,
             'price' => $price,

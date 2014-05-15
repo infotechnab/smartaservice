@@ -61,10 +61,10 @@ $this->load->helper('currency');
                               <?php
                               
                               //
-                                echo '<input type="hidden" name="item_name['.$cart_items.']" value="'.$obj->product_name.'" />';
-			echo '<input type="hidden" name="item_code['.$cart_items.']" value="'.$product_code.'" />';
-			echo '<input type="hidden" name="item_desc['.$cart_items.']" value="'.$obj->product_desc.'" />';
-			echo '<input type="hidden" name="item_qty['.$cart_items.']" value="'.$cart_itm["qty"].'" />';
+                               // echo '<input type="hidden" name="item_name['.$cart_items.']" value="'.$obj->product_name.'" />';
+			//echo '<input type="hidden" name="item_code['.$cart_items.']" value="'.$product_code.'" />';
+			//echo '<input type="hidden" name="item_desc['.$cart_items.']" value="'.$obj->product_desc.'" />';
+			//echo '<input type="hidden" name="item_qty['.$cart_items.']" value="'.$cart_itm["qty"].'" />';
                         ?>
                             </tr>
                             

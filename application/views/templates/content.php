@@ -43,29 +43,31 @@ $this->load->helper('currency');
             </div>
             <div class='contentContainer'>
                 <!-- from here the details starts and it must be replaced by slider-->
-                
-       <?php $data=array("image"=>'image', "title"=>'Venture Jacket', "details"=>'This jacket is the best suited for moderate climatic condition. This is wind proof jacket and made in indonesia by jack and jones company. It protects you from wind while travelling in bike not only that it also orotects from rain too.', "price"=>'RS. 500/-'); ?>   
-            <div id='detailsImageLarge'>
-                             <img src="<?php echo base_url() . "content/images/raincoat.png"; ?>"/>   
+                <?php foreach($featureItem as $f_item){ ?>
+                <div class="slider_main">
+            <div id="detailsImageLarge">
+                             <img src="<?php echo base_url() . "content/images/".$f_item->image1; ?>"/>   
             </div>  
             
             <div id="detailsDetail">
-                <h2><?php echo $data['title']; ?></h2>
-                <p> <?php echo $data['details']; ?> </p> 
+                <h2><?php echo $f_item->name; ?></h2>
+                <p> <?php echo $f_item->summary; ?> </p> 
                 
             </div>
             
             
-               <div class='contentContainerFooterLeft' style="width:90px;"><h4><?php get_currency(500); ?></h4></div>
+               <div class='contentContainerFooterLeft' style="width:90px;"><h4><?php get_currency($f_item->price); ?></h4></div>
                              <div class="redColouredDiv" id='contentContainerFooterRight' style="width: 8px;">
 
                         <input type="button" value="<?php ?>" class="addToCart" id="addToCartBtn">
             
                              </div>
+                </div>
+                <div class="clear"></div>
                 
-                
+                <?php } ?>
                 <!-- here the details ends-->
-                  <div class="clear"></div>
+                  
                 
 
             </div>

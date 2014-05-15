@@ -21,4 +21,17 @@ public function product_info(){
             return $query->result();
     }
     
+    public function featured_item(){
+     $this->db->order_by('id','DESC');
+      $this->db->where('category', '13');
+     $query = $this->db->get('product', 4);
+       return $query->result();
+    }
+    
+    public function getTranId()
+    {
+         $this->db->order_by('trans_id','DESC');
+     $query = $this->db->get('product_oder_detail', 1);
+       return $query->result();
+    }
 }
