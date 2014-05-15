@@ -1,7 +1,8 @@
 .containerss{
  margin: 20px 0px 20px 0px;
- 
-   min-height: 350px;
+
+   height: 350px;
+   width: 600px;
   overflow:hidden;
  
   position:relative;
@@ -15,9 +16,10 @@
   animation:round 26s infinite;
   opacity:0;
   
+  
 }
 @keyframes round{   
-  25%{opacity:1;}
+  15%{opacity:1;}
   40%{opacity:0;}
 } 
 

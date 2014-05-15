@@ -5,7 +5,7 @@ $this->load->helper('currency');
 
 <?php if ($this->cart->contents()) {  ?>
 <div id="total_item"><h4>Total: <?php echo $this->cart->total_items(); ?> items</h4></div>
-                <table width="100%">
+<table width="97%" style="margin: 0px 0px 10px 12px;">
                     <tr>
                         <th width='55px'></th>
                         <th style="text-align: left; padding: 0px 0px 0px 15px;">Name</th>
@@ -16,7 +16,7 @@ $this->load->helper('currency');
                     </tr>
                     <?php if ($cart = $this->cart->contents()) { ?>
                         <?php foreach ($cart as $item) { ?>                                      
-                        <?php var_dump($item); ?>
+                       
                             <tr>
                                 <td><img src="<?php echo base_url().'content/images/'.$item['image1']; ?>" height="50px" width="50px"> </td>
                                 <td style="padding: 0px 0px 0px 10px;"><?php echo $item['name']; ?> </td>

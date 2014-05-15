@@ -81,19 +81,7 @@ class View extends CI_Controller {
             }
         }
 
-//        $tid = 0;
-//         $trans_id = $this->productModel->getTranId();
-//         foreach ($trans_id as $tranId)
-//         {
-//             $tid = $tranId->trans_id;
-//         }
-//         $a = "TRD";
-//         $tid++;
-//       $tid = $a.$tid;
-//        
-
         $insert = array(
-       //     'trans_id' => $tid,
             'id' => $id,
             'qty' => $newQnt,
             'price' => $price,

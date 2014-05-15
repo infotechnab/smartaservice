@@ -184,6 +184,7 @@ body
 }
 #outerBorder
 {
+    text-align: center;
     margin: 25px;
     padding: 0px;
     border: 1px solid #e1dfdf;
@@ -301,10 +302,10 @@ body
 {
      margin: 6px;
     padding: 0px;
-    min-height: 150px;
+    height: 300px;
     width: 50%;
     float: left;
-     border: 1px solid #222;
+    // border: 1px solid #222;
 }
 #detailsImageLarge img
 {
@@ -346,7 +347,7 @@ body
 }
 #sidebarContent
 {
-    margin: 0px 0px 5px 0px;
+    margin: 15px 0px 2px 0px;
     padding: 0px;
     min-height: 40px;
     border-radius: 5px;
@@ -379,6 +380,16 @@ body
     min-height: 40px;
     border-radius: 5px;
 }
+
+.cartItems
+{
+    margin: -15px 0px 5px 0px;
+    padding: 0px 0px 1px 0px;
+    background-color: #fff;
+    min-height: 40px;
+    border-radius: 5px;
+}
+
 #footer
 {
      margin: 0px;
@@ -426,6 +437,8 @@ body
 }
 .number
 {
+    margin-top: -30px;
+    margin-left: 245px;
     font-size:16px;
     font-weight: bold;
     text-decoration:none;
@@ -509,7 +522,7 @@ div.vertical-line{
         margin: 10px 20px 10px 0px;
     }
 }
-@media screen and (max-width : 1350px)
+@media screen and (max-width : 1370px)
 {
     .container
     {
@@ -645,4 +658,5 @@ div.vertical-line{
        
           
     }
+    
 }

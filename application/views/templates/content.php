@@ -49,10 +49,10 @@ $this->load->helper('currency');
                 <?php foreach($featureItem as $f_item){ ?>
                 <div class="slider_main">
             <div id="detailsImageLarge">
-                             <img src="<?php echo base_url() . "content/images/".$f_item->image1; ?>"/>   
+                <img src="<?php echo base_url() . "content/images/".$f_item->image1; ?>" height="340" width="300"/>   
             </div>  
             
-            <div id="detailsDetail">
+                    <div id="detailsDetail">
                 <h2><?php echo $f_item->name; ?></h2>
                 <p> <?php echo $f_item->summary; ?> </p> 
                 
@@ -120,6 +120,6 @@ $this->load->helper('currency');
                 <div id="sideBarImage"><img src="<?php echo base_url() . "content/images/shopping-cart-icon-614x460.png"; ?>"/> </div>   
                 <h3>Shopping Cart</h3>
             </div>
-                <div class='sidebarContentNext' id="shopping_cart">
+                <div class='cartItems' id="shopping_cart">
                     
     

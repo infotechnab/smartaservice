@@ -2,70 +2,49 @@
                 <div id='contentWrapper'>
                     <div id="login">
                         <div id="outerBorder">
-                            <div class="loginLeft">
-                                <table width="200" style="margin-left:auto;margin-right:auto">
-                                    
-                                        <tr style="text-align: center;">
-                                            <td><h3>Existing Customer?</h3></td>
-                                        </tr>
-                                        <tr>
-                                            <td><input type="email" placeholder="Email" size="35" style="box-shadow: inset 0px  #888, inset 0px  #888; outline: none; border: 1px solid #dddddd; padding: 10px; border-radius: 5px;" required/></td>
-                                        </tr>
-                                       <tr>
-                                           <td><input type="password" placeholder="Password" size="35" style="box-shadow: inset 0px  #888, inset 0px  #888; outline: none; border: 1px solid #dddddd; padding: 10px; border-radius: 5px;" required/></td>
-                                        </tr>
-                                        <tr style="text-align: center;">
-                                            <td><input type="submit" value="Sign In" style="padding: 5px; width: 80px;" /></td>
-                                        </tr>
-                                        <tr style="text-align: center;">
-                                            <td><p>Forgot Password?</p></td>
-                                        </tr>
-                                        <tr style="text-align: center;">
-                                            <td><p>Or use your social account</p></td>
-                                        </tr>
-                                        <tr>
-                                            <td> <div class="fb-login-button" data-size="xlarge" data-show-faces="false" data-auto-logout-link="true"></div></td>
-                                        </tr>
-                                    
-                                </table>
-                    </div>
                             
-                            <div class="vertical-line">
+    <table border="0" width="100%">
+        <tr>
+            <td><h3>Existing Customer?</h3> </td>
+            <td rowspan="6">  <div class="vertical-line">
                             <div class="number" id='verticalOr'>OR</div>  
-        </div>
-        
-                                <div class="loginLeft">
-                                    <table width="250" style="margin-left:auto;margin-right:auto">
-                                 
-                                        <tr>
-                                            <td><h3>Don't have an account yet?</h3></td>
-                                        </tr>
-                                        
-                                        
-                                        <tr><td></td></tr>
-                                        
-                                   
-                                </table>
-                                    
-                                    
-                                 <hr id="nav">
-    <div id="mainNav">
-        
-        
-        <div class="number" id="two" style="margin-left: 30%;">OR</div>
-        
-        
-    </div>   
-                                </div>
-                             
-                        </div>
-                        <div class="clear"></div>
-                    </div>
-                    
+        </div></td>
+            <td><h3>Don't have an account yet?</h3></td>
+        </tr>
+          <tr>
+            <td><input type="email" placeholder="Email" size="35" style="box-shadow: inset 0px  #888, inset 0px  #888; outline: none; border: 1px solid #dddddd; padding: 10px; border-radius: 5px;" required/></td>
+            
+            <td> Register with or</td>
+        </tr>  <tr>
+            <td><input type="password" placeholder="Password" size="35" style="box-shadow: inset 0px  #888, inset 0px  #888; outline: none; border: 1px solid #dddddd; padding: 10px; border-radius: 5px;" required/></td>
+            
+            <td> go to checkout as new customer</td>
+        </tr>  <tr>
+            <td><input type="submit" value="Sign In" style="padding: 5px; width: 80px; background-color: black;" class="updateBtnStyle" /></td>
+            
+            <td><input type="submit" value="Continue" style="padding: 5px; width: 80px; background-color: black;" class="updateBtnStyle" /></td>
+        </tr>  <tr>
+            <td><p>Forgot Password?</p></td>
+            
+            <td>  <hr id="nav">
+    
+        <div class="number" id="two">OR</div>
+        </td>
+        </tr>  <tr>
+            <td><p>Or use your social account</p></td>
+            
+            <td><input type="submit" value="Continue Shopping" style="font-size: 20px;font-weight: bold;padding: 5px; width: 80px; width: auto;" class="updateBtnStyle" /></td>
+        </tr>
+    </table>
       
                 </div> 
+                                  </div> 
+                              </div> 
+              </div> 
 
-            </div>
+    
+    
+    
 
 
 

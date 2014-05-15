@@ -94,7 +94,7 @@ class CartDetails extends CI_Controller {
             
               foreach ($cart as $item)
                {
-                  var_dump($item);
+                  
                  if($item) {
                     mysql_query("INSERT INTO `product_oder_detail` (o_id,p_id,qty,trans_id,trans_num) 
        VALUES ('1','".$item['id']."', '".$item['qty']."', '$tid', '$tr')");
