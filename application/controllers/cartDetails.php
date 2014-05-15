@@ -71,7 +71,6 @@ class CartDetails extends CI_Controller {
         redirect('cartDetails');
     }
 
-<<<<<<< HEAD
     
     function insert_cart_item()
     {
@@ -101,32 +100,6 @@ class CartDetails extends CI_Controller {
                  }
             
           $this->load->view('templates/inserted');
-=======
-    function insert_cart_item() {
-        $cart = $this->cart->contents();
-
-        $tr = 0;
-        $trans_id = $this->productModel->getTranId();
-        foreach ($trans_id as $tranId) {
-            $tr = $tranId->trans_num;
-        }
-
-        $a = "TRD";
-        $tr = $tr + 1;
-        $tid = $a . $tr;
-
-
-        foreach ($cart as $item) {
-            var_dump($item);
-            if ($item) {
-                mysql_query("INSERT INTO `product_oder_detail` (o_id,p_id,qty,trans_id,trans_num) 
-       VALUES ('1','" . $item['id'] . "', '" . $item['qty'] . "', '$tid', '$tr')");
-            }
-        }
-
-        $this->load->view('templates/inserted');
->>>>>>> 54cda14511120d7ec3a88f998731b2c2f4409991
-    }
 
     function processCart() {
         
@@ -346,7 +319,7 @@ class CartDetails extends CI_Controller {
 
 }
 
-public function PPHttpPost($methodName_, $nvpStr_, $PayPalApiUsername, $PayPalApiPassword, $PayPalApiSignature, $PayPalMode) {
+ Public function PPHttpPost($methodName_, $nvpStr_, $PayPalApiUsername, $PayPalApiPassword, $PayPalApiSignature, $PayPalMode) {
 			// Set up your API credentials, PayPal end point, and API version.
 			$API_UserName = urlencode($PayPalApiUsername);
 			$API_Password = urlencode($PayPalApiPassword);
