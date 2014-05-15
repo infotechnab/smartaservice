@@ -14,58 +14,39 @@
              ?>
         <table border="1" cellpadding="10">
         <tr>
-            <th>Product Name</th>
-            <th>Quantity</th>
+            <th>Oder ID</th>
+            <th>Order Detail</th>
             <th>Price</th>
-            
-           
-            <th>Date</th>
-            <th>User Name</th>
-            <th>Deliver Address</th>
+            <th>User Detail</th>
             <th>Action</th>
         </tr>
         <?php
             foreach ($query as $data){
             ?>
           <tr>
-            <td><?php $pid = $data->p_id ;
-            $pdetail = $this->dbmodel->findproduct($pid);
-            foreach ($pdetail as $pname)
-            {
-                $proName = $pname->name;
-            }
-                 echo $proName;   ?></td>
-            <td><?php echo $data->qty; ?></td>
-            <td><?php echo $data->price ?></td>
-            <td><?php $oid =  $data->o_id;
-            $oderDetail = $this->dbmodel->get_all_product_order_oid($oid);
-            foreach ($oderDetail as $orderDate)
-            {
-                $oDate = $orderDate->date;
-            }
-            echo $oDate;
+            <td><?php $pid = $data->o_id ;
+                   echo $pid;
+                   ?>
+            </td>
+            <td><?php $oderDetail = $this->dbmodel->get_all_product_orderID($pid);
+                 
+                 foreach ($oderDetail as $orders){ ?>
+                        <li> <?php echo $orders->o_id; ?>  </li>
+                        <li> <?php echo $orders->p_id; ?>  </li>
+                        <li> <?php echo $orders->qty; ?>  </li>
+                <?php  } ?>
+        </td>
+            <td><?php //echo $data->price ?></td>
+            <td><?php //$oid =  $data->o_id;
+            
+          //  echo $oDate;
             ?></td>
              <td><?php 
-             $oderDetailUser = $this->dbmodel->get_all_product_order_oid($oid);
-             foreach ($oderDetailUser as $orderUserID)
-            {
-                $UserID = $orderUserID->u_id;
-            }
-            $DetailUser = $this->dbmodel->finduser($UserID);
-            {
-                foreach ($DetailUser as $Uname)
-                {
-                    $userName = $Uname->user_name;
-                }
-            }
-             echo $userName; ?></td>
+            
+             //echo $userName; ?></td>
              <td><?php 
-             $oderDetailAddress = $this->dbmodel->get_all_product_order_oid($oid);
-             foreach ($oderDetailAddress as $orderAddress)
-            {
-                $deliver_address = $orderAddress->deliver_address;
-            }
-             echo $deliver_address;
+            
+            // echo $deliver_address;
              ?></td>
             <td><?php echo anchor('bnw/delProductOrder/'.$data->od_id,'Delete'); ?></td>
         </tr>
