@@ -14,12 +14,10 @@
              ?>
         <table border="1" cellpadding="10">
         <tr>
-            
+            <th>Category</th>
             <th>Product Name</th>
             <th>Description</th>
             <th>Price</th>
-            
-           
             <th>First Image</th>
             <th>Second Image</th>
             <th>Third Image</th>
@@ -29,6 +27,14 @@
             foreach ($query as $data){
             ?>
           <tr>
+              <td><?php $cid = $data->category;
+              $cateID = $this->dbmodel->get_category_id($cid);
+              foreach ($cateID as $cName)
+              {
+                  $categoryName = $cName->category_name;
+              }
+              echo $categoryName;
+              ?></td>
             <td><?php echo $data->name ?></td>
             <td><?php echo $data->summary; ?></td>
             <td><?php echo $data->price ?></td>

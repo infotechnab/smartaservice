@@ -488,6 +488,12 @@ public function get_navigation_info($navigationName)
         $query = $this->db->get('category');
         return $query->result();
     } 
+    public function get_category_id($id) {
+            
+        $this->db->where('id',$id);
+        $query = $this->db->get('category');
+        return $query->result();
+    } 
      public function get_list_of_category()
     {
         $query = $this->db->get('category');
