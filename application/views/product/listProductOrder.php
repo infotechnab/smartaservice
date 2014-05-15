@@ -14,7 +14,6 @@
              ?>
         <table border="1" cellpadding="10">
         <tr>
-            
             <th>Product Name</th>
             <th>Quantity</th>
             <th>Price</th>

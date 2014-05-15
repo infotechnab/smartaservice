@@ -66,7 +66,7 @@ class bnw extends CI_Controller {
             if (($this->form_validation->run() == FALSE)) {
                 $data['error'] = $this->upload->display_errors();
 
-                $this->load->view('template/msgUnderConstruction', $data);
+                $this->load->view('product/addProduct', $data);
             } else {
 
                 //if valid
