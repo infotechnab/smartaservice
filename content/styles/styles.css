@@ -121,7 +121,7 @@ body
 
 #searchbox
 { 
-    height: 30px; 
+    height: 25px; 
     background-color: #fff;
     float: left;
 }
@@ -249,7 +249,7 @@ body
 }
 .contentContainerFooterLeft
 {
-    width: 50%;
+   
     margin: 0px;
     padding: 5px;
     float: left;
@@ -265,7 +265,7 @@ body
 }
 #contentContainerFooterRight
 {
-    width: 37%;
+    
     margin: 0px;
     padding: 0px 0px 0px 16px;
     float: left;  
@@ -324,8 +324,6 @@ body
 .contentContainerImage img, #detailsImage img
 {
     padding: 8px;
-    height: 175px;
-    width: 175px;
 }
 #detailsDetail p
 {
@@ -499,14 +497,32 @@ div.vertical-line{
     {
         padding: 0px;
     }
+    .contentContainerBox
+    {
+         margin: 2% 2% 0% 1%;
+         width: 30%;
+    }
+    #contentContainerFooterRight
+    {
+        width: 37%;
+    }
+    .contentContainerFooterLeft
+    {
+         width: 48%;
+    }
+    .contentContainerImage img
+    {
+        width: 175px;
+    }
     #detailsImageLarge img
     {
-        width: 300px;
+        width: 315px;
     }
     #searchbox
     {
-        width: 15%;
-        margin: 10px 20px 10px 0px;
+        width: 10%;
+       margin: 11px 20px 10px 0px;
+       
     }
 }
 @media screen and (max-width : 1350px)
@@ -525,7 +541,15 @@ div.vertical-line{
     }
      #detailsImageLarge img
     {
-        width: 300px;
+        width: 310px;
+    }
+    #contentContainerFooterRight
+    {
+        width: 37%;
+    }
+    #contentContainerFooterLeft
+    {
+         width: 48%;
     }
     .contentContainerBox
     {
@@ -534,8 +558,9 @@ div.vertical-line{
     }
     #searchbox
     {
-        width: 15%;
-        margin: 10px 20px 10px 0px;
+        width: 10%;
+        -moz-margin: 11px 20px 10px 0px;
+        -webkit-margin: 15px 15px 10px 5px;
     }
 }
 @media screen and (max-width : 1280px)
@@ -552,14 +577,22 @@ div.vertical-line{
     {
         padding: 0px;
     }
+    .contentContainerFooterLeft
+    {
+         width: 48%;
+    }
+    .contentContainerImage img
+    {
+        width: 175px;
+    }
      #detailsImageLarge img
     {
-        width: 300px;
+        width: 310px;
     }
     #searchbox
     {
-        width: 15%;
-        margin: 10px 20px 10px 0px;
+        width: 10%;
+        margin: 11px 20px 10px 0px;
     }
 }
 @media screen and (max-width : 1250px)
@@ -576,17 +609,29 @@ div.vertical-line{
     {
         padding: 0px 0px 0px 10px;
     }
+    .contentContainerImage img
+    {
+        width: 185px;
+    }
+    .contentContainerFooterLeft
+    {
+         width: 52%;
+    }
+    #contentContainerFooterRight
+    {
+        width: 39%;
+    }
     #detailsImageLarge img
     {
-        width: 300px;
+        width: 95%;
     }
     #searchbox
     {
-        width: 15%;
-        margin: 10px 20px 10px 0px;
+        width: 10%;
+        margin: 11px 20px 10px 0px;
     }
 }
-@media screen and (max-width : 1024px)
+@media screen and (max-width : 1025px)
 {
     .container
     {
@@ -609,13 +654,25 @@ div.vertical-line{
          margin: 2% 3.5% 0% 3.5%;
          width: 43%;
     }
+    .contentContainerFooterLeft
+    {
+         width: 51%;
+    }
+    #contentContainerFooterRight
+    {
+        width: 39%;
+    }
+    .contentContainerImage img
+    {
+        width: 175px;
+    }
     #searchbox
     {
         width: 12%;
-        margin: 10px 20px 10px 0px;
+        margin: 11px 20px 10px 0px;
     }
 }
-@media screen and (max-width : 800px)
+@media screen and (max-width : 801px)
 {
     .container
     {
@@ -638,10 +695,14 @@ div.vertical-line{
          margin: 2% 3.5% 0% 3.5%;
          width: 43%;
     }
+    .contentContainerImage img
+    {
+        width: 225px;
+    }
     #searchbox
     {
-        width: 6%;
-        margin: 10px 0px 10px 0px;
+        width: 12%;
+        margin: 11px 0px 10px 0px;
        
           
     }
