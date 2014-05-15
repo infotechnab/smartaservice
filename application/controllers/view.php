@@ -14,7 +14,7 @@ class View extends CI_Controller {
         $this->load->helper(array('form', 'url', 'date'));
     }
 
-    public function index() {
+    public function index() {     //fetching data from database of the product
 
         $data['product_info'] = $this->productModel->product_info();
 
@@ -26,30 +26,39 @@ class View extends CI_Controller {
         $this->load->view('templates/footer');
     }
 
-    public function details($id) {
-        $data['product'] = $this->productModel->getProductById($id);
+ 
+ 
+	
+        
+        
+        
+        public function details($id){
+            $data['product'] = $this->productModel->getProductById($id);
+           
+            $this->load->view('templates/header');
+                $this->load->view('templates/navigation');
+                $this->load->view('templates/details', $data);
+                $this->load->view('templates/cart');
+                $this->load->view('templates/sidebarview');
+                $this->load->view('templates/footer');
+        }
+        
+        public function login(){
+            $this->load->view('templates/header');
+                $this->load->view('templates/navigation');
+                $this->load->view('templates/login');
+             
+                $this->load->view('templates/footer');
+        }
+        
+     
 
-        $this->load->view('templates/header');
-        $this->load->view('templates/navigation');
-        $this->load->view('templates/details', $data);
-        $this->load->view('templates/cart');
-        $this->load->view('templates/sidebarview');
-        $this->load->view('templates/footer');
-    }
-
-    public function login() {
-        $this->load->view('templates/header');
-        $this->load->view('templates/navigation');
-        $this->load->view('templates/login');
-
-        $this->load->view('templates/footer');
-    }
-
-    function add() {
+    function add() {   //function to add item to the cart
 
         $id = $_POST['itemid'];
 
         $product = $this->productModel->getProductById($id);
+
 
         foreach ($product as $prod) {
             $name = $prod->name;
@@ -68,10 +77,6 @@ class View extends CI_Controller {
                         $newQnt = $item['qty'] + 1;
                     }
 
-                    //  else 
-                    //  {
-                    // $newQnt = '1';
-                    //  }
                 }
             }
         }
@@ -89,7 +94,7 @@ class View extends CI_Controller {
         $this->load->view('templates/cart');
     }
 
-    function remove($rowid) {
+    function remove($rowid) {           //function to remove item from the cart
         $this->cart->update(array(
             'rowid' => $rowid,
             'qty' => 0
@@ -97,12 +102,12 @@ class View extends CI_Controller {
         redirect('view');
     }
 
-    function clear() {
+    function clear() {          //function to clear the cart
         $this->cart->destroy();
         redirect('view');
     }
 
-    function cart_details() {
+    function cart_details() {   //function to goto cart details
         $this->load->view('templates/header');
         $this->load->view('templates/navigation');
         $this->load->view('templates/cartDetails');
