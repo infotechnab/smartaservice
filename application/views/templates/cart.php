@@ -16,7 +16,7 @@ $this->load->helper('currency');
                     </tr>
                     <?php if ($cart = $this->cart->contents()) { ?>
                         <?php foreach ($cart as $item) { ?>                                      
-
+                        <?php var_dump($item); ?>
                             <tr>
                                 <td><img src="<?php echo base_url().'content/images/'.$item['image1']; ?>" height="50px" width="50px"> </td>
                                 <td style="padding: 0px 0px 0px 10px;"><?php echo $item['name']; ?> </td>

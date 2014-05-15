@@ -79,11 +79,25 @@ class CartDetails extends CI_Controller {
     {
             $cart = $this->cart->contents();
             
+                   $tr = 0;
+       $trans_id = $this->productModel->getTranId();
+         foreach ($trans_id as $tranId)
+         {
+             $tr = $tranId->trans_num;
+             
+         }
+        
+         $a = "TRD";
+         $tr= $tr+1;
+       $tid = $a.$tr;
+            
+            
               foreach ($cart as $item)
                {
+                  var_dump($item);
                  if($item) {
-                    mysql_query("INSERT INTO `product_oder_detail` (o_id,p_id, qty) 
-       VALUES ('1','".$item['id']."', '".$item['qty']."')");
+                    mysql_query("INSERT INTO `product_oder_detail` (o_id,p_id,qty,trans_id,trans_num) 
+       VALUES ('1','".$item['id']."', '".$item['qty']."', '$tid', '$tr')");
                 
                  }
                  }
