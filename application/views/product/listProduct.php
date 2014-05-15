@@ -5,20 +5,11 @@
     </p>
     <h2>All Product</h2>
      <hr class="hr-gradient"/>
-    <?php 
-     $category = $this->dbmodel->get_category();
-    echo form_open('bnw/catproduct'); ?>
-     <select name="categoryProduct" id="categoryList">
-     <?php          foreach ($category as $cName)
-              { ?>
-         <option value="<?php echo $cName->id; ?>">
-                <?php echo $cName->category_name; ?>
-         </option> <?php   } ?>
-     </select>
-     
-     <input type="submit" value="Search" />
-    <?php 
-    echo form_close();
+    
+    
+    <?php
+    
+    
          if(!empty($query)){
              ?>
         <table border="1" cellpadding="10">
