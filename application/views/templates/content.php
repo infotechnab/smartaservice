@@ -9,7 +9,7 @@ $this->load->helper('currency');
     var base_url = "http://localhost/smartaservice/";
     $(document).ready(function() {
         $(".addToCart").click(function() {
-           $(this).parent().parent().css({ opacity: 0.3 });
+           $(this).parent().parent().parent().css({ opacity: 0.3 });
             var id = $(this).val();
             var dataString = 'itemid=' + id;
             $.ajax({
@@ -24,7 +24,7 @@ $this->load->helper('currency');
 
                 },
                 complete: function() {
-                  $(".contentContainerBox").css({ opacity: 1 });
+                  $(".contentContainerBox").css({  opacity: 1.0 });
                 }
             });
             
@@ -49,7 +49,7 @@ $this->load->helper('currency');
                 <?php foreach($featureItem as $f_item){ ?>
                 <div class="slider_main">
             <div id="detailsImageLarge">
-                <img src="<?php echo base_url() . "content/images/".$f_item->image1; ?>" height="340" width="300"/>   
+                <img src="<?php echo base_url() . "content/images/".$f_item->image1; ?>" height="340" width="300" alt="image not found"/>   
             </div>  
             
                     <div id="detailsDetail">
@@ -60,7 +60,7 @@ $this->load->helper('currency');
             
             
                <div class='contentContainerFooterLeft' style="width:90px;"><h4><?php get_currency($f_item->price); ?></h4></div>
-                             <div class="redColouredDiv" id='contentContainerFooterRight' style="width: 80px;">
+                             <div class="redColouredDiv" class='contentContainerFooterRight' style="width: 80px;">
 
                         <input type="button" value="<?php ?>" class="addToCart" id="addToCartBtn">
             
@@ -90,12 +90,12 @@ $this->load->helper('currency');
 
                     <div class='contentContainerHeader'><a href='<?php echo base_url() . "index.php/view/details/". $product->id ?>'><h3><?php echo $product->name; ?></h3></div>
                     <div class='contentContainerImage'>
-                        <img src="<?php echo base_url() . "content/images/".$product->image1; ?>" alt="No images" height="150px" width="130px"/>   
+                        <img src="<?php echo base_url() . "content/images/".$product->image1; ?>" alt="No images" height="150" width="130"/>   
                     </div></a>
 
                         <div class="contentContainerBottom"> 
                             <div class='contentContainerFooterLeft'><h4><?php get_currency($product->price); ?></h4></div>
-                    <div class="redColouredDiv" id='contentContainerFooterRight'>
+                    <div class="redColouredDiv" class='contentContainerFooterRight'>
 
                         <input type="button" value="<?php echo $product->id ?>" class="addToCart" id="addToCartBtn">  
                         

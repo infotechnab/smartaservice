@@ -42,7 +42,7 @@ body
     background: url('../images/headerBackground.png'); 
     background-repeat: repeat;
     width: 100%;
-    height: 110px;
+    
     z-index: 0;
 }
 #headerContent
@@ -260,28 +260,29 @@ body
 {
    
     margin: 0px;
-    padding: 5px;
+    padding: 2.5%;
     float: left;
      height: 35px;
     border-radius: 0px 0px 0px 5px;
     background-color: #222222;
     color: #fff;
+    width: 55%
 }
 .contentContainerFooterLeft h4
 {
     margin: 0px;
     padding: 7px 0px 5px 15px;
 }
-#contentContainerFooterRight
+.contentContainerFooterRight
 {
-    
+    width: 40%;
     margin: 0px;
-    padding: 0px 0px 0px 16px;
+    padding: 0px ;
     float: left;  
     height: 45px;
     border-radius: 0px 0px 5px 0px;
 }
-#contentContainerFooterRight p
+.contentContainerFooterRight p
 {
     margin: 0px;
     padding: 10px 0px 10px 10px;
@@ -474,16 +475,16 @@ div.vertical-line{
 {
     background-image: url('../images/shopping-cart-icon-614x460.png') ;
     background-repeat: no-repeat;
-    background-size: 65%;
-    
-    height:45px;
+    background-size: 60%;
+    height:46px;
     text-indent: 100px;
     border: none;
     background-color: #ca021e;
     padding: 0px;
-    margin-left: -15px;
+    margin: 0px;
     background-position: 60%;
     border-radius: 0px 0px 5px 0px;
+    width: 100%;
     
 }
 #addToCartBtn:hover
@@ -514,18 +515,19 @@ div.vertical-line{
     {
         width: 80%;
     }
+    #headerBackground
+{
+    height: 110px;
+}
     #navigationLeft
     {
-        width: 70%; float: left;
+        width: 75%; float: left;
     }
       #headerLogo
     {
         padding: 0px;
     }
-    #addToCartBtn
-    {
-        width: 126%;
-    }
+   
     #navigation ul li
 {
     display: inline-block;
@@ -539,17 +541,10 @@ div.vertical-line{
          margin: 2% 2% 0% 1%;
          width: 30%;
     }
-    #contentContainerFooterRight
-    {
-        width: 37%;
-    }
-    .contentContainerFooterLeft
-    {
-         width: 48%;
-    }
+   
     .contentContainerImage img
     {
-        width: 175px;
+        width: 92%;
     }
     #detailsImageLarge img
     {
@@ -576,10 +571,7 @@ div.vertical-line{
     {
         padding: 0px;
     }
-     #addToCartBtn
-    {
-        width: 126%;
-    }
+    
     #navigation ul li
 {
     display: inline-block;
@@ -592,17 +584,10 @@ div.vertical-line{
     {
         width: 310px;
     }
-    #contentContainerFooterRight
-    {
-        width: 37%;
-    }
-    #contentContainerFooterLeft
-    {
-         width: 48%;
-    }
+    
     .contentContainerBox
     {
-         margin: 20px 22px 0px 0px;
+         margin: 2% 2% 0% 1%;
          width: 30%;
     }
     #searchbox
@@ -634,22 +619,16 @@ div.vertical-line{
     margin: 0px 1px 0px 1px;
     padding: 15px 5px 15px 5px;
 }
-    .contentContainerFooterLeft
-    {
-         width: 48%;
-    }
+   
     .contentContainerImage img
     {
-        width: 175px;
+        width: 92%;
     }
      #detailsImageLarge img
     {
         width: 310px;
     }
-     #addToCartBtn
-    {
-        width: 126%;
-    }
+    
     #searchbox
     {
         width: 10%;
@@ -680,16 +659,9 @@ div.vertical-line{
 }
     .contentContainerImage img
     {
-        width: 185px;
+        width: 92%;
     }
-    .contentContainerFooterLeft
-    {
-         width: 52%;
-    }
-    #contentContainerFooterRight
-    {
-        width: 39%;
-    }
+   
     #detailsImageLarge img
     {
         width: 95%;
@@ -731,22 +703,13 @@ div.vertical-line{
          margin: 2% 3.5% 0% 3.5%;
          width: 43%;
     }
-    .contentContainerFooterLeft
-    {
-         width: 51%;
-    }
-    #contentContainerFooterRight
-    {
-        width: 38.5%;
-    }
+    
+   
     .contentContainerImage img
     {
         width: 92%;
     }
-     #addToCartBtn
-    {
-        width: 95%;
-    }
+    
     #searchbox
     {
         width: 12%;
@@ -767,14 +730,7 @@ div.vertical-line{
     {
         padding: 0px 0px 0px 20px;
     }
-    .contentContainerFooterLeft
-    {
-         width: 50%;
-    }
-    #contentContainerFooterRight
-    {
-        width: 37%;
-    }
+   
     #navigation ul li
 {
     display: inline-block;
@@ -796,10 +752,7 @@ div.vertical-line{
     {
         width: 92%;
     }
-     #addToCartBtn
-    {
-        width: 100%;
-    }
+    
     #searchbox
     {
         width: 12%;
@@ -827,10 +780,7 @@ div.vertical-line{
     {
         width: 97%;
     }
-    #addToCartBtn
-    {
-        width:95%;
-    }
+  
     #headerLogo
     {
         padding: 0px 30px 0px 20px;
@@ -839,7 +789,7 @@ div.vertical-line{
 {
     display: block;
     list-style-type: none;
-    width: 48%;
+    width: 47%;
     margin: 0px 1px 0px 1px;
     padding: 15px 5px 15px 5px;
     float: left;
@@ -853,14 +803,7 @@ div.vertical-line{
          margin: 2% 3.5% 0% 3.5%;
          width: 43%;
     }
-    .contentContainerFooterLeft
-    {
-         width: 51%;
-    }
-    #contentContainerFooterRight
-    {
-        width: 38.5%;
-    }
+   
     .contentContainerImage img
     {
         width: 90%;
@@ -881,7 +824,7 @@ div.vertical-line{
     }
     #headerContent, #contentWrapper
     {
-        width: 100%;
+        width: 99%;
     }
      #navigationLeft
     {
@@ -892,13 +835,12 @@ div.vertical-line{
     {
         width: 95%;
     }
-    #addToCartBtn
-    {
-        width:115%;
-    }
+  
     #headerLogo
     {
-        padding: 0px 50px 0px 0px;
+        padding: 0px 30px 0px 150px;
+        margin: 0 auto 0 auto;
+       
     }
     #navigation ul li
 {
@@ -918,14 +860,7 @@ div.vertical-line{
          margin: 2% 1.5% 0% 1.5%;
          width: 47%;
     }
-    .contentContainerFooterLeft
-    {
-         width: 45.5%;
-    }
-    #contentContainerFooterRight
-    {
-        width: 37%;
-    }
+    
     .contentContainerImage img
     {
         width: 90%;
@@ -933,10 +868,12 @@ div.vertical-line{
     #searchbox
     {
         width: 12%;
-        margin: 11px 0px 10px 0px;
-       
-        
+        margin: 11px 0px 10px 0px;       
     }
+    #headerBackground
+{
+    height: auto;
+}
     
 }
 
@@ -946,9 +883,13 @@ div.vertical-line{
     {
         width: 95%;
     }
+    #headerBackground
+{
+    height: auto;
+}
     #headerContent, #contentWrapper
     {
-        width: 100%;
+        width: 98%;
     }
      #navigationLeft
     {
@@ -959,19 +900,17 @@ div.vertical-line{
     {
         width: 96%;
     }
-    #addToCartBtn
-    {
-        width:85%;
-    }
+   
     #headerLogo
     {
-        padding: 0px 50px 0px 0px;
+        padding: 0px 30px 0px 100px;
+        margin: 0 auto 0 auto; 
     }
     #navigation ul li
 {
     display: block;
     list-style-type: none;
-    width: 97%;
+    width: 96%;
     margin: 0px 1px 0px 1px;
     padding: 15px 5px 15px 5px;
     float: left;
@@ -985,14 +924,7 @@ div.vertical-line{
          margin: 2% 1.5% 0% 1.5%;
          width: 97%;
     }
-    .contentContainerFooterLeft
-    {
-         width: 48.5%;
-    }
-    #contentContainerFooterRight
-    {
-        width: 39%;
-    }
+   
     .contentContainerImage img
     {
         width: 90%;

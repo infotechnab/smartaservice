@@ -9,11 +9,12 @@
                             <li><a href="#">MEN'S</a></li>
                             <li><a href="#">WOMEN'S</a></li>
                             <li><a href="#">CONTACT US</a></li>
+                        </ul>
     </div>
                             <div id='searchbox'>
 <input type="text" placeholder="Search" style="box-shadow: inset 0px  #888, inset 0px  #888; outline: none; border: 1px solid #dddddd; padding: 6px; margin: 0px;" required/>
                             </div>
-                        </ul>
+                        
                     </div>
                     <div class="clear"></div>
                 </div> 
