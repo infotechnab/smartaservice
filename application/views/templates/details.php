@@ -135,9 +135,9 @@ $this->load->helper('currency');
                             </div>
                            
                             <div class='contentContainerFooterLeft' style="width:90px;"><h4><?php get_currency(500); ?></h4></div>
-                             <div class="redColouredDiv" id='contentContainerFooterRight' style="width: 8px;">
+                             <div class="redColouredDiv" class='contentContainerFooterRight' style="width: 8px;">
 
-                        <input type="button" value="<?php ?>" class="addToCart" id="addToCartBtn">  
+                        <input type="button" value="<?php ?>" class="addToCart" id="addToCartBtn"/>  
                         
                             
  

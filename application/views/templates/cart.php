@@ -18,7 +18,7 @@ $this->load->helper('currency');
                         <?php foreach ($cart as $item) { ?>                                      
                        
                             <tr>
-                                <td><img src="<?php echo base_url().'content/images/'.$item['image1']; ?>" height="50px" width="50px"> </td>
+                                <td><img src="<?php echo base_url().'content/images/'.$item['image1']; ?>" height="50" width="50"> </td>
                                 <td style="padding: 0px 0px 0px 10px;"><?php echo $item['name']; ?> </td>
                                 <td style="text-align: center;"><?php echo $item['qty'] ?></td>
                                 <td>x</td>

@@ -120,7 +120,7 @@ else { ?>
         </tr>
     </table>
              <div id="order_checkout"  class="updateBtnStyle">
-                 <?php echo anchor('cartDetails/insert_cart_item', 'Pay Now') ?></div>
+                 <?php echo anchor('cartDetails/processCart', 'Pay Now') ?></div>
          </div>
    <div class="clear"></div>
  
