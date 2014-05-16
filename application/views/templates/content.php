@@ -60,7 +60,7 @@ $this->load->helper('currency');
             
             
                <div class='contentContainerFooterLeft' style="width:90px;"><h4><?php get_currency($f_item->price); ?></h4></div>
-                             <div class="redColouredDiv" id='contentContainerFooterRight' style="width: 8px;">
+                             <div class="redColouredDiv" id='contentContainerFooterRight' style="width: 80px;">
 
                         <input type="button" value="<?php ?>" class="addToCart" id="addToCartBtn">
             
@@ -93,13 +93,15 @@ $this->load->helper('currency');
                         <img src="<?php echo base_url() . "content/images/".$product->image1; ?>" alt="No images" height="150px" width="130px"/>   
                     </div></a>
 
-                    <div class='contentContainerFooterLeft'><h4><?php get_currency($product->price); ?></h4></div>
+                        <div class="contentContainerBottom"> 
+                            <div class='contentContainerFooterLeft'><h4><?php get_currency($product->price); ?></h4></div>
                     <div class="redColouredDiv" id='contentContainerFooterRight'>
 
                         <input type="button" value="<?php echo $product->id ?>" class="addToCart" id="addToCartBtn">  
                         
                             
  
+                        </div>
                         </div>
 
                     </div>

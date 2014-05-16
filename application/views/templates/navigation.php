@@ -1,5 +1,5 @@
 <div class="redColouredDiv" id="navigation">
-    <div style="width: 70%; float: left;">
+    <div id="navigationLeft">
                         <ul>
                             <li><a href="<?php echo base_url().'index.php/view/index' ?>">HOME</a></li>
                             <li><a href="#">ABOUT US</a></li>
