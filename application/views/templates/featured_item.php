@@ -100,9 +100,12 @@ $this->load->helper('currency');
 
 <script type="text/javascript">
 	$(document).ready(function() {
+           
              //adding item to the cart...
-        $(".sliderCartBtn").click(function() {
-           $('.slideshow').css({ opacity: 0.3 });
+             
+        $(".addToCarts").live('click',function() {
+           
+           $('.slide').css({ opacity: 0.3 });
             var id = $(this).val();
             var dataString = 'itemid=' + id;
             $.ajax({
@@ -117,7 +120,7 @@ $this->load->helper('currency');
 
                 },
                 complete: function() {
-                  $('.slideshow').css({ opacity: 1 });
+                  $('.slide').css({ opacity: 1 });
                 }
             });
             
@@ -219,7 +222,7 @@ for (i = 0; i < sliderJson.length; i++)
           sliderJson[i].name + '</h2><p>' +
           sliderJson[i].summary + '</p> <div class="sliderContent"><div class="contentContainerFooterLeft"><h4>' +
           currencyTag + sliderJson[i].price + ' /-</h4></div><div  id="contentContainerFooterRight" ><input style="background-size:30%; height:53px" type="button" value="' + sliderJson[i].id + '"' +
-          'class="sliderCartBtn" id="addToCartBtn"></div></div></td></tr>';
+          'class="addToCarts" id="addToCartBtn"></div></div></td></tr>';
   var ltbl = '</table></div>';
     $("#slideshowWindow").append(ftbl + tbl + ltbl);
 }
