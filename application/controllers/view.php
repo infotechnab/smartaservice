@@ -15,12 +15,18 @@ class View extends CI_Controller {
     }
 
     public function index() {     //fetching data from database of the product
+        
+      
 
         $data['product_info'] = $this->productModel->product_info();
-        $data['featureItem'] = $this->productModel->featured_item();
+          $data['featureItem'] = $this->productModel->featured_item();
+          //var_dump($data);
+           $data['slider_json'] = json_encode($data['featureItem']);
         $this->load->view('templates/header');
         $this->load->view('templates/navigation');
+        $this->load->view('templates/featured_item',$data);
         $this->load->view('templates/content', $data);
+         
         $this->load->view('templates/cart');
         $this->load->view('templates/sidebarview');
         $this->load->view('templates/footer');
@@ -28,8 +34,6 @@ class View extends CI_Controller {
 
  
  
-	
-        
         
         
         public function details($id){
@@ -56,7 +60,6 @@ class View extends CI_Controller {
     function add() {   //function to add item to the cart
 
         $id = $_POST['itemid'];
-
         $product = $this->productModel->getProductById($id);
 
 
@@ -112,6 +115,7 @@ class View extends CI_Controller {
 
         $this->load->view('templates/footer');
     }
+    
 
 }
 

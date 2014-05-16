@@ -4,7 +4,7 @@ $this->load->helper('currency');
 
 <script>
     $(document).ready(function(){
- $(".updateQuantity").keyup(function() {
+ $(".updateQuantity").keyup(function() {                //for sub Total
     
     var price = $(this).parent().next().find('span.priceTag').text();
     var subTotal = $(this).val() * price;
@@ -122,11 +122,14 @@ else { ?>
              <div id="order_checkout"  class="updateBtnStyle">
                  <?php echo anchor('cartDetails/insert_cart_item', 'Pay Now') ?></div>
          </div>
-   
- <div class="clear"></div>
+   <div class="clear"></div>
+ 
  </div>
           
     
 </div>
+    
         </div>
+
     </div>
+<div class="clear"></div>

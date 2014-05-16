@@ -143,9 +143,16 @@ body
 }
 #content
 {
-   width: 62%;
+    //border: thin solid;
+   width: 61%;
    height: auto;
 }
+
+.slider_main{
+    //border: thick solid ;
+    width: 100%;
+}
+
 .contentHeader
 {
     margin: 0 auto 0 auto;

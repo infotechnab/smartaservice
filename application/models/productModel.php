@@ -22,9 +22,8 @@ public function product_info(){
     }
     
     public function featured_item(){
-     $this->db->order_by('id','DESC');
-      $this->db->where('category', '13');
-     $query = $this->db->get('product', 4);
+     //$this->db->order_by('id','DESC');
+     $query = $this->db->get_where('product', array('category' => '13'));
        return $query->result();
     }
     

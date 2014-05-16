@@ -2,14 +2,6 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group>
-<<<<<<< HEAD
-            <file>file:/C:/wamp/www/smartaservice/application/views/templates/login.php</file>
-            <file>file:/C:/wamp/www/smartaservice/content/styles/styles.css</file>
-=======
-            <file>file:/C:/wamp/www/smartaservice/application/controllers/cartDetails.php</file>
-            <file>file:/C:/wamp/www/smartaservice/application/views/templates/cartDetails.php</file>
->>>>>>> 54cda14511120d7ec3a88f998731b2c2f4409991
-        </group>
+        <group/>
     </open-files>
 </project-private>
