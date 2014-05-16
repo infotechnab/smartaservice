@@ -6,7 +6,7 @@ $this->load->helper('currency');
 
 
 <script>
-    var base_url = "http://localhost/smartaservice/";
+    var base_url = <?php echo base_url(); ?>;
     $(document).ready(function() {
        //adding item to the cart...
         $(".addToCart").click(function() {

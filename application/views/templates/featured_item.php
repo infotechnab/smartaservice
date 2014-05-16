@@ -209,7 +209,7 @@ $this->load->helper('currency');
     {
            var i = 0;
        
-        var base_url = "http://localhost/smartaservice/";
+        var base_url = <?php echo base_url(); ?>;
           var sliderJson = <?php echo $slider_json ?>;
            
 
