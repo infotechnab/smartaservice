@@ -2,5 +2,12 @@
     
     function get_currency($data)
     {
-         echo '<span>$</span>'.'<span class="priceTag">'.$data.'</span>'."<span>/-</span>";   
+        if($data=="")
+        {
+            echo '<span> $ </span>'.'<span class="priceTag">';  
+        }
+        else
+        {
+         echo '<span> $ </span>'.'<span class="priceTag">'.$data.'</span>'."<span> /- </span>";  
+        }
     }

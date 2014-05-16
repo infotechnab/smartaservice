@@ -1,7 +1,7 @@
  <?php
 $this->load->helper('currency');
 ?>
-<script src="<?php echo base_url() . 'content/jquery.js'; ?>" type="text/javascript"></script>
+<script src="<?php echo base_url().'content/jquery.js'; ?>" type="text/javascript"></script>
 
 
 
@@ -9,8 +9,8 @@ $this->load->helper('currency');
     
     
 #slideshow #slideshowWindow {
-	width:500px;
-	height:257px;
+	width:100%;
+	
 	margin:0;
 	padding:0;
 	position:relative;
@@ -21,26 +21,19 @@ $this->load->helper('currency');
 	margin:0;
 	padding:0;
 	width:500px; 
-	height:300px;
+	height:400px;
 	float:left;
 	position:relative;
 }
 
 
-#slideshow #slideshowWindow {
-	width:500px;
-	height:257px;
-	margin:0;
-	padding:0;
-	position:relative;
-	overflow:hidden;
-}
+
 
 #slideshow #slideshowWindow .slide {
 	margin:0;
 	padding:0;
 	width:675px; 
-	height:257px;
+	
 	position:relative;
 }
 
@@ -71,7 +64,6 @@ $this->load->helper('currency');
 	padding:0;
 }
 
-//This code puts in a couple of span tags which then get replaced by our button images:
 
 .nav {
 	display:block;
@@ -81,7 +73,7 @@ $this->load->helper('currency');
 }
 
 #leftNav {
-	//top:223px;
+	top:223px;
 	left:10px;
 	//width:94px;
 	//height:34px;
@@ -99,6 +91,9 @@ $this->load->helper('currency');
 	//background-repeat:no-repeat;
 	z-index:999;
 }
+
+
+
 </style>
 
 
@@ -106,8 +101,8 @@ $this->load->helper('currency');
 <script type="text/javascript">
 	$(document).ready(function() {
              //adding item to the cart...
-        $(".addToCart").click(function() {
-           $(this).parent().parent().css({ opacity: 0.3 });
+        $(".sliderCartBtn").click(function() {
+           $('.slideshow').css({ opacity: 0.3 });
             var id = $(this).val();
             var dataString = 'itemid=' + id;
             $.ajax({
@@ -122,7 +117,7 @@ $this->load->helper('currency');
 
                 },
                 complete: function() {
-                  $(".contentContainerBox").css({ opacity: 1 });
+                  $('.slideshow').css({ opacity: 1 });
                 }
             });
             
@@ -211,32 +206,51 @@ $this->load->helper('currency');
        
         var base_url = '<?php echo base_url(); ?>';
           var sliderJson = <?php echo $slider_json ?>;
-           
+          var currencyTag = '<?php echo get_currency(""); ?>';
 
    
      var tbl = "";
 for (i = 0; i < sliderJson.length; i++) 
-{
-     var ftbl = '<div class="slide"><table  border="0" width="100%">';
+    {
+     var ftbl = '<div class="slide"><table class="sliderTable">';
  tbl = '<tr><td rowspan="3"><img src=' +
           base_url + 'content/images/' +
-          sliderJson[i].image1 + ' height=340 width=300></td><td height="40"><h2>' +
-          sliderJson[i].name + '</h2></td></tr><tr><td height="80"><p>' +
-          sliderJson[i].summary + '</p></td></tr><tr><td><div class="contentContainerFooterLeft" style="width:90px;"><h4>' +
-          sliderJson[i].price + '</h4></div><div class="redColouredDiv" id="contentContainerFooterRight" style="width: 8px;"><input type="button" value="' + sliderJson[i].id + '"' +
-          'class="addToCart" id="addToCartBtn"></div></td></tr>';
+          sliderJson[i].image1 + ' id="sliderImage" ></td><td style=" vertical-align: top;" ><h2>' +
+          sliderJson[i].name + '</h2><p>' +
+          sliderJson[i].summary + '</p> <div class="sliderContent"><div class="contentContainerFooterLeft"><h4>' +
+          currencyTag + sliderJson[i].price + ' /-</h4></div><div  id="contentContainerFooterRight" ><input style="background-size:30%; height:53px" type="button" value="' + sliderJson[i].id + '"' +
+          'class="sliderCartBtn" id="addToCartBtn"></div></div></td></tr>';
   var ltbl = '</table></div>';
     $("#slideshowWindow").append(ftbl + tbl + ltbl);
 }
  
-
-
     }
  
-    
-   
 </script>
-
+<style>
+    .contentContainerFooterLeft
+    {
+        float: left;
+        width: 40%;
+    }
+    .contentContainerFooterRight
+    {
+        width: 100px;
+        float: left;
+    }
+.sliderTable
+{
+   
+    border: 0px solid #000;
+}
+#sliderImage
+{
+    width: 300px;
+    
+    float: left;
+    margin-right: 10px;
+}
+</style>
 
 
 

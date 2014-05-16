@@ -22,6 +22,7 @@ $this->load->helper('currency');
                 },
                 complete: function() {
                     $(".contentContainerBox").css({opacity: 1.0});
+                    $(".contentContainerBottom").css({opacity: 1.0})
                 }
             });
 
@@ -53,8 +54,6 @@ $this->load->helper('currency');
                 <div class="redColouredDiv" class='contentContainerFooterRight'>
 
                     <input type="button" value="<?php echo $product->id ?>" class="addToCart" id="addToCartBtn">  
-
-
 
                 </div>
             </div>
