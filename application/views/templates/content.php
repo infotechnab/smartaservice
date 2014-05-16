@@ -38,42 +38,7 @@ $this->load->helper('currency');
 
 
 
-<<<<<<< HEAD
-=======
-            </div>
-            <div class='contentContainer'>
-                <!-- from here the details starts and it must be replaced by slider-->
-                <div class="containerss">
-                <?php foreach($featureItem as $f_item){ ?>
-                <div class="slider_main">
-            <div id="detailsImageLarge">
-                <img src="<?php echo base_url() . "content/images/".$f_item->image1; ?>" height="340" width="300" alt="image not found"/>   
-            </div>  
-            
-                    <div id="detailsDetail">
-                <h2><?php echo $f_item->name; ?></h2>
-                <p> <?php echo $f_item->summary; ?> </p> 
-                
-            </div>
-            
-            
-               <div class='contentContainerFooterLeft' style="width:90px;"><h4><?php get_currency($f_item->price); ?></h4></div>
-                             <div class="redColouredDiv" class='contentContainerFooterRight' style="width: 80px;">
 
-                        <input type="button" value="<?php ?>" class="addToCart" id="addToCartBtn">
-            
-                             </div>
-                </div>
-                <div class="clear"></div>
-                
-                <?php } ?>
-                </div>
-                <!-- here the details ends-->
-                  
-                
-
-            </div>
->>>>>>> f23e5b32556a59600922221b211a7cdbc93a460f
           
             
             
