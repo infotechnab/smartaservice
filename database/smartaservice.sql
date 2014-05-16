@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: May 15, 2014 at 12:02 PM
+-- Generation Time: May 16, 2014 at 12:27 PM
 -- Server version: 5.5.16
 -- PHP Version: 5.3.8
 
@@ -479,20 +479,27 @@ CREATE TABLE IF NOT EXISTS `product_oder_detail` (
   `price` double NOT NULL,
   `trans_id` varchar(11) NOT NULL,
   `trans_num` int(10) NOT NULL,
+  `status` varchar(255) NOT NULL,
   PRIMARY KEY (`od_id`),
   KEY `p_id` (`p_id`),
   KEY `o_id` (`o_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=83 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=89 ;
 
 --
 -- Dumping data for table `product_oder_detail`
 --
 
-INSERT INTO `product_oder_detail` (`od_id`, `o_id`, `p_id`, `qty`, `price`, `trans_id`, `trans_num`) VALUES
-(79, 1, 33, '1', 0, 'TRD1', 1),
-(80, 1, 34, '1', 0, 'TRD1', 1),
-(81, 1, 33, '1', 0, 'TRD2', 2),
-(82, 1, 34, '1', 0, 'TRD2', 2);
+INSERT INTO `product_oder_detail` (`od_id`, `o_id`, `p_id`, `qty`, `price`, `trans_id`, `trans_num`, `status`) VALUES
+(79, 1, 33, '1', 0, 'TRD1', 1, '0'),
+(80, 1, 34, '1', 0, 'TRD1', 1, '1'),
+(81, 1, 33, '1', 0, 'TRD2', 2, '0'),
+(82, 1, 34, '1', 0, 'TRD2', 2, '0'),
+(83, 1, 29, '5', 50, 'TRN3', 3, '0'),
+(84, 1, 29, '8', 0, 'TRN4', 4, '1'),
+(85, 1, 27, '8', 6363, 'TRN5', 5, '0'),
+(86, 1, 28, '66', 2, 'TRN6', 6, '1'),
+(87, 1, 27, '5', 2, 'TRN7', 7, '0'),
+(88, 1, 28, '65', 5, 'TRN8', 8, '0');
 
 -- --------------------------------------------------------
 

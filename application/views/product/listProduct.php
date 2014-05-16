@@ -49,9 +49,9 @@
             <td><?php echo $data->name ?></td>
             <td><?php echo $data->summary; ?></td>
             <td><?php echo $data->price ?></td>
-            <td><img src="<?php echo base_url()."content/images/".$data->image1; ?>" width="50px" height="50px" alt="Image not set!" /></td>
-             <td><img src="<?php echo base_url()."content/images/".$data->image2; ?>" width="50px" height="50px" alt="Image not set!" /></td>
-            <td><img src="<?php echo base_url()."content/images/".$data->image3; ?>" width="50px" height="50px" alt="Image not set!"/></td>
+            <td><img src="<?php echo base_url()."content/images/".$data->image1; ?>" width="50" height="50" alt="Image not set!" /></td>
+             <td><img src="<?php echo base_url()."content/images/".$data->image2; ?>" width="50" height="50" alt="Image not set!" /></td>
+            <td><img src="<?php echo base_url()."content/images/".$data->image3; ?>" width="50" height="50" alt="Image not set!"/></td>
              
             <td><?php echo anchor('bnw/editproduct/'.$data->id,'Edit'); ?> / 
             <?php echo anchor('bnw/delProduct/'.$data->id,'Delete'); ?></td>

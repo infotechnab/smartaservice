@@ -99,7 +99,16 @@ class Dbmodel extends CI_Model {
     
     function get_all_product_orderDis()
     {
-        //$this->db->order_by('o_id','DESC');
+        $this->db->order_by('o_id','DESC');
+        $this->db->distinct();
+        $this->db->select("trans_id");
+        $this->db->order_by('trans_id','DESC');
+        $query = $this->db->get('product_oder_detail');
+        return $query->result();
+    }
+    
+    function get_record_all_product_orderDis()
+    {
         $this->db->distinct();
         $this->db->select("trans_id");
         $query = $this->db->get('product_oder_detail');
@@ -119,6 +128,15 @@ class Dbmodel extends CI_Model {
         $query = $this->db->get('product');
         return $query->result();
         
+    }
+    
+    function get_all_productTrn($limit,$start)
+    {
+        $this->db->limit($limit, $start);
+        $this->db->distinct();
+        $this->db->order_by('trans_id','DESC');
+        $query = $this->db->get('product_oder_detail');
+        return $query->result();
     }
 
 
@@ -185,7 +203,18 @@ class Dbmodel extends CI_Model {
         $this->db->where('id',$id);
         $this->db->update('product',$data);
     }
-    
+    function updateDetails($status,$pid,$trn)
+    {
+        //die($status.$pid.$trn);
+       // die($pid);
+        //die($trn);
+        $data = array(
+            'status'=>$status
+        );
+       // $this->db->where('trans_id',$id);
+        $this->db->where(array('trans_id'=>$trn,'p_id'=>$pid));
+        $this->db->update('product_oder_detail',$data);
+    }
     function delProduct($id){
          $this->db->delete('product', array('id' => $id));
     }
@@ -220,7 +249,12 @@ class Dbmodel extends CI_Model {
         return $query->result();
     }
 
-    
+    function get_tran_id($id)
+    {
+        
+    }
+
+
     //==========================   End Cart System               ====================================//
 
 

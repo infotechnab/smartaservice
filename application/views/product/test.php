@@ -12,8 +12,8 @@
     
          if(!empty($query)){
              ?>
-        <table border="1" cellpadding="10">
-        <tr>
+        <table cellpadding="10">
+        <tr  >
             <th>Transection ID</th>
             <th>Product Detail</th>
             <th>User Detail</th>
@@ -25,10 +25,13 @@
             foreach ($query as $data){
             ?>
           <tr>
-            <td><?php $tid = $data->trans_id ;
-             echo $tid;  
+         
+            <td id="userDetail" style="font-size: 14px; vertical-align: top;"> <?php $tid = $data->trans_id ; ?> <a href="<?php echo base_url().'index.php/bnw/viewdetail/?id='.$tid; ?>" Style="color:black; text-decoration: none; " > <div>
+                <?php 
+               echo "<b>".$tid."</b>";  
              ?>
-            </td>
+                    </div>   </a>
+          </td>
             <?php $getTransData = $this->dbmodel->TransDetail($tid); ?>
             <td> <div>
                  <?php foreach ($getTransData as $trandetail)
@@ -42,13 +45,13 @@
                         <?php foreach ($product_Detail as $pdetail) { ?>
                         <tr>
                             <td rowspan="2"> <img src="<?php echo base_url()."content/images/".$pdetail->image1; ?>" width="60px" height="40px" /></td>
-                            <td>
-                            <?php echo $pdetail->name;  ?>
+                            <td id="userDetail" style="font-size: 14px; vertical-align: top;">
+                            <?php echo "<b>".$pdetail->name."</b>";  ?>
                             </td>
                         </tr>
                         <tr>
-<!--                            <td> <?php echo $pdetail->summary; ?></td>-->
-                            <td><?php echo "Qnt :".$qty." ($".$pdetail->price.") = $".$qty * $pdetail->price; ?></td>
+<!--                            <td> <?php //echo $pdetail->summary; ?></td>-->
+                            <td id="userDetail" style="font-size: 14px; vertical-align: top;"><?php echo "Qnt :".$qty." ($".$pdetail->price.") = $".$qty * $pdetail->price; ?></td>
                         </tr>
                         <?php  } ?>
                     </table> <hr/>
@@ -56,7 +59,7 @@
                 </div>
             </td>
             <!--<td></td>-->
-            <td><?php 
+            <td id="userDetail" style="font-size: 14px; vertical-align: top;"><?php 
 //            $oderDetail = $this->dbmodel->get_all_product_order_oid($oid);
 //            foreach ($oderDetail as $orderDate)
 //            {
@@ -72,6 +75,7 @@
                 $city = $orderUserID->city;
                 $email = $orderUserID->email;
                 $contact = $orderUserID->contact;
+                $uName = $orderUserID->user_name;
             }
             $DetailUser = $this->dbmodel->finduser($UserID);
             
@@ -83,9 +87,10 @@
                     $userEmail = $Uname->user_email;
                 }
             
-             echo $fname." ".$lname."<br/>".$email."<br/>".$contact."<br/>".$shpAddress.",".$city."<br/>".$country;
+             echo "<b>". $fname." ".$lname."</b><br/>".$email."<br/>".$contact."<br/>".$shpAddress.",".$city."<br/>".$country;
             ?></td>
-            <td><?php echo $fname." ".$lname."<br/>".$email."<br/>".$contact."<br/>".$shpAddress.",".$city."<br/>".$country;  ?></td>
+            <td id="userDetail" style="font-size: 14px; vertical-align: top;">
+                <?php echo "<b>".$uName."</b><br/>".$email."<br/>".$contact."<br/>".$shpAddress.",".$city."<br/>".$country;  ?></td>
             <td></td>
              <td><?php echo anchor('bnw/delProductOrder/'.$tid,'Delete'); ?></td>
         </tr>
