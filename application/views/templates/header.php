@@ -18,7 +18,7 @@
             <div id="headerBackground">
                 <div id="headerContent">
                     <div id="headerLogo">
-                        <img src="<?php echo base_url() . "content/images/shopping-cart-icon-614x460.png"; ?>"/>
+                        <img src="<?php echo base_url() . "content/images/shopping-cart-icon-614x460.png"; ?>" alt="Smartaservices logo"/>
                     </div>
                     <div id="headerLogoContent">
                         <h1>Smart Access Services</h1>

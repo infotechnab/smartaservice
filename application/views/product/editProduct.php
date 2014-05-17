@@ -61,7 +61,7 @@
        <div style="height: 180px;"> 
   <div class="product_image_div">
      <div style="width:85px; height: 85px;">
-      <img src="<?php echo base_url()."content/images/".$first_image; ?>" width="80px" height="80px" alt="Image not set!" />
+      <img src="<?php echo base_url()."content/images/".$first_image; ?>" width="80" height="80" alt="Image not set!" />
      </div>
       <a href="<?php echo base_url();?>index.php/bnw/productImgdelete/?id=<?php echo $id; ?>&&image=<?php echo "image1"; ?> " id="<?php echo $id; ?>" class="delbutton">
         <img src="<?php echo base_url();?>content/images/delete.png" id="close"/>
@@ -78,7 +78,7 @@
 
 <div class="product_image_div" >
     <div style="width:85px; height: 85px;">
-    <img src="<?php echo base_url()."content/images/".$second_image; ?>" width="80px" height="80px" alt="Image not set!" />
+    <img src="<?php echo base_url()."content/images/".$second_image; ?>" width="80" height="80" alt="Image not set!" />
     </div>
              <a href="<?php echo base_url();?>index.php/bnw/productImgdelete/?id=<?php echo $id; ?>&&image=<?php echo "image2"; ?> " id="<?php echo $id; ?>" class="delbutton">
         <img src="<?php echo base_url();?>content/images/delete.png" id="close"/></a>
@@ -90,7 +90,7 @@
 
 <div class="product_image_div">
     <div style="width:85px; height: 85px;">
-        <img src="<?php echo base_url()."content/images/".$third_image; ?>" width="80px" height="80px" alt="Image not set!" />
+        <img src="<?php echo base_url()."content/images/".$third_image; ?>" width="80" height="80" alt="Image not set!" />
     </div>
     
          <a href="<?php echo base_url();?>index.php/bnw/productImgdelete/?id=<?php echo $id; ?>&&image=<?php echo "image3"; ?> " id="<?php echo $id; ?>" class="delbutton">

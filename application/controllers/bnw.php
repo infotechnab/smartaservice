@@ -10,7 +10,7 @@ class bnw extends CI_Controller {
         $this->load->model('dbmodel');
         $this->load->helper('url');
         $this->load->helper(array('form', 'url'));
-        $this->load->library("pagination");
+        $this->load->library('pagination');
     }
 
     public function index() {
@@ -343,16 +343,19 @@ class bnw extends CI_Controller {
         {
             if ($this->session->userdata('logged_in')) {
             $data['username'] = Array($this->session->userdata('logged_in'));
-            //$config = array();
-           // $config["base_url"] = base_url() . "index.php/bnw/productOrderList";
-            //$config["total_rows"] = $this->dbmodel->record_count_product_order();
+           // $config = array();
+           // $config["base_url"] = base_url() . "index.php/bnw/disproduct";
+           // $config["total_rows"] = $this->dbmodel->get_record_all_product_orderDis();
+            
            // $config["per_page"] = 6;
            // $this->pagination->initialize($config);
            // $page = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
 
-            //$data["query"] = $this->dbmodel->get_all_product($config["per_page"], $page);
-            //$data["links"] = $this->pagination->create_links();
-            $data['query'] = $this->dbmodel->get_all_product_orderDis();
+           // $data["query"] = $this->dbmodel->get_all_productTrn($config["per_page"], $page);
+           // var_dump($data);
+           // $data["links"] = $this->pagination->create_links();
+            
+           $data['query'] = $this->dbmodel->get_all_product_orderDis();
             $data['meta'] = $this->dbmodel->get_meta_data();
 
             $this->load->view('bnw/templates/header', $data);
@@ -393,7 +396,7 @@ class bnw extends CI_Controller {
        if ($this->session->userdata('logged_in')) {
             $data['username'] = Array($this->session->userdata('logged_in'));
             $categoryValue = $this->input->post('categoryProduct');
-            $config = array();
+           $config = array();
             $config["base_url"] = base_url() . "index.php/bnw/catproduct";
             $config["total_rows"] = $this->dbmodel->record_count_catproduct($categoryValue);
             $config["per_page"] = 6;
@@ -412,7 +415,61 @@ class bnw extends CI_Controller {
             redirect('login', 'refresh');
         } 
     }
+    
+    function viewdetail()
+    {
+        if ($this->session->userdata('logged_in')) {
+            //$data['query'] = $this->dbmodel->findproduct($id);
+            $data['meta'] = $this->dbmodel->get_meta_data();
+           // $data['category'] = $this->dbmodel->get_category();
+            //$data['miscSetting'] = $this->dbmodel->get_misc_setting();
+          //  $data['id'] = $id;
+            $tid = $_GET['id'];
+            $this->load->view("bnw/templates/header", $data);
+            $this->load->view("bnw/templates/menu");
+            $this->load->view('product/detailview', $data);
 
+            $this->load->view('bnw/templates/footer', $data);
+        } else {
+            redirect('login', 'refresh');
+        }
+    }
+
+    function updateTrn()
+    {
+         if ($this->session->userdata('logged_in')) {
+        $id = $_POST['trnID'];
+        
+        $query = $this->dbmodel->TransDetail($id);
+        //var_dump($query);
+            foreach ($query as $item) {
+                //$newqty = 'item_qnt_' . $item['id'];
+               // $newrow = 'item_row_' . $item['id'];
+                $pid = $item->p_id;
+                $dbstatus = $item->status;
+              //  die($pid);
+                $newpro = $_POST['product_'.$item->p_id];
+                $newstatus = $_POST['status_'.$item->p_id];
+                $productid = $newstatus;
+                if (isset($newstatus)) {
+                    if ($dbstatus != $productid) {
+
+
+                        $newstatus;
+                        
+                        $this->dbmodel->updateDetails($newstatus,$pid,$id);
+                       // $this->cart->update(array(
+                            
+                        //    'status' => $newQnt
+                       // ));
+                    }
+                }
+            }
+            redirect('bnw/disproduct');
+            } else {
+            redirect('login', 'refresh');
+        }
+    }
     //=================================== end Cart System  ========================================================//
 
     function logout() {
