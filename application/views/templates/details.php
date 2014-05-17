@@ -1,5 +1,5 @@
 
-  <?php
+<?php
 $this->load->helper('currency');
 ?>
 <script src="<?php echo base_url() . 'content/jquery.js'; ?>" type="text/javascript"></script>
@@ -108,79 +108,88 @@ $this->load->helper('currency');
 
 </script>
 
-
-
-<div id="contentBackground">
-    <div id='contentWrapper'>
         <div class='contentHeaderDetails'>
             <p>Current location</p>
         </div>
 
-        <div id='content'>
+       
             <?php
             if (!empty($product)) {
-               
+
                 foreach ($product as $productDet) {
                     ?>
                     <div class='contentContainerDetails'>
                         <div id='detailLargeImage'>
                             <div id='detailsImageLarge'>
                                 <img src="<?php echo base_url() . "content/images/" . $productDet->image1; ?>" alt="no images"/>   
-                            </div>  
-
+                            
                             <div id="detailsDetail">
                                 <h2><?php echo $productDet->name; ?></h2>
                                 <p> <?php echo $productDet->name; ?> </p> 
 
                             </div>
-                           
-                            <div class='contentContainerFooterLeft' style="width:90px;"><h4><?php get_currency(500); ?></h4></div>
-                             <div class="redColouredDiv" class='contentContainerFooterRight' style="width: 8px;">
 
-                        <input type="button" value="<?php ?>" class="addToCart" id="addToCartBtn"/>  
-                        
+                            <div class='contentContainerFooterLeft' style="width:90px;float: left;"><h4><?php get_currency(500); ?></h4>
+                            <div class="redColouredDiv" style="width:152px; position: relative; top: -49px; left: 100px; height: 69px;" class='contentContainerFooterRight' style="width: 8px;">
+
+                                <input type="button" value="<?php echo $productDet->id; ?>" class="addToCart" id="addToCartBtn"/>  
+
+                            </div>
+                            </div>
                             
- 
-                        </div>
+                            <div class="clear"></div>
+                              <hr/>
+                            </div>  
 
                           
                             
-                        </div>
 
-                        <div id='detailsImage'>
-                            <img id="srcimage" src="<?php echo base_url() . "content/images/" . $productDet->image1; ?>" alt="no images found"/>   
+
+
                         </div>
-                        <div id='detailsImage'>
-                            <img id="srcimage" src="<?php echo base_url() . "content/images/" . $productDet->image2; ?>" alt="no images found"/>   
+                        <div id="detailSmallImg">
+                        <?php if (strlen($productDet->image1) > 2) { ?>
+                            <div class='detailsImage'>
+                                <img  width="130" height="150" src="<?php echo base_url() . "content/images/" . $productDet->image1; ?>" alt="no images found"/>   
+                            </div>
+        <?php } if (strlen($productDet->image2) > 2) { ?>
+                            <div class='detailsImage'>
+                                <img  width="130" height="150" src="<?php echo base_url() . "content/images/" . $productDet->image2; ?>" alt="no images found"/>   
+                            </div>
+        <?php } if (strlen($productDet->image3) > 2) { ?>
+                            <div class='detailsImage'>
+                                <img  width="130" height="150" src="<?php echo base_url() . "content/images/" . $productDet->image3; ?>" alt="no images found"/>   
+                            </div>
+            <?php
+        }
+        ?>
                         </div>
-                        <div id='detailsImage'>
-                            <img id="srcimage" src="<?php echo base_url() . "content/images/" . $productDet->image3; ?>" alt="no images found"/>   
-                        </div>
-                      <div class="clear"></div>
+                        <div class="clear"></div>
                     </div>
-            
-                <?php
-                }
-            } else {
-                ?><div class='contentContainerDetails'> <?php echo '<h3>This page does not contain any content.</h3>'; ?> </div> 
-<?php }
-?>
 
-<div id="popup_box">	<!-- OUR PopupBox DIV-->
-<img  src="" width="600px" height="800px" id="pqr"  />
- <a id="popupBoxClose">Close</a>	
-</div>
+                        <?php
+                    }
+                } else {
+                    ?><div class='contentContainerDetails'> <?php echo '<h3>This page does not contain any content.</h3>'; ?> </div> 
+            <?php }
+            ?>
 
-        </div>
-
-
-
-        <!-- left side details content closed here -->
-
-        <div id='sidebar'>
-            <div class="redColouredDiv" id='sidebarContent'>
-                <div id="sideBarImage"><img src="<?php echo base_url() . "content/images/shopping-cart-icon-614x460.png"; ?>"/> </div>   
-                <h3>Shopping Cart</h3>
+            <div id="popup_box">	<!-- OUR PopupBox DIV-->
+                <img  src="" width="600px" height="800px" id="pqr"  />
+                <a id="popupBoxClose">Close</a>	
             </div>
-            <div class='sidebarContentNext' id="shopping_cart">
+                    
+        </div>
+        
+
+
+
+<!-- left side details content closed here -->
+
+<div id='sidebar'>
+    <div class="redColouredDiv" id='sidebarContent'>
+        <div id="sideBarImage"><img src="<?php echo base_url() . "content/images/shopping-cart-icon-614x460.png"; ?>"/> </div>   
+        <h3>Shopping Cart</h3>
+    </div>
+    <div class='sidebarContentNext' id="shopping_cart">
 

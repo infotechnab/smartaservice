@@ -12,6 +12,7 @@ $this->load->helper('currency');
                         <th>Qty</th>
                         <th></th>
                         <th>Price</th>
+                        
                         <th> </th>
                     </tr>
                     <?php if ($cart = $this->cart->contents()) { ?>
@@ -23,6 +24,7 @@ $this->load->helper('currency');
                                 <td style="text-align: center;"><?php echo $item['qty'] ?></td>
                                 <td>x</td>
                                 <td style="text-align: center;"><?php get_currency($item['price']); ?></td>
+                                
                                 <td style="text-align: center;"><a href="<?php echo base_url(); ?>index.php/view/remove/<?php echo $item['rowid']; ?>"><div id="closeSymbol">X</div></a></td>
                             </tr>
                             
