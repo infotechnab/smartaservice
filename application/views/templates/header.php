@@ -2,10 +2,10 @@
 <html lang="en">
     <head>
         <meta charset="utf-8">
-        <title>Welcome to Online Shopping</title> 
+        <title>Smart Access Services - Online Shopping</title> 
         <script src="<?php echo base_url() . 'content/jquery.js'; ?>" type="text/javascript"></script>
         <link rel="stylesheet" href="<?php echo base_url() . "content/styles/styles.css"; ?>">     
-        <link rel="shortcut icon" href="<?php echo base_url() . "content/images/favicon1.jpg"; ?>" type="image/x-icon"> 
+        <link rel="shortcut icon" href="<?php echo base_url() . "content/images/menu.png"; ?>" type="image/x-icon"> 
         <link rel="stylesheet" href="<?php echo base_url() . "content/styles/cartDetailsStyle.css"; ?>">   
         
         
