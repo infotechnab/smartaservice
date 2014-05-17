@@ -1,7 +1,7 @@
 <?php
 class MyPayPal {
     	
-	function PPHttpPost($methodName_, $nvpStr_, $PayPalApiUsername, $PayPalApiPassword, $PayPalApiSignature, $PayPalMode) {
+    public function PPHttpPost($methodName_, $nvpStr_, $PayPalApiUsername, $PayPalApiPassword, $PayPalApiSignature, $PayPalMode) {
 			// Set up your API credentials, PayPal end point, and API version.
 			$API_UserName = urlencode($PayPalApiUsername);
 			$API_Password = urlencode($PayPalApiPassword);
