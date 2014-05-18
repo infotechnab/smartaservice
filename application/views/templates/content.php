@@ -46,7 +46,7 @@ $this->load->helper('currency');
 
             <div class='contentContainerHeader'><a href='<?php echo base_url() . "index.php/view/details/" . $product->id ?>'><h3><?php echo $product->name; ?></h3></div>
             <div class='contentContainerImage'>
-                <img src="<?php echo base_url() . "content/images/" . $product->image1; ?>" alt="No images"  />   
+                <img src="<?php echo base_url() . "content/uploads/images/" . $product->image1; ?>" alt="<?php echo $product->name; ?>"  />   
             </div></a>
 
             <div class="contentContainerBottom"> 
@@ -69,7 +69,7 @@ $this->load->helper('currency');
 
 <div id='sidebar'>
     <div class="redColouredDiv" id='sidebarContent'>
-        <div id="sideBarImage"><img src="<?php echo base_url() . "content/images/shopping-cart-icon-614x460.png"; ?>"/> </div>   
+        <div id="sideBarImage"><img src="<?php echo base_url() . "content/uploads/images/shopping-cart-icon-614x460.png"; ?>"/> </div>   
         <h3>Shopping Cart</h3>
     </div>
     <div class='cartItems' id="shopping_cart">

@@ -19,11 +19,11 @@ $this->load->helper('currency');
                         <?php foreach ($cart as $item) { ?>                                      
                        
                             <tr>
-<<<<<<< HEAD
-                                <td class="hide"><img class="hide" src="<?php echo base_url().'content/images/'.$item['image1']; ?>" height="50" width="50"> </td>
-=======
-                                <td><img src="<?php echo base_url().'content/uploads/images/'.$item['image1']; ?>" height="50" width="50"> </td>
->>>>>>> 6286ee52c0b1227358a519131292c66cc84e5d48
+
+                                <td class="hide"><img class="hide" src="<?php echo base_url().'content/uploads//images/'.$item['image1']; ?>" height="50" width="50"> </td>
+
+                                
+
                                 <td style="padding: 0px 0px 0px 10px;"><?php echo $item['name']; ?> </td>
                                 <td style="text-align: center;"><?php echo $item['qty'] ?></td>
                                 <td>x</td>
