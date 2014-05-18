@@ -7,7 +7,7 @@ $this->load->helper('currency');
 <div id="total_item"><h4>Total: <?php echo $this->cart->total_items(); ?> items</h4></div>
 <table width="97%" style="margin: 0px 0px 10px 12px;">
                     <tr>
-                        <th width='55px'></th>
+                        <th class="hide" width='55px'></th>
                         <th style="text-align: left; padding: 0px 0px 0px 15px;">Name</th>
                         <th>Qty</th>
                         <th></th>
@@ -19,7 +19,7 @@ $this->load->helper('currency');
                         <?php foreach ($cart as $item) { ?>                                      
                        
                             <tr>
-                                <td><img src="<?php echo base_url().'content/images/'.$item['image1']; ?>" height="50" width="50"> </td>
+                                <td class="hide"><img class="hide" src="<?php echo base_url().'content/images/'.$item['image1']; ?>" height="50" width="50"> </td>
                                 <td style="padding: 0px 0px 0px 10px;"><?php echo $item['name']; ?> </td>
                                 <td style="text-align: center;"><?php echo $item['qty'] ?></td>
                                 <td>x</td>
@@ -32,7 +32,7 @@ $this->load->helper('currency');
                     } ?>
                             <tr >
                         <td style="padding: 0px 0px 0px 15px; border-top: 1px solid #222;"><b>Total</b>:</td>
-                        <td></td>
+                        <td class="hide"></td>
                         <td></td>
                         <td></td>
                         <td style="text-align: center; border-top: 1px solid #222;"> <b><?php get_currency($this->cart->total()); ?></b></td>

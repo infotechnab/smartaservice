@@ -143,7 +143,6 @@ body
 }
 #content
 {
-    //border: thin solid;
    width: 61%;
    height: auto;
 }
@@ -303,7 +302,6 @@ body
 {
     margin: 0px;
     padding: 5px;
-    min-height: 195px;
     background-color: #fff;
 }
 .detailsImage
@@ -492,7 +490,7 @@ div.vertical-line{
 {
     background-image: url('../images/shopping-cart-icon-614x460.png') ;
     background-repeat: no-repeat;
-    background-size: 60%;
+    background-size: 50%;
     height:46px;
     text-indent: 500px;
     border: none;
@@ -501,7 +499,7 @@ div.vertical-line{
     margin: 0px;
     background-position: 60%;
     border-radius: 0px 0px 5px 0px;
-    width: 52%;
+    width: 55%;
     
 }
 #addToCartBtn:hover
@@ -538,7 +536,7 @@ div.vertical-line{
 }
     #navigationLeft
     {
-        width: 75%; float: left;
+        width: 80%; float: left;
     }
       #headerLogo
     {
@@ -562,6 +560,11 @@ div.vertical-line{
     .contentContainerImage img
     {
         width: 92%;
+        height: 180px;
+    }
+    .contentContainerImage
+    {
+        min-height: 200px;
     }
     #detailsImageLarge img
     {
@@ -640,6 +643,11 @@ div.vertical-line{
     .contentContainerImage img
     {
         width: 92%;
+         height: 180px;
+    }
+    .contentContainerImage
+    {
+        min-height: 200px;
     }
      #detailsImageLarge img
     {
@@ -677,8 +685,12 @@ div.vertical-line{
     .contentContainerImage img
     {
         width: 92%;
+         height: 180px;
     }
-   
+   .contentContainerImage
+    {
+        min-height: 200px;
+    }
     #detailsImageLarge img
     {
         width: 95%;
@@ -725,15 +737,19 @@ div.vertical-line{
     .contentContainerImage img
     {
         width: 92%;
+        height: 180px;
     }
-    
+    .contentContainerImage
+    {
+        min-height: 200px;
+    }
     #searchbox
     {
         width: 12%;
         margin: 11px 20px 10px 0px;
     }
 }
-@media screen and (max-width : 801px)
+@media screen and (max-width : 900px)
 {
     .container
     {
@@ -745,16 +761,21 @@ div.vertical-line{
     }
     #headerLogo
     {
-        padding: 0px 0px 0px 20px;
+        padding: 0px 20px 0px 20px;
     }
-   
+    #navigationLeft
+    {
+        width: 100%; float: left;
+        background-color: #c0021c;
+    }
     #navigation ul li
 {
-    display: inline-block;
+    display: block;
     list-style-type: none;
-    width: auto;
+    width: 47.5%;
     margin: 0px 1px 0px 1px;
     padding: 15px 5px 15px 5px;
+    float: left;
 }
     #detailsImageLarge img
     {
@@ -768,8 +789,21 @@ div.vertical-line{
     .contentContainerImage img
     {
         width: 92%;
+        height: 240px;
     }
-    
+    .contentContainerImage
+    {
+        min-height: 255px;
+    }
+    #addToCartBtn
+    {
+        background-size: 32%;
+        height: 53px;
+    }
+    #content, #sidebar
+    {
+        width: 97%;
+    }
     #searchbox
     {
         width: 12%;
@@ -820,17 +854,28 @@ div.vertical-line{
          margin: 2% 3.5% 0% 3.5%;
          width: 43%;
     }
-   
+   #content, #sidebar
+    {
+        width: 95%;
+    }
     .contentContainerImage img
     {
         width: 90%;
+          height: 225px!important;
+    }
+    .contentContainerImage
+    {
+        min-height: 240px;
     }
     #searchbox
     {
         width: 12%;
-        margin: 11px 0px 10px 0px;
-       
-          
+        margin: 11px 0px 10px 0px;   
+    }
+    #addToCartBtn
+    {
+        background-size: 50%;
+        height: 47px;
     }
 }
      @media screen and (max-width : 480px)
@@ -881,6 +926,11 @@ div.vertical-line{
     .contentContainerImage img
     {
         width: 90%;
+         height: 225px!important;
+    }
+    .contentContainerImage
+    {
+        min-height: 240px;
     }
     #searchbox
     {
@@ -891,7 +941,11 @@ div.vertical-line{
 {
     height: auto;
 }
-    
+    #addToCartBtn
+    {
+        background-size: 50%;
+        height: 45px;
+    }
 }
 
      @media screen and (max-width : 360px)
@@ -945,15 +999,26 @@ div.vertical-line{
     .contentContainerImage img
     {
         width: 90%;
+         height: 225px!important;
+    }
+    .contentContainerImage
+    {
+        min-height: 240px;
     }
     #searchbox
     {
         width: 12%;
         margin: 11px 0px 10px 0px;
-       
-        
     }
-    
-    
+    #addToCartBtn
+    {
+        background-size: 38%;
+        height: 51px;
+    }
+    .hide{
+
+display: none;
+
+}
     
 }
