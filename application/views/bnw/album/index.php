@@ -65,7 +65,7 @@ foreach( $result as $abc)
             <?php echo anchor('bnw/photos/'.$data->id,$data->album_name); ?> 
         </div>
             <a href="<?php echo base_url();?>index.php/bnw/delalbum/<?php echo $aid; ?> " id="<?php echo $aid; ?>" class="delbutton">
-        <img src="<?php echo base_url();?>content/images/delete.png" id="close"/></a>
+        <img src="<?php echo base_url();?>content/bnw/images/delete.png" id="close"/></a>
         
     
 </div> 
@@ -83,7 +83,7 @@ else
             <?php echo anchor('bnw/photos/'.$data->id,$data->album_name); ?> 
         </div>
             <a href="<?php echo base_url();?>index.php/bnw/delete_album/<?php echo $aid; ?> " id="<?php echo $aid; ?>" class="delbutton">
-        <img src="<?php echo base_url();?>content/images/delete.png" id="close"/></a>
+        <img src="<?php echo base_url();?>content/bnw/images/delete.png" id="close"/></a>
         
     
 </div> 

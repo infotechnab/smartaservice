@@ -47,7 +47,7 @@ class bnw extends CI_Controller {
 
     function addproduct() {
         if ($this->session->userdata('logged_in')) {
-            $config['upload_path'] = './content/images/';
+            $config['upload_path'] = './content/uploads/images/';
             $config['allowed_types'] = 'gif|jpg|png';
             $config['max_size'] = '2000';
             $config['max_width'] = '2000';
@@ -101,7 +101,7 @@ class bnw extends CI_Controller {
                 // center cropping to 200x130
                 $newImage = $manipulator->crop($x1, $y1, $x2, $y2);
                 // saving file to uploads folder
-                $manipulator->save('./content/images/' . $_FILES['myfile']['name']);
+                $manipulator->save('./content/uploads/images/' . $_FILES['myfile']['name']);
                 //cropper closed               
                } else {
                     $productImg = " ";
@@ -131,7 +131,7 @@ class bnw extends CI_Controller {
                 // center cropping to 200x130
                 $newImage = $manipulator->crop($x1, $y1, $x2, $y2);
                 // saving file to uploads folder
-                $manipulator->save('./content/images/' . $_FILES['myfileTwo']['name']);
+                $manipulator->save('./content/uploads/images/' . $_FILES['myfileTwo']['name']);
                 } else {
                     $productImgTwo = " ";
                 }
@@ -158,7 +158,7 @@ class bnw extends CI_Controller {
                 // center cropping to 200x130
                 $newImage = $manipulator->crop($x1, $y1, $x2, $y2);
                 // saving file to uploads folder
-                $manipulator->save('./content/images/' . $_FILES['myfileThree']['name']);
+                $manipulator->save('./content/uploads/images/' . $_FILES['myfileThree']['name']);
                 } else {
                     $productImgThree = " ";
                 }
@@ -232,7 +232,7 @@ class bnw extends CI_Controller {
     function updateproduct() {
         if ($this->session->userdata('logged_in')) {
 
-            $config['upload_path'] = './content/images/';
+            $config['upload_path'] = './content/uploads/images/';
             $config['allowed_types'] = 'gif|jpg|png';
             $config['max_size'] = '500';
             $config['max_width'] = '1024';
@@ -304,7 +304,7 @@ class bnw extends CI_Controller {
             $image = $_GET['image'];
             $id = $_GET['id'];
             // die($image);
-            unlink('./content/images/' . $image);
+            unlink('./content/uploads/images/' . $image);
             $this->dbmodel->delete_product_photo($id, $image);
             $this->session->set_flashdata('message', 'Data Delete Sucessfully');
             redirect('bnw/editproduct/' . $id);
@@ -328,9 +328,9 @@ class bnw extends CI_Controller {
                 $imgTwo = $images->image2;
                 $imgThree = $images->image3;
             }
-            unlink('./content/images/' . $imgOne);
-            unlink('./content/images/' . $imgTwo);
-            unlink('./content/images/' . $imgThree);
+            unlink('./content/uploads/images/' . $imgOne);
+            unlink('./content/uploads/images/' . $imgTwo);
+            unlink('./content/uploads/images/' . $imgThree);
             $this->dbmodel->delProduct($id);
             
             $this->session->set_flashdata('message', 'Data Deleted Sucessfully');
@@ -806,7 +806,7 @@ class bnw extends CI_Controller {
     public function addcategory() {
         if ($this->session->userdata('logged_in')) {
 
-            $config['upload_path'] = './content/images/';
+            $config['upload_path'] = './content/uploads/images/';
             $config['allowed_types'] = 'gif|jpg|png';
             $config['max_size'] = '500';
             $config['max_width'] = '1024';
@@ -882,7 +882,7 @@ class bnw extends CI_Controller {
     public function updatecategory() {
         if ($this->session->userdata('logged_in')) {
 
-            $config['upload_path'] = './content/images/';
+            $config['upload_path'] = './content/uploads/images/';
             $config['allowed_types'] = 'gif|jpg|png';
             $config['max_size'] = '500';
             $config['max_width'] = '1024';
@@ -982,7 +982,7 @@ class bnw extends CI_Controller {
         if ($this->session->userdata('logged_in')) {
             $username = $this->session->userdata('username');
             $data['username'] = ($this->session->userdata('logged_in'));
-            $config['upload_path'] = './content/images/';
+            $config['upload_path'] = './content/uploads/images/';
             $config['allowed_types'] = 'gif|jpg|png';
             $config['max_size'] = '500';
             $config['max_width'] = '1024';
@@ -1091,7 +1091,7 @@ class bnw extends CI_Controller {
     public function updatepost() {
         if ($this->session->userdata('logged_in')) {
 
-            $config['upload_path'] = './content/images/';
+            $config['upload_path'] = './content/uploads/images/';
             $config['allowed_types'] = 'gif|jpg|png';
             $config['max_size'] = '500';
             $config['max_width'] = '1024';
@@ -1214,7 +1214,7 @@ class bnw extends CI_Controller {
         if ($this->session->userdata('logged_in')) {
             $username = $this->session->userdata('username');
             $data['username'] = ($this->session->userdata('logged_in'));
-            $config['upload_path'] = './content/images/';
+            $config['upload_path'] = './content/uploads/images/';
             $config['allowed_types'] = 'gif|jpg|png';
             $config['max_size'] = '500';
             $config['max_width'] = '1024';
@@ -1324,7 +1324,7 @@ class bnw extends CI_Controller {
     public function updatepage() {
         if ($this->session->userdata('logged_in')) {
 
-            $config['upload_path'] = './content/images/';
+            $config['upload_path'] = './content/uploads/images/';
             $config['allowed_types'] = 'gif|jpg|png';
             $config['max_size'] = '500';
             $config['max_width'] = '1024';
@@ -1649,7 +1649,7 @@ class bnw extends CI_Controller {
     public function addmedia() {
         if ($this->session->userdata('logged_in')) {
 
-            $config['upload_path'] = './content/images/';
+            $config['upload_path'] = './content/uploads/images/';
             $config['allowed_types'] = 'jpg|jpeg|png|gif|pdf|doc|ppt|odt|pptx|docx|xls|xlsx|key';
             $config['max_size'] = '2000';
             $config['max_width'] = '1024';
@@ -1718,7 +1718,7 @@ class bnw extends CI_Controller {
     function updatemedia() {
         if ($this->session->userdata('logged_in')) {
 
-            $config['upload_path'] = './content/images/';
+            $config['upload_path'] = './content/uploads/images/';
             $config['allowed_types'] = 'jpg|jpeg|png|gif|pdf|doc|ppt|odt|pptx|docx|xls|xlsx|key.';
             $config['max_size'] = '2000';
             $config['max_width'] = '1024';
@@ -1785,7 +1785,7 @@ class bnw extends CI_Controller {
     public function deletemedia($id) {
         if ($this->session->userdata('logged_in')) {
             $id = $_GET['image'];
-            unlink('./content/images/' . $id);
+            unlink('./content/uploads/images/' . $id);
 
             $this->dbmodel->delete_media($id);
             $this->session->set_flashdata('message', 'Data Delete Sucessfully');
@@ -1823,7 +1823,7 @@ class bnw extends CI_Controller {
     public function addalbum() {
         if ($this->session->userdata('logged_in')) {
 
-            $config['upload_path'] = './content/images/';
+            $config['upload_path'] = './content/uploads/images/';
             $config['allowed_types'] = 'gif|jpg|png';
             $config['max_size'] = '500';
             $config['max_width'] = '1024';
@@ -1865,7 +1865,7 @@ class bnw extends CI_Controller {
     public function addphoto() {
         if ($this->session->userdata('logged_in')) {
             $data['meta'] = $this->dbmodel->get_meta_data();
-            $config['upload_path'] = './content/images/';
+            $config['upload_path'] = './content/uploads/images/';
             $config['allowed_types'] = 'gif|jpg|png';
             $config['max_size'] = '500';
             $config['max_width'] = '1024';
@@ -1925,7 +1925,7 @@ class bnw extends CI_Controller {
         if ($this->session->userdata('logged_in')) {
             $a = $_GET['image'];
 
-            unlink('./content/images/' . $a);
+            unlink('./content/uploads/images/' . $a);
             $this->dbmodel->delete_photo($a);
             $this->session->set_flashdata('message', 'Data Delete Sucessfully');
             redirect('bnw/addalbum');
@@ -1964,7 +1964,7 @@ class bnw extends CI_Controller {
     public function addslider() {
         if ($this->session->userdata('logged_in')) {
 
-            $config['upload_path'] = './content/images/';
+            $config['upload_path'] = './content/uploads/images/';
             $config['allowed_types'] = 'gif|jpg|png';
             $config['max_size'] = '2000';
             $config['max_width'] = '2000';
@@ -2024,7 +2024,7 @@ class bnw extends CI_Controller {
                 // center cropping to 200x130
                 $newImage = $manipulator->crop($x1, $y1, $x2, $y2);
                 // saving file to uploads folder
-                $manipulator->save('./content/images/' . $_FILES['file_name']['name']);
+                $manipulator->save('./content/uploads/images/' . $_FILES['file_name']['name']);
                 //cropper closed               
                 $this->dbmodel->add_new_slider($slidename, $slideimage, $slidecontent);
                 $this->session->set_flashdata('message', 'One slide added sucessfully');
@@ -2066,7 +2066,7 @@ class bnw extends CI_Controller {
     public function updateslider() {
         if ($this->session->userdata('logged_in')) {
 
-            $config['upload_path'] = './content/images/';
+            $config['upload_path'] = './content/uploads/images/';
             $config['allowed_types'] = 'gif|jpg|png';
             $config['max_size'] = '2000';
             $config['max_width'] = '2000';
@@ -2112,7 +2112,7 @@ class bnw extends CI_Controller {
         if ($this->session->userdata('logged_in')) {
             $a = $_GET['image'];
 
-            unlink('./content/images/' . $a);
+            unlink('./content/uploads/images/' . $a);
 
 
             $this->dbmodel->delete_slider($a);
@@ -2155,7 +2155,7 @@ class bnw extends CI_Controller {
     public function setupupdate() {
         if ($this->session->userdata('logged_in')) {
 
-            $config['upload_path'] = './content/images/';
+            $config['upload_path'] = './content/uploads/images/';
             $config['allowed_types'] = 'gif|jpg|png|ico';
             $config['max_size'] = '500';
             $config['max_width'] = '70';
@@ -2221,7 +2221,7 @@ class bnw extends CI_Controller {
     public function headerupdate() {
         if ($this->session->userdata('logged_in')) {
 
-            $config['upload_path'] = './content/images/';
+            $config['upload_path'] = './content/uploads/images/';
             $config['allowed_types'] = 'gif|jpg|png';
             $config['max_size'] = '500';
             $config['max_width'] = '1024';
@@ -2347,7 +2347,7 @@ class bnw extends CI_Controller {
     public function add_new_album() {
         if ($this->session->userdata('logged_in')) {
 
-            $config['upload_path'] = './content/images/';
+            $config['upload_path'] = './content/uploads/images/';
             $config['allowed_types'] = 'gif|jpg|png';
             $config['max_size'] = '500';
             $config['max_width'] = '1024';
@@ -2404,7 +2404,7 @@ class bnw extends CI_Controller {
             $data['photoquery'] = $this->dbmodel->get_all_photos($id);
             foreach ($data['photoquery'] as $photo) {
                 $image = $photo->media_type;
-                unlink('./content/images/' . $image);
+                unlink('./content/uploads/images/'. $image);
             }
 
             $this->dbmodel->delete_photo($id);

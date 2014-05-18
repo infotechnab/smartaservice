@@ -23,7 +23,7 @@
            
                         <?php foreach ($product_Detail as $pdetail) { ?>
                         <tr style="border-bottom: #ccc solid 1px; ">
-                            <td > <img src="<?php echo base_url()."content/images/".$pdetail->image1; ?>" width="60" height="40" /></td>
+                            <td > <img src="<?php echo base_url()."content/uploads/images/".$pdetail->image1; ?>" width="60" height="40" /></td>
                             <td id="userDetail" style="font-size: 14px; vertical-align: top;">
                             <?php echo "<b>".$pdetail->name."</b>";  ?>
                             </td>
