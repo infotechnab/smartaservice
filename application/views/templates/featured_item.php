@@ -214,7 +214,7 @@ for (i = 0; i < sliderJson.length; i++)
     {
      var ftbl = '<div class="slide"><table class="sliderTable">';
  tbl = '<tr><td rowspan="3"><img src=' +
-          base_url + 'content/images/' +
+          base_url + 'content/uploads/images/' +
           sliderJson[i].image1 + ' id="sliderImage" ></td><td style=" vertical-align: top;" ><h2>' +
           sliderJson[i].name + '</h2><p>' +
           sliderJson[i].summary + '</p> <div class="sliderContent"><div class="contentContainerFooterLeft"><h4>' +

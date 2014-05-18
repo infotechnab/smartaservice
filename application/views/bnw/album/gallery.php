@@ -100,7 +100,7 @@ foreach ($query as $data) {
             
         </div>
             <a href="<?php echo base_url();?>index.php/bnw/delphoto/<?php echo $data->id; ?> " id="<?php echo $id; ?>" class="delbutton">
-        <img src="<?php echo base_url();?>content/images/delete.png" id="close"/></a>
+        <img src="<?php echo base_url();?>content/bnw/images/delete.png" id="close"/></a>
         
     
 </div> 

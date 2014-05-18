@@ -125,7 +125,7 @@ $this->load->helper('currency');
                     <div class='contentContainerDetails'>
                         <div id='detailLargeImage'>
                             <div id='detailsImageLarge'>
-                                <img src="<?php echo base_url() . "content/images/" . $productDet->image1; ?>" alt="no images"/>   
+                                <img src="<?php echo base_url() . "content/uploads/images/" . $productDet->image1; ?>" alt="no images"/>   
                             </div>  
 
                             <div id="detailsDetail">
@@ -148,13 +148,13 @@ $this->load->helper('currency');
                         </div>
 
                         <div id='detailsImage'>
-                            <img id="srcimage" src="<?php echo base_url() . "content/images/" . $productDet->image1; ?>" alt="no images found"/>   
+                            <img id="srcimage" src="<?php echo base_url() . "content/uploads/images/" . $productDet->image1; ?>" alt="no images found"/>   
                         </div>
                         <div id='detailsImage'>
-                            <img id="srcimage" src="<?php echo base_url() . "content/images/" . $productDet->image2; ?>" alt="no images found"/>   
+                            <img id="srcimage" src="<?php echo base_url() . "content/uploads/images/" . $productDet->image2; ?>" alt="no images found"/>   
                         </div>
                         <div id='detailsImage'>
-                            <img id="srcimage" src="<?php echo base_url() . "content/images/" . $productDet->image3; ?>" alt="no images found"/>   
+                            <img id="srcimage" src="<?php echo base_url() . "content/uploads/images/" . $productDet->image3; ?>" alt="no images found"/>   
                         </div>
                       <div class="clear"></div>
                     </div>
@@ -179,7 +179,7 @@ $this->load->helper('currency');
 
         <div id='sidebar'>
             <div class="redColouredDiv" id='sidebarContent'>
-                <div id="sideBarImage"><img src="<?php echo base_url() . "content/images/shopping-cart-icon-614x460.png"; ?>"/> </div>   
+                <div id="sideBarImage"><img src="<?php echo base_url() . "content/uploads/images/shopping-cart-icon-614x460.png"; ?>"/> </div>   
                 <h3>Shopping Cart</h3>
             </div>
             <div class='sidebarContentNext' id="shopping_cart">

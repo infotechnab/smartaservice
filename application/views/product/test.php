@@ -44,7 +44,7 @@
                     <table>
                         <?php foreach ($product_Detail as $pdetail) { ?>
                         <tr>
-                            <td rowspan="2"> <img src="<?php echo base_url()."content/images/".$pdetail->image1; ?>" width="60px" height="40px" /></td>
+                            <td rowspan="2"> <img src="<?php echo base_url()."content/uploads/images/".$pdetail->image1; ?>" width="60px" height="40px" /></td>
                             <td id="userDetail" style="font-size: 14px; vertical-align: top;">
                             <?php echo "<b>".$pdetail->name."</b>";  ?>
                             </td>

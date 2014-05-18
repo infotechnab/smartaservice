@@ -61,10 +61,10 @@
        <div style="height: 180px;"> 
   <div class="product_image_div">
      <div style="width:85px; height: 85px;">
-      <img src="<?php echo base_url()."content/images/".$first_image; ?>" width="80" height="80" alt="Image not set!" />
+      <img src="<?php echo base_url()."content/uploads/images/".$first_image; ?>" width="80" height="80" alt="Image not set!" />
      </div>
       <a href="<?php echo base_url();?>index.php/bnw/productImgdelete/?id=<?php echo $id; ?>&&image=<?php echo "image1"; ?> " id="<?php echo $id; ?>" class="delbutton">
-        <img src="<?php echo base_url();?>content/images/delete.png" id="close"/>
+        <img src="<?php echo base_url();?>content/uploads/images/delete.png" id="close"/>
       </a>
        
       <input type="hidden" name="firstImg" value="<?php echo $first_image ?>" />
@@ -78,10 +78,10 @@
 
 <div class="product_image_div" >
     <div style="width:85px; height: 85px;">
-    <img src="<?php echo base_url()."content/images/".$second_image; ?>" width="80" height="80" alt="Image not set!" />
+    <img src="<?php echo base_url()."content/uploads/images/".$second_image; ?>" width="80" height="80" alt="Image not set!" />
     </div>
              <a href="<?php echo base_url();?>index.php/bnw/productImgdelete/?id=<?php echo $id; ?>&&image=<?php echo "image2"; ?> " id="<?php echo $id; ?>" class="delbutton">
-        <img src="<?php echo base_url();?>content/images/delete.png" id="close"/></a>
+        <img src="<?php echo base_url();?>content/uploads/images/delete.png" id="close"/></a>
     <input type="hidden" name="secondImg" value="<?php echo $second_image ?>" />
     <div><input type="file" name="myfileTwo" id="file" /></div>
 </div> 
@@ -90,11 +90,11 @@
 
 <div class="product_image_div">
     <div style="width:85px; height: 85px;">
-        <img src="<?php echo base_url()."content/images/".$third_image; ?>" width="80" height="80" alt="Image not set!" />
+        <img src="<?php echo base_url()."content/uploads/images/".$third_image; ?>" width="80" height="80" alt="Image not set!" />
     </div>
     
          <a href="<?php echo base_url();?>index.php/bnw/productImgdelete/?id=<?php echo $id; ?>&&image=<?php echo "image3"; ?> " id="<?php echo $id; ?>" class="delbutton">
-        <img src="<?php echo base_url();?>content/images/delete.png" id="close"/></a>
+        <img src="<?php echo base_url();?>content/uploads/images/delete.png" id="close"/></a>
         
     <input type="hidden" name="thirdImg" value="<?php echo $third_image ?>" />
     <div><input type="file" name="myfileThree" id="file" /></div>

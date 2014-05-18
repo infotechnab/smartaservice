@@ -50,7 +50,7 @@ $this->load->helper('currency');
                    
                            <?php echo form_open('cartDetails/update'); ?>
                             <tr class='forTopBorder'>
-                                <td><img src="<?php echo base_url().'content/images/'.$item['image1']; ?>" height="50" width="50"> </td>
+                                <td><img src="<?php echo base_url().'content/uploads/images/'.$item['image1']; ?>" height="50" width="50"> </td>
                                 <td><?php echo $item['name']; ?> </td>
                                 <td><input type="text" value="<?php echo $item['qty'] ?>" id="update_qty" size="3" name="item_qnt_<?php echo $item['id']; ?>" class="updateQuantity"> 
                                     <input type="hidden" value="<?php echo $item['rowid']; ?>" name="item_row_<?php echo $item['id']; ?>">
