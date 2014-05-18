@@ -10,7 +10,6 @@ $this->load->helper('currency');
     
 #slideshow #slideshowWindow {
 	width:100%;
-	
 	margin:0;
 	padding:0;
 	position:relative;
@@ -20,7 +19,7 @@ $this->load->helper('currency');
 #slideshow #slideshowWindow .slide {
 	margin:0;
 	padding:0;
-	width:500px; 
+	width:90%; 
 	height:400px;
 	float:left;
 	position:relative;
@@ -38,14 +37,9 @@ $this->load->helper('currency');
 }
 
 #slideshow #slideshowWindow .slide .slideText {
-	//position:absolute;
+	
         position: relative;
-	//top:100px;
-	//left:00px;
-	//width:100%;
-	//height:130px;
-	//background-image:url(greyBg.png);
-	//background-repeat:repeat;
+
 	margin:0;
 	padding:0;
 	color:#ffffff;
@@ -238,7 +232,7 @@ for (i = 0; i < sliderJson.length; i++)
     }
     .contentContainerFooterRight
     {
-        width: 100px;
+        width: 75px;
         float: left;
     }
 .sliderTable
@@ -249,9 +243,26 @@ for (i = 0; i < sliderJson.length; i++)
 #sliderImage
 {
     width: 300px;
-    
     float: left;
     margin-right: 10px;
+}
+@media screen and (max-width : 900px)
+{
+    #sliderImage
+{
+    width: 600px;
+    float: left;
+    margin-right: 10px;
+}
+#slideshow #slideshowWindow .slide 
+{
+    width: 875px;
+}
+.sliderTable
+    {
+        width: 10%;
+    }
+
 }
 </style>
 

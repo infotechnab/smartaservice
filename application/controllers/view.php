@@ -117,7 +117,6 @@ class View extends CI_Controller {
         $this->load->view('templates/header');
         $this->load->view('templates/navigation');
         $this->load->view('templates/cartDetails');
-
         $this->load->view('templates/footer');
     }
     

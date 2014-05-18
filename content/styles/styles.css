@@ -9,9 +9,9 @@ and open the template in the editor.
 */
 
 [data-icon]:before {
-  font-family: icons; /* BYO icon font, mapped smartly */
-  content: attr(data-icon);
-  speak: none; /* Not to be trusted, but hey. */
+    font-family: icons; /* BYO icon font, mapped smartly */
+    content: attr(data-icon);
+    speak: none; /* Not to be trusted, but hey. */
 }
 
 body
@@ -33,41 +33,41 @@ body
 {
     margin: 0 auto 0 auto;
     padding: 0px;
-    
+
 }
 #headerBackground
 {
     margin: 0px;
     padding: 0px;
-    background: url('../images/headerBackground.png'); 
+    background: url('../uploads/images/headerBackground.png'); 
     background-repeat: repeat;
     width: 100%;
-    
+
     z-index: 0;
 }
 #headerContent
 {
-    
+
     margin: 0 auto 0 auto;
     padding: 0px;
 }
 #contentWrapper
 {
-    
+
     margin: 0 auto 0 auto;
     padding: 50px 0px 0px 0px;
-   height: auto;
+    height: auto;
 }
 #headerLogo
 {
     width: 10%;
     float: left;
     margin: 0px;
-    
+
 }
 #headerLogo img
 {
-   
+
     height: 76px;
     margin: 0px;
     padding: 0px;
@@ -99,8 +99,8 @@ body
     position: relative;
     top: 2px;
     -webkit-box-shadow: 0 10px 10px -6px black;
-	   -moz-box-shadow: 0 10px 10px -6px black;
-	        box-shadow: 0 10px 10px -6px black;
+    -moz-box-shadow: 0 10px 10px -6px black;
+    box-shadow: 0 10px 10px -6px black;
 }
 #navigation ul
 {
@@ -116,7 +116,7 @@ body
 {
     color: #fff;
     text-decoration: none;
-    
+
 }
 
 #searchbox
@@ -127,9 +127,9 @@ body
 }
 #contentBackground
 {
-     margin: 0;
+    margin: 0;
     padding: 0px 0px 15px 0px;
-    background: url('../images/ContentBackGround.png'); 
+    background: url('../uploads/images/ContentBackGround.png'); 
     background-repeat: repeat;
     width: 100%;
     min-height:500px;
@@ -143,9 +143,8 @@ body
 }
 #content
 {
-    //border: thin solid;
-   width: 61%;
-   height: auto;
+    width: 61%;
+    height: auto;
 }
 
 .slider_main{
@@ -160,7 +159,7 @@ body
     background-color: #fff;
     min-height: 25px;
     border-radius: 5px;
-    
+
 }
 .contentHeader h3, .contentContainerDetails h2
 {
@@ -178,7 +177,7 @@ body
 }
 .contentHeaderDetails p
 {
-     margin: 0px;
+    margin: 0px;
     padding: 5px 0px 5px 20px;
 }
 #login
@@ -196,7 +195,7 @@ body
     padding: 0px;
     border: 1px solid #e1dfdf;
     min-height: 350px;
-   border-radius: 5px;
+    border-radius: 5px;
     position: absolute;
     width: 76%;
 }
@@ -235,13 +234,13 @@ body
 
 .contentContainerBox
 {
-   
+
     padding: 0px;
     background-color: #fff;
     min-height: 200px;
     border-radius: 5px;
     float: left;
-    
+
 }
 
 .contentContainerHeader, .contentContainerFooter
@@ -252,7 +251,7 @@ body
 }
 .contentContainerBottom
 {
-     margin: 0px;
+    margin: 0px;
     padding: 0px;
     min-height: 30px;
     width: 100%;
@@ -266,11 +265,11 @@ body
 }
 .contentContainerFooterLeft
 {
-   
+
     margin: 0px;
     padding: 2.5%;
     float: left;
-     height: 35px;
+    height: 35px;
     border-radius: 0px 0px 0px 5px;
     background-color: #222222;
     color: #fff;
@@ -296,23 +295,22 @@ body
     padding: 10px 0px 10px 10px;
 }
 .redColouredDiv{
-     background-color: #ca021e;
-     color: #fff;
+    background-color: #ca021e;
+    color: #fff;
 }
 .contentContainerImage
 {
     margin: 0px;
     padding: 5px;
-    min-height: 195px;
     background-color: #fff;
 }
 .detailsImage
 {
-   
+
     float: left;
-    
+
     width: 200px;
-    
+
 }
 
 .detailsImage img
@@ -322,17 +320,17 @@ body
 }
 #detailsImageLarge
 {
-     margin: 6px;
+    margin: 6px;
     padding: 0px;
-   
+
     width: 100%;
     float: left;
-   
+
 }
 #detailsImageLarge img
 {
-   padding: 10px;
-   float: left;
+    padding: 10px;
+    float: left;
 }
 #detailSmallImg
 {
@@ -389,7 +387,7 @@ body
     margin: 0px;
     padding: 0px;
     width: 53px;
- 
+
 }
 #sidebarContent h3 
 {
@@ -416,12 +414,12 @@ body
 
 #footer
 {
-     margin: 0px;
+    margin: 0px;
     padding: 0px;
     background-color: #222222;
     width: 100%;
     min-height:50px;
-   
+
 }
 #footer p
 {
@@ -435,9 +433,9 @@ body
 {
     text-align: center;
     color: #fff;
-     font-size: 14px;
-     margin: 0px;
-     padding: 10px;
+    font-size: 14px;
+    margin: 0px;
+    padding: 10px;
 }
 
 // for login//
@@ -476,11 +474,11 @@ body
     height: 20px;
 }
 div.vertical-line{
-  width: 1px; 
-  background-color: black; 
-  height: 270px; 
-  float: left;
-  margin: 40px 0px 40px 0px;
+    width: 1px; 
+    background-color: black; 
+    height: 270px; 
+    float: left;
+    margin: 40px 0px 40px 0px;
 }
 #verticalOr
 {
@@ -490,10 +488,10 @@ div.vertical-line{
 
 #addToCartBtn
 {
-    background-image: url('../images/shopping-cart-icon-614x460.png') ;
+    background-image: url('../uploads/images/shopping-cart-icon-614x460.png') ;
     background-repeat: no-repeat;
-    background-size: 60%;
-    height:46px;
+   
+   
     text-indent: 500px;
     border: none;
     background-color: #ca021e;
@@ -501,8 +499,8 @@ div.vertical-line{
     margin: 0px;
     background-position: 60%;
     border-radius: 0px 0px 5px 0px;
-    width: 52%;
-    
+    width: 55%;
+
 }
 #addToCartBtn:hover
 {
@@ -533,35 +531,40 @@ div.vertical-line{
         width: 80%;
     }
     #headerBackground
-{
-    height: 110px;
-}
+    {
+        height: 110px;
+    }
     #navigationLeft
     {
-        width: 75%; float: left;
+        width: 80%; float: left;
     }
-      #headerLogo
+    #headerLogo
     {
         padding: 0px;
     }
-   
+
     #navigation ul li
-{
-    display: inline-block;
-    list-style-type: none;
-    width: auto;
-    margin: 0px 1px 0px 1px;
-    padding: 15px 5px 15px 5px;
-}
+    {
+        display: inline-block;
+        list-style-type: none;
+        width: auto;
+        margin: 0px 1px 0px 1px;
+        padding: 15px 5px 15px 5px;
+    }
     .contentContainerBox
     {
-         margin: 2% 2% 0% 1%;
-         width: 30%;
+        margin: 2% 2% 0% 1%;
+        width: 30%;
     }
-   
+
     .contentContainerImage img
     {
         width: 92%;
+        height: 180px;
+    }
+    .contentContainerImage
+    {
+        min-height: 200px;
     }
     #detailsImageLarge img
     {
@@ -570,8 +573,8 @@ div.vertical-line{
     #searchbox
     {
         width: 10%;
-       margin: 11px 20px 10px 0px;
-       
+        margin: 11px 20px 10px 0px;
+
     }
 }
 @media screen and (max-width : 1370px)
@@ -584,28 +587,28 @@ div.vertical-line{
     {
         width: 82%;
     }
-      #headerLogo
+    #headerLogo
     {
         padding: 0px;
     }
-    
+
     #navigation ul li
-{
-    display: inline-block;
-    list-style-type: none;
-    width: auto;
-    margin: 0px 1px 0px 1px;
-    padding: 15px 5px 15px 5px;
-}
-     #detailsImageLarge img
+    {
+        display: inline-block;
+        list-style-type: none;
+        width: auto;
+        margin: 0px 1px 0px 1px;
+        padding: 15px 5px 15px 5px;
+    }
+    #detailsImageLarge img
     {
         width: 310px;
     }
-    
+
     .contentContainerBox
     {
-         margin: 2% 2% 0% 1%;
-         width: 30%;
+        margin: 2% 2% 0% 1%;
+        width: 30%;
     }
     #searchbox
     {
@@ -624,28 +627,37 @@ div.vertical-line{
     {
         width: 85%;
     }
-     #headerLogo
+    #headerLogo
     {
         padding: 0px;
     }
+    .sliderTable
+    {
+        width: 95%;
+    }
     #navigation ul li
-{
-    display: inline-block;
-    list-style-type: none;
-    width: auto;
-    margin: 0px 1px 0px 1px;
-    padding: 15px 5px 15px 5px;
-}
-   
+    {
+        display: inline-block;
+        list-style-type: none;
+        width: auto;
+        margin: 0px 1px 0px 1px;
+        padding: 15px 5px 15px 5px;
+    }
+
     .contentContainerImage img
     {
         width: 92%;
+        height: 180px;
     }
-     #detailsImageLarge img
+    .contentContainerImage
+    {
+        min-height: 200px;
+    }
+    #detailsImageLarge img
     {
         width: 310px;
     }
-    
+
     #searchbox
     {
         width: 10%;
@@ -667,18 +679,22 @@ div.vertical-line{
         padding: 0px 0px 0px 10px;
     }
     #navigation ul li
-{
-    display: inline-block;
-    list-style-type: none;
-    width: auto;
-    margin: 0px 1px 0px 1px;
-    padding: 15px 5px 15px 5px;
-}
+    {
+        display: inline-block;
+        list-style-type: none;
+        width: auto;
+        margin: 0px 1px 0px 1px;
+        padding: 15px 5px 15px 5px;
+    }
     .contentContainerImage img
     {
         width: 92%;
+        height: 180px;
     }
-   
+    .contentContainerImage
+    {
+        min-height: 200px;
+    }
     #detailsImageLarge img
     {
         width: 95%;
@@ -704,12 +720,22 @@ div.vertical-line{
         padding: 0px 0px 0px 20px;
     }
     #navigation ul li
+    {
+        display: inline-block;
+        list-style-type: none;
+        width: auto;
+        margin: 0px 1px 0px 1px;
+        padding: 15px 5px 15px 5px;
+    }
+    .sliderTable
+    {
+        width: 90%;
+    }
+    #sliderImage
 {
-    display: inline-block;
-    list-style-type: none;
-    width: auto;
-    margin: 0px 1px 0px 1px;
-    padding: 15px 5px 15px 5px;
+    width: 270px;
+    float: left;
+    margin-right: 10px;
 }
     #detailsImageLarge img
     {
@@ -717,23 +743,30 @@ div.vertical-line{
     }
     .contentContainerBox
     {
-         margin: 2% 3.5% 0% 3.5%;
-         width: 43%;
+        margin: 2% 3.5% 0% 3.5%;
+        width: 43%;
     }
-    
-   
     .contentContainerImage img
     {
         width: 92%;
+        height: 180px;
     }
-    
+    .contentContainerImage
+    {
+        min-height: 200px;
+    }
     #searchbox
     {
         width: 12%;
         margin: 11px 20px 10px 0px;
     }
+    #addToCartBtn
+    {
+        background-size: 45%;
+        height: 48px;
+    }
 }
-@media screen and (max-width : 801px)
+@media screen and (max-width : 900px)
 {
     .container
     {
@@ -745,40 +778,66 @@ div.vertical-line{
     }
     #headerLogo
     {
-        padding: 0px 0px 0px 20px;
+        padding: 0px 20px 0px 20px;
     }
-   
-    #navigation ul li
+    #navigationLeft
+    {
+        width: 100%; float: left;
+        background-color: #c0021c;
+    }
+    #sliderImage
 {
-    display: inline-block;
-    list-style-type: none;
-    width: auto;
-    margin: 0px 1px 0px 1px;
-    padding: 15px 5px 15px 5px;
+    width: 600px;
+    float: left;
+    margin-right: 10px;
 }
+    #navigation ul li
+    {
+        display: block;
+        list-style-type: none;
+        width: 47.5%;
+        margin: 0px 1px 0px 1px;
+        padding: 15px 5px 15px 5px;
+        float: left;
+    }
+    
+   
     #detailsImageLarge img
     {
         width: 210px;
     }
     .contentContainerBox
     {
-         margin: 2% 3.5% 0% 3.5%;
-         width: 43%;
+        margin: 2% 3.5% 0% 3.5%;
+        width: 43%;
     }
     .contentContainerImage img
     {
         width: 92%;
+        height: 240px;
     }
-    
+    .contentContainerImage
+    {
+        min-height: 255px;
+    }
+    #addToCartBtn
+    {
+        background-size: 32%;
+        height: 53px;
+    }
+    #content, #sidebar
+    {
+        width: 97%;
+    }
     #searchbox
     {
         width: 12%;
         margin: 11px 0px 10px 0px;
-       
-          
+
+
     }
 }
-    @media screen and (max-width : 650px)
+@media screen and (max-width : 650px)
 {
     .container
     {
@@ -788,7 +847,7 @@ div.vertical-line{
     {
         width: 100%;
     }
-     #navigationLeft
+    #navigationLeft
     {
         width: 100%; float: left;
         background-color: #c0021c;
@@ -797,45 +856,56 @@ div.vertical-line{
     {
         width: 97%;
     }
-  
+
     #headerLogo
     {
         padding: 0px 30px 0px 20px;
     }
     #navigation ul li
-{
-    display: block;
-    list-style-type: none;
-    width: 47%;
-    margin: 0px 1px 0px 1px;
-    padding: 15px 5px 15px 5px;
-    float: left;
-}
+    {
+        display: block;
+        list-style-type: none;
+        width: 47%;
+        margin: 0px 1px 0px 1px;
+        padding: 15px 5px 15px 5px;
+        float: left;
+    }
     #detailsImageLarge img
     {
         width: 150px;
     }
     .contentContainerBox
     {
-         margin: 2% 3.5% 0% 3.5%;
-         width: 43%;
+        margin: 2% 3.5% 0% 3.5%;
+        width: 43%;
     }
-   
+    #content, #sidebar
+    {
+        width: 95%;
+    }
     .contentContainerImage img
     {
         width: 90%;
+        height: 225px!important;
+    }
+    .contentContainerImage
+    {
+        min-height: 240px;
     }
     #searchbox
     {
         width: 12%;
-        margin: 11px 0px 10px 0px;
-       
-          
+        margin: 11px 0px 10px 0px;   
+    }
+    #addToCartBtn
+    {
+        background-size: 50%;
+        height: 47px;
     }
 }
-     @media screen and (max-width : 480px)
+@media screen and (max-width : 480px)
 {
-     .container
+    .container
     {
         width: 95%;
     }
@@ -843,7 +913,7 @@ div.vertical-line{
     {
         width: 99%;
     }
-     #navigationLeft
+    #navigationLeft
     {
         width: 100%; float: left;
         background-color: #c0021c;
@@ -852,35 +922,40 @@ div.vertical-line{
     {
         width: 95%;
     }
-  
+
     #headerLogo
     {
         padding: 0px 30px 0px 150px;
         margin: 0 auto 0 auto;
-       
+
     }
     #navigation ul li
-{
-    display: block;
-    list-style-type: none;
-    width: 97%;
-    margin: 0px 1px 0px 1px;
-    padding: 15px 5px 15px 5px;
-    float: left;
-}
+    {
+        display: block;
+        list-style-type: none;
+        width: 97%;
+        margin: 0px 1px 0px 1px;
+        padding: 15px 5px 15px 5px;
+        float: left;
+    }
     #detailsImageLarge img
     {
         width: 125px;
     }
     .contentContainerBox
     {
-         margin: 2% 1.5% 0% 1.5%;
-         width: 47%;
+        margin: 2% 1.5% 0% 1.5%;
+        width: 47%;
     }
-    
+
     .contentContainerImage img
     {
         width: 90%;
+        height: 225px!important;
+    }
+    .contentContainerImage
+    {
+        min-height: 240px;
     }
     #searchbox
     {
@@ -888,27 +963,35 @@ div.vertical-line{
         margin: 11px 0px 10px 0px;       
     }
     #headerBackground
-{
-    height: auto;
-}
-    
+    {
+        height: auto;
+    }
+    #addToCartBtn
+    {
+        background-size: 50%;
+        height: 45px;
+    }
+    .slider_main
+    {
+        display: none;
+    }
 }
 
-     @media screen and (max-width : 360px)
+@media screen and (max-width : 360px)
 {
-     .container
+    .container
     {
         width: 95%;
     }
     #headerBackground
-{
-    height: auto;
-}
+    {
+        height: auto;
+    }
     #headerContent, #contentWrapper
     {
         width: 98%;
     }
-     #navigationLeft
+    #navigationLeft
     {
         width: 100%; float: left;
         background-color: #c0021c;
@@ -917,43 +1000,217 @@ div.vertical-line{
     {
         width: 96%;
     }
-   
+
     #headerLogo
     {
         padding: 0px 30px 0px 100px;
         margin: 0 auto 0 auto; 
     }
     #navigation ul li
-{
-    display: block;
-    list-style-type: none;
-    width: 96%;
-    margin: 0px 1px 0px 1px;
-    padding: 15px 5px 15px 5px;
-    float: left;
-}
+    {
+        display: block;
+        list-style-type: none;
+        width: 96%;
+        margin: 0px 1px 0px 1px;
+        padding: 15px 5px 15px 5px;
+        float: left;
+    }
     #detailsImageLarge img
     {
         width: 95%;
     }
     .contentContainerBox
     {
-         margin: 2% 1.5% 0% 1.5%;
-         width: 97%;
+        margin: 2% 1.5% 0% 1.5%;
+        width: 97%;
     }
-   
+
     .contentContainerImage img
     {
         width: 90%;
+        height: 225px!important;
+    }
+    .contentContainerImage
+    {
+        min-height: 240px;
     }
     #searchbox
     {
         width: 12%;
         margin: 11px 0px 10px 0px;
-       
-        
     }
-    
-    
-    
+    #addToCartBtn
+    {
+        background-size: 38%;
+        height: 51px;
+    }
+    .hide{
+
+        display: none;
+    }
+    .slider_main
+    {
+        display: none;
+    }
+
 }
+
+
+/* these css are for cart details */
+#cart_detail
+{
+    width: 161%;
+    background-color: white;
+    height: auto;
+    padding: 10px;
+}
+
+#cart_items
+{
+    width: 70%;
+    float: left;
+}
+
+#order_summary
+{
+    margin-left: 50px;
+    width:21%;
+    float: left;
+    padding: 10px;
+}
+
+#continue_shop{
+    
+ background: black;
+ color: white;
+ padding: 5px;
+ text-decoration: none;
+}
+
+.txtright
+{
+    text-align: right;
+}
+
+#order_summary
+{
+    float: left;
+    border: dashed thin #ccc;
+}
+
+table{
+    border-collapse:collapse;
+}
+
+tr.forTopBorder
+{
+    border-top: thin solid #cccccc;
+    height: 50px;
+    text-align: left;
+}
+
+#closeSymbol
+{
+    display: block;
+    cursor: pointer;
+     background-color: #CCCCCC;
+    border: thin solid #CCCCCC;
+    border-radius: 40px;
+    color: black;
+    font-size: 10px;
+    padding: 3px 9px 3px 7px;
+    text-align: center;
+    width: 3px;   
+}
+
+
+#closeSymbol:hover
+{
+     background-color: #EEEEEE;
+    border: thin solid #CCCCCC;
+    border-radius: 40px;
+    color: black;
+    font-size: 10px;
+    padding: 3px 9px 3px 7px;
+    text-align: center;
+    width: 3px;   
+}
+
+
+
+#closeSymbol a
+{
+    color: black;
+    text-decoration: none;
+    display: block;
+}
+
+a
+{
+    text-decoration: none;
+    color: white;
+}
+
+.amt_summary
+{
+    height:40px;
+}
+
+#order_checkout{
+    
+    text-align: center;
+    
+    width:100px;
+    margin-left: 50px;
+    padding:5px;
+    border-radius: 5px;
+}
+
+#order_checkout a{
+    text-decoration: none;
+    color: white;
+}
+
+.updateBtnStyle
+{
+    background: #ca021e;
+    padding:5px;
+    border: none;
+    border-radius: 5px;
+    color: white;
+}
+
+.updateBtnStyle a
+{
+   text-decoration: none;
+    color: white;
+}
+
+#updateCartBtn
+{
+    border: none;
+    border-radius: 5px;
+    color: white;
+}
+
+#checkOutForm
+{
+    margin-left: 375px;
+    text-align: center;
+}
+
+.txtstyle
+{
+    margin-bottom: 10px;
+    width: 300px;
+    height:40px;
+    border-radius: 5px;
+    border: solid thin #ccc;
+}
+
+
+
+::-webkit-input-placeholder { color: #eeeeee; padding-left:15px; font-size:20px; font-weight: bold;}
+::-moz-placeholder { color:#999; } /* firefox 19+ */
+:-ms-input-placeholder { color:#999; } /* ie */
+input:-moz-placeholder { color:#999; }
