@@ -229,6 +229,7 @@ body
     padding: 0px;
     background-color: #fff;
     min-height: 210px;
+    width: 100%;
 }
 
 
@@ -305,30 +306,39 @@ body
     min-height: 195px;
     background-color: #fff;
 }
-#detailsImage
+.detailsImage
 {
-     margin: 2px 2px 2px 6px;
-    padding: 5px;
-    min-height: 150px;
-    width: 30%;
+   
     float: left;
+    
+    width: 200px;
+    
+}
+
+.detailsImage img
+{
+    padding: 5px;
     border: 1px solid #222;
 }
 #detailsImageLarge
 {
      margin: 6px;
     padding: 0px;
-    height: 300px;
-    width: 50%;
+   
+    width: 100%;
     float: left;
-    // border: 1px solid #222;
+   
 }
 #detailsImageLarge img
 {
-    padding: 8px;
-   
-    
+   padding: 10px;
    float: left;
+}
+#detailSmallImg
+{
+    float: left;
+    padding: 20px;
+    width: 100%;
 }
 #detailLargeImage
 {
@@ -943,5 +953,7 @@ div.vertical-line{
        
         
     }
+    
+    
     
 }

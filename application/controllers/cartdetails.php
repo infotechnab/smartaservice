@@ -8,7 +8,7 @@ class CartDetails extends CI_Controller {
     function __construct() {
         parent::__construct();
 
-        $this->load->model('productModel');
+        $this->load->model('productmodel');
         $this->load->helper('url');
         $this->load->library('cart');
         $this->load->helper(array('form', 'url', 'date'));
@@ -98,7 +98,24 @@ class CartDetails extends CI_Controller {
         $this->load->view('templates/inserted');
     }
 
-    
+    function display() {
+        if ($_POST) { //Post Data received from product list page.
+            foreach ($_POST['item_name'] as $key => $itmname) {
+                
+		
+		//create items for session
+		$paypal_product['items'][] = array('itm_name'=>$_POST['item_name'][$key],
+											
+											'itm_code'=>$_POST['item_code'][$key], 
+											'itm_qty'=>$_POST['item_qty'][$key]
+											);
+                
+               
+            }
+            
+            var_dump($paypal_product);
+        }
+    }
 
 }
 

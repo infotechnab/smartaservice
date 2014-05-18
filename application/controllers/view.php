@@ -8,7 +8,7 @@ class View extends CI_Controller {
     function __construct() {
         parent::__construct();
 
-        $this->load->model('productModel');
+        $this->load->model('productmodel');
         $this->load->helper('url');
         $this->load->library('cart');
         $this->load->helper(array('form', 'url', 'date'));
@@ -18,8 +18,8 @@ class View extends CI_Controller {
         
       
 
-        $data['product_info'] = $this->productModel->product_info();
-          $data['featureItem'] = $this->productModel->featured_item();
+        $data['product_info'] = $this->productmodel->product_info();
+          $data['featureItem'] = $this->productmodel->featured_item();
           //var_dump($data);
            $data['slider_json'] = json_encode($data['featureItem']);
         $this->load->view('templates/header');
@@ -37,7 +37,7 @@ class View extends CI_Controller {
         
         
         public function details($id){
-            $data['product'] = $this->productModel->getProductById($id);
+            $data['product'] = $this->productmodel->getProductById($id);
            
             $this->load->view('templates/header');
                 $this->load->view('templates/navigation');
@@ -60,13 +60,15 @@ class View extends CI_Controller {
     function add() {   //function to add item to the cart
 
         $id = $_POST['itemid'];
-        $product = $this->productModel->getProductById($id);
+        $product = $this->productmodel->getProductById($id);
 
 
         foreach ($product as $prod) {
             $name = $prod->name;
             $price = $prod->price;
+            $desc = $prod->description;
             $image1 = $prod->image1;
+            
         }
         $newQnt = 1;
         if ($this->cart->contents()) {
@@ -89,6 +91,7 @@ class View extends CI_Controller {
             'qty' => $newQnt,
             'price' => $price,
             'name' => $name,
+            'desc' =>$desc,
             'image1' => $image1
         );
         $this->cart->insert($insert);
