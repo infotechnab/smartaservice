@@ -95,7 +95,7 @@ foreach ($query as $data) {
    
     
 
-    <img class="srcimage" src="<?php echo base_url(); ?>content/images/<?php echo $data->media_type; ?>" id="galleryimage" />
+    <img class="srcimage" src="<?php echo base_url(); ?>content/uploads/images/<?php echo $data->media_type; ?>" id="galleryimage" />
         <div id="imagetitle"> <?php echo $data->media_name; ?>
             
         </div>

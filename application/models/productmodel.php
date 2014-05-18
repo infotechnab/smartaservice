@@ -42,4 +42,18 @@ public function product_info(){
        $query = $this->db->get('product');
         return $query->result();
     }
+    
+    function category_list()
+    {
+        $query = $this->db->get('category');
+        return $query->result();
+    }
+    
+    function get_product($id)
+    {
+         $this->db->where('category',$id);
+         $query = $this->db->get('product',3);
+         return $query->result();
+                
+    }
 }
