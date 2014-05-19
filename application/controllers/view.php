@@ -24,7 +24,7 @@ class View extends CI_Controller {
            $data['slider_json'] = json_encode($data['featureItem']);
         $this->load->view('templates/header');
         $this->load->view('templates/navigation');
-        $this->load->view('templates/featured_item',$data);
+       
         $this->load->view('templates/content', $data);
          
         $this->load->view('templates/cart');
@@ -37,6 +37,7 @@ class View extends CI_Controller {
         
         
         public function details($id){
+            if(isset($id)){
             $data['product'] = $this->productmodel->getProductById($id);
            
             $this->load->view('templates/header');
@@ -45,6 +46,10 @@ class View extends CI_Controller {
                 $this->load->view('templates/cart');
                 $this->load->view('templates/sidebarview');
                 $this->load->view('templates/footer');
+            }
+ else {
+                redirect();
+ }
         }
         
         public function login(){

@@ -39,7 +39,7 @@ body
 {
     margin: 0px;
     padding: 0px;
-    background: url('../uploads/images/headerBackground.png'); 
+    background: url('../images/headerBackground.png'); 
     background-repeat: repeat;
     width: 100%;
 
@@ -129,7 +129,7 @@ body
 {
     margin: 0;
     padding: 0px 0px 15px 0px;
-    background: url('../uploads/images/ContentBackGround.png'); 
+    background: url('../images/ContentBackGround.png'); 
     background-repeat: repeat;
     width: 100%;
     min-height:500px;
@@ -308,8 +308,7 @@ body
 {
 
     float: left;
-
-    width: 200px;
+    width: 240px;
 
 }
 
@@ -317,6 +316,7 @@ body
 {
     padding: 5px;
     border: 1px solid #222;
+    width: 225px;
 }
 #detailsImageLarge
 {
@@ -488,7 +488,7 @@ div.vertical-line{
 
 #addToCartBtn
 {
-    background-image: url('../uploads/images/shopping-cart-icon-614x460.png') ;
+    background-image: url('../images/shopping-cart-icon-614x460.png') ;
     background-repeat: no-repeat;
    
    
@@ -576,6 +576,11 @@ div.vertical-line{
         margin: 11px 20px 10px 0px;
 
     }
+    #addToCartBtn
+    {
+        background-size: 51%;
+        height: 46px;
+    }
 }
 @media screen and (max-width : 1370px)
 {
@@ -604,7 +609,15 @@ div.vertical-line{
     {
         width: 310px;
     }
-
+#cartDetailsContent
+{
+     width: 65%;
+}
+#cartDetailsSidebar
+{
+    width: 31.5%;
+    margin-left:3%;
+}
     .contentContainerBox
     {
         margin: 2% 2% 0% 1%;
@@ -615,6 +628,11 @@ div.vertical-line{
         width: 10%;
         -moz-margin: 11px 20px 10px 0px;
         -webkit-margin: 15px 15px 10px 5px;
+    }
+    #addToCartBtn
+    {
+        background-size: 51%;
+        height: 46px;
     }
 }
 @media screen and (max-width : 1280px)
@@ -663,6 +681,11 @@ div.vertical-line{
         width: 10%;
         margin: 11px 20px 10px 0px;
     }
+    #addToCartBtn
+    {
+        background-size: 45%;
+        height: 46px;
+    }
 }
 @media screen and (max-width : 1250px)
 {
@@ -703,6 +726,11 @@ div.vertical-line{
     {
         width: 10%;
         margin: 11px 20px 10px 0px;
+    }
+    #addToCartBtn
+    {
+        background-size: 45%;
+        height: 46px;
     }
 }
 @media screen and (max-width : 1025px)
@@ -828,6 +856,11 @@ div.vertical-line{
     #content, #sidebar
     {
         width: 97%;
+    }
+    #cartDetailsContent, #cartDetailsSidebar
+    {
+        width: 99%;
+        margin: 0 auto 0 auto;
     }
     #searchbox
     {
@@ -1057,26 +1090,37 @@ div.vertical-line{
 
 
 /* these css are for cart details */
+#cartDetailsContent
+{
+   
+    height: auto;
+    margin: 0px;
+    padding: 0px;
+    background-color: #fff;
+    float: left;
+}
+#cartDetailsSidebar
+{
+    
+    min-height: 200px;
+    padding: 0px;
+    background-color: #fff;
+    float: left;
+}
 #cart_detail
 {
-    width: 161%;
+    width: 98%;
     background-color: white;
     height: auto;
-    padding: 10px;
-}
-
-#cart_items
-{
-    width: 70%;
-    float: left;
+    padding: 1%;
 }
 
 #order_summary
 {
-    margin-left: 50px;
-    width:21%;
-    float: left;
-    padding: 10px;
+    margin: 0px;
+    width:100%;
+    padding: 0px;
+    background-color: #fff;
 }
 
 #continue_shop{
@@ -1092,11 +1136,6 @@ div.vertical-line{
     text-align: right;
 }
 
-#order_summary
-{
-    float: left;
-    border: dashed thin #ccc;
-}
 
 table{
     border-collapse:collapse;
