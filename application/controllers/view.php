@@ -125,7 +125,41 @@ class View extends CI_Controller {
         $this->load->view('templates/footer');
     }
     
+    function pages()
+    {
+          $data['product_info'] = $this->productmodel->product_info();
+        
+          $data['featureItem'] = $this->productmodel->featured_item();
+          $data['category'] = $this->productmodel->category_list_id();
+          //var_dump($data);
+           $data['slider_json'] = json_encode($data['featureItem']);
+        $this->load->view('templates/header');
+        $this->load->view('templates/navigation');
+       
+        $this->load->view('templates/category_page', $data);
+         
+        $this->load->view('templates/cart');
+        $this->load->view('templates/sidebarview',$data);
+        $this->load->view('templates/footer');
+    }
 
+    function contact()
+    {
+         $data['product_info'] = $this->productmodel->product_info();
+        
+          $data['featureItem'] = $this->productmodel->featured_item();
+          $data['category'] = $this->productmodel->category_list_id();
+          //var_dump($data);
+           $data['slider_json'] = json_encode($data['featureItem']);
+        $this->load->view('templates/header');
+        $this->load->view('templates/navigation');
+       
+        $this->load->view('templates/contactUs', $data);
+         
+        $this->load->view('templates/cart');
+        $this->load->view('templates/sidebarview',$data);
+        $this->load->view('templates/footer');
+    }
 }
 
 /* End of file welcome.php */

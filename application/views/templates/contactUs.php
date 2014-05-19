@@ -315,33 +315,15 @@ for (i = 0; i < sliderJson.length; i++)
     <!-- the slider ends here-->
     
 <div class='contentHeader'>
-    <h3><?php foreach ($category as $pages){ echo $pages->category_name;} ?></h3>
+    <h3>Contact Us</h3>
 
 </div>
 <div id="itemContent">
-    <?php foreach ($featureItem as $product) {
-        ?>
-        <div class='contentContainerBox'>
-
-            <div class='contentContainerHeader'><a href='<?php echo base_url() . "index.php/view/details/" . $product->id ?>'><h3><?php echo $product->name; ?></h3></div>
-            <div class='contentContainerImage'>
-                <img src="<?php echo base_url() . "content/uploads/images/" . $product->image1; ?>" alt="No images" height="150" width="130"/>   
-            </div></a>
-
-            <div class="contentContainerBottom"> 
-                <div class='contentContainerFooterLeft'><h4><?php get_currency($product->price); ?></h4></div>
-                <div class="redColouredDiv" class='contentContainerFooterRight'>
-
-                    <input type="button" value="<?php echo $product->id ?>" class="addToCart" id="addToCartBtn">  
-
-                </div>
-            </div>
-
-        </div>
-
-
-
-    <?php } ?>
+    <p>
+    <b>Salyani Organization</b> <br/>
+    Lions Chowk, Narayangadh <br/>
+    Chitwan
+    </p>
 </div>
 </div>
 <!-- left side content closed here -->
