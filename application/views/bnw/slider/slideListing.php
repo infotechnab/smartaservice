@@ -32,7 +32,7 @@
           <tr>
             
             <td><?php echo $data->slide_name ?></td>
-            <td><img src="<?php echo base_url()."content/images/".$data->slide_image; ?>" width="50px" height="50px" />  </td>
+            <td><img src="<?php echo base_url()."content/uploads/images/".$data->slide_image; ?>" width="50px" height="50px" />  </td>
             <td><?php echo $data->slide_content ?></td>
             <td><?php echo anchor('bnw/editslider/'.$data->id,'Edit'); ?> / 
             <?php echo anchor('bnw/delslider/'.$data->id,'Delete'); ?></td>

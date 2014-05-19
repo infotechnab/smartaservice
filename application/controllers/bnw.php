@@ -11,7 +11,9 @@ class bnw extends CI_Controller {
         $this->load->helper('url');
         $this->load->helper(array('form', 'url'));
         $this->load->library('pagination');
-    }
+       // $this->message = mysql_error();
+       // $this->code = mysql_errno();
+        }
 
     public function index() {
         // die("entered in bnw index!");
@@ -104,7 +106,7 @@ class bnw extends CI_Controller {
                 $manipulator->save('./content/uploads/images/' . $_FILES['myfile']['name']);
                 //cropper closed               
                } else {
-                    $productImg = " ";
+                    $productImg = NULL;
                 }
                 if ($this->upload->do_upload('myfileTwo')) {
                     $data = array('upload_data' => $this->upload->data('myfileTwo'));
@@ -133,7 +135,7 @@ class bnw extends CI_Controller {
                 // saving file to uploads folder
                 $manipulator->save('./content/uploads/images/' . $_FILES['myfileTwo']['name']);
                 } else {
-                    $productImgTwo = " ";
+                    $productImgTwo = NULL;
                 }
                 if ($this->upload->do_upload('myfileThree')) {
                     $data = array('upload_data' => $this->upload->data('myfileThree'));
@@ -160,7 +162,7 @@ class bnw extends CI_Controller {
                 // saving file to uploads folder
                 $manipulator->save('./content/uploads/images/' . $_FILES['myfileThree']['name']);
                 } else {
-                    $productImgThree = " ";
+                    $productImgThree = NULL;
                 }
 
                 $proID = $this->dbmodel->get_proID();
@@ -268,19 +270,36 @@ class bnw extends CI_Controller {
                     $productImg = $data['upload_data']['file_name'];
                     //die("selected file");
                 } else {
-                    $productImg = $this->input->post('firstImg');
+                    if(isset($productImg))
+                    {
+                        $productImg = $this->input->post('firstImg');
+                    }
+                    else{
+                        $productImg = NULL;
+                    }
+                    
                 }
                 if ($this->upload->do_upload('myfileTwo')) {
                     $data = array('upload_data' => $this->upload->data('myfileTwo'));
                     $productImgTwo = $data['upload_data']['file_name'];
                 } else {
+                    if(isset($productImgTwo))
+                    {
                     $productImgTwo = $this->input->post('secondImg');
+                }
+                else{ $productImgTwo = NULL;}
                 }
                 if ($this->upload->do_upload('myfileThree')) {
                     $data = array('upload_data' => $this->upload->data('myfileThree'));
                     $productImgThree = $data['upload_data']['file_name'];
                 } else {
+                    if(isset($productImgThree))
+                    {
                     $productImgThree = $this->input->post('thirdImg');
+                }
+                else{
+                    $productImgThree = NULL;
+                }
                 }
 
                 // $this->dbmodel->update_page($id, $name, $body, $page_author_id, $summary, $status, $order, $type, $tags, $allowComment, $allowLike, $allowShare);
@@ -304,7 +323,14 @@ class bnw extends CI_Controller {
             $image = $_GET['image'];
             $id = $_GET['id'];
             // die($image);
-            unlink('./content/uploads/images/' . $image);
+            if(isset($image))
+            {
+                unlink('./content/uploads/images/' . $image);
+            }
+            else{
+                $image = NULL;
+            }
+            
             $this->dbmodel->delete_product_photo($id, $image);
             $this->session->set_flashdata('message', 'Data Delete Sucessfully');
             redirect('bnw/editproduct/' . $id);
@@ -328,9 +354,24 @@ class bnw extends CI_Controller {
                 $imgTwo = $images->image2;
                 $imgThree = $images->image3;
             }
-            unlink('./content/uploads/images/' . $imgOne);
-            unlink('./content/uploads/images/' . $imgTwo);
-            unlink('./content/uploads/images/' . $imgThree);
+            
+            if(isset($imgOne)==!NULL)
+            {
+                unlink('./content/uploads/images/' . $imgOne);
+            }
+          //  else{}
+            if(isset($imgTwo)==!NULL)
+            {
+                unlink('./content/uploads/images/' . $imgTwo);
+           }
+          //  else{}
+            if(isset($imgThree)==!NULL)
+           {
+                unlink('./content/uploads/images/' . $imgThree);
+           }
+          //  else{}
+            
+            
             $this->dbmodel->delProduct($id);
             
             $this->session->set_flashdata('message', 'Data Deleted Sucessfully');
@@ -941,9 +982,21 @@ class bnw extends CI_Controller {
 
     public function deletecategory($id) {
         if ($this->session->userdata('logged_in')) {
-            $this->dbmodel->delete_category($id);
-            $this->session->set_flashdata('message', 'Data Delete Sucessfully');
-            redirect('bnw/category');
+           $result = $this->dbmodel->delete_category($id);
+            if($result == true)
+            {
+                $this->session->set_flashdata('message', 'Data Delete Sucessfully');
+                 redirect('bnw/category');
+                
+            }
+           else {
+                 $this->session->set_flashdata('message', 'Cannot delete or update a parent row');
+                 redirect('bnw/category');
+                  }
+            
+            //$this->dbmodel->delete_category($id);
+           // $this->session->set_flashdata('message', 'Data Delete Sucessfully');
+           // redirect('bnw/category');
         } else {
             redirect('login', 'refresh');
         }

@@ -37,10 +37,10 @@ if ($meta)
   
   <p>Favicone Image : <br/>
   <div style="width: 70px; height: 70px;">
-      <img src="<?php echo base_url().'content/images/'.$meta_data[4]; ?>" >
+      <img src="<?php echo base_url().'content/uploads/images/'.$meta_data[4]; ?>" >
   </div>
       <a href="<?php echo base_url();?>index.php/bnw/deletefavicone/<?php echo $meta_data[4]; ?> " id="<?php echo $meta_data[4]; ?>" class="delbutton">
-        <img src="<?php echo base_url();?>content/images/delete.png" id="close"/>
+        <img src="<?php echo base_url();?>content/bnw/images/delete.png" id="close"/>
       </a>
       </p>       
  <?php } ?>

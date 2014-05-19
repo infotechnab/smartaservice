@@ -127,7 +127,7 @@ $this->load->helper('currency');
 		var slides = $('.slide');
 		var numberOfSlides = slides.length;
 		var slideShowInterval;
-		var speed = 3000;
+		var speed = 1000;
 
 		//Assign a timer, so it will run periodically
 		slideShowInterval = setInterval(changePosition, speed);
@@ -177,16 +177,19 @@ $this->load->helper('currency');
 				manageNav(currentPosition);
 			} else {
 				currentPosition++;
-				manageNav(currentPosition);
-			}
-			moveSlide();
+				manageNav(currentPosition); 
+			}			 
+                        moveSlide();
 		}
 		
 		
 		//moveSlide: this function moves the slide 
 		function moveSlide() {
-				$('#slidesHolder')
-                  .animate({'marginLeft' : slideWidth*(-currentPosition)});
+                    if(currentPosition == numberOfSlides - 1)
+                    {
+                        currentPosition = 2;
+                    }
+                        $('#slidesHolder').animate({'marginLeft' : slideWidth*(-currentPosition)});
 		}
 
 });

@@ -38,7 +38,7 @@
   <div >
       <img src="<?php echo base_url(); ?>uploads/<?php echo $data->image; ?>" width="250px" height="150px" /> 
       <a href="<?php echo base_url();?>index.php/bnw/delete_page_image/<?php echo $id; ?>">
-        <img src="<?php echo base_url();?>content/images/delete.png" width="20px" height="20px"/></a>
+        <img src="<?php echo base_url();?>content/uploads/images/delete.png" width="20px" height="20px"/></a>
   </div>
   <?php }?>
   <p>Image(315px, 100px): <br />

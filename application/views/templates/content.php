@@ -325,7 +325,7 @@ for (i = 0; i < sliderJson.length; i++)
 
             <div class='contentContainerHeader'><a href='<?php echo base_url() . "index.php/view/details/" . $product->id ?>'><h3><?php echo $product->name; ?></h3></div>
             <div class='contentContainerImage'>
-                <img src="<?php echo base_url() . "content/uploads/images/" . $product->image1; ?>" alt="<?php echo $product->name; ?>"  />   
+                <img src="<?php echo base_url() . "content/uploads/images/" . $product->image1; ?>" alt="No images" height="150" width="130"/>   
             </div></a>
 
             <div class="contentContainerBottom"> 

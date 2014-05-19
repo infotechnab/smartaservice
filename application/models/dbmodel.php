@@ -216,6 +216,7 @@ class Dbmodel extends CI_Model {
         $this->db->update('product_oder_detail',$data);
     }
     function delProduct($id){
+       // die($id);
          $this->db->delete('product', array('id' => $id));
     }
     
@@ -663,8 +664,23 @@ public function get_navigation_info($navigationName)
     }
 
     public function delete_category($id) {
-
-        $this->db->delete('category', array('id' => $id));
+//==== working ================= //
+       $result =  $this->db->delete('category', array('id' => $id));
+       //return $result->result();
+        //$this->db->_error_message();
+        if(!$result)
+        {
+            return false;
+                }
+        else
+        {
+            return true;
+           // die('its work');
+        }
+       
+        //======================
+       
+        
     }
     
        

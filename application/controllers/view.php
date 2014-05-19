@@ -19,7 +19,9 @@ class View extends CI_Controller {
       
 
         $data['product_info'] = $this->productmodel->product_info();
+        
           $data['featureItem'] = $this->productmodel->featured_item();
+          $data['category'] = $this->productmodel->category_list();
           //var_dump($data);
            $data['slider_json'] = json_encode($data['featureItem']);
         $this->load->view('templates/header');
@@ -28,7 +30,7 @@ class View extends CI_Controller {
         $this->load->view('templates/content', $data);
          
         $this->load->view('templates/cart');
-        $this->load->view('templates/sidebarview');
+        $this->load->view('templates/sidebarview',$data);
         $this->load->view('templates/footer');
     }
 
