@@ -491,8 +491,8 @@ div.vertical-line{
 {
     background-image: url('../images/shopping-cart-icon-614x460.png') ;
     background-repeat: no-repeat;
-   
-   
+
+
     text-indent: 500px;
     border: none;
     background-color: #ca021e;
@@ -546,9 +546,9 @@ div.vertical-line{
 
     #navigation ul li
     {
-        display: inline-block;
-        list-style-type: none;
-        width: auto;
+        
+        
+       
         margin: 0px 1px 0px 1px;
         padding: 1px 0px 1px 0px;
     }
@@ -600,26 +600,23 @@ div.vertical-line{
 
     #navigation ul li
     {
-        display: inline-block;
-        list-style-type: none;
-        width: auto;
+        
         margin: 0px 1px 0px 1px;
         padding: 1px 0px 1px 0px;
-        background-color: ;
     }
     #detailsImageLarge img
     {
         width: 310px;
     }
-#cartDetailsContent
-{
-     width: 65%;
-}
-#cartDetailsSidebar
-{
-    width: 31.5%;
-    margin-left:3%;
-}
+    #cartDetailsContent
+    {
+        width: 65%;
+    }
+    #cartDetailsSidebar
+    {
+        width: 31.5%;
+        margin-left:3%;
+    }
     .contentContainerBox
     {
         margin: 2% 2% 0% 1%;
@@ -657,11 +654,8 @@ div.vertical-line{
     }
     #navigation ul li
     {
-        display: inline-block;
-        list-style-type: none;
-        width: auto;
-        margin: 0px 1px 0px 1px;
-        padding: 15px 5px 15px 5px;
+         margin: 0px 1px 0px 1px;
+        padding: 1px 0px 1px 0px;
     }
 
     .contentContainerImage img
@@ -705,11 +699,8 @@ div.vertical-line{
     }
     #navigation ul li
     {
-        display: inline-block;
-        list-style-type: none;
-        width: auto;
         margin: 0px 1px 0px 1px;
-        padding: 15px 5px 15px 5px;
+        padding: 1px 0px 1px 0px;
     }
     .contentContainerImage img
     {
@@ -751,22 +742,19 @@ div.vertical-line{
     }
     #navigation ul li
     {
-        display: inline-block;
-        list-style-type: none;
-        width: auto;
-        margin: 0px 1px 0px 1px;
-        padding: 15px 5px 15px 5px;
+         margin: 0px 1px 0px 1px;
+        padding: 1px 0px 1px 0px;
     }
     .sliderTable
     {
         width: 90%;
     }
     #sliderImage
-{
-    width: 270px;
-    float: left;
-    margin-right: 10px;
-}
+    {
+        width: 270px;
+        float: left;
+        margin-right: 10px;
+    }
     #detailsImageLarge img
     {
         width: 290px;
@@ -816,11 +804,11 @@ div.vertical-line{
         background-color: #c0021c;
     }
     #sliderImage
-{
-    width: 600px;
-    float: left;
-    margin-right: 10px;
-}
+    {
+        width: 600px;
+        float: left;
+        margin-right: 10px;
+    }
     #navigation ul li
     {
         display: block;
@@ -830,8 +818,8 @@ div.vertical-line{
         padding: 15px 5px 15px 5px;
         float: left;
     }
-    
-   
+
+
     #detailsImageLarge img
     {
         width: 210px;
@@ -1094,7 +1082,7 @@ div.vertical-line{
 /* these css are for cart details */
 #cartDetailsContent
 {
-   
+
     height: auto;
     margin: 0px;
     padding: 0px;
@@ -1103,7 +1091,7 @@ div.vertical-line{
 }
 #cartDetailsSidebar
 {
-    
+
     min-height: 200px;
     padding: 0px;
     background-color: #fff;
@@ -1126,11 +1114,11 @@ div.vertical-line{
 }
 
 #continue_shop{
-    
- background: black;
- color: white;
- padding: 5px;
- text-decoration: none;
+
+    background: black;
+    color: white;
+    padding: 5px;
+    text-decoration: none;
 }
 
 .txtright
@@ -1154,7 +1142,7 @@ tr.forTopBorder
 {
     display: block;
     cursor: pointer;
-     background-color: #CCCCCC;
+    background-color: #CCCCCC;
     border: thin solid #CCCCCC;
     border-radius: 40px;
     color: black;
@@ -1167,7 +1155,7 @@ tr.forTopBorder
 
 #closeSymbol:hover
 {
-     background-color: #EEEEEE;
+    background-color: #EEEEEE;
     border: thin solid #CCCCCC;
     border-radius: 40px;
     color: black;
@@ -1198,9 +1186,9 @@ a
 }
 
 #order_checkout{
-    
+
     text-align: center;
-    
+
     width:100px;
     margin-left: 50px;
     padding:5px;
@@ -1223,7 +1211,7 @@ a
 
 .updateBtnStyle a
 {
-   text-decoration: none;
+    text-decoration: none;
     color: white;
 }
 
@@ -1263,116 +1251,117 @@ input:-moz-placeholder { color:#999; }
 #cssmenu li,
 #cssmenu span,
 #cssmenu a {
-  margin: 0;
-  padding: 0;
-  position: relative;
+    margin: 0;
+    padding: 0;
+    position: relative;
 }
 #cssmenu {
-  height: 49px;
-  border-radius: 5px 5px 0 0;
-  -moz-border-radius: 5px 5px 0 0;
-  -webkit-border-radius: 5px 5px 0 0;
-  background-color: #ca021e;
-  border-bottom: 2px solid #e00f16;
+    height: 49px;
+    border-radius: 5px 5px 0 0;
+    -moz-border-radius: 5px 5px 0 0;
+    -webkit-border-radius: 5px 5px 0 0;
+    background-color: #ca021e;
+    border-bottom: 2px solid #e00f16;
 }
 #cssmenu:after,
 #cssmenu ul:after {
-  content: '';
-  display: block;
-  clear: both;
+    content: '';
+    display: block;
+    clear: both;
 }
 #cssmenu a {
-  background: #ca021e;
-  color: #ffffff;
-  display: inline-block;
-  font-size: 16px;
-  line-height: 49px;
-  padding: 0 20px;
-  text-decoration: none;
+    background: #ca021e;
+    color: #ffffff;
+    display: inline-block;
+    font-size: 16px;
+    line-height: 49px;
+    padding: 0 10px 0px 10px;
+    text-decoration: none;
 }
 #cssmenu ul {
-  list-style: none;
+    list-style: none;
 }
 #cssmenu > ul {
-  float: left;
+    float: left;
 }
 #cssmenu > ul > li {
-  float: left;
+    float: left;
 }
 #cssmenu > ul > li:hover:after {
-  content: '';
-  display: block;
-  width: 0;
-  height: 0;
-  position: absolute;
-  left: 50%;
-  bottom: 0;
-  border-left: 10px solid transparent;
-  border-right: 10px solid transparent;
-  border-bottom: 10px solid #e00f16;
-  margin-left: -10px;
+    content: '';
+    display: block;
+    width: 0;
+    height: 0;
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-bottom: 10px solid #e00f16;
+    margin-left: -10px;
 }
 #cssmenu > ul > li:first-child > a {
-  border-radius: 5px 0 0 0;
-  -moz-border-radius: 5px 0 0 0;
-  -webkit-border-radius: 5px 0 0 0;
+    border-radius: 5px 0 0 0;
+    -moz-border-radius: 5px 0 0 0;
+    -webkit-border-radius: 5px 0 0 0;
 }
 #cssmenu > ul > li:last-child > a {
-  border-radius: 0 5px 0 0;
-  -moz-border-radius: 0 5px 0 0;
-  -webkit-border-radius: 0 5px 0 0;
+    border-radius: 0 5px 0 0;
+    -moz-border-radius: 0 5px 0 0;
+    -webkit-border-radius: 0 5px 0 0;
 }
 #cssmenu > ul > li.active > a {
-  box-shadow: inset 0 0 3px #000000;
-  -moz-box-shadow: inset 0 0 3px #000000;
-  -webkit-box-shadow: inset 0 0 3px #000000;
-  background: #070707;
-  
+    box-shadow: inset 0 0 3px #000000;
+    -moz-box-shadow: inset 0 0 3px #000000;
+    -webkit-box-shadow: inset 0 0 3px #000000;
+    background: #070707;
+
 }
 #cssmenu > ul > li:hover > a {
-  background: #a80017;
+    background: #a80017;
 }
 #cssmenu .has-sub {
-  z-index: 1;
+    z-index: 1;
 }
 #cssmenu .has-sub:hover > ul {
-  display: block;
+    display: block;
 }
 #cssmenu .has-sub ul {
-  display: none;
-  position: absolute;
-  width: 200px;
-  top: 100%;
-  left: 0;
+    display: none;
+    position: absolute;
+    width: 200px;
+    top: 100%;
+    left: 0;
 }
 #cssmenu .has-sub ul li {
-  *margin-bottom: -1px;
+    *margin-bottom: -1px;
 }
 #cssmenu .has-sub ul li a {
-  background: #e00f16;
-  border-bottom: 1px dotted #ec6f73;
-  filter: none;
-  font-size: 11px;
-  display: block;
-  line-height: 120%;
-  padding: 10px;
+    background: #e00f16;
+    border-bottom: 1px dotted #ec6f73;
+    filter: none;
+    font-size: 14px;
+    display: block;
+    line-height: 120%;
+    padding: 10px;
+    margin: -1px;
 }
 #cssmenu .has-sub ul li:hover a {
-  background-color: #a80017;
+    background-color: #a80017;
 }
 #cssmenu .has-sub .has-sub:hover > ul {
-  display: block;
+    display: block;
 }
 #cssmenu .has-sub .has-sub ul {
-  display: none;
-  position: absolute;
-  left: 100%;
-  top: 0;
+    display: none;
+    position: absolute;
+    left: 100%;
+    top: 0;
 }
 #cssmenu .has-sub .has-sub ul li a {
-  background-color: #e00f16;
-  border-bottom: 1px dotted #d06d70;
+    background-color: #e00f16;
+    border-bottom: 1px dotted #d06d70;
 }
 #cssmenu .has-sub .has-sub ul li a:hover {
-  background: #a80017;
+    background: #a80017;
 }
