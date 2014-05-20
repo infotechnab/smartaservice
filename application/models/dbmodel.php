@@ -55,6 +55,24 @@ class Dbmodel extends CI_Model {
     
 
 //============================    For Cart System         ========================================//
+    function order_user($name,$address,$city,$state,$country,$zip,$email,$contact)
+    {
+        $uid = 11;
+        $data = array(
+            'u_id'=>$uid,
+            'user_name'=>$name,
+            'deliver_address'=>$address,
+            'city'=>$city,
+            'state'=>$state,
+            'zip'=>$zip,
+            'country'=>$country,
+            'email'=>$email,
+            'contact'=>$contact
+        );
+        $this->db->insert('product_oder',$data);
+    }
+
+
     function add_new_product($cat,$des,$sum,$qty,$name,$price,$img1,$img2,$img3)
     {
         $data = array(
