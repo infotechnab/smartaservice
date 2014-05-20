@@ -178,10 +178,10 @@ public function shippingAddress()
         $this->load->view('templates/footer');
 }
 
-<<<<<<< HEAD
-=======
 
->>>>>>> 292fbad4aa012373e4f2b18ee36d38cc19b1a0e4
+
+
+
 public function adduser()
 {
            echo('hi here');
