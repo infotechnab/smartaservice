@@ -181,11 +181,6 @@ public function shippingAddress()
         $this->load->view('templates/shipping');
         $this->load->view('templates/footer');
 }
-
-
-
-
-
 public function adduser()
 {     $this->load->model('dbmodel');
     $this->load->helper('form');
@@ -240,17 +235,34 @@ public function adduser()
             }
 }
 
-function useradd()
-{
-   
-}
+function shipping()
+{    $this->load->model('dbmodel');
+    $this->load->helper('form');
+            $this->load->library(array('form_validation', 'session'));
+            $this->form_validation->set_rules('receiver_name', 'User Name', 'required|xss_clean|max_length[200]');
+            $this->form_validation->set_rules('receiver_address', 'Address', 'required|xss_clean|max_length[200]');
+            $this->form_validation->set_rules('receiver_city', 'City', 'required|xss_clean|max_length[200]');
+            $this->form_validation->set_rules('receiver_state', 'State', 'required|xss_clean|max_length[200]');
+             $this->form_validation->set_rules('receiver_country', 'Country', 'required|xss_clean|max_length[200]');
+              $this->form_validation->set_rules('receiver_zip', 'Zip', 'required|xss_clean|max_length[200]');
+            $this->form_validation->set_rules('receiver_email', 'Email', 'required|xss_clean|md5|max_length[200]');
+            $this->form_validation->set_rules('Receiver_contact', 'Contact', 'required|xss_clean|max_length[200]');
+            if ($this->form_validation->run() == FALSE) {
 
-
-
-
-function userdetail($user)
-{
-    $this->load->view('temlates/userdetail',$user);
+                redirect('view/shippingAddress');
+            } else {
+                $name = $this->input->post('receiver_name');
+                $address = $this->input->post('receiver_address');
+                $city = $this->input->post('receiver_city');
+                $state = $this->input->post('receiver_state');
+                $country = $this->input->post('receiver_country');
+                $zip = $this->input->post('receiver_zip');
+                $email = $this->input->post('receiver_email');
+                $contact = $this->input->post('Receiver_contact');
+                
+                $this->dbmodel->order_user($name,$address,$city,$state,$country,$zip,$email,$contact);
+                echo " enter to the paypal";
+            }
 }
 
 }
