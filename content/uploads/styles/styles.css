@@ -815,16 +815,25 @@ div.vertical-line{
         float: left;
         margin-right: 10px;
     }
-    #cssmenu a
+    
+    #cssmenu ul 
     {
-        
         width: 100%;
-        margin: 0px 1px 0px 1px;
-        padding: 15px 5px 15px 5px;
-        float: left;
     }
-
-
+#cssmenu ul li.has-sub
+    {
+        width: 49.5%;
+    }
+#cssmenu ul li.has-sub a
+    {
+        width: 99%;
+        margin: 0 auto 0 auto;
+        text-align: center;
+    }
+    #cssmenu ul li.has-sub ul li.has-sub
+    {
+        width: 170%;
+    }
     #detailsImageLarge img
     {
         width: 210px;
