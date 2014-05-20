@@ -315,24 +315,27 @@ for (i = 0; i < sliderJson.length; i++)
     <!-- the slider ends here-->
     
 <div class='contentHeader'>
-    <h3><?php foreach ($category as $pages){ echo $pages->category_name;} ?></h3>
+    <h3><?php if(!empty($categoryId)){ foreach ($categoryId as $pages){ echo $pages->category_name;} }
+    else{
+        echo "<h3>The product you are searching is not found! </h3>";
+    }?></h3>
 
 </div>
 <div id="itemContent">
-    <?php foreach ($featureItem as $product) {
+    <?php foreach ($product as $product_list) {
         ?>
         <div class='contentContainerBox'>
 
-            <div class='contentContainerHeader'><a href='<?php echo base_url() . "index.php/view/details/" . $product->id ?>'><h3><?php echo $product->name; ?></h3></div>
+            <div class='contentContainerHeader'><a href='<?php echo base_url() . "index.php/view/details/" . $product_list->id ?>'><h3><?php echo $product_list->name; ?></h3></div>
             <div class='contentContainerImage'>
-                <img src="<?php echo base_url() . "content/uploads/images/" . $product->image1; ?>" alt="No images" height="150" width="130"/>   
+                <img src="<?php echo base_url() . "content/uploads/images/" . $product_list->image1; ?>" alt="No images" height="150" width="130"/>   
             </div></a>
 
             <div class="contentContainerBottom"> 
-                <div class='contentContainerFooterLeft'><h4><?php get_currency($product->price); ?></h4></div>
+                <div class='contentContainerFooterLeft'><h4><?php get_currency($product_list->price); ?></h4></div>
                 <div class="redColouredDiv" class='contentContainerFooterRight'>
 
-                    <input type="button" value="<?php echo $product->id ?>" class="addToCart" id="addToCartBtn">  
+                    <input type="button" value="<?php echo $product_list->id; ?>" class="addToCart" id="addToCartBtn">  
 
                 </div>
             </div>

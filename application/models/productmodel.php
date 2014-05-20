@@ -48,9 +48,9 @@ public function product_info(){
         $query = $this->db->get('category');
         return $query->result();
     }
-    function category_list_id()
+    function category_list_id($id)
     {
-        $id= 13;
+        
         $this->db->where('id',$id);
          $query = $this->db->get('category');
         return $query->result();
@@ -61,5 +61,13 @@ public function product_info(){
          $query = $this->db->get('product',3);
          return $query->result();
                 
+    }
+    
+    function get_page($id)
+    {
+        $this->db->where('id',$id);
+        $query = $this->db->get('page');
+        return $query->result();
+        
     }
 }

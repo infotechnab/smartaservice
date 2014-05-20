@@ -125,12 +125,14 @@ class View extends CI_Controller {
         $this->load->view('templates/footer');
     }
     
-    function pages()
+    function category($id)
     {
           $data['product_info'] = $this->productmodel->product_info();
         
           $data['featureItem'] = $this->productmodel->featured_item();
-          $data['category'] = $this->productmodel->category_list_id();
+          $data['category'] = $this->productmodel->category_list();
+          $data['categoryId'] = $this->productmodel->category_list_id($id);
+          $data['product'] = $this->productmodel->get_product($id);
           //var_dump($data);
            $data['slider_json'] = json_encode($data['featureItem']);
         $this->load->view('templates/header');
@@ -143,13 +145,14 @@ class View extends CI_Controller {
         $this->load->view('templates/footer');
     }
 
-    function contact()
+    function page($id)
     {
          $data['product_info'] = $this->productmodel->product_info();
         
           $data['featureItem'] = $this->productmodel->featured_item();
-          $data['category'] = $this->productmodel->category_list_id();
+       //   $data['category'] = $this->productmodel->category_list_id();
           //var_dump($data);
+          $data['get_page'] = $this->productmodel->get_page($id);
            $data['slider_json'] = json_encode($data['featureItem']);
         $this->load->view('templates/header');
         $this->load->view('templates/navigation');

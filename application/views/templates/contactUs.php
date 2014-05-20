@@ -315,15 +315,22 @@ for (i = 0; i < sliderJson.length; i++)
     <!-- the slider ends here-->
     
 <div class='contentHeader'>
-    <h3>Contact Us</h3>
+    <?php 
+    if(!empty($get_page)){
+    foreach ($get_page as $pages){
+        
+        $name = $pages->page_name;
+        $content = $pages->page_content;
+        }}
+        else{
+            $name = "Sory the page not fount";
+            $content = " ";
+        }?>
+    <h3><?php echo $name; ?></h3>
 
 </div>
 <div id="itemContent">
-    <p>
-    <b>Salyani Organization</b> <br/>
-    Lions Chowk, Narayangadh <br/>
-    Chitwan
-    </p>
+   <?php echo $content; ?>
 </div>
 </div>
 <!-- left side content closed here -->
