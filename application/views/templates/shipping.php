@@ -11,6 +11,9 @@
             <td><input type="text" name="receiver_address" placeholder=" Shipping Address" size="35" style="box-shadow: inset 0px  #888, inset 0px  #888; outline: none; border: 1px solid #dddddd; padding: 10px; border-radius: 5px;" required/></td>
         </tr>
         <tr style="text-align: center">
+            <td><input type="email" name="receiver_email" placeholder=" Receiver's Email" size="35" style="box-shadow: inset 0px  #888, inset 0px  #888; outline: none; border: 1px solid #dddddd; padding: 10px; border-radius: 5px;" required/></td>
+        </tr>
+        <tr style="text-align: center">
             <td><input type="text" name="Receiver_contact" placeholder=" Receiver's Contact Number" size="35" style="box-shadow: inset 0px  #888, inset 0px  #888; outline: none; border: 1px solid #dddddd; padding: 10px; border-radius: 5px;" required/></td>
         </tr>
 
