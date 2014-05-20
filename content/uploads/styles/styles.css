@@ -188,23 +188,23 @@ body
     background-color: #fff;
     min-height: 410px;
     margin-bottom: 25px;
+    width: 100%;
 }
 #outerBorder
 {
-    text-align: center;
-    margin: 25px;
+    
+    margin: 2% 2% 2% 2%;
     padding: 0px;
     border: 1px solid #e1dfdf;
     min-height: 350px;
     border-radius: 5px;
-    position: absolute;
-    width: 76%;
+    width: 96%;
 }
 .loginLeft
 {
-    width: 45%;
-    margin: 12px;
-    padding: 10px;
+    width: 40%;
+    margin: 3%;
+    padding: 1%;
     float: left;
 }
 .contentContainer
@@ -442,8 +442,9 @@ body
 // for login//
 #nav
 {
-    width: 0%;
+    width: 25%;
     background-color: #c9c1bf;
+    height: 1px;
 }
 
 #mainNav
@@ -461,7 +462,7 @@ body
 .number
 {
     margin-top: -30px;
-    margin-left: 245px;
+    margin-left: 46%;
     font-size:16px;
     font-weight: bold;
     text-decoration:none;
@@ -479,7 +480,7 @@ div.vertical-line{
     background-color: black; 
     height: 270px; 
     float: left;
-    margin: 40px 0px 40px 0px;
+    margin: 40px 40px 40px 0px;
 }
 #verticalOr
 {
