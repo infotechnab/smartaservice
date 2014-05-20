@@ -124,7 +124,7 @@ $this->load->helper('currency');
                     <div class='contentContainerDetails'>
                         
                             <div id='detailsImageLarge'>
-                                <img src="<?php echo base_url() . "content/uploads/images/" . $productDet->image1; ?>" alt="no images"/>   
+                                <img src="<?php echo base_url() . "content/uploads/images/" . $productDet->image1; ?>" alt="<?php echo $productDet->name; ?>"/>   
                               
 
                             <div id="detailsDetail">
@@ -147,13 +147,13 @@ $this->load->helper('currency');
                        
 
                         <div class='detailsImage'>
-                            <img id="srcimage" src="<?php echo base_url() . "content/uploads/images/" . $productDet->image1; ?>" alt="no images found"/>   
+                            <img id="srcimage" src="<?php echo base_url() . "content/uploads/images/" . $productDet->image1; ?>" alt="<?php echo $productDet->name; ?>"/>   
                         </div>
                         <div class='detailsImage'>
-                            <img id="srcimage" src="<?php echo base_url() . "content/uploads/images/" . $productDet->image2; ?>" alt="no images found"/>   
+                            <img id="srcimage" src="<?php echo base_url() . "content/uploads/images/" . $productDet->image2; ?>" alt="<?php echo $productDet->name; ?>"/>   
                         </div>
                         <div class='detailsImage'>
-                            <img id="srcimage" src="<?php echo base_url() . "content/uploads/images/" . $productDet->image3; ?>" alt="no images found"/>   
+                            <img id="srcimage" src="<?php echo base_url() . "content/uploads/images/" . $productDet->image3; ?>" alt="<?php echo $productDet->name; ?>"/>   
                         </div>
                       <div class="clear"></div>
                     </div>

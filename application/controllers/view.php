@@ -39,6 +39,10 @@ class View extends CI_Controller {
         
         
         public function details($id){
+            $data['product_info'] = $this->productmodel->product_info();
+        
+          $data['featureItem'] = $this->productmodel->featured_item();
+          $data['category'] = $this->productmodel->category_list();
             if(isset($id)){
             $data['product'] = $this->productmodel->getProductById($id);
            
@@ -46,7 +50,7 @@ class View extends CI_Controller {
                 $this->load->view('templates/navigation');
                 $this->load->view('templates/details', $data);
                 $this->load->view('templates/cart');
-                $this->load->view('templates/sidebarview');
+                $this->load->view('templates/sidebarview', $data);
                 $this->load->view('templates/footer');
             }
  else {

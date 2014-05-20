@@ -318,7 +318,7 @@ body
 {
 
     float: left;
-    width: 240px;
+    width: 33%;
 
 }
 
@@ -326,7 +326,7 @@ body
 {
     padding: 5px;
     border: 1px solid #222;
-    width: 225px;
+    width: 95%;
 }
 #detailsImageLarge
 {
@@ -750,11 +750,7 @@ div.vertical-line{
     {
         padding: 0px 0px 0px 20px;
     }
-    #navigation ul li
-    {
-         margin: 0px 1px 0px 1px;
-        padding: 1px 0px 1px 0px;
-    }
+    
     .sliderTable
     {
         width: 90%;
@@ -819,11 +815,10 @@ div.vertical-line{
         float: left;
         margin-right: 10px;
     }
-    #navigation ul li
+    #cssmenu a
     {
-        display: block;
-        list-style-type: none;
-        width: 47.5%;
+        
+        width: 100%;
         margin: 0px 1px 0px 1px;
         padding: 15px 5px 15px 5px;
         float: left;
@@ -894,11 +889,14 @@ div.vertical-line{
     {
         padding: 0px 30px 0px 20px;
     }
-    #navigation ul li
+    .has-sub
     {
-        display: block;
-        list-style-type: none;
-        width: 47%;
+        width: 75%;
+    }
+    #cssmenu a
+    {
+        
+        width: 100%;
         margin: 0px 1px 0px 1px;
         padding: 15px 5px 15px 5px;
         float: left;
@@ -1266,12 +1264,12 @@ input:-moz-placeholder { color:#999; }
     position: relative;
 }
 #cssmenu {
-    height: 49px;
+    height: 48px;
     border-radius: 5px 5px 0 0;
     -moz-border-radius: 5px 5px 0 0;
     -webkit-border-radius: 5px 5px 0 0;
     background-color: #ca021e;
-    border-bottom: 2px solid #e00f16;
+    border-bottom: 1px solid #ca021e;
 }
 #cssmenu:after,
 #cssmenu ul:after {
@@ -1339,7 +1337,7 @@ input:-moz-placeholder { color:#999; }
 #cssmenu .has-sub ul {
     display: none;
     position: absolute;
-    width: 200px;
+    width: 150px;
     top: 100%;
     left: 0;
 }
@@ -1352,7 +1350,7 @@ input:-moz-placeholder { color:#999; }
     filter: none;
     font-size: 14px;
     display: block;
-    line-height: 120%;
+    line-height: 100%;
     padding: 10px;
     margin: -1px;
 }
