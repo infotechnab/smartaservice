@@ -1608,18 +1608,7 @@ class bnw extends CI_Controller {
         }
     }
 
-    // public function deleteuser($id) {
-    //    if ($this->session->userdata('logged_in')) {
-    //       $status =  $this->session->userdata('username');
-    // if()
-    //       $this->dbmodel->delete_user($id);
-    //       $this->session->set_flashdata('message', 'Data Delete Sucessfully');
-    //       redirect('bnw/users');
-    //   } else {
-    //      redirect('login', 'refresh');
-    //   }
-    //  }
-
+    
 
     public function deleteuser($id) {
         if ($this->session->userdata('logged_in')) {

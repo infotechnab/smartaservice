@@ -170,6 +170,46 @@ class View extends CI_Controller {
         $this->load->view('templates/userRegistration');
         $this->load->view('templates/footer');
 }
+
+public function adduser()
+{
+           echo('hi here');
+            $this->load->helper('form');
+            $this->load->library(array('form_validation', 'session'));
+            $this->form_validation->set_rules('user_name', 'User Name', 'required|xss_clean|max_length[200]');
+            $this->form_validation->set_rules('user_fname', 'First Name', 'required|xss_clean|max_length[200]');
+            $this->form_validation->set_rules('user_lname', 'Last Name', 'required|xss_clean|max_length[200]');
+            $this->form_validation->set_rules('user_address', 'Address', 'required|xss_clean|max_length[200]');
+            $this->form_validation->set_rules('user_contact', 'Contact Number', 'required|xss_clean|max_length[200]');
+            $this->form_validation->set_rules('user_email', 'User email', 'required|xss_clean|max_length[200]');
+            $this->form_validation->set_rules('user_pass', 'Password', 'required|xss_clean|md5|max_length[200]');
+            $this->form_validation->set_rules('user_repass', 'Password', 'required|xss_clean|md5|max_length[200]');
+
+            if ($this->form_validation->run() == FALSE) {
+
+                $this->load->view('templates/userRegistration');
+            } else {
+die('here');
+                //if valid
+
+                $name = $this->input->post('user_name');
+                $fname = $this->input->post('user_fname');
+                $lname = $this->input->post('user_lname');
+                $address = $this->input->post('user_address');
+                $contactNo = $this->input->post('user_contact');
+                $email = $this->input->post('user_email');
+                $pass = $this->input->post('user_pass');
+               $repass = $this->input->post('user_repass');
+               // $this->dbmodel->add_new_user($name, $fname, $lname, $email, $pass, $status, $user_type);
+                $this->session->set_flashdata('message', 'One user added sucessfully');
+                redirect('bnw/users/userListing');
+            }
+            $this->load->view('bnw/templates/footer', $data);
+        
+}
+
+
+
 }
 
 
