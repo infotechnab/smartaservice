@@ -197,7 +197,7 @@ body
     background-color: #fff;
     min-height: 320px;
     margin-bottom: 25px;
-    width: 35%;
+    
 }
 #outerBorder
 {
@@ -211,7 +211,7 @@ body
 }
 .loginLeft
 {
-    width: 40%;
+    
     margin: 3%;
     padding: 1%;
     float: left;
@@ -553,7 +553,14 @@ div.vertical-line{
     {
         padding: 0px;
     }
-
+#register
+{
+    width: 35%;
+}
+.loginLeft
+{
+    width: 40%;
+}
     #navigation ul li
     {
         
@@ -607,7 +614,10 @@ div.vertical-line{
     {
         padding: 0px;
     }
-
+#register
+{
+    width: 35%;
+}
     #navigation ul li
     {
         
@@ -643,6 +653,10 @@ div.vertical-line{
         background-size: 51%;
         height: 46px;
     }
+    .loginLeft
+{
+    width: 35%;
+}
 }
 @media screen and (max-width : 1280px)
 {
@@ -667,7 +681,10 @@ div.vertical-line{
          margin: 0px 1px 0px 1px;
         padding: 1px 0px 1px 0px;
     }
-
+#register
+{
+    width: 35%;
+}
     .contentContainerImage img
     {
         width: 92%;
@@ -692,6 +709,10 @@ div.vertical-line{
         background-size: 45%;
         height: 46px;
     }
+    .loginLeft
+{
+    width: 35%;
+}
 }
 @media screen and (max-width : 1250px)
 {
@@ -725,6 +746,14 @@ div.vertical-line{
     {
         width: 95%;
     }
+    #register
+{
+    width: 35%;
+}
+.loginLeft
+{
+    width: 35%;
+}
     #searchbox
     {
         width: 10%;
@@ -750,7 +779,10 @@ div.vertical-line{
     {
         padding: 0px 0px 0px 20px;
     }
-    
+    #register
+{
+    width: 35%;
+}
     .sliderTable
     {
         width: 90%;
@@ -815,7 +847,14 @@ div.vertical-line{
         float: left;
         margin-right: 10px;
     }
-    
+    #register
+{
+    width: 38%;
+}
+.loginLeft
+{
+    width: 30%;
+}
     #cssmenu ul 
     {
         width: 100%;
@@ -875,7 +914,24 @@ div.vertical-line{
     }
 }
 @media screen and (max-width : 650px)
-{
+{#cssmenu ul 
+    {
+        width: 100%;
+    }
+#cssmenu ul li.has-sub
+    {
+        width: 46.5%;
+    }
+#cssmenu ul li.has-sub a
+    {
+        width: 99%;
+        margin: 0 auto 0 auto;
+        text-align: center;
+    }
+    #cssmenu ul li.has-sub ul li.has-sub
+    {
+        width: 170%;
+    }
     .container
     {
         width: 95%;
@@ -893,7 +949,10 @@ div.vertical-line{
     {
         width: 97%;
     }
-
+#register
+{
+    width: 60%;
+}
     #headerLogo
     {
         padding: 0px 30px 0px 20px;
@@ -944,7 +1003,32 @@ div.vertical-line{
     }
 }
 @media screen and (max-width : 480px)
+{#cssmenu ul 
+    {
+        width: 100%;
+    }
+#cssmenu ul li.has-sub
+    {
+        width: 101%;
+        display: block;
+    }
+#cssmenu ul li.has-sub a
+    {
+        width: 94%;
+        margin: 0 auto 0 auto;
+        text-align: center;
+    }
+    #cssmenu ul li.has-sub ul li.has-sub
+    {
+        width: 170%;
+    }
+    #cssmenu .has-sub {
+    
+}
+#register
 {
+    width: 80%;
+}
     .container
     {
         width: 95%;
@@ -969,15 +1053,7 @@ div.vertical-line{
         margin: 0 auto 0 auto;
 
     }
-    #navigation ul li
-    {
-        display: block;
-        list-style-type: none;
-        width: 97%;
-        margin: 0px 1px 0px 1px;
-        padding: 15px 5px 15px 5px;
-        float: left;
-    }
+    
     #detailsImageLarge img
     {
         width: 125px;
@@ -1018,7 +1094,32 @@ div.vertical-line{
 }
 
 @media screen and (max-width : 360px)
+{#cssmenu ul 
+    {
+        width: 100%;
+    }
+#cssmenu ul li.has-sub
+    {
+        width: 100%;
+        display: block;
+    }
+#cssmenu ul li.has-sub a
+    {
+        width: 92.5%;
+        margin: 0 auto 0 auto;
+        text-align: center;
+    }
+    #cssmenu ul li.has-sub ul li.has-sub
+    {
+        width: 170%;
+    }
+    #cssmenu .has-sub {
+    
+}
+#register
 {
+    width: 100%;
+}
     .container
     {
         width: 95%;
@@ -1046,15 +1147,7 @@ div.vertical-line{
         padding: 0px 30px 0px 100px;
         margin: 0 auto 0 auto; 
     }
-    #navigation ul li
-    {
-        display: block;
-        list-style-type: none;
-        width: 96%;
-        margin: 0px 1px 0px 1px;
-        padding: 15px 5px 15px 5px;
-        float: left;
-    }
+   
     #detailsImageLarge img
     {
         width: 95%;
