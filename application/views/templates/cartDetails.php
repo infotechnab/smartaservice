@@ -129,7 +129,7 @@ $this->load->helper('currency');
                     </tr>
                 </table>
                 <div id="order_checkout"  class="updateBtnStyle">
-<?php echo anchor('cartDetails/processCart', 'Pay Now') ?></div>
+<?php echo anchor('view/login', 'Pay Now') ?></div>
             </div>
             </div>
 

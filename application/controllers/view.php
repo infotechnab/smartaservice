@@ -170,6 +170,11 @@ class View extends CI_Controller {
         $this->load->view('templates/userRegistration');
         $this->load->view('templates/footer');
 }
+
+function userdetail($user)
+{
+    $this->load->view('temlates/userdetail',$user);
+}
 }
 
 
