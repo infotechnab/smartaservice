@@ -860,7 +860,7 @@ public function get_navigation_info($navigationName)
         $this->db->where('id', $id);
         $this->db->update('user', $data);
     }    
-    public function add_new_user($name, $fname, $lname, $email, $pass, $status, $user_type)
+    public function add_new_user($name, $fname, $lname, $email, $pass, $status, $user_type,$contact,$address)
     {   
                 
         $data = array(
@@ -869,6 +869,8 @@ public function get_navigation_info($navigationName)
             'user_lname'=> $lname,
             'user_email'=> $email,
             'user_pass'=> $pass,
+            'address'=>$address,
+            'contact'=>$contact,
             'user_status'=> $status,
             'user_type'=> $user_type );
          $this->db->insert('user', $data);        

@@ -187,40 +187,57 @@ public function shippingAddress()
 
 
 public function adduser()
-{
-           echo('hi here');
-            $this->load->helper('form');
+{     $this->load->model('dbmodel');
+    $this->load->helper('form');
             $this->load->library(array('form_validation', 'session'));
-            $this->form_validation->set_rules('user_name', 'User Name', 'required|xss_clean|max_length[200]');
-            $this->form_validation->set_rules('user_fname', 'First Name', 'required|xss_clean|max_length[200]');
-            $this->form_validation->set_rules('user_lname', 'Last Name', 'required|xss_clean|max_length[200]');
-            $this->form_validation->set_rules('user_address', 'Address', 'required|xss_clean|max_length[200]');
-            $this->form_validation->set_rules('user_contact', 'Contact Number', 'required|xss_clean|max_length[200]');
-            $this->form_validation->set_rules('user_email', 'User email', 'required|xss_clean|max_length[200]');
-            $this->form_validation->set_rules('user_pass', 'Password', 'required|xss_clean|md5|max_length[200]');
-            $this->form_validation->set_rules('user_repass', 'Password', 'required|xss_clean|md5|max_length[200]');
-
+            $this->form_validation->set_rules('u_name', 'User Name', 'required|xss_clean|max_length[200]');
+            $this->form_validation->set_rules('u_fname', 'First Name', 'required|xss_clean|max_length[200]');
+            $this->form_validation->set_rules('u_lname', 'Last Name', 'required|xss_clean|max_length[200]');
+            $this->form_validation->set_rules('u_email', 'User email', 'required|xss_clean|max_length[200]');
+             $this->form_validation->set_rules('u_contact', 'Contact', 'required|xss_clean|max_length[200]');
+              $this->form_validation->set_rules('u_address', 'Address', 'required|xss_clean|max_length[200]');
+            $this->form_validation->set_rules('u_pass', 'Password', 'required|xss_clean|md5|max_length[200]');
+            
             if ($this->form_validation->run() == FALSE) {
 
-                $this->load->view('templates/userRegistration');
+                redirect('view/registeruser');
             } else {
-die('here');
+
                 //if valid
 
-                $name = $this->input->post('user_name');
-                $fname = $this->input->post('user_fname');
-                $lname = $this->input->post('user_lname');
-                $address = $this->input->post('user_address');
-                $contactNo = $this->input->post('user_contact');
-                $email = $this->input->post('user_email');
-                $pass = $this->input->post('user_pass');
-               $repass = $this->input->post('user_repass');
-               // $this->dbmodel->add_new_user($name, $fname, $lname, $email, $pass, $status, $user_type);
-                $this->session->set_flashdata('message', 'One user added sucessfully');
-                redirect('bnw/users/userListing');
+                $name = $this->input->post('u_name');
+                $fname = $this->input->post('u_fname');
+                $lname = $this->input->post('u_lname');
+                $email = $this->input->post('u_email');
+                $address = $this->input->post('u_address');
+                $contact = $this->input->post('u_contact');
+                $pass = $this->input->post('u_pass');
+                
+                $repass = $this->input->post('u_repass');
+                $repass = md5($repass);
+                $user_type = 1;
+                $status = 1;
+                if($pass == $repass)
+                {
+                   
+                $this->dbmodel->add_new_user($name, $fname, $lname, $email, $pass, $status, $user_type,$contact,$address);
+               
+                echo " User registerd <br/> You may contineu shopping ";
+                
+//$this->session->set_flashdata('message', 'User registerd <br/> You may contineu shopping');
+              //  redirect('view/registeruser');               
+// redirect('paypal');
+                }
+                else {
+                     $this->session->set_flashdata('message', 'Password din not matched');
+                redirect('view/registeruser');
+                }
             }
-            $this->load->view('bnw/templates/footer', $data);
-        
+}
+
+function useradd()
+{
+   
 }
 
 
