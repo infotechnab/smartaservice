@@ -218,16 +218,21 @@ public function adduser()
                 $user_type = 1;
                 $status = 1;
                 if($pass == $repass)
-                {
+                { 
+                $check = $this->dbmodel->check_data($email);
+                if ($check > 0) { //if the data exists show error message
                    
-                $this->dbmodel->add_new_user($name, $fname, $lname, $email, $pass, $status, $user_type,$contact,$address);
+                    $this->session->set_flashdata('message', 'User name already exists. Please type new user name.');
+                redirect('view/registeruser');
+                } else {
+                    $this->dbmodel->add_new_user($name, $fname, $lname, $email, $pass, $status, $user_type,$contact,$address);
                
                 echo " User registerd <br/> You may contineu shopping ";
                 
 //$this->session->set_flashdata('message', 'User registerd <br/> You may contineu shopping');
               //  redirect('view/registeruser');               
 // redirect('paypal');
-                }
+                } }
                 else {
                      $this->session->set_flashdata('message', 'Password din not matched');
                 redirect('view/registeruser');

@@ -875,7 +875,12 @@ public function get_navigation_info($navigationName)
             'user_type'=> $user_type );
          $this->db->insert('user', $data);        
     }
-    
+     function check_data($user)
+ {
+  $this->db->where('email',$user);
+  $query = $this->db->get('user');
+  return $query->num_rows();
+ } 
       public function delete_user($id) {
 
         $this->db->delete('user', array('id' => $id));
