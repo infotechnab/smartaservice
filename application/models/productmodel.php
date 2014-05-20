@@ -70,4 +70,16 @@ public function product_info(){
         return $query->result();
         
     }
+    
+    function validate() {
+       // $email = $this->input->post('email');
+           //     die($email);
+                
+        $this->db->where('user_email', $this->input->post('email'));
+        $this->db->where('user_pass', md5($this->input->post('pass')));
+        $this->db->where('user_type',1);
+        $query = $this->db->get('user');
+        return $query->result();
+       
+    }
 }

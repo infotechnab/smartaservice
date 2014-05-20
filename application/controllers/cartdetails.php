@@ -7,13 +7,15 @@ class CartDetails extends CI_Controller {
 
     function __construct() {
         parent::__construct();
-
+        $this->load->library('session');
         $this->load->model('productmodel');
         $this->load->helper('url');
         $this->load->library('cart');
         $this->load->helper(array('form', 'url', 'date'));
         $this->load->helper('string');
     }
+
+    
 
     public function index() {
 
@@ -117,6 +119,40 @@ class CartDetails extends CI_Controller {
         }
     }
 
+    function login()
+    {
+         $this->load->library('form_validation');
+        $this->form_validation->set_rules('email', 'Email', 'trim|required|xss_clean');
+        $this->form_validation->set_rules('pass', 'Password', 'trim|required|xss_clean|callback_check_database');
+        if ($this->form_validation->run() == FALSE) {
+            //$this->index();
+        } else {
+            $this->load->model('dbmodel');
+            $query = $this->productmodel->validate();
+            
+            if(!empty($query))
+            {
+                foreach ($query as $detail)
+                {
+                    echo "Frist Name :".$detail->user_fname."<br/>";
+                    echo "Last Name :".$detail->user_lname."<br/>";
+                    echo "Email :".$detail->user_email."<br/>";
+                    echo "Contact :".$detail->contact."<br/>";
+                    echo "Address :".$detail->address."<br/>";
+                }
+                
+            }else
+            {
+                $this->session->set_flashdata('message', 'Username or password incorrect');
+                redirect('view/login');
+            }
+        }
+    }
+
+    function udetail()
+    {
+        
+    }
 }
 
 /* End of file welcome.php */

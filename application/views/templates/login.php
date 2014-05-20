@@ -2,7 +2,10 @@
 <div id="login">
     <div id="outerBorder">
         <div class="loginLeft">
-            <?php echo form_open(); ?>
+            <p id="sucessmsg">
+<?php if($this->session->flashdata('message')){echo $this->session->flashdata('message');}
+    echo validation_errors(); ?> </p>
+            <?php echo form_open('cartdetails/login'); ?>
             <table border="0" width="100%">
 
                 <tr style="text-align: center">
@@ -10,10 +13,10 @@
                 </tr>
 
                 <tr style="text-align: center">
-                    <td><input type="email" placeholder="Email" size="35" style="box-shadow: inset 0px  #888, inset 0px  #888; outline: none; border: 1px solid #dddddd; padding: 10px; border-radius: 5px;" required/></td>
+                    <td><input name="email" type="email" placeholder="Email" size="35" style="box-shadow: inset 0px  #888, inset 0px  #888; outline: none; border: 1px solid #dddddd; padding: 10px; border-radius: 5px;" required/></td>
                 </tr>
                 <tr style="text-align: center">
-                    <td><input type="password" placeholder="Password" size="35" style="box-shadow: inset 0px  #888, inset 0px  #888; outline: none; border: 1px solid #dddddd; padding: 10px; border-radius: 5px;" required/></td> 
+                    <td><input name="pass" type="password" placeholder="Password" size="35" style="box-shadow: inset 0px  #888, inset 0px  #888; outline: none; border: 1px solid #dddddd; padding: 10px; border-radius: 5px;" required/></td> 
                 </tr>
                 <tr><td></td></tr>
                 <tr><td></td></tr>
