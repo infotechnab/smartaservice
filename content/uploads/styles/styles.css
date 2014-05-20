@@ -133,7 +133,7 @@ body
     background: url('../images/ContentBackGround.png'); 
     background-repeat: repeat;
     width: 100%;
-    min-height:500px;
+    min-height:300px;
     z-index: 0;
 }
 #content, #sidebar
@@ -189,6 +189,15 @@ body
     min-height: 410px;
     margin-bottom: 25px;
     width: 100%;
+}
+#register
+{
+    margin: 0 auto 0 auto;
+    padding: 20px 0px 0px 0px;
+    background-color: #fff;
+    min-height: 320px;
+    margin-bottom: 25px;
+    width: 35%;
 }
 #outerBorder
 {
