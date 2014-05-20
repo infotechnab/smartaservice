@@ -170,8 +170,14 @@ class View extends CI_Controller {
         $this->load->view('templates/userRegistration');
         $this->load->view('templates/footer');
 }
+public function shippingAddress()
+        {
+     $this->load->view('templates/header');
+        $this->load->view('templates/navigation');
+        $this->load->view('templates/shipping');
+        $this->load->view('templates/footer');
+}
 
-<<<<<<< HEAD
 public function adduser()
 {
            echo('hi here');
@@ -211,12 +217,12 @@ die('here');
 
 
 
-=======
+
 function userdetail($user)
 {
     $this->load->view('temlates/userdetail',$user);
 }
->>>>>>> b5779b25b4c88826a7f5bacb65c528b29200ed1f
+
 }
 
 
