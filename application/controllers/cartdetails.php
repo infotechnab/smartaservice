@@ -152,9 +152,25 @@ class CartDetails extends CI_Controller {
             $s_contact = $this->input->post('s_contact');
         }
         
+        $this->productmodel->add_new_user($username, $fname, $lname, $email, $pass, $contact,$address,$city,$state,$country,$zip);
+        $lastuser = $this->productmodel->get_last_user();
+        foreach ($lastuser as $userId)
+        {
+            $uid = $userId->id;
+        }
+        
+        $this->productmodel->order_user($s_username,$s_address,$s_city,$s_state,$s_country,$s_zip,$s_email,$s_contact,$uid);
+        $orderId = $this->productmodel->get_last_order();
+        foreach ($orderId as $oid)
+        {
+            $oId = $oid->o_id;
+        }
+       // die($oId);
         $cart = $this->cart->contents();
           $tr = 0;
-        $trans_id = $this->productModel->getTranId();
+          
+        $trans_id = $this->productmodel->getTranId();
+        
         foreach ($trans_id as $tranId) {
             $tr = $tranId->trans_num;
         }
@@ -168,7 +184,7 @@ class CartDetails extends CI_Controller {
             var_dump($item);
             if ($item) {
                 mysql_query("INSERT INTO `product_oder_detail` (o_id,p_id,qty,trans_id,trans_num) 
-       VALUES ('1','" . $item['id'] . "', '" . $item['qty'] . "', '$tid', '$tr')");
+       VALUES ('".$oId."','" . $item['id'] . "', '" . $item['qty'] . "', '$tid', '$tr')");
             }
         }
 
