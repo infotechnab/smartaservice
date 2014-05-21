@@ -8,7 +8,6 @@ class bnw extends CI_Controller {
     function __construct() {
         parent::__construct();
         $this->load->model('dbmodel');
-         $this->load->model('productmodel');
         $this->load->helper('url');
         $this->load->helper(array('form', 'url'));
         $this->load->library('pagination');
@@ -177,15 +176,7 @@ class bnw extends CI_Controller {
                 $productCategory = $this->input->post('pCategory');
                 $description = $this->input->post('pDescription');
                 $summary = substr("$description", 0, 100);
-                $shippingCost= $this->input->post('checkMe');
-                if($shippingCost==1){
-                    $shipping="enabled";
-                }
-                else
-                {
-                    $shipping="disabled";
-                }
-                $this->dbmodel->add_new_product($productCategory,$description, $summary, $qty, $productName, $productPrice, $productImg, $productImgTwo, $productImgThree, $shipping);
+                $this->dbmodel->add_new_product($productCategory,$description, $summary, $qty, $productName, $productPrice, $productImg, $productImgTwo, $productImgThree);
                 // $this->dbmodel->add_images($id,$productImg);
                 $this->session->set_flashdata('message', 'One Product added sucessfully');
                 redirect('bnw/product');
@@ -559,16 +550,16 @@ class bnw extends CI_Controller {
 
                 $charge = $this->input->post('shipping_charge');
                
-                
+                die($charge);
                
-                $this->productmodel->update_shipping_cost($charge);
+                //$this->dbmodel->update_design_header_setup($headerTitle, $headerLogo, $headerDescription, $headerBgColor);
                 //$this->session->set_flashdata('message', 'Header setting done sucessfully');
-                redirect('bnw/index');
+                //redirect('bnw');
             }
             $this->load->view('bnw/templates/footer', $data);
         } else {
 
-           redirect('login', 'refresh');
+            redirect('login', 'refresh');
         }
     }
         
