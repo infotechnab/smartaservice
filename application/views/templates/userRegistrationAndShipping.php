@@ -69,7 +69,10 @@ if (!empty($detail)) {
                     </tr>
                     <tr>
                         <td><input type="text" name="District_address" placeholder="District/ State" size="20" style="outline: none; border: 1px solid #dddddd; padding: 10px; border-radius: 5px;" required/></td>
-                        <td><input type="text" name="Country" placeholder="Country" size="20" style="outline: none; border: 1px solid #dddddd; padding: 10px; border-radius: 5px;" required/></td>
+                        <td><input type="text" name="zip" placeholder="zip" size="20" style="outline: none; border: 1px solid #dddddd; padding: 10px; border-radius: 5px;" required/></td>
+                    </tr>
+                    <tr>
+                        <td colspan="2"><input type="text" name="country" placeholder="Country" size="48" style="outline: none; border: 1px solid #dddddd; padding: 10px; border-radius: 5px;" required/></td>
                     </tr>
                     <tr>
                         <td colspan="2"><p style="margin: 0px; padding: 2px;">Contact Number</p></td>
@@ -124,7 +127,10 @@ if (!empty($detail)) {
                     </tr>
                     <tr>
                         <td><input type="text" name="District_address" placeholder="District/ State" size="20" style="outline: none; border: 1px solid #dddddd; padding: 10px; border-radius: 5px;" required/></td>
-                        <td><input type="text" name="Country" placeholder="Country" size="20" style="outline: none; border: 1px solid #dddddd; padding: 10px; border-radius: 5px;" required/></td>
+                        <td><input type="text" name="zip" placeholder="zip" size="20" style="outline: none; border: 1px solid #dddddd; padding: 10px; border-radius: 5px;" required/></td>
+                    </tr>
+                    <tr>
+                        <td colspan="2"><input type="text" name="country" placeholder="Country" size="48" style="outline: none; border: 1px solid #dddddd; padding: 10px; border-radius: 5px;" required/></td>
                     </tr>
                     <tr>
                         <td colspan="2"><p style="margin: 0px; padding: 2px;">Contact Number</p></td>
@@ -198,7 +204,10 @@ if (!empty($detail)) {
                     </tr>
                     <tr>
                         <td><input type="text" name="District_address" placeholder="District/ State" size="20" style="outline: none; border: 1px solid #dddddd; padding: 10px; border-radius: 5px;" required/></td>
-                        <td><input type="text" name="country" placeholder="Country" size="20" style="outline: none; border: 1px solid #dddddd; padding: 10px; border-radius: 5px;" required/></td>
+                        <td><input type="text" name="zip" placeholder="zip" size="20" style="outline: none; border: 1px solid #dddddd; padding: 10px; border-radius: 5px;" required/></td>
+                    </tr>
+                    <tr>
+                        <td colspan="2"><input type="text" name="country" placeholder="Country" size="48" style="outline: none; border: 1px solid #dddddd; padding: 10px; border-radius: 5px;" required/></td>
                     </tr>
                     <tr>
                         <td colspan="2"><p style="margin: 0px; padding: 2px;">Contact Number</p></td>
@@ -261,7 +270,10 @@ if (!empty($detail)) {
                     </tr>
                     <tr>
                         <td><input type="text" name="s_state" placeholder="District/ State" size="20" style="outline: none; border: 1px solid #dddddd; padding: 10px; border-radius: 5px;" required/></td>
-                        <td><input type="text" name="s_country" placeholder="Country" size="20" style="outline: none; border: 1px solid #dddddd; padding: 10px; border-radius: 5px;" required/></td>
+                        <td><input type="text" name="zip" placeholder="zip" size="20" style="outline: none; border: 1px solid #dddddd; padding: 10px; border-radius: 5px;" required/></td>
+                    </tr>
+                    <tr>
+                        <td colspan="2"><input type="text" name="country" placeholder="Country" size="48" style="outline: none; border: 1px solid #dddddd; padding: 10px; border-radius: 5px;" required/></td>
                     </tr>
                     <tr>
                         <td colspan="2"><p style="margin: 0px; padding: 2px;">Contact Number</p></td>

@@ -318,6 +318,7 @@ for (i = 0; i < sliderJson.length; i++)
     <h3>Recent products</h3>
 
 </div>
+ <div id="loading"> <img width="30" src="<?php echo base_url().'content/uploads/images/page-loader.gif' ; ?>" alt="loading.."/><br><b>Loading...</b></div>   
 <div id="itemContent">
     <?php foreach ($product_info as $product) {
         ?>
