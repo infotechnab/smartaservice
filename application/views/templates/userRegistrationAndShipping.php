@@ -1,20 +1,4 @@
-<?php
-if (!empty($detail)) {
-    foreach ($detail as $userdetail) {
-        $username = $userdetail->user_name;
-        $fname = $userdetail->user_fname;
-        $lname = $userdetail->user_lname;
-        $email = $userdetail->user_email;
-        $contact = $userdetail->contact;
-        $address = $userdetail->address;
-        $city = $userdetail->city;
-        $state = $userdetail->state;
-        $zip = $userdetail->zip;
-        $country = $userdetail->country;
-    }
-    ?>
-
-    <script>
+<script>
         var currentValue = 0;
         function handleClick(pickup) {
             ('Old value: ' + currentValue);
@@ -31,7 +15,23 @@ if (!empty($detail)) {
                 document.getElementById('RegisterRight').style.display = 'none';
             }
         }
-    </script>
+    </script><?php
+if (!empty($detail)) {
+    foreach ($detail as $userdetail) {
+        $username = $userdetail->user_name;
+        $fname = $userdetail->user_fname;
+        $lname = $userdetail->user_lname;
+        $email = $userdetail->user_email;
+        $contact = $userdetail->contact;
+        $address = $userdetail->address;
+        $city = $userdetail->city;
+        $state = $userdetail->state;
+        $zip = $userdetail->zip;
+        $country = $userdetail->country;
+    }
+    ?>
+
+    
     <div id="login">
         <div id="outerBorder">
             <div id="RegisterLeft">
