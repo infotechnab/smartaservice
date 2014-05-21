@@ -216,7 +216,7 @@ body
     padding: 1%;
     float: left;
 }
-.RegisterLeft
+#RegisterLeft, #RegisterRight
 {
     margin: 2%;
     padding: 1%;
@@ -567,9 +567,15 @@ div.vertical-line{
 {
     width: 40%;
 }
-.RegisterLeft
+#RegisterLeft
 {
     width: 44%;
+   
+}
+#RegisterRight
+{
+   width: 44%;
+  display: none;
 }
     #navigation ul li
     {
