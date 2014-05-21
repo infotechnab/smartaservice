@@ -111,6 +111,45 @@ class CartDetails extends CI_Controller {
         $email = $this->input->post('u_email');
         $pass = $this->input->post('u_pass');
         
+        if($this->input->post('pickup')== "pickup"){
+            
+            $s_username = " ";
+            $s_address = " ";
+            $s_city = " ";
+            $s_state = " ";
+            $s_zip = " ";
+            $s_country = " ";
+            $s_email = " ";
+            $s_contact = " ";
+            
+            
+        }
+        elseif($this->input->post('pickup')== "shipSame")
+        { 
+            $s_username = $username;
+            $s_address = $address;
+            $s_city = $city;
+            $s_state = $state;
+            $s_zip = "";
+            $s_country = $country;
+            $s_email = $email;
+            $s_contact = $contact;
+        }
+        else
+        {
+             $s_fname = $this->input->post('s_fname');
+            $s_lname = $this->input->post('s_lname');
+            $name = $s_fname." ".$s_lname;
+            
+             $s_username = $name;
+            $s_address = $this->input->post('s_address');
+            $s_city = $this->input->post('s_city');
+            $s_state = $this->input->post('s_state');
+            $s_zip = "";
+            $s_country = $this->input->post('s_country');
+            $s_email = $this->input->post('s_email');
+            $s_contact = $this->input->post('s_contact');
+        }
         
         $cart = $this->cart->contents();
           $tr = 0;
