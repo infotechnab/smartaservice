@@ -81,12 +81,39 @@ class CartDetails extends CI_Controller {
     }
 
     function insert_cart_item() {
+        
+         $this->load->helper('form');
+            $this->load->library(array('form_validation', 'session'));
+            $this->form_validation->set_rules('u_name', 'User Name', 'required|xss_clean|max_length[200]');
+            $this->form_validation->set_rules('u_fname', 'First Name', 'required|xss_clean|max_length[200]');
+            $this->form_validation->set_rules('u_lname', 'Last Name', 'required|xss_clean|max_length[200]');
+            $this->form_validation->set_rules('street_address', 'Address', 'required|xss_clean|max_length[200]');
+            $this->form_validation->set_rules('Town_address', 'City', 'required|xss_clean|max_length[200]');
+            $this->form_validation->set_rules('District_address', 'State', 'required|xss_clean|max_length[200]');
+             $this->form_validation->set_rules('country', 'Country', 'required|xss_clean|max_length[200]');           
+            $this->form_validation->set_rules('u_email', 'User email', 'required|xss_clean|max_length[200]');
+             $this->form_validation->set_rules('u_contact', 'Contact', 'required|xss_clean|max_length[200]');
+              
+            $this->form_validation->set_rules('u_pass', 'Password', 'required|xss_clean|md5|max_length[200]');
+            
+            if ($this->form_validation->run() == FALSE) {
+                 $data['error'] = $this->upload->display_errors();
+                redirect('view/registeruser');
+            } else {
+                $username = $this->input->post('u_name');
+        $fname = $this->input->post('u_fname');
+        $lname = $this->input->post('u_lname');
+        $address = $this->input->post('street_address');
+        $city = $this->input->post('Town_address');
+        $state = $this->input->post('District_address');
+        $country = $this->input->post('country');
+        $contact = $this->input->post('u_contact');
+        $email = $this->input->post('u_email');
+        $pass = $this->input->post('u_pass');
+        
+        
         $cart = $this->cart->contents();
-
-        
-        
-        
-        $tr = 0;
+          $tr = 0;
         $trans_id = $this->productModel->getTranId();
         foreach ($trans_id as $tranId) {
             $tr = $tranId->trans_num;
@@ -106,6 +133,9 @@ class CartDetails extends CI_Controller {
         }
 
         $this->load->view('templates/inserted');
+                
+                }
+        
     }
 
     function display() {

@@ -29,6 +29,8 @@ if (!empty($detail)) {
         $zip = $userdetail->zip;
         $country = $userdetail->country;
     }
+    
+    echo form_open('cartdetails/login');
     ?>
 
     
@@ -142,7 +144,7 @@ if (!empty($detail)) {
             </div>    
 
 
-
+<?php echo form_close(); ?>
 
 
             <div class="clear"></div>
@@ -151,7 +153,14 @@ if (!empty($detail)) {
     </div> 
     </div> 
 
-<?php } else { ?>
+<?php } else {
+    
+    if(isset($error))
+    {
+        echo $error;
+    }
+     echo form_open('cartdetails/insert_cart_item');
+    ?>
 
 
     <div id="login">
@@ -189,7 +198,7 @@ if (!empty($detail)) {
                     </tr>
                     <tr>
                         <td><input type="text" name="District_address" placeholder="District/ State" size="20" style="outline: none; border: 1px solid #dddddd; padding: 10px; border-radius: 5px;" required/></td>
-                        <td><input type="text" name="Country" placeholder="Country" size="20" style="outline: none; border: 1px solid #dddddd; padding: 10px; border-radius: 5px;" required/></td>
+                        <td><input type="text" name="country" placeholder="Country" size="20" style="outline: none; border: 1px solid #dddddd; padding: 10px; border-radius: 5px;" required/></td>
                     </tr>
                     <tr>
                         <td colspan="2"><p style="margin: 0px; padding: 2px;">Contact Number</p></td>
@@ -237,41 +246,41 @@ if (!empty($detail)) {
                         <td><p style="margin: 0px; padding: 2px;">Last Name</p></td>
                     </tr>
                     <tr >
-                        <td><input type="text" name="u_fname" placeholder="First Name" size="20" style="outline: none; border: 1px solid #dddddd; padding: 10px; border-radius: 5px;" required/></td>
-                        <td><input type="text" name="u_lname" placeholder="Last Name" size="20" style="outline: none; border: 1px solid #dddddd; padding: 10px; border-radius: 5px;" required/></td>
+                        <td><input type="text" name="s_fname" placeholder="First Name" size="20" style="outline: none; border: 1px solid #dddddd; padding: 10px; border-radius: 5px;" required/></td>
+                        <td><input type="text" name="s_lname" placeholder="Last Name" size="20" style="outline: none; border: 1px solid #dddddd; padding: 10px; border-radius: 5px;" required/></td>
                     </tr>
                     <tr>
                         <td colspan="2"><p style="margin: 0px; padding: 2px;">Address</p></td>
                     </tr>
                     <tr>
-                        <td colspan="2"><input type="text" name="street_address" placeholder="Street Address" size="48" style="outline: none; border: 1px solid #dddddd; padding: 10px; border-radius: 5px;" required/></td>
+                        <td colspan="2"><input type="text" name="s_address" placeholder="Street Address" size="48" style="outline: none; border: 1px solid #dddddd; padding: 10px; border-radius: 5px;" required/></td>
                     </tr>
                     <tr>
-                        <td colspan="2"><input type="text" name="Town_address" placeholder="Town/ City" size="48" style="outline: none; border: 1px solid #dddddd; padding: 10px; border-radius: 5px;" required/></td>
+                        <td colspan="2"><input type="text" name="c_city" placeholder="Town/ City" size="48" style="outline: none; border: 1px solid #dddddd; padding: 10px; border-radius: 5px;" required/></td>
 
                     </tr>
                     <tr>
-                        <td><input type="text" name="District_address" placeholder="District/ State" size="20" style="outline: none; border: 1px solid #dddddd; padding: 10px; border-radius: 5px;" required/></td>
-                        <td><input type="text" name="Country" placeholder="Country" size="20" style="outline: none; border: 1px solid #dddddd; padding: 10px; border-radius: 5px;" required/></td>
+                        <td><input type="text" name="s_state" placeholder="District/ State" size="20" style="outline: none; border: 1px solid #dddddd; padding: 10px; border-radius: 5px;" required/></td>
+                        <td><input type="text" name="s_country" placeholder="Country" size="20" style="outline: none; border: 1px solid #dddddd; padding: 10px; border-radius: 5px;" required/></td>
                     </tr>
                     <tr>
                         <td colspan="2"><p style="margin: 0px; padding: 2px;">Contact Number</p></td>
                     </tr>
                     <tr>
-                        <td colspan="2"><input type="text" name="u_contact" placeholder="Contact Number" size="48" style="outline: none; border: 1px solid #dddddd; padding: 10px; border-radius: 5px;" required/></td>
+                        <td colspan="2"><input type="text" name="s_contact" placeholder="Contact Number" size="48" style="outline: none; border: 1px solid #dddddd; padding: 10px; border-radius: 5px;" required/></td>
                     </tr>
                     <tr>
                         <td colspan="2"><p style="margin: 0px; padding: 2px;">Email</p></td>
                     </tr>
                     <tr>
-                        <td colspan="2"><input type="email" name="u_email" placeholder="Email" size="48" style="outline: none; border: 1px solid #dddddd; padding: 10px; border-radius: 5px;" required/></td>
+                        <td colspan="2"><input type="email" name="s_email" placeholder="Email" size="48" style="outline: none; border: 1px solid #dddddd; padding: 10px; border-radius: 5px;" required/></td>
                     </tr>
 
                 </table>
 
             </div>    
 
-
+<?php echo form_close(); ?>
 
 
 
