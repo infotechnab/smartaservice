@@ -110,6 +110,7 @@ class CartDetails extends CI_Controller {
         $contact = $this->input->post('u_contact');
         $email = $this->input->post('u_email');
         $pass = $this->input->post('u_pass');
+        $zip = $this->input->post('zip');
         
         if($this->input->post('pickup')== "pickup"){
             
@@ -130,7 +131,7 @@ class CartDetails extends CI_Controller {
             $s_address = $address;
             $s_city = $city;
             $s_state = $state;
-            $s_zip = "";
+            $s_zip = $zip;
             $s_country = $country;
             $s_email = $email;
             $s_contact = $contact;
@@ -145,7 +146,7 @@ class CartDetails extends CI_Controller {
             $s_address = $this->input->post('s_address');
             $s_city = $this->input->post('s_city');
             $s_state = $this->input->post('s_state');
-            $s_zip = "";
+            $s_zip = $this->input->post('s_zip');
             $s_country = $this->input->post('s_country');
             $s_email = $this->input->post('s_email');
             $s_contact = $this->input->post('s_contact');

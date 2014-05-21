@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: May 16, 2014 at 12:27 PM
+-- Generation Time: May 21, 2014 at 10:06 AM
 -- Server version: 5.5.16
 -- PHP Version: 5.3.8
 
@@ -30,17 +30,16 @@ CREATE TABLE IF NOT EXISTS `album` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `album_name` varchar(100) NOT NULL DEFAULT 'Required',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=21 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=22 ;
 
 --
 -- Dumping data for table `album`
 --
 
 INSERT INTO `album` (`id`, `album_name`) VALUES
-(13, 'diuhdjsakl'),
-(15, 'sadiashioudjasiojdkas'),
 (16, 'ljsldjlfsdljf '),
-(20, 'asdf');
+(20, 'asdf'),
+(21, 'dfdf');
 
 -- --------------------------------------------------------
 
@@ -52,17 +51,17 @@ CREATE TABLE IF NOT EXISTS `category` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `category_name` varchar(100) NOT NULL DEFAULT 'Required',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=14 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=15 ;
 
 --
 -- Dumping data for table `category`
 --
 
 INSERT INTO `category` (`id`, `category_name`) VALUES
-(10, 'file'),
-(11, 'hindi'),
-(12, 'nepali'),
-(13, 'Featured Item');
+(10, 'File'),
+(12, 'Nepali'),
+(13, 'Featured Item'),
+(14, 'Product');
 
 -- --------------------------------------------------------
 
@@ -170,7 +169,7 @@ CREATE TABLE IF NOT EXISTS `media` (
   `media_link` varchar(64) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `idx_media` (`media_association_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=24 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=25 ;
 
 --
 -- Dumping data for table `media`
@@ -178,7 +177,8 @@ CREATE TABLE IF NOT EXISTS `media` (
 
 INSERT INTO `media` (`id`, `media_name`, `media_type`, `media_association_id`, `media_link`) VALUES
 (20, 'sandjkaskl', 'monkey.jpg', NULL, 'http://localhost/bnw/content/images/monkey.jpg'),
-(23, 'sdfdsf', 'logofinal_for_ico_19.png', 20, '0');
+(23, 'sdfdsf', 'logofinal_for_ico_19.png', 20, '0'),
+(24, 'sdfdsf', 'tickets-185x1857.jpg', 21, '0');
 
 -- --------------------------------------------------------
 
@@ -267,50 +267,19 @@ CREATE TABLE IF NOT EXISTS `navigation` (
   `menu_id` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `idx_navigation` (`menu_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=94 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=104 ;
 
 --
 -- Dumping data for table `navigation`
 --
 
 INSERT INTO `navigation` (`id`, `navigation_name`, `navigation_link`, `parent_id`, `navigation_type`, `navigation_slug`, `menu_id`) VALUES
-(55, 'sdsadadsdddd', 'page/7', 29, 'page', 'sdsadadsdddd', 4),
-(56, 'axsas', 'page/8', 29, 'page', 'axsas', 4),
-(57, 'ssacdsfrgv', 'page/9', 29, 'page', 'ssacdsfrgv', 4),
-(58, 'sdsadadsdddd', 'page/7', 55, 'page', 'sdsadadsdddd', 4),
-(59, 'ssacdsfrgv', 'page/9', 55, 'page', 'ssacdsfrgv', 4),
-(60, 'asdasdsa', 'category/2', 0, 'category', 'asdasdsa', NULL),
-(61, 'sadsadasdas', 'category/3', 0, 'category', 'sadsadasdas', NULL),
-(62, 'axsas', 'page/8', 0, 'page', 'axsas', NULL),
-(63, 'axsas', 'page/8', 0, 'page', 'axsas', NULL),
-(64, 'ssacdsfrgv', 'page/9', 0, 'page', 'ssacdsfrgv', NULL),
-(65, 'gbgfhncvv', 'category/7', 0, 'category', 'gbgfhncvv', NULL),
-(66, 'sadsadasdas', 'category/3', 0, 'category', 'sadsadasdas', NULL),
-(67, 'asdsaddsad', 'page/6', 0, 'page', 'asdsaddsad', NULL),
-(68, 'sdsadadsdddd', 'page/7', 0, 'page', 'sdsadadsdddd', NULL),
-(69, 'axsas', 'page/8', 0, 'page', 'axsas', NULL),
-(70, 'Contact Us also edited', 'page/4', 0, 'page', 'ContactUsalsoedited', NULL),
-(71, 'dsdadasd', 'page/5', 0, 'page', 'dsdadasd', NULL),
-(72, 'asdsaddsad', 'page/6', 0, 'page', 'asdsaddsad', NULL),
-(73, 'sdsadadsdddd', 'page/7', 0, 'page', 'sdsadadsdddd', NULL),
-(74, 'axsas', 'page/8', 0, 'page', 'axsas', NULL),
-(75, 'ssacdsfrgv', 'page/9', 0, 'page', 'ssacdsfrgv', NULL),
-(76, 'hello', 'google.com', 0, ' ', 'hello', 4),
-(77, 'asdsaddsad', 'page/6', 0, 'page', 'asdsaddsad', NULL),
-(78, 'sdsadadsdddd', 'page/7', 0, 'page', 'sdsadadsdddd', NULL),
-(79, 'axsas', 'page/8', 0, 'page', 'axsas', NULL),
-(80, 'fgyhtynvb', 'category/6', 0, 'category', 'fgyhtynvb', NULL),
-(81, 'gbgfhncvv', 'category/7', 0, 'category', 'gbgfhncvv', NULL),
-(82, 'dfgfdgfdg', 'dfgfdgdfg', 0, ' ', 'dfgfdgfdg', 4),
-(84, 'abcd', 'abcd', 0, ' ', 'abcd', 4),
-(85, 'asdsa', 'category/1', 0, 'category', 'asdsa', NULL),
-(86, 'asdasdsa', 'category/2', 0, 'category', 'asdasdsa', NULL),
-(87, 'sadsadasdas', 'category/3', 0, 'category', 'sadsadasdas', NULL),
-(88, 'sadsadasda', 'category/4', 0, 'category', 'sadsadasda', NULL),
-(90, 'asdsa', 'category/1', 0, 'category', 'asdsa', NULL),
-(91, 'sadsadasda', 'category/4', 0, 'category', 'sadsadasda', NULL),
-(92, 'gbgfhncvv', 'category/7', 0, 'category', 'gbgfhncvv', NULL),
-(93, 'dsfdsfsdf', 'http://www.salyani.com.np', 0, ' ', 'dsfdsfsdf', 4);
+(93, 'Home', 'index', 0, ' ', 'Home', 4),
+(94, 'File', 'category/10', 0, 'category', 'file', 4),
+(95, ' Nepali', 'category/12', 0, 'category', 'nepali', 4),
+(96, 'Featured Item', 'category/13', 0, 'category', 'FeaturedItem', 4),
+(102, 'Product', 'category/14', 95, 'category', 'Product', 4),
+(103, 'Contact Us', 'page/10', 0, 'page', 'ContactUs', 4);
 
 -- --------------------------------------------------------
 
@@ -335,7 +304,7 @@ CREATE TABLE IF NOT EXISTS `page` (
   `allow_like` tinyint(1) NOT NULL,
   `allow_share` tinyint(1) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=10 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=11 ;
 
 --
 -- Dumping data for table `page`
@@ -347,7 +316,8 @@ INSERT INTO `page` (`id`, `page_name`, `page_content`, `page_author_id`, `page_d
 (6, 'asdsaddsad', 'dsadaddds<br>', 10, '2014-03-18 08:28:48', 'dsadaddds<br>', '1', '0000-00-00 00:00:00', 0, 0, '0', '0', 0, 0, 0),
 (7, 'sdsadadsdddd', 'asdasdasdsasad<br>', 10, '2014-03-18 08:28:56', 'asdasdasdsasad<br>', '1', '0000-00-00 00:00:00', 0, 0, '0', '0', 0, 0, 0),
 (8, 'axsas', 'saxasa<br>', 10, '2014-03-18 08:42:00', 'saxasa<br>', '1', '0000-00-00 00:00:00', 0, 0, '0', '0', 0, 0, 0),
-(9, 'ssacdsfrgv', 'bgtrgtgdsfcqw<br>', 10, '2014-03-18 08:42:09', 'bgtrgtgdsfcqw<br>', '1', '0000-00-00 00:00:00', 0, 0, '0', '0', 0, 0, 0);
+(9, 'ssacdsfrgv', 'bgtrgtgdsfcqw<br>', 10, '2014-03-18 08:42:09', 'bgtrgtgdsfcqw<br>', '1', '0000-00-00 00:00:00', 0, 0, '0', '0', 0, 0, 0),
+(10, 'Contact Us', '<b>&nbsp;Salyani Organization </b><br>Lions Chowk, Narayanghad<br>Chitwan<br>', 11, '2014-05-20 05:20:17', '<b>&nbsp;Salyani Organization </b><br>Lions Chowk, Narayanghad<br>Chitwan<br>', '1', '0000-00-00 00:00:00', 0, 0, '0', '0', 0, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -401,28 +371,26 @@ CREATE TABLE IF NOT EXISTS `product` (
   `description` varchar(2000) NOT NULL,
   `summary` varchar(200) NOT NULL,
   `category` int(11) NOT NULL,
-  `image1` varchar(255) NOT NULL,
-  `image2` varchar(255) NOT NULL,
-  `image3` varchar(255) NOT NULL,
+  `image1` varchar(255) DEFAULT NULL,
+  `image2` varchar(255) DEFAULT NULL,
+  `image3` varchar(255) DEFAULT NULL,
+  `shiping` varchar(255) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `category` (`category`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=37 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=39 ;
 
 --
 -- Dumping data for table `product`
 --
 
-INSERT INTO `product` (`id`, `qty`, `price`, `name`, `description`, `summary`, `category`, `image1`, `image2`, `image3`) VALUES
-(26, 1, 100, 'ramayan', '      nepali movie<br>', '      nepali movie<br>', 12, 'tickets-185x185.jpg', 'tickets-185x1851.jpg', 'tickets-185x1852.jpg'),
-(27, 1, 500, 'hood', 'hood<br>', 'hood<br>', 10, ' ', ' ', ' '),
-(28, 1, 5, 'cow', 'cow<br>', 'cow<br>', 10, 'Cow.calf-05_.jpg', ' ', ' '),
-(29, 1, 11, 'sdfdsf', '                  sdfdsf<br>', '                  sdfdsf<br>', 10, 'Forest-Animals-Deer-Leonid-Afremov-Antelope.jpg', ' ', ' '),
-(30, 1, 500, 'ramayan', 'ramayan<br>', 'ramayan<br>', 11, 'emerochino-tickets1.jpg', 'emerochino-tickets11.jpg', 'emerochino-tickets12.jpg'),
-(31, 1, 500, 'raghav', 'raghav<br>', 'raghav<br>', 12, 'tickets-185x1853.jpg', 'emerochino-tickets13.jpg', 'tickets-185x1854.jpg'),
-(32, 1, 888, 'last item', 'last item<br>', 'last item<br>', 12, 'tickets-185x1855.jpg', 'emerochino-tickets14.jpg', 'tickets-185x1856.jpg'),
-(33, 1, 5000, 'Jacket', 'This jacket is made up of the leather and regzin. Its a high quality jacket made in indonesia. Its of YCKMD.', 'This jacket is made up of the leather and regzin. Its a high quality jacket made in indonesia. Its o', 13, '10151525_741063372611058_61122481_n.jpg', ' ', ' '),
-(34, 1, 2000, 'Paint', 'This paint is of pure jeans . made in nepal. sakjdfhas', 'This paint is of pure jeans . made in nepal. sakjdfhas', 13, 'hotel-reservation-widget-interface.png', ' ', ' '),
-(35, 1, 1000, 'Shirt', 'Shirt of roobin hod. askjdfhafe.. Its to sliky with 100% polister. daskjfak;', 'Shirt of roobin hod. askjdfhafe.. Its to sliky with 100% polister. daskjfak;', 13, 'elegant-blank-menu-13599460.jpg', ' ', ' ');
+INSERT INTO `product` (`id`, `qty`, `price`, `name`, `description`, `summary`, `category`, `image1`, `image2`, `image3`, `shiping`) VALUES
+(26, 1, 100, 'ramayan', '      nepali movie<br>', '      nepali movie<br>', 12, 'tickets-185x185.jpg', 'tickets-185x1851.jpg', 'tickets-185x1852.jpg', ''),
+(27, 1, 500, 'hood', '            hood<br>', '            hood<br>', 10, 'tickets-185x1854.jpg', NULL, NULL, ''),
+(28, 1, 5, 'cow', '      cow<br>', '      cow<br>', 10, 'emerochino-tickets11.jpg', NULL, NULL, ''),
+(29, 1, 11, 'sdfdsf', '                  sdfdsf<br>', '                  sdfdsf<br>', 10, 'Forest-Animals-Deer-Leonid-Afremov-Antelope.jpg', NULL, NULL, ''),
+(33, 1, 5000, 'Jacket', '      This jacket is made up of the leather and regzin. Its a high quality jacket made in indonesia. Its of YCKMD.', '      This jacket is made up of the leather and regzin. Its a high quality jacket made in indonesia.', 13, 'emerochino-tickets1.jpg', NULL, NULL, ''),
+(34, 1, 2000, 'Paint', '      This paint is of pure jeans . made in nepal. sakjdfhas', '      This paint is of pure jeans . made in nepal. sakjdfhas', 13, 'tickets-185x1853.jpg', NULL, NULL, ''),
+(38, 1, 12, 'Product', 'sdfsdf<br>', 'sdfsdf<br>', 14, NULL, NULL, NULL, '');
 
 -- --------------------------------------------------------
 
@@ -456,14 +424,15 @@ CREATE TABLE IF NOT EXISTS `product_oder` (
   `contact` varchar(50) NOT NULL,
   PRIMARY KEY (`o_id`),
   KEY `u_id` (`u_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
 
 --
 -- Dumping data for table `product_oder`
 --
 
 INSERT INTO `product_oder` (`o_id`, `u_id`, `date`, `user_name`, `deliver_address`, `city`, `state`, `zip`, `country`, `email`, `contact`) VALUES
-(1, 11, '2014-05-15', 'hello', 'naranghat', 'chitwan', 'chitwan', '12345', 'nepal', 'rsubedi@salyani.com.np', '123456');
+(1, 11, '2014-05-15', 'hello', 'naranghat', 'chitwan', 'chitwan', '12345', 'nepal', 'rsubedi@salyani.com.np', '123456'),
+(4, 11, '0000-00-00', 'sfdf', 'lsdkjf', 'dlksfj', 'sdlkfj', 'sadlkjf', 'ldkjsf', 'ddfbefbf801adf18df823c64a4ae173d', 'sdlfkj');
 
 -- --------------------------------------------------------
 
@@ -504,6 +473,18 @@ INSERT INTO `product_oder_detail` (`od_id`, `o_id`, `p_id`, `qty`, `price`, `tra
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `shiping_cost`
+--
+
+CREATE TABLE IF NOT EXISTS `shiping_cost` (
+  `sid` int(11) NOT NULL AUTO_INCREMENT,
+  `price` double NOT NULL,
+  PRIMARY KEY (`sid`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `slide`
 --
 
@@ -537,21 +518,31 @@ CREATE TABLE IF NOT EXISTS `user` (
   `user_lname` varchar(100) DEFAULT NULL,
   `user_email` varchar(100) DEFAULT NULL,
   `user_pass` varchar(64) NOT NULL DEFAULT 'Required',
+  `city` varchar(255) NOT NULL,
+  `state` varchar(255) NOT NULL,
+  `zip` varchar(255) NOT NULL,
+  `country` varchar(255) NOT NULL,
+  `contact` varchar(255) NOT NULL,
+  `address` varchar(255) NOT NULL,
   `user_url` mediumtext,
   `user_registered_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `user_auth_key` varchar(64) DEFAULT NULL,
   `user_status` varchar(64) DEFAULT NULL,
   `user_type` varchar(64) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=13 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=17 ;
 
 --
 -- Dumping data for table `user`
 --
 
-INSERT INTO `user` (`id`, `user_name`, `user_fname`, `user_lname`, `user_email`, `user_pass`, `user_url`, `user_registered_date`, `user_auth_key`, `user_status`, `user_type`) VALUES
-(11, 'admin', 'ramji', 'subedi', 'admin@ad.min', '21232f297a57a5a743894a0e4a801fc3', NULL, '2014-05-11 11:27:48', ' ', '1', '0'),
-(12, 'ramji', 'ram', 'ram', 'ramji@salyani.com.np', 'ae3274d5bfa170ca69bb534be5a22467', NULL, '2014-05-13 06:56:32', NULL, '1', '1');
+INSERT INTO `user` (`id`, `user_name`, `user_fname`, `user_lname`, `user_email`, `user_pass`, `city`, `state`, `zip`, `country`, `contact`, `address`, `user_url`, `user_registered_date`, `user_auth_key`, `user_status`, `user_type`) VALUES
+(11, 'admin', 'ramji', 'subedi', 'admin@ad.min', '21232f297a57a5a743894a0e4a801fc3', '', '', '', '', '', '', NULL, '2014-05-11 11:27:48', ' ', '1', '0'),
+(12, 'ramji', 'ram', 'ram', 'ramji@salyani.com.np', 'ae3274d5bfa170ca69bb534be5a22467', '', '', '', '', '', 'sadfsdfdsfdsf', NULL, '2014-05-13 06:56:32', NULL, '1', '1'),
+(13, 'adfsdsf', 'sadfsd', 'sdf', 'admin@df.cd', '900150983cd24fb0d6963f7d28e17f72', '', '', '', '', '545', 'asdf', NULL, '2014-05-20 10:14:01', NULL, NULL, '1'),
+(14, 'adfsdsf', 'sadfsd', 'sdf', 'admin@df.cd', '900150983cd24fb0d6963f7d28e17f72', '', '', '', '', '545', 'asdf', NULL, '2014-05-20 10:15:18', NULL, '1', '1'),
+(15, 'adfsdsf', 'sadfsd', 'sdf', 'admin@df.cd', '900150983cd24fb0d6963f7d28e17f72', '', '', '', '', '545', 'asdf', NULL, '2014-05-20 10:18:23', NULL, '1', '1'),
+(16, 'sdf', 'lsdfj', 'lskdafj', 'admin@as.com', '900150983cd24fb0d6963f7d28e17f72', '', '', '', '', '709797', 'lkdsafj', NULL, '2014-05-20 10:21:00', NULL, '1', '1');
 
 --
 -- Constraints for dumped tables
