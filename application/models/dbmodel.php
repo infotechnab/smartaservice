@@ -73,7 +73,7 @@ class Dbmodel extends CI_Model {
     }
 
 
-    function add_new_product($cat,$des,$sum,$qty,$name,$price,$img1,$img2,$img3)
+    function add_new_product($cat,$des,$sum,$qty,$name,$price,$img1,$img2,$img3, $shipping)
     {
         $data = array(
             'category'=>$cat,
@@ -84,7 +84,8 @@ class Dbmodel extends CI_Model {
             'name'=>$name,
             'image1'=>$img1,
             'image2'=>$img2,
-            'image3'=>$img3);
+            'image3'=>$img3,
+            'shiping'=>$shipping);
         
         $this->db->insert('product', $data);
     }

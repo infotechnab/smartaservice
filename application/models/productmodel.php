@@ -135,4 +135,12 @@ public function product_info(){
         return $query->result();
        
     }
+    
+     function update_shipping_cost($charge) {
+        $this->load->database();
+        $data = array(
+            'price' => $charge);
+        $this->db->where('sid', 1);
+        $this->db->update('shiping_cost', $data);
+    }
 }

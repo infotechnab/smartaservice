@@ -266,7 +266,7 @@ for (i = 0; i < sliderJson.length; i++)
     $(document).ready(function() {
         //adding item to the cart...
         $(".addToCart").click(function() {
-            $(this).parent().parent().parent().css({opacity: 0.3});
+            $(this).parent().parent().parent().attr('src',"page-loader.gif");
             var id = $(this).val();
             var dataString = 'itemid=' + id;
             $.ajax({
