@@ -15,6 +15,8 @@ foreach ($detail as $userdetail)
     $country = $userdetail->country;
 }
 ?>
+
+
 <div id="login">
     <div id="outerBorder">
         <div class="RegisterLeft">

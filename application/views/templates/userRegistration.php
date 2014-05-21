@@ -77,3 +77,21 @@
 </div> 
 
 
+<script>
+    var currentValue = 0;
+    function handleClick(pickup) {
+        ('Old value: ' + currentValue);
+        ('New value: ' + pickup.value);
+        currentValue = pickup.value;
+        //alert(currentValue)
+        if (pickup.value === "shipDifferent") {
+
+            document.getElementById('RegisterRight').style.display = 'block';
+
+        }
+        else
+        {
+            document.getElementById('RegisterRight').style.display = 'none';
+        }
+    }
+</script>
