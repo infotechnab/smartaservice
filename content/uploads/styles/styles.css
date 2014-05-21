@@ -216,6 +216,12 @@ body
     padding: 1%;
     float: left;
 }
+.RegisterLeft
+{
+    margin: 2%;
+    padding: 1%;
+    float: left;
+}
 .contentContainer
 {
     margin: 20px 0px 20px 0px;
@@ -560,6 +566,10 @@ div.vertical-line{
 .loginLeft
 {
     width: 40%;
+}
+.RegisterLeft
+{
+    width: 44%;
 }
     #navigation ul li
     {
