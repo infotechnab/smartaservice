@@ -74,10 +74,18 @@ class CartDetails extends CI_Controller {
         }
         redirect('cartDetails');
     }
+    
+    function login_insert_cart_item()
+    {
+        
+    }
 
     function insert_cart_item() {
         $cart = $this->cart->contents();
 
+        
+        
+        
         $tr = 0;
         $trans_id = $this->productModel->getTranId();
         foreach ($trans_id as $tranId) {
@@ -127,19 +135,15 @@ class CartDetails extends CI_Controller {
         if ($this->form_validation->run() == FALSE) {
             //$this->index();
         } else {
-            $this->load->model('dbmodel');
+                     $this->load->model('dbmodel');
                         $data['detail'] = $this->productmodel->validate();
-            
-                       if(!empty($data))
-           
-            {
-                               
+                       
+                             if(!empty($data['detail']))
+                         {     
                $this->load->view('templates/header');
         $this->load->view('templates/navigation');
         $this->load->view('templates/userRegistrationAndShipping',$data);
-        $this->load->view('templates/footer');
-
-                
+        $this->load->view('templates/footer');     
             }else
             {
                 $this->session->set_flashdata('message', 'Username or password incorrect');
