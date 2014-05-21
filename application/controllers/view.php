@@ -154,7 +154,9 @@ class View extends CI_Controller {
          $data['product_info'] = $this->productmodel->product_info();
         
           $data['featureItem'] = $this->productmodel->featured_item();
-       //   $data['category'] = $this->productmodel->category_list_id();
+          $data['category'] = $this->productmodel->category_list();
+         // $data['categoryId'] = $this->productmodel->category_list_id($id);
+       //  $data['category'] = $this->productmodel->category_list_id();
           //var_dump($data);
           $data['get_page'] = $this->productmodel->get_page($id);
            $data['slider_json'] = json_encode($data['featureItem']);
