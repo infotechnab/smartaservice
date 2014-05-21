@@ -128,18 +128,15 @@ class CartDetails extends CI_Controller {
             //$this->index();
         } else {
             $this->load->model('dbmodel');
-            $query = $this->productmodel->validate();
+            $data['detail'] = $this->productmodel->validate();
             
-            if(!empty($query))
+            if(!empty($data))
             {
-                foreach ($query as $detail)
-                {
-                    echo "Frist Name :".$detail->user_fname."<br/>";
-                    echo "Last Name :".$detail->user_lname."<br/>";
-                    echo "Email :".$detail->user_email."<br/>";
-                    echo "Contact :".$detail->contact."<br/>";
-                    echo "Address :".$detail->address."<br/>";
-                }
+                               
+               $this->load->view('templates/header');
+        $this->load->view('templates/navigation');
+        $this->load->view('templates/userRegistrationAndShipping',$data);
+        $this->load->view('templates/footer');
                 
             }else
             {
