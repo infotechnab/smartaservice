@@ -171,9 +171,12 @@ class View extends CI_Controller {
     }
     public function registeruser()
         {
+        
+        $data['shiping']=$this->productmodel->getship();
+        
      $this->load->view('templates/header');
         $this->load->view('templates/navigation');
-        $this->load->view('templates/userRegistrationAndShipping');
+        $this->load->view('templates/userRegistrationAndShipping',$data);
         $this->load->view('templates/cartLogin');
         $this->load->view('templates/footer');
 }

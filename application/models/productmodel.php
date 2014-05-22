@@ -11,7 +11,13 @@ public function product_info(){
          $query = $this->db->get('product');
             return $query->result();
     }
-    
+    function getship()
+    {
+        $query = $this->db->get('shiping_cost');
+        return $query->result();
+    }
+
+
     public function getProductById($id)
     {
           $this->db->where('id', $id);

@@ -1,4 +1,25 @@
+<?php
+   if(!empty($shiping))
+   {
+ foreach ($shiping as $scost)
+ {
+     $cost = $scost->price;
+ }
+   }
+?>
 
+<script>
+    $(function(){
+        var price = parseInt("<?php echo $this->cart->total();?>");
+
+    var shiping = parseInt("<?php echo $cost; ?>");
+
+var total = price + shiping;
+      $('#test').html(total);
+});
+
+document.getElementById("test").innerHTML = total;
+</script>
         <?php
 if (!empty($detail)) {
     // die("entdfdfer");

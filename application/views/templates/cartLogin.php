@@ -1,7 +1,26 @@
   <?php
 $this->load->helper('currency');
 ?>
+<?php
+   
+ foreach ($shiping as $scost)
+ {
+     $cost = $scost->price;
+ }
+?>
 
+<script>
+    $(function(){
+        var price = parseInt("<?php echo $this->cart->total();?>");
+
+    var shiping = parseInt("<?php echo $cost; ?>");
+
+var total = price + shiping;
+      $('#test').html(total);
+});
+
+document.getElementById("test").innerHTML = total;
+</script>
 
 <?php if ($this->cart->contents()) {  ?>
 <div id="total_item"><h4>Total: <?php echo $this->cart->total_items(); ?> items</h4></div>
@@ -47,8 +66,9 @@ $this->load->helper('currency');
 
 else { ?>
 <div id="total_item"><h4>Your cart is empty</h4></div>
-    <?php }
+    <?php }  
     ?>
+
 <div id="cartDetailsSidebar">
             <div id="order_summary">
                 <table width="100%">
@@ -58,7 +78,7 @@ else { ?>
                     </tr>
                     <tr class='amt_summary'>
                         <td class='txtright'>Shipping Cost:</td>
-                        <td></td>
+                        <td><?php echo $cost; ?></td>
                     </tr>
                     <tr class='amt_summary'>
                         <td class='txtright'>Discount:</td>
@@ -66,11 +86,12 @@ else { ?>
                     </tr>
                     <tr class='amt_summary'>
                         <td class='txtright'>Total:</td>
-                        <td></td>
+                        <td id="test">   </td>
                     </tr>
                 </table>
                 <div id="order_checkout"  class="updateBtnStyle">
-<?php echo anchor('view/login', 'Pay Now') ?></div>
+<?php //echo anchor('view/login', 'Pay Now') ?>
+                </div>
             </div>
             </div>
    </div>
