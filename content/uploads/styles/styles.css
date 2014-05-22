@@ -269,9 +269,14 @@ body
 
 }
 
-.contentContainerHeader, .contentContainerFooter
+.contentContainerHeader 
 {
     margin: 0px;
+    padding: 5px 0px 0px 5px;
+    min-height: 76px;
+}
+.contentContainerFooter{
+     margin: 0px;
     padding: 5px;
     min-height: 30px;
 }

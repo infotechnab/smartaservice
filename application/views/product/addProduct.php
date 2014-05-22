@@ -30,9 +30,9 @@
  <p> Image 2 : <br/> <input type="file" name="myfileTwo" id="file" /> </p>
  <p> Image 3 : <br/> <input type="file" name="myfileThree" id="file" /> </p>
   <p>
-     <input type="checkbox" value="1" name="checkMe" /> Enable shipping charge </p>
-  <p><input type="checkbox" value="1" name="enableLike" /> Enable facebook like </p>
-  <p><input type="checkbox" value="1" name="enableShare" /> Enable facebook share </p>
+     <input type="checkbox" value="1" name="checkMe"  /> Enable shipping charge </p>
+  <p><input type="checkbox" value="1" name="enableLike" checked /> Enable facebook like </p>
+  <p><input type="checkbox" value="1" name="enableShare" checked /> Enable facebook share </p>
  <input type="submit" value="Submit" />
   <?php echo form_close();?>
  
