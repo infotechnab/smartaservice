@@ -8,6 +8,14 @@ and open the template in the editor.
     Author     : salyani
 */
 
+
+::-webkit-input-placeholder { padding:0px; font-size: 10px; }
+:-moz-placeholder {line-height: normal;}
+
+::-moz-placeholder { line-height: normal;}
+
+:-ms-input-placeholder {line-height: normal;}
+
 [data-icon]:before {
     font-family: icons; /* BYO icon font, mapped smartly */
     content: attr(data-icon);
