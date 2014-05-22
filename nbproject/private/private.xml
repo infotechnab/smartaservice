@@ -3,7 +3,15 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+<<<<<<< HEAD
             <file>file:/C:/wamp/www/smartaservice/content/styles/styles.css</file>
+=======
+            <file>file:/C:/wamp/www/smartaservice/application/views/bnw/templates/menu.php</file>
+            <file>file:/C:/wamp/www/smartaservice/application/views/templates/content.php</file>
+            <file>file:/C:/wamp/www/smartaservice/application/views/templates/userRegistrationAndShipping.php</file>
+            <file>file:/C:/wamp/www/smartaservice/application/models/productmodel.php</file>
+            <file>file:/C:/wamp/www/smartaservice/content/uploads/styles/styles.css</file>
+>>>>>>> 5a5dc2df13399c3529da64e94722992bd9334b10
         </group>
     </open-files>
 </project-private>

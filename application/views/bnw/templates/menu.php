@@ -7,6 +7,7 @@
                             <li><?php echo anchor('bnw/productList', 'List All Products') ?></li>
                             <li><?php echo anchor('bnw/productOrderList', 'List Order Product') ?></li>
                             <li><?php echo anchor('bnw/disproduct', 'Other List') ?></li>
+                            <li><?php echo anchor('bnw/productShipping', 'Shipping ') ?></li>
                         </ul>
                     </li>
                     <li class="mainMenuItem"> <a href="#">Control Panel</a>

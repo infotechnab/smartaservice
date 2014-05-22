@@ -315,34 +315,22 @@ for (i = 0; i < sliderJson.length; i++)
     <!-- the slider ends here-->
     
 <div class='contentHeader'>
-    <h3>Recent products</h3>
+    <?php 
+    if(!empty($get_page)){
+    foreach ($get_page as $pages){
+        
+        $name = $pages->page_name;
+        $content = $pages->page_content;
+        }}
+        else{
+            $name = "Sory the page not fount";
+            $content = " ";
+        }?>
+    <h3><?php echo $name; ?></h3>
 
 </div>
-<!-- <div id="loading"> <img width="30" src="<?php// echo base_url().'content/uploads/images/page-loader.gif' ; ?>" alt="loading.."/><br><b>Loading...</b></div>-->   
 <div id="itemContent">
-    <?php foreach ($product_info as $product) {
-        ?>
-        <div class='contentContainerBox'>
-
-            <div class='contentContainerHeader'><a href='<?php echo base_url() . "index.php/view/details/" . $product->id ?>'><h3><?php echo $product->name; ?></h3></div>
-            <div class='contentContainerImage'>
-                <img src="<?php echo base_url() . "content/uploads/images/" . $product->image1; ?>" alt="No images" height="150" width="130"/>   
-            </div></a>
-
-            <div class="contentContainerBottom"> 
-                <div class='contentContainerFooterLeft'><h4><?php get_currency($product->price); ?></h4></div>
-                <div class="redColouredDiv" class='contentContainerFooterRight'>
-
-                    <input type="button" value="<?php echo $product->id ?>" class="addToCart" id="addToCartBtn">  
-
-                </div>
-            </div>
-
-        </div>
-
-
-
-    <?php } ?>
+   <?php echo $content; ?>
 </div>
 </div>
 <!-- left side content closed here -->

@@ -27,8 +27,8 @@ $this->load->helper('currency');
 </script>
 
 
-<div id="msg" style="background: white; width: 100%;"></div>   
-        <div id="cart_detail">
+<div id="msg" style="background: white; width: 99%; padding: 10px 0px 5px 10px; margin: 0px 0px 10px 0px">   
+       
             <div style="text-align: right;"><a href="<?php echo base_url() . 'index.php/view' ?>" id="continue_shop">Continue Shooping</a></div>
             <div><h2>Your Shopping Cart - <?php echo $this->cart->total_items(); ?> 
                     <?php if ($this->cart->total_items() == '0' || $this->cart->total_items() == '1') {
@@ -36,10 +36,12 @@ $this->load->helper('currency');
                     } else {
                         echo 'items';
                     } ?></h2></div>
-
+            </div>
+ <div id="cartDetailsContent">
+            <div id="cart_detail">
 <?php if ($this->cart->contents()) { ?>
 
-                <div id="cart_items">
+                
                     <table width='100%' cellpadding='15px' class="cart">
                         <tr class="forTopBorder">
                             <th width='8%'>Image</th>
@@ -101,10 +103,12 @@ $this->load->helper('currency');
 
 <?php }
 ?>
-                    </div>
+                    
 
             </div>
-            <div id="sidebar">
+</div>
+
+            <div id="cartDetailsSidebar">
             <div id="order_summary">
                 <table width="100%">
                     <tr class='amt_summary'>
@@ -125,7 +129,7 @@ $this->load->helper('currency');
                     </tr>
                 </table>
                 <div id="order_checkout"  class="updateBtnStyle">
-<?php echo anchor('cartDetails/processCart', 'Pay Now') ?></div>
+<?php echo anchor('view/login', 'Pay Now') ?></div>
             </div>
             </div>
 
@@ -136,6 +140,9 @@ $this->load->helper('currency');
 
 </div>
 
-  <div class="clear"></div>
-</div>
-</div>
+ 
+
+
+
+
+

@@ -10,6 +10,7 @@ class Dbmodel extends CI_Model {
     function validate() {
         $this->db->where('user_name', $this->input->post('username'));
         $this->db->where('user_pass', md5($this->input->post('password')));
+        $this->db->where('user_type',0);
         $query = $this->db->get('user');
 
         if ($query->num_rows == 1) {
@@ -54,7 +55,25 @@ class Dbmodel extends CI_Model {
     
 
 //============================    For Cart System         ========================================//
-    function add_new_product($cat,$des,$sum,$qty,$name,$price,$img1,$img2,$img3)
+    function order_user($name,$address,$city,$state,$country,$zip,$email,$contact)
+    {
+        $uid = 11;
+        $data = array(
+            'u_id'=>$uid,
+            'user_name'=>$name,
+            'deliver_address'=>$address,
+            'city'=>$city,
+            'state'=>$state,
+            'zip'=>$zip,
+            'country'=>$country,
+            'email'=>$email,
+            'contact'=>$contact
+        );
+        $this->db->insert('product_oder',$data);
+    }
+
+
+    function add_new_product($cat,$des,$sum,$qty,$name,$price,$img1,$img2,$img3, $shipping)
     {
         $data = array(
             'category'=>$cat,
@@ -65,7 +84,8 @@ class Dbmodel extends CI_Model {
             'name'=>$name,
             'image1'=>$img1,
             'image2'=>$img2,
-            'image3'=>$img3);
+            'image3'=>$img3,
+            'shiping'=>$shipping);
         
         $this->db->insert('product', $data);
     }
@@ -859,7 +879,7 @@ public function get_navigation_info($navigationName)
         $this->db->where('id', $id);
         $this->db->update('user', $data);
     }    
-    public function add_new_user($name, $fname, $lname, $email, $pass, $status, $user_type)
+    public function add_new_user($name, $fname, $lname, $email, $pass, $status, $user_type,$contact,$address)
     {   
                 
         $data = array(
@@ -868,11 +888,18 @@ public function get_navigation_info($navigationName)
             'user_lname'=> $lname,
             'user_email'=> $email,
             'user_pass'=> $pass,
+            'address'=>$address,
+            'contact'=>$contact,
             'user_status'=> $status,
             'user_type'=> $user_type );
          $this->db->insert('user', $data);        
     }
-    
+     function check_data($user)
+ {
+  $this->db->where('email',$user);
+  $query = $this->db->get('user');
+  return $query->num_rows();
+ } 
       public function delete_user($id) {
 
         $this->db->delete('user', array('id' => $id));

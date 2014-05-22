@@ -511,6 +511,60 @@ class bnw extends CI_Controller {
             redirect('login', 'refresh');
         }
     }
+    
+     function productShipping()
+        {
+            if ($this->session->userdata('logged_in')) {
+            $data['username'] = Array($this->session->userdata('logged_in'));
+            $data['meta'] = $this->dbmodel->get_meta_data();
+
+            $this->load->view('bnw/templates/header', $data);
+            $this->load->view('bnw/templates/menu');
+            $this->load->view('product/shipping');
+            $this->load->view('bnw/templates/footer', $data);
+        } else {
+            redirect('login', 'refresh');
+        }
+        }
+        
+        public function shippingupdate() {
+        if ($this->session->userdata('logged_in')) {
+
+            $data['meta'] = $this->dbmodel->get_meta_data();
+            
+            $this->load->view('bnw/templates/header', $data);
+            $this->load->view('bnw/templates/menu');
+            $this->load->helper('form');
+            $this->load->library(array('form_validation', 'session'));
+            $this->form_validation->set_rules('shipping_charge', 'Shipping Charge', 'required|xss_clean|max_length[200]');
+
+
+            if ($this->form_validation->run() == FALSE) {
+                 $data['error'] = $this->upload->display_errors();
+
+                $this->load->view('bnw/product/shipping', $data);
+            } else {
+
+                //if valid
+              
+
+                $charge = $this->input->post('shipping_charge');
+               
+                die($charge);
+               
+                //$this->dbmodel->update_design_header_setup($headerTitle, $headerLogo, $headerDescription, $headerBgColor);
+                //$this->session->set_flashdata('message', 'Header setting done sucessfully');
+                //redirect('bnw');
+            }
+            $this->load->view('bnw/templates/footer', $data);
+        } else {
+
+            redirect('login', 'refresh');
+        }
+    }
+        
+        
+    
     //=================================== end Cart System  ========================================================//
 
     function logout() {
@@ -1608,18 +1662,7 @@ class bnw extends CI_Controller {
         }
     }
 
-    // public function deleteuser($id) {
-    //    if ($this->session->userdata('logged_in')) {
-    //       $status =  $this->session->userdata('username');
-    // if()
-    //       $this->dbmodel->delete_user($id);
-    //       $this->session->set_flashdata('message', 'Data Delete Sucessfully');
-    //       redirect('bnw/users');
-    //   } else {
-    //      redirect('login', 'refresh');
-    //   }
-    //  }
-
+    
 
     public function deleteuser($id) {
         if ($this->session->userdata('logged_in')) {

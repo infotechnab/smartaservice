@@ -35,11 +35,21 @@ body
     padding: 0px;
 
 }
+#loading
+{
+    //display: none;
+    z-index: 9999;
+    //top: 50%;
+    //left: 50%;
+    //position:absolute;
+    //margin-left: -10px;
+   
+}
 #headerBackground
 {
     margin: 0px;
     padding: 0px;
-    background: url('../uploads/images/headerBackground.png'); 
+    background: url('../images/headerBackground.png'); 
     background-repeat: repeat;
     width: 100%;
 
@@ -102,6 +112,7 @@ body
     -moz-box-shadow: 0 10px 10px -6px black;
     box-shadow: 0 10px 10px -6px black;
 }
+/*
 #navigation ul
 {
     margin: 0px;
@@ -118,7 +129,7 @@ body
     text-decoration: none;
 
 }
-
+*/
 #searchbox
 { 
     height: 25px; 
@@ -129,10 +140,10 @@ body
 {
     margin: 0;
     padding: 0px 0px 15px 0px;
-    background: url('../uploads/images/ContentBackGround.png'); 
+    background: url('../images/ContentBackGround.png'); 
     background-repeat: repeat;
     width: 100%;
-    min-height:500px;
+    min-height:300px;
     z-index: 0;
 }
 #content, #sidebar
@@ -187,23 +198,38 @@ body
     background-color: #fff;
     min-height: 410px;
     margin-bottom: 25px;
+    width: 100%;
+}
+#register
+{
+    margin: 0 auto 0 auto;
+    padding: 20px 0px 0px 0px;
+    background-color: #fff;
+    min-height: 320px;
+    margin-bottom: 25px;
+    
 }
 #outerBorder
 {
-    text-align: center;
-    margin: 25px;
+    
+    margin: 2% 2% 2% 2%;
     padding: 0px;
     border: 1px solid #e1dfdf;
     min-height: 350px;
     border-radius: 5px;
-    position: absolute;
-    width: 76%;
+    width: 96%;
 }
 .loginLeft
 {
-    width: 45%;
-    margin: 12px;
-    padding: 10px;
+    
+    margin: 3%;
+    padding: 1%;
+    float: left;
+}
+#RegisterLeft, #RegisterRight
+{
+    margin: 2%;
+    padding: 1%;
     float: left;
 }
 .contentContainer
@@ -308,8 +334,7 @@ body
 {
 
     float: left;
-
-    width: 200px;
+    width: 33%;
 
 }
 
@@ -317,6 +342,7 @@ body
 {
     padding: 5px;
     border: 1px solid #222;
+    width: 95%;
 }
 #detailsImageLarge
 {
@@ -441,8 +467,9 @@ body
 // for login//
 #nav
 {
-    width: 0%;
+    width: 25%;
     background-color: #c9c1bf;
+    height: 1px;
 }
 
 #mainNav
@@ -460,7 +487,7 @@ body
 .number
 {
     margin-top: -30px;
-    margin-left: 245px;
+    margin-left: 46%;
     font-size:16px;
     font-weight: bold;
     text-decoration:none;
@@ -478,7 +505,7 @@ div.vertical-line{
     background-color: black; 
     height: 270px; 
     float: left;
-    margin: 40px 0px 40px 0px;
+    margin: 40px 40px 40px 0px;
 }
 #verticalOr
 {
@@ -488,10 +515,10 @@ div.vertical-line{
 
 #addToCartBtn
 {
-    background-image: url('../uploads/images/shopping-cart-icon-614x460.png') ;
+    background-image: url('../images/shopping-cart-icon-614x460.png') ;
     background-repeat: no-repeat;
-   
-   
+
+
     text-indent: 500px;
     border: none;
     background-color: #ca021e;
@@ -542,14 +569,31 @@ div.vertical-line{
     {
         padding: 0px;
     }
-
+#register
+{
+    width: 35%;
+}
+.loginLeft
+{
+    width: 40%;
+}
+#RegisterLeft
+{
+    width: 44%;
+   
+}
+#RegisterRight
+{
+   width: 44%;
+  display: none;
+}
     #navigation ul li
     {
-        display: inline-block;
-        list-style-type: none;
-        width: auto;
+        
+        
+       
         margin: 0px 1px 0px 1px;
-        padding: 15px 5px 15px 5px;
+        padding: 1px 0px 1px 0px;
     }
     .contentContainerBox
     {
@@ -576,6 +620,11 @@ div.vertical-line{
         margin: 11px 20px 10px 0px;
 
     }
+    #addToCartBtn
+    {
+        background-size: 51%;
+        height: 46px;
+    }
 }
 @media screen and (max-width : 1370px)
 {
@@ -591,20 +640,29 @@ div.vertical-line{
     {
         padding: 0px;
     }
-
+#register
+{
+    width: 35%;
+}
     #navigation ul li
     {
-        display: inline-block;
-        list-style-type: none;
-        width: auto;
+        
         margin: 0px 1px 0px 1px;
-        padding: 15px 5px 15px 5px;
+        padding: 1px 0px 1px 0px;
     }
     #detailsImageLarge img
     {
         width: 310px;
     }
-
+    #cartDetailsContent
+    {
+        width: 65%;
+    }
+    #cartDetailsSidebar
+    {
+        width: 31.5%;
+        margin-left:3%;
+    }
     .contentContainerBox
     {
         margin: 2% 2% 0% 1%;
@@ -616,6 +674,15 @@ div.vertical-line{
         -moz-margin: 11px 20px 10px 0px;
         -webkit-margin: 15px 15px 10px 5px;
     }
+    #addToCartBtn
+    {
+        background-size: 51%;
+        height: 46px;
+    }
+    .loginLeft
+{
+    width: 35%;
+}
 }
 @media screen and (max-width : 1280px)
 {
@@ -637,13 +704,13 @@ div.vertical-line{
     }
     #navigation ul li
     {
-        display: inline-block;
-        list-style-type: none;
-        width: auto;
-        margin: 0px 1px 0px 1px;
-        padding: 15px 5px 15px 5px;
+         margin: 0px 1px 0px 1px;
+        padding: 1px 0px 1px 0px;
     }
-
+#register
+{
+    width: 35%;
+}
     .contentContainerImage img
     {
         width: 92%;
@@ -663,6 +730,15 @@ div.vertical-line{
         width: 10%;
         margin: 11px 20px 10px 0px;
     }
+    #addToCartBtn
+    {
+        background-size: 45%;
+        height: 46px;
+    }
+    .loginLeft
+{
+    width: 35%;
+}
 }
 @media screen and (max-width : 1250px)
 {
@@ -680,11 +756,8 @@ div.vertical-line{
     }
     #navigation ul li
     {
-        display: inline-block;
-        list-style-type: none;
-        width: auto;
         margin: 0px 1px 0px 1px;
-        padding: 15px 5px 15px 5px;
+        padding: 1px 0px 1px 0px;
     }
     .contentContainerImage img
     {
@@ -699,10 +772,23 @@ div.vertical-line{
     {
         width: 95%;
     }
+    #register
+{
+    width: 35%;
+}
+.loginLeft
+{
+    width: 35%;
+}
     #searchbox
     {
         width: 10%;
         margin: 11px 20px 10px 0px;
+    }
+    #addToCartBtn
+    {
+        background-size: 45%;
+        height: 46px;
     }
 }
 @media screen and (max-width : 1025px)
@@ -719,24 +805,20 @@ div.vertical-line{
     {
         padding: 0px 0px 0px 20px;
     }
-    #navigation ul li
-    {
-        display: inline-block;
-        list-style-type: none;
-        width: auto;
-        margin: 0px 1px 0px 1px;
-        padding: 15px 5px 15px 5px;
-    }
+    #register
+{
+    width: 35%;
+}
     .sliderTable
     {
         width: 90%;
     }
     #sliderImage
-{
-    width: 270px;
-    float: left;
-    margin-right: 10px;
-}
+    {
+        width: 270px;
+        float: left;
+        margin-right: 10px;
+    }
     #detailsImageLarge img
     {
         width: 290px;
@@ -786,22 +868,37 @@ div.vertical-line{
         background-color: #c0021c;
     }
     #sliderImage
-{
-    width: 600px;
-    float: left;
-    margin-right: 10px;
-}
-    #navigation ul li
     {
-        display: block;
-        list-style-type: none;
-        width: 47.5%;
-        margin: 0px 1px 0px 1px;
-        padding: 15px 5px 15px 5px;
+        width: 600px;
         float: left;
+        margin-right: 10px;
     }
-    
-   
+    #register
+{
+    width: 38%;
+}
+.loginLeft
+{
+    width: 30%;
+}
+    #cssmenu ul 
+    {
+        width: 100%;
+    }
+#cssmenu ul li.has-sub
+    {
+        width: 49.5%;
+    }
+#cssmenu ul li.has-sub a
+    {
+        width: 99%;
+        margin: 0 auto 0 auto;
+        text-align: center;
+    }
+    #cssmenu ul li.has-sub ul li.has-sub
+    {
+        width: 170%;
+    }
     #detailsImageLarge img
     {
         width: 210px;
@@ -829,6 +926,11 @@ div.vertical-line{
     {
         width: 97%;
     }
+    #cartDetailsContent, #cartDetailsSidebar
+    {
+        width: 99%;
+        margin: 0 auto 0 auto;
+    }
     #searchbox
     {
         width: 12%;
@@ -838,7 +940,24 @@ div.vertical-line{
     }
 }
 @media screen and (max-width : 650px)
-{
+{#cssmenu ul 
+    {
+        width: 100%;
+    }
+#cssmenu ul li.has-sub
+    {
+        width: 46.5%;
+    }
+#cssmenu ul li.has-sub a
+    {
+        width: 99%;
+        margin: 0 auto 0 auto;
+        text-align: center;
+    }
+    #cssmenu ul li.has-sub ul li.has-sub
+    {
+        width: 170%;
+    }
     .container
     {
         width: 95%;
@@ -856,16 +975,22 @@ div.vertical-line{
     {
         width: 97%;
     }
-
+#register
+{
+    width: 60%;
+}
     #headerLogo
     {
         padding: 0px 30px 0px 20px;
     }
-    #navigation ul li
+    .has-sub
     {
-        display: block;
-        list-style-type: none;
-        width: 47%;
+        width: 75%;
+    }
+    #cssmenu a
+    {
+        
+        width: 100%;
         margin: 0px 1px 0px 1px;
         padding: 15px 5px 15px 5px;
         float: left;
@@ -904,7 +1029,32 @@ div.vertical-line{
     }
 }
 @media screen and (max-width : 480px)
+{#cssmenu ul 
+    {
+        width: 100%;
+    }
+#cssmenu ul li.has-sub
+    {
+        width: 101%;
+        display: block;
+    }
+#cssmenu ul li.has-sub a
+    {
+        width: 94%;
+        margin: 0 auto 0 auto;
+        text-align: center;
+    }
+    #cssmenu ul li.has-sub ul li.has-sub
+    {
+        width: 170%;
+    }
+    #cssmenu .has-sub {
+    
+}
+#register
 {
+    width: 80%;
+}
     .container
     {
         width: 95%;
@@ -929,15 +1079,7 @@ div.vertical-line{
         margin: 0 auto 0 auto;
 
     }
-    #navigation ul li
-    {
-        display: block;
-        list-style-type: none;
-        width: 97%;
-        margin: 0px 1px 0px 1px;
-        padding: 15px 5px 15px 5px;
-        float: left;
-    }
+    
     #detailsImageLarge img
     {
         width: 125px;
@@ -978,7 +1120,32 @@ div.vertical-line{
 }
 
 @media screen and (max-width : 360px)
+{#cssmenu ul 
+    {
+        width: 100%;
+    }
+#cssmenu ul li.has-sub
+    {
+        width: 100%;
+        display: block;
+    }
+#cssmenu ul li.has-sub a
+    {
+        width: 92.5%;
+        margin: 0 auto 0 auto;
+        text-align: center;
+    }
+    #cssmenu ul li.has-sub ul li.has-sub
+    {
+        width: 170%;
+    }
+    #cssmenu .has-sub {
+    
+}
+#register
 {
+    width: 100%;
+}
     .container
     {
         width: 95%;
@@ -1006,15 +1173,7 @@ div.vertical-line{
         padding: 0px 30px 0px 100px;
         margin: 0 auto 0 auto; 
     }
-    #navigation ul li
-    {
-        display: block;
-        list-style-type: none;
-        width: 96%;
-        margin: 0px 1px 0px 1px;
-        padding: 15px 5px 15px 5px;
-        float: left;
-    }
+   
     #detailsImageLarge img
     {
         width: 95%;
@@ -1057,34 +1216,45 @@ div.vertical-line{
 
 
 /* these css are for cart details */
+#cartDetailsContent
+{
+
+    height: auto;
+    margin: 0px;
+    padding: 0px;
+    background-color: #fff;
+    float: left;
+}
+#cartDetailsSidebar
+{
+
+    min-height: 200px;
+    padding: 0px;
+    background-color: #fff;
+    float: left;
+}
 #cart_detail
 {
-    width: 161%;
+    width: 98%;
     background-color: white;
     height: auto;
-    padding: 10px;
-}
-
-#cart_items
-{
-    width: 70%;
-    float: left;
+    padding: 1%;
 }
 
 #order_summary
 {
-    margin-left: 50px;
-    width:21%;
-    float: left;
-    padding: 10px;
+    margin: 0px;
+    width:100%;
+    padding: 0px;
+    background-color: #fff;
 }
 
 #continue_shop{
-    
- background: black;
- color: white;
- padding: 5px;
- text-decoration: none;
+
+    background: black;
+    color: white;
+    padding: 5px;
+    text-decoration: none;
 }
 
 .txtright
@@ -1092,11 +1262,6 @@ div.vertical-line{
     text-align: right;
 }
 
-#order_summary
-{
-    float: left;
-    border: dashed thin #ccc;
-}
 
 table{
     border-collapse:collapse;
@@ -1113,7 +1278,7 @@ tr.forTopBorder
 {
     display: block;
     cursor: pointer;
-     background-color: #CCCCCC;
+    background-color: #CCCCCC;
     border: thin solid #CCCCCC;
     border-radius: 40px;
     color: black;
@@ -1126,7 +1291,7 @@ tr.forTopBorder
 
 #closeSymbol:hover
 {
-     background-color: #EEEEEE;
+    background-color: #EEEEEE;
     border: thin solid #CCCCCC;
     border-radius: 40px;
     color: black;
@@ -1157,9 +1322,9 @@ a
 }
 
 #order_checkout{
-    
+
     text-align: center;
-    
+
     width:100px;
     margin-left: 50px;
     padding:5px;
@@ -1182,7 +1347,7 @@ a
 
 .updateBtnStyle a
 {
-   text-decoration: none;
+    text-decoration: none;
     color: white;
 }
 
@@ -1214,3 +1379,125 @@ a
 ::-moz-placeholder { color:#999; } /* firefox 19+ */
 :-ms-input-placeholder { color:#999; } /* ie */
 input:-moz-placeholder { color:#999; }
+
+/*for menu*/
+
+
+#cssmenu ul,
+#cssmenu li,
+#cssmenu span,
+#cssmenu a {
+    margin: 0;
+    padding: 0;
+    position: relative;
+}
+#cssmenu {
+    height: 48px;
+    border-radius: 5px 5px 0 0;
+    -moz-border-radius: 5px 5px 0 0;
+    -webkit-border-radius: 5px 5px 0 0;
+    background-color: #ca021e;
+    border-bottom: 1px solid #ca021e;
+}
+#cssmenu:after,
+#cssmenu ul:after {
+    content: '';
+    display: block;
+    clear: both;
+}
+#cssmenu a {
+    background: #ca021e;
+    color: #ffffff;
+    display: inline-block;
+    font-size: 16px;
+    line-height: 49px;
+    padding: 0 10px 0px 10px;
+    text-decoration: none;
+}
+#cssmenu ul {
+    list-style: none;
+}
+#cssmenu > ul {
+    float: left;
+}
+#cssmenu > ul > li {
+    float: left;
+}
+#cssmenu > ul > li:hover:after {
+    content: '';
+    display: block;
+    width: 0;
+    height: 0;
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-bottom: 10px solid #e00f16;
+    margin-left: -10px;
+}
+#cssmenu > ul > li:first-child > a {
+    border-radius: 5px 0 0 0;
+    -moz-border-radius: 5px 0 0 0;
+    -webkit-border-radius: 5px 0 0 0;
+}
+#cssmenu > ul > li:last-child > a {
+    border-radius: 0 5px 0 0;
+    -moz-border-radius: 0 5px 0 0;
+    -webkit-border-radius: 0 5px 0 0;
+}
+#cssmenu > ul > li.active > a {
+    box-shadow: inset 0 0 3px #000000;
+    -moz-box-shadow: inset 0 0 3px #000000;
+    -webkit-box-shadow: inset 0 0 3px #000000;
+    background: #070707;
+
+}
+#cssmenu > ul > li:hover > a {
+    background: #a80017;
+}
+#cssmenu .has-sub {
+    z-index: 1;
+}
+#cssmenu .has-sub:hover > ul {
+    display: block;
+}
+#cssmenu .has-sub ul {
+    display: none;
+    position: absolute;
+    width: 150px;
+    top: 100%;
+    left: 0;
+}
+#cssmenu .has-sub ul li {
+    *margin-bottom: -1px;
+}
+#cssmenu .has-sub ul li a {
+    background: #e00f16;
+    border-bottom: 1px dotted #ec6f73;
+    filter: none;
+    font-size: 14px;
+    display: block;
+    line-height: 100%;
+    padding: 10px;
+    margin: -1px;
+}
+#cssmenu .has-sub ul li:hover a {
+    background-color: #a80017;
+}
+#cssmenu .has-sub .has-sub:hover > ul {
+    display: block;
+}
+#cssmenu .has-sub .has-sub ul {
+    display: none;
+    position: absolute;
+    left: 100%;
+    top: 0;
+}
+#cssmenu .has-sub .has-sub ul li a {
+    background-color: #e00f16;
+    border-bottom: 1px dotted #d06d70;
+}
+#cssmenu .has-sub .has-sub ul li a:hover {
+    background: #a80017;
+}

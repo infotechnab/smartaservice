@@ -17,6 +17,7 @@
             $first_image= $data->image1;
             $second_image = $data->image2;
             $third_image = $data->image3;
+            $shipping= $data->shiping;
            
             //$listOfCategory = $this->dbmodel->get_list_of_category();
        }
@@ -102,7 +103,8 @@
  
   </div>
 <div class="clear"></div>
- 
+ <p>
+     <input type="checkbox" value="1" name="checkMe" <?php if($shipping=='enabled') echo 'checked' ;?> /> Enable shipping charge </p>
 
     <input type="submit" value="Submit" />
   <?php echo form_close();?>
