@@ -77,12 +77,7 @@ class CartDetails extends CI_Controller {
     
     function login_insert_cart_item()
     {
-        
-    }
-
-    function insert_cart_item() {
-        
-         $this->load->helper('form');
+             $this->load->helper('form');
             $this->load->library(array('form_validation', 'session'));
             $this->form_validation->set_rules('u_name', 'User Name', 'required|xss_clean|max_length[200]');
             $this->form_validation->set_rules('u_fname', 'First Name', 'required|xss_clean|max_length[200]');
@@ -90,16 +85,21 @@ class CartDetails extends CI_Controller {
             $this->form_validation->set_rules('street_address', 'Address', 'required|xss_clean|max_length[200]');
             $this->form_validation->set_rules('Town_address', 'City', 'required|xss_clean|max_length[200]');
             $this->form_validation->set_rules('District_address', 'State', 'required|xss_clean|max_length[200]');
-             $this->form_validation->set_rules('country', 'Country', 'required|xss_clean|max_length[200]');           
+            // $this->form_validation->set_rules('country', 'Country', 'required|xss_clean|max_length[200]');           
             $this->form_validation->set_rules('u_email', 'User email', 'required|xss_clean|max_length[200]');
              $this->form_validation->set_rules('u_contact', 'Contact', 'required|xss_clean|max_length[200]');
               
-            $this->form_validation->set_rules('u_pass', 'Password', 'required|xss_clean|md5|max_length[200]');
+           // $this->form_validation->set_rules('u_pass', 'Password', 'required|xss_clean|md5|max_length[200]');
+          //  $this->form_validation->set_rules('u_repass', 'Password', 'required|xss_clean|md5|max_length[200]');
             
             if ($this->form_validation->run() == FALSE) {
-                 $data['error'] = $this->upload->display_errors();
-                redirect('view/registeruser');
+              
+                $this->load->view('templates/header');
+        $this->load->view('templates/navigation');
+        $this->load->view('templates/userRegistrationAndShipping');
+        $this->load->view('templates/footer');
             } else {
+               
                 $username = $this->input->post('u_name');
         $fname = $this->input->post('u_fname');
         $lname = $this->input->post('u_lname');
@@ -152,6 +152,132 @@ class CartDetails extends CI_Controller {
             $s_contact = $this->input->post('s_contact');
         }
         
+        
+       // $this->productmodel->add_new_user($username, $fname, $lname, $email, $pass, $contact,$address,$city,$state,$country,$zip);
+        $lastuser = $this->productmodel->get_id_user($email);
+        foreach ($lastuser as $userId)
+        {
+            $uid = $userId->id;
+        }
+        
+        $this->productmodel->order_user($s_username,$s_address,$s_city,$s_state,$s_country,$s_zip,$s_email,$s_contact,$uid);
+        $orderId = $this->productmodel->get_last_order();
+        foreach ($orderId as $oid)
+        {
+            $oId = $oid->o_id;
+        }
+       // die($oId);
+        $cart = $this->cart->contents();
+          $tr = 0;
+          
+        $trans_id = $this->productmodel->getTranId();
+        
+        foreach ($trans_id as $tranId) {
+            $tr = $tranId->trans_num;
+        }
+
+        $a = "TRD";
+        $tr = $tr + 1;
+        $tid = $a . $tr;
+
+
+        foreach ($cart as $item) {
+            var_dump($item);
+            if ($item) {
+                mysql_query("INSERT INTO `product_oder_detail` (o_id,p_id,qty,trans_id,trans_num) 
+       VALUES ('".$oId."','" . $item['id'] . "', '" . $item['qty'] . "', '$tid', '$tr')");
+            }
+        }
+        
+        $this->load->view('templates/inserted');
+                
+        
+            }
+    }
+
+    function insert_cart_item() {
+        $this->load->model('dbmodel');
+         $this->load->helper('form');
+            $this->load->library(array('form_validation', 'session'));
+            $this->form_validation->set_rules('u_name', 'User Name', 'required|xss_clean|max_length[200]');
+            $this->form_validation->set_rules('u_fname', 'First Name', 'required|xss_clean|max_length[200]');
+            $this->form_validation->set_rules('u_lname', 'Last Name', 'required|xss_clean|max_length[200]');
+            $this->form_validation->set_rules('street_address', 'Address', 'required|xss_clean|max_length[200]');
+            $this->form_validation->set_rules('Town_address', 'City', 'required|xss_clean|max_length[200]');
+            $this->form_validation->set_rules('District_address', 'State', 'required|xss_clean|max_length[200]');
+             $this->form_validation->set_rules('country', 'Country', 'required|xss_clean|max_length[200]');           
+            $this->form_validation->set_rules('u_email', 'User email', 'required|xss_clean|max_length[200]');
+             $this->form_validation->set_rules('u_contact', 'Contact', 'required|xss_clean|max_length[200]');
+              
+            $this->form_validation->set_rules('u_pass', 'Password', 'required|xss_clean|md5|max_length[200]');
+            $this->form_validation->set_rules('u_repass', 'Password', 'required|xss_clean|md5|max_length[200]');
+            
+            if ($this->form_validation->run() == FALSE) {
+                // $data['error'] = $this->upload->display_errors();
+                redirect('view/registeruser');
+            } else {
+                if($this->input->post('u_pass')== $this->input->post('u_repass')){
+                     $email = $this->input->post('u_email');
+                     $check = $this->dbmodel->check_data($email);
+                if ($check > 0) { //if the data exists show error message
+                   
+                    $this->session->set_flashdata('message', 'User name already exists. Please type new user name.');
+                redirect('view/registeruser');
+                } else {
+                    $this->dbmodel->add_new_user($name, $fname, $lname, $email, $pass, $status, $user_type,$contact,$address);
+                $username = $this->input->post('u_name');
+        $fname = $this->input->post('u_fname');
+        $lname = $this->input->post('u_lname');
+        $address = $this->input->post('street_address');
+        $city = $this->input->post('Town_address');
+        $state = $this->input->post('District_address');
+        $country = $this->input->post('country');
+        $contact = $this->input->post('u_contact');
+        $email = $this->input->post('u_email');
+        $pass = $this->input->post('u_pass');
+        $zip = $this->input->post('zip');
+        die('sdhfdskfh');
+        if($this->input->post('pickup')== "pickup"){
+            
+            $s_username = " ";
+            $s_address = " ";
+            $s_city = " ";
+            $s_state = " ";
+            $s_zip = " ";
+            $s_country = " ";
+            $s_email = " ";
+            $s_contact = " ";
+            
+            
+        }
+        elseif($this->input->post('pickup')== "shipSame")
+        { 
+            $s_username = $username;
+            $s_address = $address;
+            $s_city = $city;
+            $s_state = $state;
+            $s_zip = $zip;
+            $s_country = $country;
+            $s_email = $email;
+            $s_contact = $contact;
+        }
+        else
+        {
+             $s_fname = $this->input->post('s_fname');
+            $s_lname = $this->input->post('s_lname');
+            $name = $s_fname." ".$s_lname;
+            
+             $s_username = $name;
+            $s_address = $this->input->post('s_address');
+            $s_city = $this->input->post('s_city');
+            $s_state = $this->input->post('s_state');
+            $s_zip = $this->input->post('s_zip');
+            $s_country = $this->input->post('s_country');
+            $s_email = $this->input->post('s_email');
+            $s_contact = $this->input->post('s_contact');
+        }
+        
+        
         $this->productmodel->add_new_user($username, $fname, $lname, $email, $pass, $contact,$address,$city,$state,$country,$zip);
         $lastuser = $this->productmodel->get_last_user();
         foreach ($lastuser as $userId)
@@ -190,7 +316,17 @@ class CartDetails extends CI_Controller {
 
         $this->load->view('templates/inserted');
                 
+            }
+             echo " User registerd <br/> You may contineu shopping ";
+                
+//$this->session->set_flashdata('message', 'User registerd <br/> You may contineu shopping');
+              //  redirect('view/registeruser');               
+// redirect('paypal');
                 }
+            else{
+                echo "password not match";
+            }
+            }
         
     }
 
@@ -223,7 +359,7 @@ class CartDetails extends CI_Controller {
         } else {
                      $this->load->model('dbmodel');
                         $data['detail'] = $this->productmodel->validate();
-                       
+                      
                              if(!empty($data['detail']))
                          {     
                $this->load->view('templates/header');

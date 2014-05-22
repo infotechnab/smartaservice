@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: May 21, 2014 at 10:06 AM
+-- Generation Time: May 22, 2014 at 08:10 AM
 -- Server version: 5.5.16
 -- PHP Version: 5.3.8
 
@@ -82,24 +82,7 @@ CREATE TABLE IF NOT EXISTS `comment_store` (
 --
 
 INSERT INTO `comment_store` (`Id`, `comment`, `comment_association_id`, `comment_user_name`) VALUES
-(9, 'djasKSJHJDIHIUDSA', 'post/3', ''),
-(10, 'djasKSJHJDIHIUDSA', 'post/3', ''),
-(11, 'comment', 'view/addcomment', ''),
-(12, 'djjkdjudhsufjdaksfoipokwDJICOUJSJA', 'page/2', ''),
-(13, 'hi this is a post comment', 'post/3', ''),
-(15, 'now the comment is added', 'post/3', ''),
-(16, 'now the comment is added', 'post/3', ''),
-(17, 'epofojigkosdk[pfs', 'page/3', ' '),
-(18, 'now the commenting is easy', 'page/3', ' '),
-(19, 'comment is added to page 4', 'page/4', ' '),
-(20, 'jewijfowpofiewpoew', 'post/3', ' '),
-(21, 'mynew comment', 'post/3', ' '),
-(22, 'The last comment', 'post/3', ' '),
-(23, 'last added is shown at first', 'post/3', ' '),
-(24, 'ramji commented', 'post/3', ' '),
-(25, '', 'post/3', ' '),
-(26, '', 'post/3', ' '),
-(27, 'hdiuhfjhf', 'post/3', ' ');
+(9, 'djasKSJHJDIHIUDSA', 'post/3', '');
 
 -- --------------------------------------------------------
 
@@ -311,12 +294,6 @@ CREATE TABLE IF NOT EXISTS `page` (
 --
 
 INSERT INTO `page` (`id`, `page_name`, `page_content`, `page_author_id`, `page_date`, `page_summary`, `page_status`, `page_modifed_date`, `page_parent`, `page_order`, `page_type`, `page_tags`, `allow_comment`, `allow_like`, `allow_share`) VALUES
-(4, 'Contact Us also edited', '      Every SDK comes bundled with a couple of sample apps. If you want to \r\nlearn how to use all the Facebook Platform features just download and \r\ninstall the SDK and start hacking.', 10, '2014-03-14 04:44:49', '      Every SDK comes bundled with a couple of sample apps. If you want to \r\nlearn how to use all th', '0', '0000-00-00 00:00:00', 0, 0, '', '0', 0, 0, 0),
-(5, 'dsdadasd', 'dasddsad<br>', 10, '2014-03-18 08:28:40', 'dasddsad<br>', '1', '0000-00-00 00:00:00', 0, 0, '0', '0', 0, 0, 0),
-(6, 'asdsaddsad', 'dsadaddds<br>', 10, '2014-03-18 08:28:48', 'dsadaddds<br>', '1', '0000-00-00 00:00:00', 0, 0, '0', '0', 0, 0, 0),
-(7, 'sdsadadsdddd', 'asdasdasdsasad<br>', 10, '2014-03-18 08:28:56', 'asdasdasdsasad<br>', '1', '0000-00-00 00:00:00', 0, 0, '0', '0', 0, 0, 0),
-(8, 'axsas', 'saxasa<br>', 10, '2014-03-18 08:42:00', 'saxasa<br>', '1', '0000-00-00 00:00:00', 0, 0, '0', '0', 0, 0, 0),
-(9, 'ssacdsfrgv', 'bgtrgtgdsfcqw<br>', 10, '2014-03-18 08:42:09', 'bgtrgtgdsfcqw<br>', '1', '0000-00-00 00:00:00', 0, 0, '0', '0', 0, 0, 0),
 (10, 'Contact Us', '<b>&nbsp;Salyani Organization </b><br>Lions Chowk, Narayanghad<br>Chitwan<br>', 11, '2014-05-20 05:20:17', '<b>&nbsp;Salyani Organization </b><br>Lions Chowk, Narayanghad<br>Chitwan<br>', '1', '0000-00-00 00:00:00', 0, 0, '0', '0', 0, 0, 0);
 
 -- --------------------------------------------------------
@@ -377,7 +354,7 @@ CREATE TABLE IF NOT EXISTS `product` (
   `shiping` varchar(255) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `category` (`category`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=39 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=40 ;
 
 --
 -- Dumping data for table `product`
@@ -386,11 +363,11 @@ CREATE TABLE IF NOT EXISTS `product` (
 INSERT INTO `product` (`id`, `qty`, `price`, `name`, `description`, `summary`, `category`, `image1`, `image2`, `image3`, `shiping`) VALUES
 (26, 1, 100, 'ramayan', '      nepali movie<br>', '      nepali movie<br>', 12, 'tickets-185x185.jpg', 'tickets-185x1851.jpg', 'tickets-185x1852.jpg', ''),
 (27, 1, 500, 'hood', '            hood<br>', '            hood<br>', 10, 'tickets-185x1854.jpg', NULL, NULL, ''),
-(28, 1, 5, 'cow', '      cow<br>', '      cow<br>', 10, 'emerochino-tickets11.jpg', NULL, NULL, ''),
 (29, 1, 11, 'sdfdsf', '                  sdfdsf<br>', '                  sdfdsf<br>', 10, 'Forest-Animals-Deer-Leonid-Afremov-Antelope.jpg', NULL, NULL, ''),
 (33, 1, 5000, 'Jacket', '      This jacket is made up of the leather and regzin. Its a high quality jacket made in indonesia. Its of YCKMD.', '      This jacket is made up of the leather and regzin. Its a high quality jacket made in indonesia.', 13, 'emerochino-tickets1.jpg', NULL, NULL, ''),
 (34, 1, 2000, 'Paint', '      This paint is of pure jeans . made in nepal. sakjdfhas', '      This paint is of pure jeans . made in nepal. sakjdfhas', 13, 'tickets-185x1853.jpg', NULL, NULL, ''),
-(38, 1, 12, 'Product', 'sdfsdf<br>', 'sdfsdf<br>', 14, NULL, NULL, NULL, '');
+(38, 1, 12, 'Product', 'sdfsdf<br>', 'sdfsdf<br>', 14, NULL, NULL, NULL, ''),
+(39, 1, 787, 'aaaaa', 'dsfsadf<br>', 'dsfsadf<br>', 12, NULL, NULL, NULL, '');
 
 -- --------------------------------------------------------
 
@@ -413,7 +390,7 @@ CREATE TABLE IF NOT EXISTS `product_image` (
 CREATE TABLE IF NOT EXISTS `product_oder` (
   `o_id` int(11) NOT NULL AUTO_INCREMENT,
   `u_id` int(11) NOT NULL,
-  `date` date NOT NULL,
+  `date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `user_name` varchar(255) NOT NULL,
   `deliver_address` varchar(255) NOT NULL,
   `city` varchar(255) NOT NULL,
@@ -424,15 +401,20 @@ CREATE TABLE IF NOT EXISTS `product_oder` (
   `contact` varchar(50) NOT NULL,
   PRIMARY KEY (`o_id`),
   KEY `u_id` (`u_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=16 ;
 
 --
 -- Dumping data for table `product_oder`
 --
 
 INSERT INTO `product_oder` (`o_id`, `u_id`, `date`, `user_name`, `deliver_address`, `city`, `state`, `zip`, `country`, `email`, `contact`) VALUES
-(1, 11, '2014-05-15', 'hello', 'naranghat', 'chitwan', 'chitwan', '12345', 'nepal', 'rsubedi@salyani.com.np', '123456'),
-(4, 11, '0000-00-00', 'sfdf', 'lsdkjf', 'dlksfj', 'sdlkfj', 'sadlkjf', 'ldkjsf', 'ddfbefbf801adf18df823c64a4ae173d', 'sdlfkj');
+(1, 11, '2014-05-14 18:15:00', 'hello', 'naranghat', 'chitwan', 'chitwan', '12345', 'nepal', 'rsubedi@salyani.com.np', '123456'),
+(4, 11, '0000-00-00 00:00:00', 'sfdf', 'lsdkjf', 'dlksfj', 'sdlkfj', 'sadlkjf', 'ldkjsf', 'ddfbefbf801adf18df823c64a4ae173d', 'sdlfkj'),
+(11, 22, '2014-05-21 10:44:06', 'sdf sdf', 'sdf', '0', 'dasf', 'sadf', '0', 'hello@cc.bb', '543545'),
+(12, 23, '2014-05-21 10:44:22', 'sdf sdf', 'sdf', '0', 'dasf', 'sadf', '0', 'hello@cc.bb', '543545'),
+(13, 24, '2014-05-21 11:49:29', 'ramji', 'sadfsdfdsfdsf', 'sdf', 'sdf', 'sdf', '', 'ramji@salyani.com.np', 'sdfsdfsdfd'),
+(14, 12, '2014-05-21 11:51:49', 'ramji', 'sadfsdfdsfdsf', 'sdf', 'sdf', 'sdf', '', 'ramji@salyani.com.np', 'sdfsdfsdfd'),
+(15, 12, '2014-05-21 11:52:12', 'ramji', 'sadfsdfdsfdsf', 'sdf', 'sdf', 'sdf', '', 'ramji@salyani.com.np', 'sdfsdfsdfd');
 
 -- --------------------------------------------------------
 
@@ -452,23 +434,17 @@ CREATE TABLE IF NOT EXISTS `product_oder_detail` (
   PRIMARY KEY (`od_id`),
   KEY `p_id` (`p_id`),
   KEY `o_id` (`o_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=89 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=96 ;
 
 --
 -- Dumping data for table `product_oder_detail`
 --
 
 INSERT INTO `product_oder_detail` (`od_id`, `o_id`, `p_id`, `qty`, `price`, `trans_id`, `trans_num`, `status`) VALUES
-(79, 1, 33, '1', 0, 'TRD1', 1, '0'),
-(80, 1, 34, '1', 0, 'TRD1', 1, '1'),
-(81, 1, 33, '1', 0, 'TRD2', 2, '0'),
-(82, 1, 34, '1', 0, 'TRD2', 2, '0'),
-(83, 1, 29, '5', 50, 'TRN3', 3, '0'),
-(84, 1, 29, '8', 0, 'TRN4', 4, '1'),
-(85, 1, 27, '8', 6363, 'TRN5', 5, '0'),
-(86, 1, 28, '66', 2, 'TRN6', 6, '1'),
-(87, 1, 27, '5', 2, 'TRN7', 7, '0'),
-(88, 1, 28, '65', 5, 'TRN8', 8, '0');
+(92, 12, 38, '38', 0, 'TRD5', 5, ''),
+(93, 13, 38, '38', 0, 'TRD5', 5, ''),
+(94, 14, 38, '38', 0, 'TRD5', 5, ''),
+(95, 15, 38, '38', 0, 'TRD5', 5, '');
 
 -- --------------------------------------------------------
 
@@ -530,7 +506,7 @@ CREATE TABLE IF NOT EXISTS `user` (
   `user_status` varchar(64) DEFAULT NULL,
   `user_type` varchar(64) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=17 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=27 ;
 
 --
 -- Dumping data for table `user`
@@ -539,10 +515,9 @@ CREATE TABLE IF NOT EXISTS `user` (
 INSERT INTO `user` (`id`, `user_name`, `user_fname`, `user_lname`, `user_email`, `user_pass`, `city`, `state`, `zip`, `country`, `contact`, `address`, `user_url`, `user_registered_date`, `user_auth_key`, `user_status`, `user_type`) VALUES
 (11, 'admin', 'ramji', 'subedi', 'admin@ad.min', '21232f297a57a5a743894a0e4a801fc3', '', '', '', '', '', '', NULL, '2014-05-11 11:27:48', ' ', '1', '0'),
 (12, 'ramji', 'ram', 'ram', 'ramji@salyani.com.np', 'ae3274d5bfa170ca69bb534be5a22467', '', '', '', '', '', 'sadfsdfdsfdsf', NULL, '2014-05-13 06:56:32', NULL, '1', '1'),
-(13, 'adfsdsf', 'sadfsd', 'sdf', 'admin@df.cd', '900150983cd24fb0d6963f7d28e17f72', '', '', '', '', '545', 'asdf', NULL, '2014-05-20 10:14:01', NULL, NULL, '1'),
-(14, 'adfsdsf', 'sadfsd', 'sdf', 'admin@df.cd', '900150983cd24fb0d6963f7d28e17f72', '', '', '', '', '545', 'asdf', NULL, '2014-05-20 10:15:18', NULL, '1', '1'),
-(15, 'adfsdsf', 'sadfsd', 'sdf', 'admin@df.cd', '900150983cd24fb0d6963f7d28e17f72', '', '', '', '', '545', 'asdf', NULL, '2014-05-20 10:18:23', NULL, '1', '1'),
-(16, 'sdf', 'lsdfj', 'lskdafj', 'admin@as.com', '900150983cd24fb0d6963f7d28e17f72', '', '', '', '', '709797', 'lkdsafj', NULL, '2014-05-20 10:21:00', NULL, '1', '1');
+(22, 'hello', 'ram', 'shyam', 'admin@ab.cd', '4124bc0a9335c27f086f24ba207a4912', 'lasdfj', 'sladkf', 'lsdaf', 'sdf', '98987', 'sdlfj', NULL, '2014-05-21 10:44:06', NULL, NULL, '1'),
+(23, 'hello', 'ram', 'shyam', 'admin@ab.cd', '74b87337454200d4d33f80c4663dc5e5', 'lasdfj', 'sladkf', 'lsdaf', 'sdf', '98987', 'sdlfj', NULL, '2014-05-21 10:44:22', NULL, NULL, '1'),
+(24, 'ramji', 'ram', 'ram', 'ramji@salyani.com.np', '0', 'sdf', 'sdf', 'sdf', '', 'sdfsdfsdfd', 'sadfsdfdsfdsf', NULL, '2014-05-21 11:49:29', NULL, NULL, '1');
 
 --
 -- Constraints for dumped tables

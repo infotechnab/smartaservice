@@ -99,6 +99,15 @@ public function product_info(){
         return $query->result();
     }
     
+    function get_id_user($email)
+    {
+       
+        //$this->db->order_by('id','DESC');
+        $this->db->where('user_email',$email);
+        $query = $this->db->get('user',1);
+        return $query->result();
+    }
+    
     function get_last_order()
     {
        

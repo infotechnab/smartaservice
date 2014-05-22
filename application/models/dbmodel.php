@@ -900,7 +900,7 @@ public function get_navigation_info($navigationName)
     }
      function check_data($user)
  {
-  $this->db->where('email',$user);
+  $this->db->where('user_email',$user);
   $query = $this->db->get('user');
   return $query->num_rows();
  } 
