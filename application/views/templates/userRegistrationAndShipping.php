@@ -36,6 +36,7 @@ if (!empty($detail)) {
     
     <div id="login">
         <div id="outerBorder">
+           
             <div id="RegisterLeft">
 
                 <table align="center" border="0" width="50%">
@@ -171,6 +172,21 @@ if (!empty($detail)) {
 
     <div id="login">
         <div id="outerBorder">
+             <div id="topRegister">
+                <p><input type="checkbox" value="=1" name="register"/>Register</p>
+                <table border="0" width="30%">
+                   <tr>
+                        <td><p style="margin: 0px; padding: 2px;">User Name</p></td>
+                        <td><p style="margin: 0px; padding: 2px;">Email</p></td>
+                         <td><p style="margin: 0px; padding: 2px;">Password</p></td>
+                    </tr>
+                    <tr>
+                        <td ><input type="text" name="u_name" placeholder="User Name" size="30" style="outline: none; border: 1px solid #dddddd; padding: 10px; border-radius: 5px;" required/></td>
+                        <td ><input type="email" name="u_email" placeholder="Email" size="30" style="outline: none; border: 1px solid #dddddd; padding: 10px; border-radius: 5px;" required/></td>
+                        <td ><input type="password" name="u_pass" placeholder="Password" size="30" style="outline: none; border: 1px solid #dddddd; padding: 10px; border-radius: 5px;" required/></td>
+                    </tr> 
+                </table>
+            </div>
             <div id="RegisterLeft">
 
                 <table align="center" border="0" width="50%">
@@ -178,12 +194,7 @@ if (!empty($detail)) {
                         <td colspan="2"><h3 style="margin: 0px 0px 10px 0px; padding: 2px;">Personal Details</h3></td>
 
                     </tr>
-                    <tr>
-                        <td colspan="2"><p style="margin: 0px; padding: 2px;">User Name</p></td>
-                    </tr>
-                    <tr>
-                        <td colspan="2"><input type="text" name="u_name" placeholder="User Name" size="48" style="outline: none; border: 1px solid #dddddd; padding: 10px; border-radius: 5px;" required/></td>
-                    </tr>
+                   
                     <tr>
                         <td><p style="margin: 0px; padding: 2px;">First Name</p></td>
                         <td><p style="margin: 0px; padding: 2px;">Last Name</p></td>
@@ -215,21 +226,7 @@ if (!empty($detail)) {
                     <tr>
                         <td colspan="2"><input type="text" name="u_contact" placeholder="Contact Number" size="48" style="outline: none; border: 1px solid #dddddd; padding: 10px; border-radius: 5px;" required/></td>
                     </tr>
-                    <tr>
-                        <td colspan="2"><p style="margin: 0px; padding: 2px;">Email</p></td>
-                    </tr>
-                    <tr>
-                        <td colspan="2"><input type="email" name="u_email" placeholder="Email" size="48" style="outline: none; border: 1px solid #dddddd; padding: 10px; border-radius: 5px;" required/></td>
-                    </tr>
-                    <tr>
-                        <td colspan="2"><p style="margin: 0px; padding: 2px;">Password</p></td>
-                    </tr>
-                    <tr>
-                        <td colspan="2"><input type="password" name="u_pass" placeholder="Password" size="48" style="outline: none; border: 1px solid #dddddd; padding: 10px; border-radius: 5px;" required/></td> 
-                    </tr>
-                    <tr>
-                        <td colspan="2"><input type="password" name="u_repass" placeholder="Retype Password" size="48" style="box-shadow: inset 0px  #888, inset 0px  #888; outline: none; border: 1px solid #dddddd; padding: 10px; border-radius: 5px;" required/></td> 
-                    </tr>
+                    
                     <tr>
                         <td colspan="2"><input type="radio" name="pickup" onclick="handleClick(this);" value="pickup">Pick Up</td>
                     </tr>
@@ -249,7 +246,10 @@ if (!empty($detail)) {
             <div id="RegisterRight">
 
                 <table border="0" width="50%">
+<tr>
+                        <td colspan="2"><h3 style="margin: 0px 0px 10px 0px; padding: 2px;">Shipping Details</h3></td>
 
+                    </tr>
                     <tr>
                         <td><p style="margin: 0px; padding: 2px;">First Name</p></td>
                         <td><p style="margin: 0px; padding: 2px;">Last Name</p></td>
