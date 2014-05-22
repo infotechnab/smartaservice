@@ -185,7 +185,23 @@ class bnw extends CI_Controller {
                 {
                     $shipping="disabled";
                 }
-                $this->dbmodel->add_new_product($productCategory,$description, $summary, $qty, $productName, $productPrice, $productImg, $productImgTwo, $productImgThree, $shipping);
+                $like= $this->input->post('enableLike');
+                if($like==1){
+                    $allowLike="enabled";
+                }
+                else
+                {
+                    $allowLike="disabled";
+                }
+                $share= $this->input->post('enableShare');
+                if($share==1){
+                    $allowShare="enabled";
+                }
+                else
+                {
+                    $allowShare="disabled";
+                }
+                $this->dbmodel->add_new_product($productCategory,$description, $summary, $qty, $productName, $productPrice, $productImg, $productImgTwo, $productImgThree, $shipping, $allowLike, $allowShare);
                 // $this->dbmodel->add_images($id,$productImg);
                 $this->session->set_flashdata('message', 'One Product added sucessfully');
                 redirect('bnw/product');
@@ -310,9 +326,33 @@ class bnw extends CI_Controller {
                     $productImgThree = NULL;
                 }
                 }
+                $shippingCost= $this->input->post('checkMe');
+                if($shippingCost==1){
+                    $shipping="enabled";
+                }
+                else
+                {
+                    $shipping="disabled";
+                }
+                $like= $this->input->post('enableLike');
+                if($like==1){
+                    $allowLike="enabled";
+                }
+                else
+                {
+                    $allowLike="disabled";
+                }
+                $share= $this->input->post('enableShare');
+                if($share==1){
+                    $allowShare="enabled";
+                }
+                else
+                {
+                    $allowShare="disabled";
+                }
 
-                // $this->dbmodel->update_page($id, $name, $body, $page_author_id, $summary, $status, $order, $type, $tags, $allowComment, $allowLike, $allowShare);
-                $this->dbmodel->update_product($id,$category, $name, $description, $summary, $price, $productImg, $productImgTwo, $productImgThree);
+               
+                $this->dbmodel->update_product($id,$category, $name, $description, $summary, $price, $productImg, $productImgTwo, $productImgThree, $shipping, $allowLike, $allowShare);
                 $this->session->set_flashdata('message', 'Data Modified Sucessfully');
                 redirect('bnw/productList');
             } else {

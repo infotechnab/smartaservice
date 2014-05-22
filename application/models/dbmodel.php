@@ -73,7 +73,7 @@ class Dbmodel extends CI_Model {
     }
 
 
-    function add_new_product($cat,$des,$sum,$qty,$name,$price,$img1,$img2,$img3, $shipping)
+    function add_new_product($cat,$des,$sum,$qty,$name,$price,$img1,$img2,$img3, $shipping, $allowLike, $allowShare)
     {
         $data = array(
             'category'=>$cat,
@@ -85,7 +85,9 @@ class Dbmodel extends CI_Model {
             'image1'=>$img1,
             'image2'=>$img2,
             'image3'=>$img3,
-            'shiping'=>$shipping);
+            'shiping'=>$shipping,
+            'like'=>$allowLike,
+            'share'=>$allowShare);
         
         $this->db->insert('product', $data);
     }
@@ -207,7 +209,7 @@ class Dbmodel extends CI_Model {
         $this->db->update('product', $data);
     }
     
-    function update_product($id,$cate,$name,$description,$summary,$price,$productImg,$productImgTwo,$productImgThree)
+    function update_product($id,$cate,$name,$description,$summary,$price,$productImg,$productImgTwo,$productImgThree, $shipping, $allowLike, $allowShare)
     {
         $data = array(
             'category'=>$cate,
@@ -217,8 +219,10 @@ class Dbmodel extends CI_Model {
             'price'=>$price,
             'image1'=>$productImg,
             'image2'=>$productImgTwo,
-            'image3'=>$productImgThree
-        );
+            'image3'=>$productImgThree,
+            'shiping'=>$shipping,
+            'like'=>$allowLike,
+            'share'=>$allowShare);
         
         $this->db->where('id',$id);
         $this->db->update('product',$data);
