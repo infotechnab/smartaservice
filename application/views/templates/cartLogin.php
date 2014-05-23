@@ -19,7 +19,7 @@ var total = price + shiping;
       $('#test').html(total);
 });
 
-document.getElementById("test").innerHTML = total;
+//document.getElementById("test").innerHTML = total;
 </script>
 
 <?php if ($this->cart->contents()) {  ?>
@@ -69,16 +69,16 @@ else { ?>
     <?php }  
     ?>
 
-<div id="cartDetailsSidebar">
+<!--<div id="cartDetailsSidebar">
             <div id="order_summary">
                 <table width="100%">
                     <tr class='amt_summary'>
                         <td class='txtright' width='50%'>Total: </td>
-                        <td><b><?php get_currency($this->cart->total()); ?></b></td>
+                        <td><b><?php //get_currency($this->cart->total()); ?></b></td>
                     </tr>
                     <tr class='amt_summary'>
                         <td class='txtright'>Shipping Cost:</td>
-                        <td><?php echo $cost; ?></td>
+                        <td><?php //echo $cost; ?></td>
                     </tr>
                     <tr class='amt_summary'>
                         <td class='txtright'>Discount:</td>
@@ -93,5 +93,5 @@ else { ?>
 <?php //echo anchor('view/login', 'Pay Now') ?>
                 </div>
             </div>
-            </div>
+            </div>-->
    </div>

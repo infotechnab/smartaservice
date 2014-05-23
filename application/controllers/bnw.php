@@ -295,36 +295,26 @@ class bnw extends CI_Controller {
                     $productImg = $data['upload_data']['file_name'];
                     //die("selected file");
                 } else {
-                    if(isset($productImg))
-                    {
+                   
+                      
                         $productImg = $this->input->post('firstImg');
-                    }
-                    else{
-                        $productImg = NULL;
-                    }
-                    
+                 
                 }
                 if ($this->upload->do_upload('myfileTwo')) {
                     $data = array('upload_data' => $this->upload->data('myfileTwo'));
                     $productImgTwo = $data['upload_data']['file_name'];
                 } else {
-                    if(isset($productImgTwo))
-                    {
+                  
                     $productImgTwo = $this->input->post('secondImg');
-                }
-                else{ $productImgTwo = NULL;}
+               
                 }
                 if ($this->upload->do_upload('myfileThree')) {
                     $data = array('upload_data' => $this->upload->data('myfileThree'));
                     $productImgThree = $data['upload_data']['file_name'];
                 } else {
-                    if(isset($productImgThree))
-                    {
+                 
                     $productImgThree = $this->input->post('thirdImg');
-                }
-                else{
-                    $productImgThree = NULL;
-                }
+              
                 }
                 $shippingCost= $this->input->post('checkMe');
                 if($shippingCost==1){

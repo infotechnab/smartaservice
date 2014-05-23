@@ -1,3 +1,6 @@
+  <?php
+$this->load->helper('currency');
+?>
 <?php
    if(!empty($shiping))
    {
@@ -12,17 +15,34 @@
 ?>
 
 <script>
+    
     $(document).ready(function(){
-        $
+        $(function(){
+             var shiping = parseInt("<?php echo $cost; ?>");
+           $('#cost').html(shiping);
+            ship(shiping);
+        });
+        $('.ship').click(function(){
+            var shiping = parseInt("<?php echo $cost; ?>");
+           $('#cost').html(shiping);
+            ship(shiping);
+            
+        });
+       $('.pick').click(function(){
+            var shiping = parseInt(" 0 ");
+            $('#cost').html(shiping);
+            //alert('pick');
+            ship(shiping);
+        });
+        
     });
     
     
-    function ship(){
+    function ship(shiping){
+        
         var price = parseInt("<?php echo $this->cart->total();?>");
-
-    var shiping = parseInt("<?php echo $cost; ?>");
-
-var total = price + shiping;
+    var total = price + shiping;
+   // alert(shiping);
       $('#test').html(total);
 }
 
@@ -172,6 +192,7 @@ if (!empty($detail)) {
             <div class="clear"></div>
         </div> 
     </div> 
+
     </div> 
     </div> 
 
@@ -245,12 +266,12 @@ if (!empty($detail)) {
                     </tr>
                     
                     <tr>
-                        <td colspan="2"><input type="radio" name="pickup" onclick="handleClick(this);" value="pickup">Pick Up</td>
+                        <td colspan="2"><input type="radio" name="pickup" onclick="handleClick(this);" class="pick" value="pickup">Pick Up</td>
                     </tr>
                     <tr>
-                        <td colspan="2"><input type="radio" name="pickup" onclick="handleClick(this);" value="shipSame">Ship to above address</td>
+                        <td colspan="2"><input type="radio" name="pickup" onclick="handleClick(this);"  value="shipSame">Ship to above address</td>
                     </tr>
-                    <td id='shipenable' colspan="2"><input type="radio"  name="pickup" onclick="handleClick(this);" value="shipDifferent">Ship to different Address</td>
+                    <td id='shipenable' colspan="2"><input type="radio"  name="pickup" class="ship" onclick="handleClick(this);" value="shipDifferent">Ship to different Address</td>
                     </tr>
                     <tr style="text-align: center">
                         <td colspan="2"><input type="submit" value="Register" style="padding: 5px; width: 80px; background-color: black;" class="updateBtnStyle"/></td>
@@ -316,6 +337,32 @@ if (!empty($detail)) {
             <div class="clear"></div>
         </div> 
     </div>
+  <div >
+            <div id="order_summary">
+                <table width="100%">
+                    <tr class='amt_summary'>
+                        <td class='txtright' width='50%'>Total: </td>
+                        <td><b><?php get_currency($this->cart->total()); ?></b></td>
+                    </tr>
+                    <tr class='amt_summary'>
+                        <td class='txtright'>Shipping Cost:</td>
+                        <td id="cost"></td>
+                        
+                    </tr>
+                    <tr class='amt_summary'>
+                        <td class='txtright'>Discount:</td>
+                        <td></td>
+                    </tr>
+                    <tr class='amt_summary'>
+                        <td class='txtright'>Total:</td>
+                        <td id="test">   </td>
+                    </tr>
+                </table>
+                <div id="order_checkout"  class="updateBtnStyle">
+<?php //echo anchor('view/login', 'Pay Now') ?>
+                </div>
+            </div>
+            </div>
     </div> 
     </div> 
 
