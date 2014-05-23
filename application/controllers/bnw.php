@@ -54,6 +54,33 @@ class bnw extends CI_Controller {
     
     function checkcoupon()
     {
+        $key = $_POST['id'];
+        $today = date("Y-m-d");
+        $token = $this->dbmodel->getdate($key);
+        if(!empty($token))
+        {
+            foreach ($token as $expdate)
+            {
+                $date = $expdate->exp_date;
+            }
+            if($today<=$date)
+            {
+                $validkey = $this->dbmodel->checkkey($key,$today);
+        foreach ($validkey as $rate)
+            {
+                $disRate = $rate->rate;
+            }
+            echo '<script> var rate ='.$disRate.'</script> <p> You have a discount '.$disRate.' % </p> ';
+       
+            }
+            else{
+                echo "Coupon has been expired!";
+            }
+        }
+        else{
+             echo "Coupon does not exist!";
+        }
+        
         
     }
     function coupon()

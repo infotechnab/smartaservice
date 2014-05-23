@@ -57,6 +57,22 @@ class Dbmodel extends CI_Model {
     
 
 //============================    For Cart System         ========================================//
+    function getdate($key)
+    {
+        $this->db->select('exp_date');
+         $this->db->where('key',$key);
+         $query = $this->db->get('coupon');
+        return $query->result();
+    }
+
+
+    function checkkey($id,$today)
+    {
+        $this->db->where('key',$id);
+       // $this->db->where('exp_date <=',$today);
+        $query = $this->db->get('coupon');
+        return $query->result();
+    }
     function add_coupon($key,$rate,$date)
     {
        // die($date);
