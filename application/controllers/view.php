@@ -163,7 +163,7 @@ class View extends CI_Controller {
         $this->load->view('templates/header');
         $this->load->view('templates/navigation');
        
-        $this->load->view('templates/contactUs', $data);
+        $this->load->view('templates/single_page', $data);
          
         $this->load->view('templates/cart');
         $this->load->view('templates/sidebarview',$data);

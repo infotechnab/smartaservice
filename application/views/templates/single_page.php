@@ -92,7 +92,7 @@ $this->load->helper('currency');
     <h3><?php echo $name; ?></h3>
 
 </div>
-<div class="contentContainerDetails">
+<div class="contentContainer">
    <?php echo $content; ?>
 </div>
 </div>
