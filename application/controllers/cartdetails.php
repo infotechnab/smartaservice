@@ -221,7 +221,7 @@ class CartDetails extends CI_Controller {
                      $check = $this->dbmodel->check_data($email);
                 if ($check > 0) { //if the data exists show error message
                    
-                    $this->session->set_flashdata('message', 'User name already exists. Please type new user name.');
+                    $this->session->set_flashdata('message', 'Email already exists. Please type new user name.');
                 redirect('view/registeruser');
                 } else {
                     $this->dbmodel->add_new_user($name, $fname, $lname, $email, $pass, $status, $user_type,$contact,$address);

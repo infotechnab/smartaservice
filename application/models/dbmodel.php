@@ -20,6 +20,8 @@ class Dbmodel extends CI_Model {
         }
     }
 
+    
+    
     // this is another method to get user verified 
     function login($name, $pass) {
         $this->db->select('id, user_name, user_pass');
@@ -55,6 +57,22 @@ class Dbmodel extends CI_Model {
     
 
 //============================    For Cart System         ========================================//
+    function add_coupon($key,$rate,$date)
+    {
+       // die($date);
+        //  $starus value 0 if coupone is new or not used 
+        $status = 0;
+        $data = array(
+            'key'=>$key,
+            'rate'=>$rate,
+            'exp_date'=>$date,
+            'status'=>$status
+        );
+        
+        $this->db->insert('coupon',$data);
+    }
+
+
     function order_user($name,$address,$city,$state,$country,$zip,$email,$contact)
     {
         $uid = 11;

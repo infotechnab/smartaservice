@@ -32,7 +32,6 @@ class bnw extends CI_Controller {
 
     //========================== for Cart System =======================================================//
 
-    //========================== Add Product ======================================================//
       function getRandomStringForCoupen($length) {
         $validCharacters = "ABCDEFGHIJKLMNPQRSTUXYVWZ123456789";
         $validCharNumber = strlen($validCharacters);
@@ -68,7 +67,48 @@ class bnw extends CI_Controller {
              redirect('login', 'refresh');
          }
     }
+    
+    function addcoupon()
+    {
+         if ($this->session->userdata('logged_in')) {
+              $data['username'] = Array($this->session->userdata('logged_in'));
+            $data['meta'] = $this->dbmodel->get_meta_data();
+            $data['category'] = $this->dbmodel->get_category();
 
+            $this->load->view('bnw/templates/header', $data);
+            $this->load->view('bnw/templates/menu');
+           
+            $this->load->view('bnw/templates/footer', $data);
+             $this->load->helper('form');
+            $this->load->library(array('form_validation', 'session'));
+            $this->form_validation->set_rules('key', 'Coupon Key', 'required|xss_clean|max_length[200]');
+            $this->form_validation->set_rules('rate', 'Discount Rate', 'required|xss_clean|max_length[200]');
+            $this->form_validation->set_rules('expdate', 'Expire Date', 'required|xss_clean|max_length[200]');
+            
+            if ($this->form_validation->run() == FALSE) {
+
+                $this->load->view('product/coupon');
+            } else {
+
+                //if valid
+
+                $key = $this->input->post('key');
+                $rate = $this->input->post('rate');
+                $date = $this->input->post('expdate');
+                
+                $this->dbmodel->add_coupon($key,$rate,$date);
+                $this->session->set_flashdata('message', 'One Coupon Created sucessfully');
+                redirect('bnw/coupon');
+            }
+            $this->load->view('bnw/templates/footer', $data);
+         }
+         else
+         {
+              redirect('login', 'refresh');
+         }
+    }
+
+    //========================== Add Product ======================================================//
 
     function product() {
         if ($this->session->userdata('logged_in')) {
