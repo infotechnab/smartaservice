@@ -9,6 +9,9 @@
 ?>
 
 <script>
+    $(document).ready(function(){
+        
+    });
     $(function(){
         var price = parseInt("<?php echo $this->cart->total();?>");
 
@@ -242,7 +245,7 @@ if (!empty($detail)) {
                     <tr>
                         <td colspan="2"><input type="radio" name="pickup" onclick="handleClick(this);" value="shipSame">Ship to above address</td>
                     </tr>
-                    <td id='shipenable'colspan="2"><input type="radio"  name="pickup" onclick="handleClick(this);" value="shipDifferent">Ship to different Address</td>
+                    <td id='shipenable' colspan="2"><input type="radio"  name="pickup" onclick="handleClick(this);" value="shipDifferent">Ship to different Address</td>
                     </tr>
                     <tr style="text-align: center">
                         <td colspan="2"><input type="submit" value="Register" style="padding: 5px; width: 80px; background-color: black;" class="updateBtnStyle"/></td>
