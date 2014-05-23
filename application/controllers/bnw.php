@@ -33,7 +33,25 @@ class bnw extends CI_Controller {
     //========================== for Cart System =======================================================//
 
     //========================== Add Product ======================================================//
+      function getRandomStringForCoupen($length) {
+        $validCharacters = "ABCDEFGHIJKLMNPQRSTUXYVWZ123456789";
+        $validCharNumber = strlen($validCharacters);
+        $result = "";
+
+        for ($i = 0; $i < $length; $i++) {
+            $index = mt_rand(0, $validCharNumber - 1);
+            $result .= $validCharacters[$index];
+        }
+        return $result;
+    }
     
+    function getcoupon()
+    {
+       // die('work');
+        $key = $this->getRandomStringForCoupen(5);
+        echo '<input type="text" value="'.$key.'" name="key" />';
+       
+    }
     function coupon()
     {
          if ($this->session->userdata('logged_in')) {
