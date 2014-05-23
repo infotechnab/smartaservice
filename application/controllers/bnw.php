@@ -74,6 +74,7 @@ class bnw extends CI_Controller {
        
             }
             else{
+                die('msdfdsfdsfdsf');
                 echo "Coupon has been expired!";
             }
         }

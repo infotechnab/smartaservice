@@ -55,9 +55,38 @@ $this->load->helper('currency');
 
 //document.getElementById("test").innerHTML = total;
 </script>
+<script>
+
+        $(document).ready(function(){
+            $('#checkkey').click(function(){
+               var key = $('#couponkey').val(); 
+               
+                  var dataString = 'id='+key;
+                 // alert(dataString);
+            $.ajax({
+                type: "POST",
+                url: base_url + 'index.php/bnw/checkcoupon',
+                data: dataString,
+                success: function(msgs)
+                {
+                    $("#nfcoupon").html(msgs);
+                }
+            });
+            });
+          
+$('#showcoupon').click(function(){
+   $('#coupontext').toggle(); 
+});
+           
+        });
+
+</script>
 <style>
     .register{
         display: block;
+    }
+    #showcoupon{
+        cursor: pointer;
     }
 </style>
         <?php
@@ -83,7 +112,13 @@ if (!empty($detail)) {
     echo validation_errors(); ?> </p>
     
     <div id="login">
- 
+ <div id="snfcoupon"></div>
+ <div > <strong id="showcoupon">Click here to enter your coupon code</strong>
+ <div id="coupontext" style="none">
+        <input type="text" name="couponkey" id="couponkey" placeholder="type your key here" /> <br/>
+        <input type="button" id="checkkey" value="Apply Coupon" />
+ </div>
+ </div>
            <div id="leftRegister">
             <div id="RegisterLeft">
 
@@ -302,7 +337,15 @@ else { ?>
     echo validation_errors(); ?> </p>
 
     <div id="login">
+       
         
+ <div > <strong id="showcoupon">Click here to enter your coupon code</strong>
+      <div id="nfcoupon"></div>
+ <div id="coupontext" style="display:none;">
+        <input type="text" name="couponkey" id="couponkey" placeholder="type your key here" /> <br/>
+        <input type="button" id="checkkey" value="Apply Coupon" />
+ </div>
+ </div> 
              <div id="topRegister">
                 <p><input type="checkbox" id="continueRegister" value="=1" name="register"/>Register</p>
                 <div id="table_register" style="display: none;" >

@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: May 23, 2014 at 11:01 AM
+-- Generation Time: May 23, 2014 at 12:05 PM
 -- Server version: 5.5.16
 -- PHP Version: 5.3.8
 
@@ -115,14 +115,15 @@ CREATE TABLE IF NOT EXISTS `coupon` (
   `user` varchar(255) NOT NULL,
   `status` varchar(255) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
 
 --
 -- Dumping data for table `coupon`
 --
 
 INSERT INTO `coupon` (`id`, `key`, `rate`, `exp_date`, `user`, `status`) VALUES
-(1, 'Q1LP3', 45, '2014-05-01', '', '0');
+(1, 'Q1LP3', 45, '2014-05-01', '', '0'),
+(2, '2QI4U', 10, '2014-05-23', '', '0');
 
 -- --------------------------------------------------------
 
