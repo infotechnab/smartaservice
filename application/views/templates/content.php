@@ -80,12 +80,12 @@ $this->load->helper('currency');
  .contentContainerFooterLeft
     {
         float: left;
-        width: 80px;
+       
       
     }
     .contentContainerFooterRight
     {
-        width: 80px;
+        
         float: left;
     }
     .sliderTable
