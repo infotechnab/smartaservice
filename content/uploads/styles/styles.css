@@ -708,7 +708,7 @@ div.vertical-line{
         }
         .slideContents
         {
-        width: 96%;
+        width: 65%;
         }
         #sliderImage
     {
@@ -716,6 +716,10 @@ div.vertical-line{
         float: left;
         margin-right: 10px;
     }
+    .contentContainerFooterLeft
+        {
+            height: 38px;
+        }
     /*slider ends */
 
 }
@@ -782,7 +786,7 @@ div.vertical-line{
         }
         .sliderContent
         {
-        width: 100%;
+        width: 65%;
         }
         .slideContents
         {
@@ -794,6 +798,10 @@ div.vertical-line{
         float: left;
         margin-right: 10px;
     }
+    .contentContainerFooterLeft
+        {
+            height: 39px;
+        }
     /*slider ends*/
 }
 @media only screen and (max-width : 1250px)
@@ -858,7 +866,11 @@ div.vertical-line{
         }
         .slideContents
         {
-        width: 100%;
+        width: 60%;
+        }
+         .contentContainerFooterLeft
+        {
+            height: 40px;
         }
         /* slider ends */
 }
@@ -930,7 +942,11 @@ div.vertical-line{
         }
         .slideContents
         {
-        width: 70%;
+        width: 60%;
+        }
+        .contentContainerFooterLeft
+        {
+            height: 41px;
         }
         /*slider ends*/
 }

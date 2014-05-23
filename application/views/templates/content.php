@@ -81,6 +81,7 @@ $this->load->helper('currency');
     {
         float: left;
         width: 80px;
+      
     }
     .contentContainerFooterRight
     {
@@ -89,7 +90,6 @@ $this->load->helper('currency');
     }
     .sliderTable
     {
-
         border: 0px solid #000;
     }
     #sliderImage
@@ -103,7 +103,6 @@ $this->load->helper('currency');
         width:100%;
         margin:0;
         padding:0;
-      // height: 305px;
         position:relative;
         overflow:hidden;
     }
@@ -111,20 +110,11 @@ $this->load->helper('currency');
     #slideshow #slideshowWindow .slide {
         margin:0;
         padding:0;
-       
-        
         float:left;
         position:relative;
     }
 
-
-
-
-    
-   
-
     #slideshow #slideshowWindow .slide .slideText {
-
         position: relative;
         margin:0;
         padding:0;
@@ -144,7 +134,6 @@ $this->load->helper('currency');
         padding:0;
     }
 
-
     .nav {
         display:block;
         text-indent:-10000px;
@@ -155,24 +144,15 @@ $this->load->helper('currency');
     #leftNav {
         top:223px;
         left:10px;
-        //width:94px;
-        //height:34px;
         position: relative;
-        //background-repeat:no-repeat;
         z-index:999;
     }
 
     #rightNav {
-        //top:225px;
-        left:400px;
-        //width:53px;
-        //height:26px;
-        position: relative;
-        //background-repeat:no-repeat;
+        left:400px;      
+        position: relative;      
         z-index:999;
     }
-
-
 
 </style>
 
