@@ -82,7 +82,8 @@ $this->load->helper('currency');
         width:100%;
         margin:0;
         padding:0;
-        //position:relative;
+       
+        position:relative;
         overflow:hidden;
     }
 
@@ -92,19 +93,18 @@ $this->load->helper('currency');
         width:690px; 
         height:400px;
         float:left;
-       // position:relative;
+        position:relative;
     }
 
 
 
 
     
-    }
+   
 
     #slideshow #slideshowWindow .slide .slideText {
 
         position: relative;
-
         margin:0;
         padding:0;
         color:#ffffff;
@@ -315,11 +315,11 @@ $this->load->helper('currency');
     }
     #sliderImage
     {
-        width: 300px;
+        width: 450px;
         float: left;
         margin-right: 10px;
     }
-    @media screen and (max-width : 900px)
+    @media only screen and (max-width : 900px)
     {
         #sliderImage
         {
