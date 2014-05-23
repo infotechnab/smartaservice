@@ -1,13 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 3.4.5
+-- version 4.0.4
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: May 22, 2014 at 08:10 AM
--- Server version: 5.5.16
--- PHP Version: 5.3.8
+-- Generation Time: May 23, 2014 at 06:55 AM
+-- Server version: 5.6.12-log
+-- PHP Version: 5.4.12
 
-SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
 
 
@@ -19,6 +19,8 @@ SET time_zone = "+00:00";
 --
 -- Database: `smartaservice`
 --
+CREATE DATABASE IF NOT EXISTS `smartaservice` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
+USE `smartaservice`;
 
 -- --------------------------------------------------------
 
@@ -82,7 +84,24 @@ CREATE TABLE IF NOT EXISTS `comment_store` (
 --
 
 INSERT INTO `comment_store` (`Id`, `comment`, `comment_association_id`, `comment_user_name`) VALUES
-(9, 'djasKSJHJDIHIUDSA', 'post/3', '');
+(9, 'djasKSJHJDIHIUDSA', 'post/3', ''),
+(10, 'djasKSJHJDIHIUDSA', 'post/3', ''),
+(11, 'comment', 'view/addcomment', ''),
+(12, 'djjkdjudhsufjdaksfoipokwDJICOUJSJA', 'page/2', ''),
+(13, 'hi this is a post comment', 'post/3', ''),
+(15, 'now the comment is added', 'post/3', ''),
+(16, 'now the comment is added', 'post/3', ''),
+(17, 'epofojigkosdk[pfs', 'page/3', ' '),
+(18, 'now the commenting is easy', 'page/3', ' '),
+(19, 'comment is added to page 4', 'page/4', ' '),
+(20, 'jewijfowpofiewpoew', 'post/3', ' '),
+(21, 'mynew comment', 'post/3', ' '),
+(22, 'The last comment', 'post/3', ' '),
+(23, 'last added is shown at first', 'post/3', ' '),
+(24, 'ramji commented', 'post/3', ' '),
+(25, '', 'post/3', ' '),
+(26, '', 'post/3', ' '),
+(27, 'hdiuhfjhf', 'post/3', ' ');
 
 -- --------------------------------------------------------
 
@@ -180,9 +199,7 @@ CREATE TABLE IF NOT EXISTS `menu` (
 --
 
 INSERT INTO `menu` (`id`, `menu_name`) VALUES
-(4, 'Home Menu'),
-(5, 'Sidebar Menu'),
-(6, 'Footer Menu');
+(4, 'Home Menu');
 
 -- --------------------------------------------------------
 
@@ -226,9 +243,9 @@ CREATE TABLE IF NOT EXISTS `misc_setting` (
 --
 
 INSERT INTO `misc_setting` (`Id`, `name`, `description`) VALUES
-(0, 'show_comment', '0'),
-(1, 'show_like', '0'),
-(2, 'show_share', '0'),
+(0, 'show_comment', '1'),
+(1, 'show_like', '1'),
+(2, 'show_share', '1'),
 (3, 'max_post_to_show', '10'),
 (4, 'max_page_to_show', '5'),
 (5, 'slide_height', '500'),
@@ -250,7 +267,7 @@ CREATE TABLE IF NOT EXISTS `navigation` (
   `menu_id` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `idx_navigation` (`menu_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=104 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=111 ;
 
 --
 -- Dumping data for table `navigation`
@@ -262,7 +279,13 @@ INSERT INTO `navigation` (`id`, `navigation_name`, `navigation_link`, `parent_id
 (95, ' Nepali', 'category/12', 0, 'category', 'nepali', 4),
 (96, 'Featured Item', 'category/13', 0, 'category', 'FeaturedItem', 4),
 (102, 'Product', 'category/14', 95, 'category', 'Product', 4),
-(103, 'Contact Us', 'page/10', 0, 'page', 'ContactUs', 4);
+(103, 'Contact Us', 'page/10', 0, 'page', 'ContactUs', 4),
+(104, 'salyani', 'http://salyani.com.np', 0, ' ', 'salyani', 4),
+(105, 'dsdadasd', 'index.php/view/page/5', 0, 'page', 'dsdadasd', 4),
+(106, 'Contact Us also edited', 'http://localhost/smartaservice/index.php/view/page/4', 0, 'page', 'ContactUsalsoedited', 4),
+(107, 'File', 'http://localhost/smartaservice/index.php/view/category/10', 0, 'category', 'File', 4),
+(108, 'Featured ', 'category/10', 0, ' ', 'Featured', 4),
+(110, 'ramji ', 'http://ramji.com.np', 0, ' ', 'ramji', 4);
 
 -- --------------------------------------------------------
 
@@ -294,6 +317,12 @@ CREATE TABLE IF NOT EXISTS `page` (
 --
 
 INSERT INTO `page` (`id`, `page_name`, `page_content`, `page_author_id`, `page_date`, `page_summary`, `page_status`, `page_modifed_date`, `page_parent`, `page_order`, `page_type`, `page_tags`, `allow_comment`, `allow_like`, `allow_share`) VALUES
+(4, 'Contact Us also edited', '      Every SDK comes bundled with a couple of sample apps. If you want to \r\nlearn how to use all the Facebook Platform features just download and \r\ninstall the SDK and start hacking.', 10, '2014-03-14 04:44:49', '      Every SDK comes bundled with a couple of sample apps. If you want to \r\nlearn how to use all th', '0', '0000-00-00 00:00:00', 0, 0, '', '0', 0, 0, 0),
+(5, 'dsdadasd', 'dasddsad<br>', 10, '2014-03-18 08:28:40', 'dasddsad<br>', '1', '0000-00-00 00:00:00', 0, 0, '0', '0', 0, 0, 0),
+(6, 'asdsaddsad', 'dsadaddds<br>', 10, '2014-03-18 08:28:48', 'dsadaddds<br>', '1', '0000-00-00 00:00:00', 0, 0, '0', '0', 0, 0, 0),
+(7, 'sdsadadsdddd', 'asdasdasdsasad<br>', 10, '2014-03-18 08:28:56', 'asdasdasdsasad<br>', '1', '0000-00-00 00:00:00', 0, 0, '0', '0', 0, 0, 0),
+(8, 'axsas', 'saxasa<br>', 10, '2014-03-18 08:42:00', 'saxasa<br>', '1', '0000-00-00 00:00:00', 0, 0, '0', '0', 0, 0, 0),
+(9, 'ssacdsfrgv', 'bgtrgtgdsfcqw<br>', 10, '2014-03-18 08:42:09', 'bgtrgtgdsfcqw<br>', '1', '0000-00-00 00:00:00', 0, 0, '0', '0', 0, 0, 0),
 (10, 'Contact Us', '<b>&nbsp;Salyani Organization </b><br>Lions Chowk, Narayanghad<br>Chitwan<br>', 11, '2014-05-20 05:20:17', '<b>&nbsp;Salyani Organization </b><br>Lions Chowk, Narayanghad<br>Chitwan<br>', '1', '0000-00-00 00:00:00', 0, 0, '0', '0', 0, 0, 0);
 
 -- --------------------------------------------------------
@@ -327,12 +356,12 @@ CREATE TABLE IF NOT EXISTS `post` (
 --
 
 INSERT INTO `post` (`id`, `post_title`, `post_author_id`, `post_date`, `post_summary`, `post_status`, `comment_status`, `post_modified_date`, `post_tags`, `post_content`, `post_category`, `allow_comment`, `allow_like`, `allow_share`) VALUES
-(1, 'Earn $100 in one day', 10, '2014-03-20 06:05:22', '                              Entrepreneurs are a different kind of people. They are never \r\ncomplet', '0', 2, NULL, '', '                              Entrepreneurs are a different kind of people. They are never \r\ncompletely satisfied with the normal, acceptable lifestyle commonly \r\ncalled “successful” by the rest of society. This traditional “success” \r\noften includes a good job, a nice house with a 30-year mortgage, a \r\ncouple of nice cars (on which it’s considered OK to owe a lot of money),\r\n a few weeks of vacation every year from the job you don’t really enjoy,\r\n etc.<br>If you’re reading this blog, you’re probably not content with that kind of success.', 7, 0, 1, 0),
-(2, 'how can you freelance', 10, '2014-03-20 06:07:11', '                              I’ve been getting a lot of emails lately from people who are looking', '0', 2, NULL, '', '                              I’ve been getting a lot of emails lately from people who are looking \r\nto start working for themselves. &nbsp;Whether it’s a small business on \r\nthe side, or they’re looking to create a full time location independent \r\nbusiness, it’s obvious there’s a lot of entrepreneurial spirit out \r\nthere.<div absolute;="" top:="" -1999px;="" left:="" -1988px;"="" id="stcpDiv">\r\n<p>Along with questions about building a business, I’m asked frequently what business <em>I </em>run.</p>\r\n<p>If we’re going to start getting real about creating a location \r\nindependent income, I’m going to have to build a little bit of \r\ncredibilty.</p>\r\n<p>So here’s what I do:</p>\r\n<h3><em><strong>I’m an SEO Freelancer (for lack of a better term).</strong></em></h3>\r\n<p>For those of you who don’t know what SEO means, it stands for Search \r\nEngine Optimization. Essentially it’s my job to make sure my clients \r\nrank as highly as possible in Google (or other search engines) for the \r\nkey terms that we’ve decided are most important to their success.</p> - \r\nSee more at: \r\nfile:///G:/websites/How to Become an SEO Freelancer in 48 Hours — Location 180 _ Build a Business, Live Anywhere, Achieve Free.</div><div absolute;="" top:="" -1999px;="" left:="" -1988px;"="" id="stcpDiv"><p><br></p><p><br></p><br></div>', 7, 0, 1, 1),
+(1, 'Earn $100 in one day by sushil', 11, '2014-03-20 06:05:22', '                                    Entrepreneurs are a different kind of people. They are never \r\nc', '0', 2, NULL, '', '                                    Entrepreneurs are a different kind of people. They are never \r\ncompletely satisfied with the normal, acceptable lifestyle commonly \r\ncalled “successful” by the rest of society. This traditional “success” \r\noften includes a good job, a nice house with a 30-year mortgage, a \r\ncouple of nice cars (on which it’s considered OK to owe a lot of money),\r\n a few weeks of vacation every year from the job you don’t really enjoy,\r\n etc.<br>If you’re reading this blog, you’re probably not content with that kind of success.', 14, 1, 1, 1),
+(2, 'how can you freelance by deepika', 11, '2014-03-20 06:07:11', '                                    I’ve been getting a lot of emails lately from people who are l', '0', 2, NULL, '', '                                    I’ve been getting a lot of emails lately from people who are looking \r\nto start working for themselves. &nbsp;Whether it’s a small business on \r\nthe side, or they’re looking to create a full time location independent \r\nbusiness, it’s obvious there’s a lot of entrepreneurial spirit out \r\nthere.<div absolute;="" top:="" -1999px;="" left:="" -1988px;"="" id="stcpDiv">\r\n<p>Along with questions about building a business, I’m asked frequently what business <em>I </em>run.</p>\r\n<p>If we’re going to start getting real about creating a location \r\nindependent income, I’m going to have to build a little bit of \r\ncredibilty.</p>\r\n<p>So here’s what I do:</p>\r\n<h3><em><strong>I’m an SEO Freelancer (for lack of a better term).</strong></em></h3>\r\n<p>For those of you who don’t know what SEO means, it stands for Search \r\nEngine Optimization. Essentially it’s my job to make sure my clients \r\nrank as highly as possible in Google (or other search engines) for the \r\nkey terms that we’ve decided are most important to their success.</p> - \r\nSee more at: \r\nfile:///G:/websites/How to Become an SEO Freelancer in 48 Hours — Location 180 _ Build a Business, Live Anywhere, Achieve Free.</div><div absolute;="" top:="" -1999px;="" left:="" -1988px;"="" id="stcpDiv"><p><br></p><p><br></p><br></div>', 14, 1, 1, 1),
 (3, 'Post allowing comment', 10, '2014-03-26 06:35:17', '                                          duifhioakfkdopfuijcnydsbc wdjiofj whoidjc jwpos ciwqsf oiw', '0', 2, NULL, '', '                                          duifhioakfkdopfuijcnydsbc wdjiofj whoidjc jwpos ciwqsf oiwnsdc iwn cdoiqwos hsfoiwejsf coiwbfu d qwhoifbv eifwed wd woijdoqwf vi2whdiwe qwdb weso9jmqw<br>', 7, 1, 0, 1),
-(4, 'ijaIKJSMa changed', 10, '2014-04-04 09:32:03', '      sdajsdksal<br>', '0', 2, NULL, '', '      sdajsdksal<br>', 7, 0, 0, 0),
+(4, 'ramji changed', 11, '2014-04-04 09:32:03', '            sdajsdksal<br>', '0', 2, NULL, '', '            sdajsdksal<br>', 14, 1, 1, 1),
 (5, 'dsadasdsa', 10, '2014-04-04 09:32:12', 'dsadasdass<br>', '1', 1, NULL, '', 'dsadasdass<br>', 1, 0, 0, 0),
-(6, 'asdasdsa', 10, '2014-04-04 09:32:20', 'sadasdsadasdsa<br>', '1', 1, NULL, '', 'sadasdsadasdsa<br>', 1, 0, 0, 0);
+(6, 'deepika', 11, '2014-04-04 09:32:20', '                                    sadasdsadasdsa<br>', '0', 2, NULL, '', '                                    sadasdsadasdsa<br>', 14, 1, 1, 1);
 
 -- --------------------------------------------------------
 
@@ -352,22 +381,32 @@ CREATE TABLE IF NOT EXISTS `product` (
   `image2` varchar(255) DEFAULT NULL,
   `image3` varchar(255) DEFAULT NULL,
   `shiping` varchar(255) NOT NULL,
+  `like` varchar(50) CHARACTER SET utf8 NOT NULL,
+  `share` varchar(50) CHARACTER SET utf8 NOT NULL,
   PRIMARY KEY (`id`),
   KEY `category` (`category`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=40 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=48 ;
 
 --
 -- Dumping data for table `product`
 --
 
-INSERT INTO `product` (`id`, `qty`, `price`, `name`, `description`, `summary`, `category`, `image1`, `image2`, `image3`, `shiping`) VALUES
-(26, 1, 100, 'ramayan', '      nepali movie<br>', '      nepali movie<br>', 12, 'tickets-185x185.jpg', 'tickets-185x1851.jpg', 'tickets-185x1852.jpg', ''),
-(27, 1, 500, 'hood', '            hood<br>', '            hood<br>', 10, 'tickets-185x1854.jpg', NULL, NULL, ''),
-(29, 1, 11, 'sdfdsf', '                  sdfdsf<br>', '                  sdfdsf<br>', 10, 'Forest-Animals-Deer-Leonid-Afremov-Antelope.jpg', NULL, NULL, ''),
-(33, 1, 5000, 'Jacket', '      This jacket is made up of the leather and regzin. Its a high quality jacket made in indonesia. Its of YCKMD.', '      This jacket is made up of the leather and regzin. Its a high quality jacket made in indonesia.', 13, 'emerochino-tickets1.jpg', NULL, NULL, ''),
-(34, 1, 2000, 'Paint', '      This paint is of pure jeans . made in nepal. sakjdfhas', '      This paint is of pure jeans . made in nepal. sakjdfhas', 13, 'tickets-185x1853.jpg', NULL, NULL, ''),
-(38, 1, 12, 'Product', 'sdfsdf<br>', 'sdfsdf<br>', 14, NULL, NULL, NULL, ''),
-(39, 1, 787, 'aaaaa', 'dsfsadf<br>', 'dsfsadf<br>', 12, NULL, NULL, NULL, '');
+INSERT INTO `product` (`id`, `qty`, `price`, `name`, `description`, `summary`, `category`, `image1`, `image2`, `image3`, `shiping`, `like`, `share`) VALUES
+(26, 1, 100, 'ramayan', '      nepali movie<br>', '      nepali movie<br>', 12, 'tickets-185x185.jpg', 'tickets-185x1851.jpg', 'tickets-185x1852.jpg', '', '', ''),
+(27, 1, 500, 'hood', '            hood<br>', '            hood<br>', 10, 'tickets-185x1854.jpg', NULL, NULL, '', '', ''),
+(28, 1, 5, 'cow', '      cow<br>', '      cow<br>', 10, 'emerochino-tickets11.jpg', NULL, NULL, '', '', ''),
+(29, 1, 11, 'sdfdsf', '                  sdfdsf<br>', '                  sdfdsf<br>', 10, 'Forest-Animals-Deer-Leonid-Afremov-Antelope.jpg', NULL, NULL, '', '', ''),
+(33, 1, 5000, 'Jacket', '            This jacket is made up of the leather and regzin. Its a high quality jacket made in indonesia. Its of YCKMD.', '            This jacket is made up of the leather and regzin. Its a high quality jacket made in indo', 13, NULL, NULL, NULL, 'disabled', 'disabled', 'enabled'),
+(34, 1, 2000, 'Paint', '                  This paint is of pure jeans . made in nepal. sakjdfhas', '                  This paint is of pure jeans . made in nepal. sakjdfhas', 13, NULL, NULL, NULL, 'disabled', 'enabled', 'enabled'),
+(38, 1, 12, 'Product', 'sdfsdf<br>', 'sdfsdf<br>', 14, NULL, NULL, NULL, '', '', ''),
+(40, 1, 0, 'sdas', 'sadas<br>', 'sadas<br>', 10, NULL, NULL, NULL, 'disabled', '', ''),
+(41, 1, 0, 'adsa', 'sada<br>', 'sada<br>', 10, NULL, NULL, NULL, 'enabled', '', ''),
+(42, 1, 0, 'nadd ', 'jhgh<br>', 'jhgh<br>', 10, NULL, NULL, NULL, 'enabled', '', ''),
+(43, 1, 0, 'ramji', '      sqdf<br>', '      sqdf<br>', 10, NULL, NULL, NULL, 'enabled', 'enabled', 'disabled'),
+(44, 1, 12345, 'nayaupdated', '      new<br>', '      new<br>', 10, NULL, NULL, NULL, 'enabled', '', ''),
+(45, 1, 0, 'newwithlike', '                  sdas<br>', '                  sdas<br>', 10, 'sss.jpg', NULL, NULL, 'enabled', 'enabled', 'enabled'),
+(46, 1, 0, 'new with share', '      zx<br>', '      zx<br>', 10, NULL, NULL, NULL, 'disabled', 'disabled', 'enabled'),
+(47, 1, 0, 'like n share both n ship', '            sa<br>', '            sa<br>', 10, 'charo.jpg', NULL, NULL, 'enabled', 'enabled', 'enabled');
 
 -- --------------------------------------------------------
 
@@ -390,7 +429,7 @@ CREATE TABLE IF NOT EXISTS `product_image` (
 CREATE TABLE IF NOT EXISTS `product_oder` (
   `o_id` int(11) NOT NULL AUTO_INCREMENT,
   `u_id` int(11) NOT NULL,
-  `date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `date` date NOT NULL,
   `user_name` varchar(255) NOT NULL,
   `deliver_address` varchar(255) NOT NULL,
   `city` varchar(255) NOT NULL,
@@ -401,20 +440,15 @@ CREATE TABLE IF NOT EXISTS `product_oder` (
   `contact` varchar(50) NOT NULL,
   PRIMARY KEY (`o_id`),
   KEY `u_id` (`u_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=16 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
 
 --
 -- Dumping data for table `product_oder`
 --
 
 INSERT INTO `product_oder` (`o_id`, `u_id`, `date`, `user_name`, `deliver_address`, `city`, `state`, `zip`, `country`, `email`, `contact`) VALUES
-(1, 11, '2014-05-14 18:15:00', 'hello', 'naranghat', 'chitwan', 'chitwan', '12345', 'nepal', 'rsubedi@salyani.com.np', '123456'),
-(4, 11, '0000-00-00 00:00:00', 'sfdf', 'lsdkjf', 'dlksfj', 'sdlkfj', 'sadlkjf', 'ldkjsf', 'ddfbefbf801adf18df823c64a4ae173d', 'sdlfkj'),
-(11, 22, '2014-05-21 10:44:06', 'sdf sdf', 'sdf', '0', 'dasf', 'sadf', '0', 'hello@cc.bb', '543545'),
-(12, 23, '2014-05-21 10:44:22', 'sdf sdf', 'sdf', '0', 'dasf', 'sadf', '0', 'hello@cc.bb', '543545'),
-(13, 24, '2014-05-21 11:49:29', 'ramji', 'sadfsdfdsfdsf', 'sdf', 'sdf', 'sdf', '', 'ramji@salyani.com.np', 'sdfsdfsdfd'),
-(14, 12, '2014-05-21 11:51:49', 'ramji', 'sadfsdfdsfdsf', 'sdf', 'sdf', 'sdf', '', 'ramji@salyani.com.np', 'sdfsdfsdfd'),
-(15, 12, '2014-05-21 11:52:12', 'ramji', 'sadfsdfdsfdsf', 'sdf', 'sdf', 'sdf', '', 'ramji@salyani.com.np', 'sdfsdfsdfd');
+(1, 11, '2014-05-15', 'hello', 'naranghat', 'chitwan', 'chitwan', '12345', 'nepal', 'rsubedi@salyani.com.np', '123456'),
+(4, 11, '0000-00-00', 'sfdf', 'lsdkjf', 'dlksfj', 'sdlkfj', 'sadlkjf', 'ldkjsf', 'ddfbefbf801adf18df823c64a4ae173d', 'sdlfkj');
 
 -- --------------------------------------------------------
 
@@ -434,17 +468,23 @@ CREATE TABLE IF NOT EXISTS `product_oder_detail` (
   PRIMARY KEY (`od_id`),
   KEY `p_id` (`p_id`),
   KEY `o_id` (`o_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=96 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=89 ;
 
 --
 -- Dumping data for table `product_oder_detail`
 --
 
 INSERT INTO `product_oder_detail` (`od_id`, `o_id`, `p_id`, `qty`, `price`, `trans_id`, `trans_num`, `status`) VALUES
-(92, 12, 38, '38', 0, 'TRD5', 5, ''),
-(93, 13, 38, '38', 0, 'TRD5', 5, ''),
-(94, 14, 38, '38', 0, 'TRD5', 5, ''),
-(95, 15, 38, '38', 0, 'TRD5', 5, '');
+(79, 1, 33, '1', 0, 'TRD1', 1, '0'),
+(80, 1, 34, '1', 0, 'TRD1', 1, '1'),
+(81, 1, 33, '1', 0, 'TRD2', 2, '0'),
+(82, 1, 34, '1', 0, 'TRD2', 2, '0'),
+(83, 1, 29, '5', 50, 'TRN3', 3, '0'),
+(84, 1, 29, '8', 0, 'TRN4', 4, '1'),
+(85, 1, 27, '8', 6363, 'TRN5', 5, '0'),
+(86, 1, 28, '66', 2, 'TRN6', 6, '1'),
+(87, 1, 27, '5', 2, 'TRN7', 7, '0'),
+(88, 1, 28, '65', 5, 'TRN8', 8, '0');
 
 -- --------------------------------------------------------
 
@@ -456,7 +496,14 @@ CREATE TABLE IF NOT EXISTS `shiping_cost` (
   `sid` int(11) NOT NULL AUTO_INCREMENT,
   `price` double NOT NULL,
   PRIMARY KEY (`sid`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+
+--
+-- Dumping data for table `shiping_cost`
+--
+
+INSERT INTO `shiping_cost` (`sid`, `price`) VALUES
+(1, 5);
 
 -- --------------------------------------------------------
 
@@ -506,7 +553,7 @@ CREATE TABLE IF NOT EXISTS `user` (
   `user_status` varchar(64) DEFAULT NULL,
   `user_type` varchar(64) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=27 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=17 ;
 
 --
 -- Dumping data for table `user`
@@ -515,9 +562,10 @@ CREATE TABLE IF NOT EXISTS `user` (
 INSERT INTO `user` (`id`, `user_name`, `user_fname`, `user_lname`, `user_email`, `user_pass`, `city`, `state`, `zip`, `country`, `contact`, `address`, `user_url`, `user_registered_date`, `user_auth_key`, `user_status`, `user_type`) VALUES
 (11, 'admin', 'ramji', 'subedi', 'admin@ad.min', '21232f297a57a5a743894a0e4a801fc3', '', '', '', '', '', '', NULL, '2014-05-11 11:27:48', ' ', '1', '0'),
 (12, 'ramji', 'ram', 'ram', 'ramji@salyani.com.np', 'ae3274d5bfa170ca69bb534be5a22467', '', '', '', '', '', 'sadfsdfdsfdsf', NULL, '2014-05-13 06:56:32', NULL, '1', '1'),
-(22, 'hello', 'ram', 'shyam', 'admin@ab.cd', '4124bc0a9335c27f086f24ba207a4912', 'lasdfj', 'sladkf', 'lsdaf', 'sdf', '98987', 'sdlfj', NULL, '2014-05-21 10:44:06', NULL, NULL, '1'),
-(23, 'hello', 'ram', 'shyam', 'admin@ab.cd', '74b87337454200d4d33f80c4663dc5e5', 'lasdfj', 'sladkf', 'lsdaf', 'sdf', '98987', 'sdlfj', NULL, '2014-05-21 10:44:22', NULL, NULL, '1'),
-(24, 'ramji', 'ram', 'ram', 'ramji@salyani.com.np', '0', 'sdf', 'sdf', 'sdf', '', 'sdfsdfsdfd', 'sadfsdfdsfdsf', NULL, '2014-05-21 11:49:29', NULL, NULL, '1');
+(13, 'adfsdsf', 'sadfsd', 'sdf', 'admin@df.cd', '900150983cd24fb0d6963f7d28e17f72', '', '', '', '', '545', 'asdf', NULL, '2014-05-20 10:14:01', NULL, NULL, '1'),
+(14, 'adfsdsf', 'sadfsd', 'sdf', 'admin@df.cd', '900150983cd24fb0d6963f7d28e17f72', '', '', '', '', '545', 'asdf', NULL, '2014-05-20 10:15:18', NULL, '1', '1'),
+(15, 'adfsdsf', 'sadfsd', 'sdf', 'admin@df.cd', '900150983cd24fb0d6963f7d28e17f72', '', '', '', '', '545', 'asdf', NULL, '2014-05-20 10:18:23', NULL, '1', '1'),
+(16, 'sdf', 'lsdfj', 'lskdafj', 'admin@as.com', '900150983cd24fb0d6963f7d28e17f72', '', '', '', '', '709797', 'lkdsafj', NULL, '2014-05-20 10:21:00', NULL, '1', '1');
 
 --
 -- Constraints for dumped tables
