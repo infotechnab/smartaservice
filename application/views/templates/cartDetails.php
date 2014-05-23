@@ -27,7 +27,7 @@ $this->load->helper('currency');
 </script>
 
 
-<div id="msg" style="background: white; width: 99%; padding: 10px 0px 5px 10px; margin: 0px 0px 10px 0px">   
+<div id="msg" style="background: white; width: 99%; padding: 10px 0px 5px 10px; margin: 0px 0px 10px 0px; float: left;">   
        
             <div style="text-align: right;"><a href="<?php echo base_url() . 'index.php/view' ?>" id="continue_shop">Continue Shooping</a></div>
             <div><h2>Your Shopping Cart - <?php echo $this->cart->total_items(); ?> 
@@ -134,10 +134,10 @@ $this->load->helper('currency');
             </div>
 
         
-        <div class="clear"></div>
+       
 
     </div>
-
+ <div class="clear"></div>
 </div>
 
  

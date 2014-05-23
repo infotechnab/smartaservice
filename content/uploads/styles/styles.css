@@ -53,6 +53,19 @@ body
     //margin-left: -10px;
    
 }
+#leftRegister
+{
+    float: left;
+    width: 46%;
+    margin: 0px;
+    padding: 0px;
+}
+#topRegister{
+    width: 96%;
+    margin: 0 auto 0 auto;
+    padding: 0% 0% 0% 4%;
+    float: left;
+}
 #headerBackground
 {
     margin: 0px;
@@ -234,10 +247,15 @@ body
     padding: 1%;
     float: left;
 }
-#RegisterLeft, #RegisterRight
+#RegisterLeft, #RegisterRight, #RegisterLeftCart
 {
     margin: 2%;
     padding: 1%;
+    
+}
+#RegisterLeftCart
+{
+    outline: 1px solid black;
     float: left;
 }
 .contentContainer
@@ -590,14 +608,19 @@ div.vertical-line{
 {
     width: 40%;
 }
-#RegisterLeft
+#RegisterLeftCart
 {
     width: 44%;
    
 }
+#RegisterLeft
+{
+    width: 94%;
+   
+}
 #RegisterRight
 {
-   width: 44%;
+   width: 94%;
   display: none;
 }
     #navigation ul li
@@ -975,6 +998,11 @@ div.vertical-line{
         float: left;
         margin-right: 10px;
     }
+    #leftRegister, #RegisterLeftCart
+{
+    width: 47%;
+   
+}
     #register
 {
     width: 38%;
@@ -1092,6 +1120,11 @@ div.vertical-line{
     {
         width: 95%;
     }
+    #leftRegister, #RegisterLeftCart
+{
+    width: 95%;
+   
+}
     #headerContent, #contentWrapper
     {
         width: 100%;

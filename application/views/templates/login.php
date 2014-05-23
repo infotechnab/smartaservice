@@ -33,6 +33,9 @@
             <div class="number" id='verticalOr'>OR</div>  
         </div>
         <div class="loginLeft">
+            <p id="sucessmsg">
+<?php if($this->session->flashdata('message')){echo $this->session->flashdata('message');}
+    echo validation_errors(); ?> </p>
             
             <table border="0" width="100%">
                 <tr style="text-align: center">
@@ -49,27 +52,11 @@
                 <tr style="text-align: center">
                     <td><b><div class="updateBtnStyle" style="background:black; width: 20%; text-align: center; margin: 0 auto 0 auto;"><?php echo anchor('view/registeruser', 'Continue') ?></div></b></td>
                 </tr>
-                <tr><td></td></tr>
-                <tr><td></td></tr>
-                <tr><td></td></tr>
-                <tr><td></td></tr>
-                <tr><td></td></tr>
-                <tr><td></td></tr> <tr><td></td></tr>
-                <tr><td></td></tr>
-                <tr><td></td></tr>
-                <tr><td></td></tr>
-
-                <tr style="text-align: center">
-                    <td><hr id="nav"/><div class="number" id="two">OR</div></td>
-                </tr>
-                <tr style="text-align: center">
-                    <td><p>Or use your social account</p></td>
-                </tr>             
+               
+                             
             </table>
             <?php ?>
-            <div style="margin: 0 auto 0 auto;text-align: center;">
-                <input type="submit" value="Continue Shopping" style="font-size: 20px;font-weight: bold;padding: 5px; width: 80px; width: auto;" class="updateBtnStyle" />
-            </div>
+           
         </div>    
 
 
