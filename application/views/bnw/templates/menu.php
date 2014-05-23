@@ -5,9 +5,10 @@
                         <ul class="subMenu">
                             <li><?php echo anchor('bnw/product', 'Add New Product') ?></li>
                             <li><?php echo anchor('bnw/productList', 'List All Products') ?></li>
-                            <li><?php echo anchor('bnw/productOrderList', 'List Order Product') ?></li>
-                            <li><?php echo anchor('bnw/disproduct', 'Other List') ?></li>
+                           <li><?php echo anchor('bnw/disproduct', 'Sale Info') ?></li>
                             <li><?php echo anchor('bnw/productShipping', 'Shipping ') ?></li>
+                            <li><?php echo anchor('bnw/coupon', 'Create Coupon ') ?></li>
+                            
                         </ul>
                     </li>
                     <li class="mainMenuItem"> <a href="#">Control Panel</a>

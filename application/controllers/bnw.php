@@ -33,6 +33,25 @@ class bnw extends CI_Controller {
     //========================== for Cart System =======================================================//
 
     //========================== Add Product ======================================================//
+    
+    function coupon()
+    {
+         if ($this->session->userdata('logged_in')) {
+              $data['username'] = Array($this->session->userdata('logged_in'));
+            $data['meta'] = $this->dbmodel->get_meta_data();
+            $data['category'] = $this->dbmodel->get_category();
+
+            $this->load->view('bnw/templates/header', $data);
+            $this->load->view('bnw/templates/menu');
+            $this->load->view('product/coupon',$data);
+            $this->load->view('bnw/templates/footer', $data);
+         }
+         else{
+             redirect('login', 'refresh');
+         }
+    }
+
+
     function product() {
         if ($this->session->userdata('logged_in')) {
             $data['username'] = Array($this->session->userdata('logged_in'));

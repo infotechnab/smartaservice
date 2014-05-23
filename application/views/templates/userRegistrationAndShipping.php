@@ -232,9 +232,9 @@ if (!empty($detail)) {
                          <td><p style="margin: 0px; padding: 2px;">Password</p></td>
                     </tr>
                     <tr>
-                        <td ><input type="text" name="u_name" placeholder="User Name" size="30" style="outline: none; border: 1px solid #dddddd; padding: 10px; border-radius: 5px;" required/></td>
-                        <td ><input type="email" name="u_email" placeholder="Email" size="30" style="outline: none; border: 1px solid #dddddd; padding: 10px; border-radius: 5px;" required/></td>
-                        <td ><input type="password" name="u_pass" placeholder="Password" size="30" style="outline: none; border: 1px solid #dddddd; padding: 10px; border-radius: 5px;" required/></td>
+                        <td ><input type="text" name="u_name" placeholder="User Name" size="30" style="outline: none; border: 1px solid #dddddd; padding: 10px; border-radius: 5px;" /></td>
+                        <td ><input type="email" name="u_email" placeholder="Email" size="30" style="outline: none; border: 1px solid #dddddd; padding: 10px; border-radius: 5px;" /></td>
+                        <td ><input type="password" name="u_pass" placeholder="Password" size="30" style="outline: none; border: 1px solid #dddddd; padding: 10px; border-radius: 5px;" /></td>
                     </tr> 
                 </table>
                 </div>
