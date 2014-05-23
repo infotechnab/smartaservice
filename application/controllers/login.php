@@ -28,8 +28,8 @@ class Login extends CI_Controller {
 
     function validate_credentials() {
         $this->load->library('session');
-        $a = $_POST['checkMe'];
-        if ($a == 1) {
+        if (isset($_POST['checkMe'])) {
+
             $this->session->sess_expiration = 60 * 60 * 24 * 7;
             $this->session->sess_expire_on_close = FALSE;
         } else {
