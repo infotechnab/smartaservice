@@ -4,8 +4,8 @@
         <meta charset="utf-8">
         <title>Welcome to Online Shopping</title> 
         <script src="<?php echo base_url() . 'content/jquery.js'; ?>" type="text/javascript"></script>
-
-        <link rel="stylesheet" media="screen" href="<?php echo base_url() . "content/uploads/styles/styles.css"; ?>" type="text/css">     
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" media="only screen" href="<?php echo base_url() . "content/uploads/styles/styles.css"; ?>" type="text/css">     
         <link rel="shortcut icon" href="<?php echo base_url() . "content/images/menu.png"; ?>" type="image/x-icon"> 
         
         <link rel="shortcut icon" href="<?php echo base_url() . "content/uploads/images/favicon1.jpg"; ?>" type="image/x-icon"> 

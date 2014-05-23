@@ -348,7 +348,8 @@ $this->load->helper('currency');
     $(document).ready(function() {
         //adding item to the cart...
         $(".addToCart").click(function() {
-            $(this).parent().parent().parent().css({opacity: 0.3});
+           $(this).parent().parent().parent().css({opacity: 0.3});
+           
             var id = $(this).val();
             var dataString = 'itemid=' + id;
             $.ajax({

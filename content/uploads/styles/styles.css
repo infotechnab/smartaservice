@@ -560,7 +560,7 @@ div.vertical-line{
 }
 
 /*for media screen 1025-1500px*/
-@media screen and (max-width : 1500px)
+@media only screen and (max-width : 1500px)
 {
     .container
     {
@@ -639,7 +639,7 @@ div.vertical-line{
         height: 46px;
     }
 }
-@media screen and (max-width : 1370px)
+@media only screen and (max-width : 1370px)
 {
     .container
     {
@@ -697,7 +697,7 @@ div.vertical-line{
     width: 35%;
 }
 }
-@media screen and (max-width : 1280px)
+@media only screen and (max-width : 1280px)
 {
     .container
     {
@@ -753,7 +753,7 @@ div.vertical-line{
     width: 35%;
 }
 }
-@media screen and (max-width : 1250px)
+@media only screen and (max-width : 1250px)
 {
     .container
     {
@@ -804,7 +804,7 @@ div.vertical-line{
         height: 46px;
     }
 }
-@media screen and (max-width : 1025px)
+@media only screen and (max-width : 1025px)
 {
     .container
     {
@@ -861,7 +861,7 @@ div.vertical-line{
         height: 48px;
     }
 }
-@media screen and (max-width : 900px)
+@media only screen and (max-width : 900px)
 {
     .container
     {
@@ -952,7 +952,7 @@ div.vertical-line{
 
     }
 }
-@media screen and (max-width : 650px)
+@media only screen and (max-width : 650px)
 {#cssmenu ul 
     {
         width: 100%;
@@ -1041,7 +1041,7 @@ div.vertical-line{
         height: 47px;
     }
 }
-@media screen and (max-width : 480px)
+@media only screen and (max-width : 480px)
 {#cssmenu ul 
     {
         width: 100%;
@@ -1132,7 +1132,7 @@ div.vertical-line{
     }
 }
 
-@media screen and (max-width : 360px)
+@media only screen and (max-width : 360px)
 {#cssmenu ul 
     {
         width: 100%;
