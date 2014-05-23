@@ -83,11 +83,11 @@ if (!empty($detail)) {
     echo validation_errors(); ?> </p>
     
     <div id="login">
-        <div id="outerBorder">
-           
+ 
+           <div id="leftRegister">
             <div id="RegisterLeft">
 
-                <table align="center" border="0" width="50%">
+                <table border="0" width="70%">
                     <tr>
                         <td colspan="2"><h3 style="margin: 0px 0px 10px 0px; padding: 2px;">Personal Details</h3></td>
 
@@ -136,13 +136,10 @@ if (!empty($detail)) {
                         <td colspan="2"><input type="text" name="u_email" value="<?php echo $email; ?>" placeholder="Contact Number" size="48" style="outline: none; border: 1px solid #dddddd; padding: 10px; border-radius: 5px;" required/></td>
                     </tr>
                     <tr>
-                        <td colspan="2"><input type="radio" name="pickup" onclick="handleClick(this);" value="pickup">Pick Up</td>
+                        <td><input type="radio" name="pickup" onclick="handleClick(this);" value="pickup">Pick Up</td>
+                        <td id='shipenable'><input type="radio"  name="pickup" onclick="handleClick(this);" value="shipDifferent">Ship to different Address</td>
                     </tr>
-                    <tr>
-                        <td colspan="2"><input type="radio" name="pickup" onclick="handleClick(this);" value="shipSame">Ship to above address</td>
-                    </tr>
-                    <td id='shipenable'colspan="2"><input type="radio"  name="pickup" onclick="handleClick(this);" value="shipDifferent">Ship to different Address</td>
-                    </tr>
+                    
                     <tr style="text-align: center">
                         <td colspan="2"><input type="submit" value="Continue" style="padding: 5px; width: 80px; background-color: black;" class="updateBtnStyle"/></td>
                     </tr>
@@ -201,12 +198,95 @@ if (!empty($detail)) {
 <?php echo form_close(); ?>
 
 
-            <div class="clear"></div>
+           
         </div> 
-    </div> 
+            
+                        <div id="RegisterLeftCart">
+                            <?php if ($this->cart->contents()) {  ?>
+<div id="total_item"><h4>Total: <?php echo $this->cart->total_items(); ?> items</h4></div>
+<table width="97%" style="margin: 0px 0px 10px 12px;">
+                    <tr>
+                        <th class="hide" width='55px'></th>
+                        <th style="text-align: left; padding: 0px 0px 0px 15px;">Name</th>
+                        <th>Qty</th>
+                        <th></th>
+                        <th>Price</th>
+                        
+                        <th> </th>
+                    </tr>
+                    <?php if ($cart = $this->cart->contents()) { ?>
+                        <?php foreach ($cart as $item) { ?>                                      
+                       
+                            <tr>
 
+                                <td class="hide"><img class="hide" src="<?php echo base_url().'content/uploads//images/'.$item['image1']; ?>" height="50" width="50"> </td>
+
+                                
+
+                                <td style="padding: 0px 0px 0px 10px;"><?php echo $item['name']; ?> </td>
+                                <td style="text-align: center;"><?php echo $item['qty'] ?></td>
+                                <td>x</td>
+                                <td style="text-align: center;"><?php get_currency($item['price']); ?></td>
+                            <td style="text-align: center;"></td>
+                            </tr>
+                            
+                        <?php }
+                    } ?>
+                            <tr >
+                        <td style="padding: 0px 0px 0px 15px; border-top: 1px solid #222;"><b>Total</b>:</td>
+                        <td class="hide"></td>
+                        <td></td>
+                        <td></td>
+                        <td style="text-align: center; border-top: 1px solid #222;"> <b><?php get_currency($this->cart->total()); ?></b></td>
+                        
+                    </tr>
+                   
+                </table>
+<?php }
+
+else { ?>
+<div id="total_item"><h4>Your cart is empty</h4></div>
+    <?php }  
+    ?>
+
+<h4>Cart Summary</h4>
+<div id="order_summary">
+                <table width="100%">
+                    <tr class='amt_summary'>
+                        <td class='txtright' width='50%'>Total: </td>
+                        <td><b><?php get_currency($this->cart->total()); ?></b></td>
+                    </tr>
+                    <tr class='amt_summary'>
+                        <td class='txtright'>Shipping Cost:</td>
+                        <td id="cost"></td>
+                        
+                    </tr>
+                    <tr class='amt_summary'>
+                        <td class='txtright'>Discount:</td>
+                        <td></td>
+                    </tr>
+                    <tr class='amt_summary'>
+                        <td class='txtright'>Total:</td>
+                        <td id="test">   </td>
+                    </tr>
+                </table>
+             
+            </div>
+
+
+            </div>
+            
+            
+            
+            
+            
+            
+            
+            
+      <div class="clear"></div>       
     </div>
- <div class="clear"></div>
+</div>
+
 </div>
 
 <?php } else {
@@ -226,7 +306,7 @@ if (!empty($detail)) {
              <div id="topRegister">
                 <p><input type="checkbox" id="continueRegister" value="=1" name="register"/>Register</p>
                 <div id="table_register" style="display: none;" >
-                <table align="center" border="0" width="82%" >
+                <table border="0" width="82%" >
                    <tr>
                         <td><p style="margin: 0px; padding: 2px;">User Name</p></td>
                         <td><p style="margin: 0px; padding: 2px;">Email</p></td>
@@ -243,7 +323,7 @@ if (!empty($detail)) {
             <div id="leftRegister">
           <div id="RegisterLeft">
 
-                <table align="center" border="0" width="50%">
+                <table border="0" width="50%">
                     <tr>
                         <td colspan="2"><h3 style="margin: 0px 0px 10px 0px; padding: 2px;">Personal Details</h3></td>
 
