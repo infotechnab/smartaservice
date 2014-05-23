@@ -366,7 +366,7 @@ class CartDetails extends CI_Controller {
                $this->load->view('templates/header');
         $this->load->view('templates/navigation');
         $this->load->view('templates/userRegistrationAndShipping',$data);
-        $this->load->view('templates/cartLogin');
+        $this->load->view('templates/cartLogin',$data);
         $this->load->view('templates/footer');     
             }else
             {

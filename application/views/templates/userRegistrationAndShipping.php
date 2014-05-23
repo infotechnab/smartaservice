@@ -5,23 +5,28 @@
  {
      $cost = $scost->price;
  }
+   }else
+   {
+       $cost = 0;
    }
 ?>
 
 <script>
     $(document).ready(function(){
-        
+        $
     });
-    $(function(){
+    
+    
+    function ship(){
         var price = parseInt("<?php echo $this->cart->total();?>");
 
     var shiping = parseInt("<?php echo $cost; ?>");
 
 var total = price + shiping;
       $('#test').html(total);
-});
+}
 
-document.getElementById("test").innerHTML = total;
+//document.getElementById("test").innerHTML = total;
 </script>
         <?php
 if (!empty($detail)) {
