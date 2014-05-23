@@ -57,13 +57,13 @@ body
 {
     float: left;
     width: 46%;
-    margin: 0px;
+    margin: 0% 0% 0% 3%;
     padding: 0px;
 }
 #topRegister{
     width: 96%;
     margin: 0 auto 0 auto;
-    padding: 0% 0% 0% 4%;
+    padding: 0% 0% 0% 2%;
     float: left;
 }
 #headerBackground
@@ -255,7 +255,7 @@ body
 }
 #RegisterLeftCart
 {
-    outline: 1px solid black;
+    //outline: 1px solid black;
     float: left;
 }
 .contentContainer
