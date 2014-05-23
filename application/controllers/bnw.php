@@ -51,6 +51,11 @@ class bnw extends CI_Controller {
         echo '<input type="text" value="'.$key.'" name="key" />';
        
     }
+    
+    function checkcoupon()
+    {
+        
+    }
     function coupon()
     {
          if ($this->session->userdata('logged_in')) {
@@ -60,6 +65,7 @@ class bnw extends CI_Controller {
 
             $this->load->view('bnw/templates/header', $data);
             $this->load->view('bnw/templates/menu');
+            $this->load->view('product/have_coupon');                    
             $this->load->view('product/coupon',$data);
             $this->load->view('bnw/templates/footer', $data);
          }

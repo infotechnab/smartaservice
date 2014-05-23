@@ -1,13 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.0.4
+-- version 3.4.5
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: May 23, 2014 at 07:03 AM
--- Server version: 5.6.12-log
--- PHP Version: 5.4.12
+-- Generation Time: May 23, 2014 at 11:01 AM
+-- Server version: 5.5.16
+-- PHP Version: 5.3.8
 
-SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
 
 
@@ -19,8 +19,6 @@ SET time_zone = "+00:00";
 --
 -- Database: `smartaservice`
 --
-CREATE DATABASE IF NOT EXISTS `smartaservice` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
-USE `smartaservice`;
 
 -- --------------------------------------------------------
 
@@ -102,6 +100,29 @@ INSERT INTO `comment_store` (`Id`, `comment`, `comment_association_id`, `comment
 (25, '', 'post/3', ' '),
 (26, '', 'post/3', ' '),
 (27, 'hdiuhfjhf', 'post/3', ' ');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `coupon`
+--
+
+CREATE TABLE IF NOT EXISTS `coupon` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `key` varchar(255) NOT NULL,
+  `rate` double NOT NULL,
+  `exp_date` date NOT NULL,
+  `user` varchar(255) NOT NULL,
+  `status` varchar(255) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+
+--
+-- Dumping data for table `coupon`
+--
+
+INSERT INTO `coupon` (`id`, `key`, `rate`, `exp_date`, `user`, `status`) VALUES
+(1, 'Q1LP3', 45, '2014-05-01', '', '0');
 
 -- --------------------------------------------------------
 
@@ -373,7 +394,7 @@ CREATE TABLE IF NOT EXISTS `product` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `qty` int(11) NOT NULL,
   `price` int(11) NOT NULL,
-  `name` varchar(200) NOT NULL,
+  `name` varchar(200) CHARACTER SET utf8 NOT NULL,
   `description` varchar(2000) NOT NULL,
   `summary` varchar(200) NOT NULL,
   `category` int(11) NOT NULL,
@@ -406,7 +427,7 @@ INSERT INTO `product` (`id`, `qty`, `price`, `name`, `description`, `summary`, `
 (44, 1, 12345, 'nayaupdated', '      new<br>', '      new<br>', 10, NULL, NULL, NULL, 'enabled', '', ''),
 (45, 1, 0, 'newwithlike', '                  sdas<br>', '                  sdas<br>', 10, 'sss.jpg', NULL, NULL, 'enabled', 'enabled', 'enabled'),
 (46, 1, 0, 'new with share', '      zx<br>', '      zx<br>', 10, NULL, NULL, NULL, 'disabled', 'disabled', 'enabled'),
-(47, 1, 0, 'like n share both n ship', '            sa<br>', '            sa<br>', 10, 'charo.jpg', NULL, NULL, 'enabled', 'enabled', 'enabled');
+(47, 1, 0, 'like n share both n ship', '                              saa<br>', '                              saa<br>', 10, 'charo.jpg', '', '', 'enabled', 'enabled', 'enabled');
 
 -- --------------------------------------------------------
 
