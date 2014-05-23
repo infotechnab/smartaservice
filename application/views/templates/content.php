@@ -77,12 +77,33 @@ $this->load->helper('currency');
 ?>
 <style>
 
+ .contentContainerFooterLeft
+    {
+        float: left;
+        width: 80px;
+    }
+    .contentContainerFooterRight
+    {
+        width: 80px;
+        float: left;
+    }
+    .sliderTable
+    {
 
+        border: 0px solid #000;
+    }
+    #sliderImage
+    {
+        width: 300px;
+        float: left;
+        margin-right: 10px;
+    }
+    
     #slideshow #slideshowWindow {
         width:100%;
         margin:0;
         padding:0;
-       
+      // height: 305px;
         position:relative;
         overflow:hidden;
     }
@@ -90,8 +111,8 @@ $this->load->helper('currency');
     #slideshow #slideshowWindow .slide {
         margin:0;
         padding:0;
-        width:690px; 
-        height:400px;
+       
+        
         float:left;
         position:relative;
     }
@@ -188,7 +209,7 @@ $this->load->helper('currency');
 
         slider();
         var currentPosition = 0;
-        var slideWidth = 675;
+        var slideWidth = 800;
         var slides = $('.slide');
         var numberOfSlides = slides.length;
         var slideShowInterval;
@@ -285,11 +306,11 @@ $this->load->helper('currency');
             var ftbl = '<div class="slide"><table class="sliderTable">';
             tbl = '<tr><td rowspan="3"><img src=' +
                     base_url + 'content/uploads/images/' +
-                    sliderJson[i].image1 + ' id="sliderImage" ></td><td style=" vertical-align: top;" ><h2>' +
+                    sliderJson[i].image1 + ' id="sliderImage" ></td><td style=" vertical-align: top;" ><div class="slideContents"><h2>' +
                     sliderJson[i].name + '</h2><p>' +
                     sliderJson[i].summary + '</p> <div class="sliderContent"><div class="contentContainerFooterLeft"><h4>' +
                     currencyTag + sliderJson[i].price + ' /-</h4></div><div  id="contentContainerFooterRight" ><input style="background-size:30%; height:53px" type="button" value="' + sliderJson[i].id + '"' +
-                    'class="addToCarts" id="addToCartBtn"></div></div></td></tr>';
+                    'class="addToCarts" id="addToCartBtn"></div></div></div></td></tr>';
             var ltbl = '</table></div>';
             $("#slideshowWindow").append(ftbl + tbl + ltbl);
         }
@@ -297,47 +318,7 @@ $this->load->helper('currency');
     }
 
 </script>
-<style>
-    .contentContainerFooterLeft
-    {
-        float: left;
-        width: 40%;
-    }
-    .contentContainerFooterRight
-    {
-        width: 75px;
-        float: left;
-    }
-    .sliderTable
-    {
 
-        border: 0px solid #000;
-    }
-    #sliderImage
-    {
-        width: 450px;
-        float: left;
-        margin-right: 10px;
-    }
-    @media only screen and (max-width : 900px)
-    {
-        #sliderImage
-        {
-            width: 600px;
-            float: left;
-            margin-right: 10px;
-        }
-        #slideshow #slideshowWindow .slide 
-        {
-            width: 875px;
-        }
-        .sliderTable
-        {
-            width: 10%;
-        }
-
-    }
-</style>
 <script>
     var base_url = '<?php echo base_url(); ?>';
     $(document).ready(function() {

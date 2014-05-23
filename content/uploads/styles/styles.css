@@ -696,6 +696,28 @@ div.vertical-line{
 {
     width: 35%;
 }
+/*for slider */
+#slideshow #slideshowWindow .slide 
+        {
+            width: 50%;
+            margin-left: 10px;
+        }
+        .sliderContent
+        {
+        width: 100%;
+        }
+        .slideContents
+        {
+        width: 96%;
+        }
+        #sliderImage
+    {
+        width: 300px;
+        float: left;
+        margin-right: 10px;
+    }
+    /*slider ends */
+
 }
 @media only screen and (max-width : 1280px)
 {
@@ -752,6 +774,27 @@ div.vertical-line{
 {
     width: 35%;
 }
+/* for slider */
+#slideshow #slideshowWindow .slide 
+        {
+            width: 50%;
+            margin-left: 10px;
+        }
+        .sliderContent
+        {
+        width: 100%;
+        }
+        .slideContents
+        {
+        width: 100%;
+        }
+        #sliderImage
+    {
+        width: 300px;
+        float: left;
+        margin-right: 10px;
+    }
+    /*slider ends*/
 }
 @media only screen and (max-width : 1250px)
 {
@@ -803,6 +846,21 @@ div.vertical-line{
         background-size: 45%;
         height: 46px;
     }
+    /* for slider */
+    #slideshow #slideshowWindow .slide 
+        {
+            width: 50%;
+            margin-left: 10px;
+        }
+        .sliderContent
+        {
+        width: 100%;
+        }
+        .slideContents
+        {
+        width: 100%;
+        }
+        /* slider ends */
 }
 @media only screen and (max-width : 1025px)
 {
@@ -860,6 +918,21 @@ div.vertical-line{
         background-size: 45%;
         height: 48px;
     }
+    /* for slider */
+    #slideshow #slideshowWindow .slide 
+        {
+            width: 50%;
+            margin-left: 10px;
+        }
+        .sliderContent
+        {
+        width: 100%;
+        }
+        .slideContents
+        {
+        width: 70%;
+        }
+        /*slider ends*/
 }
 @media only screen and (max-width : 900px)
 {
@@ -900,7 +973,7 @@ div.vertical-line{
     }
 #cssmenu ul li.has-sub
     {
-        width: 49.5%;
+        width: 48.5%;
     }
 #cssmenu ul li.has-sub a
     {
@@ -948,9 +1021,37 @@ div.vertical-line{
     {
         width: 12%;
         margin: 11px 0px 10px 0px;
-
-
     }
+    /* slider starts*/
+    #slideshow #slideshowWindow .slide 
+        {
+            width: 50%;
+             height: 450px;
+        }
+        .sliderContent
+        {
+        width: 100%;
+        }
+        .slideContents
+        {
+        width: 400%;
+        }
+        #sliderImage
+        {
+            width: 375px;
+            float: left;
+            margin-right: 10px;
+        }
+       
+        #slideshow, #slideshowWindow
+        {
+        height: 390px;
+        }
+        .sliderTable
+        {
+            width: 10%;
+        }
+        /*slider ends */
 }
 @media only screen and (max-width : 650px)
 {#cssmenu ul 
@@ -1039,6 +1140,10 @@ div.vertical-line{
     {
         background-size: 50%;
         height: 47px;
+    }
+    .slider_main
+    {
+        display: none;
     }
 }
 @media only screen and (max-width : 480px)
