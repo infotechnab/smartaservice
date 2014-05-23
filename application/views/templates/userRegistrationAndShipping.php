@@ -35,7 +35,7 @@ $this->load->helper('currency');
             ship(shiping);
         });
         
-        $('#continueRegister').click(function(){
+        $('#register').click(function(){
           //  alert('work');
             //$('#table_register').css("display","block");
             $('#table_register').toggle();
@@ -205,9 +205,8 @@ if (!empty($detail)) {
         </div> 
     </div> 
 
-    </div>
- <div class="clear"></div>
-</div>
+    </div> 
+    </div> 
 
 <?php } else {
     
@@ -222,26 +221,25 @@ if (!empty($detail)) {
     echo validation_errors(); ?> </p>
 
     <div id="login">
-        
+        <div id="outerBorder">
              <div id="topRegister">
-                <p><input type="checkbox" id="continueRegister" value="=1" name="register"/>Register</p>
+                <p><input type="checkbox" id="register" value="=1" name="register"/>Register</p>
                 <div id="table_register" style="display: none;" >
-                <table align="center" border="0" width="82%" >
+                <table  border="0" width="30%" >
                    <tr>
                         <td><p style="margin: 0px; padding: 2px;">User Name</p></td>
                         <td><p style="margin: 0px; padding: 2px;">Email</p></td>
                          <td><p style="margin: 0px; padding: 2px;">Password</p></td>
                     </tr>
                     <tr>
-                        <td ><input type="text" name="u_name" placeholder="User Name" size="35" style="outline: none; border: 1px solid #dddddd; padding: 10px; border-radius: 5px;" /></td>
-                        <td ><input type="email" name="u_email" placeholder="Email" size="35" style="outline: none; border: 1px solid #dddddd; padding: 10px; border-radius: 5px;" /></td>
-                        <td ><input type="password" name="u_pass" placeholder="Password" size="35" style="outline: none; border: 1px solid #dddddd; padding: 10px; border-radius: 5px;" /></td>
+                        <td ><input type="text" name="u_name" placeholder="User Name" size="30" style="outline: none; border: 1px solid #dddddd; padding: 10px; border-radius: 5px;" /></td>
+                        <td ><input type="email" name="u_email" placeholder="Email" size="30" style="outline: none; border: 1px solid #dddddd; padding: 10px; border-radius: 5px;" /></td>
+                        <td ><input type="password" name="u_pass" placeholder="Password" size="30" style="outline: none; border: 1px solid #dddddd; padding: 10px; border-radius: 5px;" /></td>
                     </tr> 
                 </table>
                 </div>
             </div>
-            <div id="leftRegister">
-          <div id="RegisterLeft">
+            <div id="RegisterLeft">
 
                 <table align="center" border="0" width="50%">
                     <tr>
@@ -284,7 +282,9 @@ if (!empty($detail)) {
                     <tr>
                         <td colspan="2"><input type="radio" name="pickup" onclick="handleClick(this);" class="pick" value="pickup">Pick Up</td>
                     </tr>
-                   
+                    <tr>
+                        <td colspan="2"><input type="radio" name="pickup" onclick="handleClick(this);"  value="shipSame">Ship to above address</td>
+                    </tr>
                     <td id='shipenable' colspan="2"><input type="radio"  name="pickup" class="ship" onclick="handleClick(this);" value="shipDifferent">Ship to different Address</td>
                     </tr>
                     <tr style="text-align: center">
@@ -293,9 +293,9 @@ if (!empty($detail)) {
 
                 </table>
 
-            </div>      
-                
-                <div id="RegisterRight">
+            </div>
+
+            <div id="RegisterRight">
 
                 <table border="0" width="50%">
 <tr>
@@ -342,17 +342,9 @@ if (!empty($detail)) {
 
                 </table>
 
-            </div> 
-                
-                
-                
-            </div>
+            </div>  
             
-            
-            
-            
-            <div id="RegisterLeftCart">
-                            <?php if ($this->cart->contents()) {  ?>
+            <?php if ($this->cart->contents()) {  ?>
 <div id="total_item"><h4>Total: <?php echo $this->cart->total_items(); ?> items</h4></div>
 <table width="97%" style="margin: 0px 0px 10px 12px;">
                     <tr>
@@ -399,8 +391,11 @@ else { ?>
     <?php }  
     ?>
 
-<h4>Cart Summary</h4>
-<div id="order_summary">
+            <div class="clear"></div>
+        </div> 
+    </div>
+
+            <div id="order_summary">
                 <table width="100%">
                     <tr class='amt_summary'>
                         <td class='txtright' width='50%'>Total: </td>
@@ -422,20 +417,9 @@ else { ?>
                 </table>
              
             </div>
-
-
             </div>
-
-             
-            
-
-
-            <div class="clear"></div>
-        </div> 
-
-          </div>
- <div class="clear"></div>
-</div>
+    </div> 
+    </div> 
 
 
 <?php echo form_close(); ?>
