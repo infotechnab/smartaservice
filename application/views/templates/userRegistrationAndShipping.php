@@ -1,34 +1,31 @@
-  <?php
+<?php
 $this->load->helper('currency');
 ?>
 <?php
-   if(!empty($shiping))
-   {
- foreach ($shiping as $scost)
- {
-     $cost = $scost->price;
- }
-   }else
-   {
-       $cost = 0;
-   }
+if (!empty($shiping)) {
+    foreach ($shiping as $scost) {
+        $cost = $scost->price;
+    }
+} else {
+    $cost = 0;
+}
 ?>
 
 <script>
     
     $(document).ready(function(){
         $(function(){
-             var shiping = parseInt("<?php echo $cost; ?>");
-           $('#cost').html(shiping);
+            var shiping = parseInt("<?php echo $cost; ?>");
+            $('#cost').html(shiping);
             ship(shiping);
         });
         $('.ship').click(function(){
             var shiping = parseInt("<?php echo $cost; ?>");
-           $('#cost').html(shiping);
+            $('#cost').html(shiping);
             ship(shiping);
             
         });
-       $('.pick').click(function(){
+        $('.pick').click(function(){
             var shiping = parseInt(" 0 ");
             $('#cost').html(shiping);
             //alert('pick');
@@ -36,10 +33,10 @@ $this->load->helper('currency');
         });
         
         $('#continueRegister').click(function(){
-          //  alert('work');
+            //  alert('work');
             //$('#table_register').css("display","block");
             $('#table_register').toggle();
-           // alert('sdfdf');
+            // alert('sdfdf');
         });
         
     });
@@ -47,22 +44,22 @@ $this->load->helper('currency');
     
     function ship(shiping){
         
-        var price = parseInt("<?php echo $this->cart->total();?>");
-    var total = price + shiping;
-   // alert(shiping);
-      $('#test').html(total);
-}
+        var price = parseInt("<?php echo $this->cart->total(); ?>");
+        var total = price + shiping;
+        // alert(shiping);
+        $('#test').html(total);
+    }
 
-//document.getElementById("test").innerHTML = total;
+    //document.getElementById("test").innerHTML = total;
 </script>
 <script>
-
-        $(document).ready(function(){
-            $('#checkkey').click(function(){
-               var key = $('#couponkey').val(); 
+    var base_url = '<?php echo base_url(); ?>';
+    $(document).ready(function(){
+        $('#checkkey').click(function(){
+            var key = $('#couponkey').val(); 
                
-                  var dataString = 'id='+key;
-                 // alert(dataString);
+            var dataString = 'id='+key;
+            // alert(dataString);
             $.ajax({
                 type: "POST",
                 url: base_url + 'index.php/bnw/checkcoupon',
@@ -72,13 +69,13 @@ $this->load->helper('currency');
                     $("#nfcoupon").html(msgs);
                 }
             });
-            });
-          
-$('#showcoupon').click(function(){
-   $('#coupontext').toggle(); 
-});
-           
         });
+          
+        $('#showcoupon').click(function(){
+            $('#coupontext').toggle(); 
+        });
+           
+    });
 
 </script>
 <style>
@@ -89,7 +86,7 @@ $('#showcoupon').click(function(){
         cursor: pointer;
     }
 </style>
-        <?php
+<?php
 if (!empty($detail)) {
     // die("entdfdfer");
     foreach ($detail as $userdetail) {
@@ -104,22 +101,27 @@ if (!empty($detail)) {
         $zip = $userdetail->zip;
         $country = $userdetail->country;
     }
-    
+
     echo form_open_multipart('cartdetails/login_insert_cart_item');
     ?>
- <p id="sucessmsg">
-<?php if($this->session->flashdata('message')){echo $this->session->flashdata('message');}
-    echo validation_errors(); ?> </p>
-    
+    <p id="sucessmsg">
+    <?php if ($this->session->flashdata('message')) {
+        echo $this->session->flashdata('message');
+    }
+    echo validation_errors();
+    ?> </p>
+
     <div id="login">
- <div id="snfcoupon"></div>
- <div > <strong id="showcoupon">Click here to enter your coupon code</strong>
- <div id="coupontext" style="none">
-        <input type="text" name="couponkey" id="couponkey" placeholder="type your key here" /> <br/>
-        <input type="button" id="checkkey" value="Apply Coupon" />
- </div>
- </div>
-           <div id="leftRegister">
+
+        <div > <strong id="showcoupon">Click here to enter your coupon code</strong>
+            
+            <div id="coupontext" style="none">
+                <div id="nfcoupon"></div>
+                <input type="text" name="couponkey" id="couponkey" placeholder="type your key here" /> <br/>
+                <input type="button" id="checkkey" value="Apply Coupon" />
+            </div>
+        </div>
+        <div id="leftRegister">
             <div id="RegisterLeft">
 
                 <table border="0" width="70%">
@@ -174,7 +176,7 @@ if (!empty($detail)) {
                         <td><input type="radio" name="pickup" onclick="handleClick(this);" value="pickup">Pick Up</td>
                         <td id='shipenable'><input type="radio"  name="pickup" onclick="handleClick(this);" value="shipDifferent">Ship to different Address</td>
                     </tr>
-                    
+
                     <tr style="text-align: center">
                         <td colspan="2"><input type="submit" value="Continue" style="padding: 5px; width: 80px; background-color: black;" class="updateBtnStyle"/></td>
                     </tr>
@@ -230,62 +232,62 @@ if (!empty($detail)) {
             </div>    
 
 
-<?php echo form_close(); ?>
+            <?php echo form_close(); ?>
 
 
-           
+
         </div> 
-            
-                        <div id="RegisterLeftCart">
-                            <?php if ($this->cart->contents()) {  ?>
-<div id="total_item"><h4>Total: <?php echo $this->cart->total_items(); ?> items</h4></div>
-<table width="97%" style="margin: 0px 0px 10px 12px;">
+
+        <div id="RegisterLeftCart">
+            <?php if ($this->cart->contents()) { ?>
+                <div id="total_item"><h4>Total: <?php echo $this->cart->total_items(); ?> items</h4></div>
+                <table width="97%" style="margin: 0px 0px 10px 12px;">
                     <tr>
                         <th class="hide" width='55px'></th>
                         <th style="text-align: left; padding: 0px 0px 0px 15px;">Name</th>
                         <th>Qty</th>
                         <th></th>
                         <th>Price</th>
-                        
+
                         <th> </th>
                     </tr>
                     <?php if ($cart = $this->cart->contents()) { ?>
                         <?php foreach ($cart as $item) { ?>                                      
-                       
+
                             <tr>
 
-                                <td class="hide"><img class="hide" src="<?php echo base_url().'content/uploads//images/'.$item['image1']; ?>" height="50" width="50"> </td>
+                                <td class="hide"><img class="hide" src="<?php echo base_url() . 'content/uploads//images/' . $item['image1']; ?>" height="50" width="50"> </td>
 
-                                
+
 
                                 <td style="padding: 0px 0px 0px 10px;"><?php echo $item['name']; ?> </td>
                                 <td style="text-align: center;"><?php echo $item['qty'] ?></td>
                                 <td>x</td>
                                 <td style="text-align: center;"><?php get_currency($item['price']); ?></td>
-                            <td style="text-align: center;"></td>
+                                <td style="text-align: center;"></td>
                             </tr>
-                            
+
                         <?php }
-                    } ?>
-                            <tr >
+                    }
+                    ?>
+                    <tr >
                         <td style="padding: 0px 0px 0px 15px; border-top: 1px solid #222;"><b>Total</b>:</td>
                         <td class="hide"></td>
                         <td></td>
                         <td></td>
                         <td style="text-align: center; border-top: 1px solid #222;"> <b><?php get_currency($this->cart->total()); ?></b></td>
-                        
+
                     </tr>
-                   
+
                 </table>
-<?php }
+            <?php } else {
+                ?>
+                <div id="total_item"><h4>Your cart is empty</h4></div>
+            <?php }
+            ?>
 
-else { ?>
-<div id="total_item"><h4>Your cart is empty</h4></div>
-    <?php }  
-    ?>
-
-<h4>Cart Summary</h4>
-<div id="order_summary">
+            <h4>Cart Summary</h4>
+            <div id="order_summary">
                 <table width="100%">
                     <tr class='amt_summary'>
                         <td class='txtright' width='50%'>Total: </td>
@@ -294,7 +296,7 @@ else { ?>
                     <tr class='amt_summary'>
                         <td class='txtright'>Shipping Cost:</td>
                         <td id="cost"></td>
-                        
+
                     </tr>
                     <tr class='amt_summary'>
                         <td class='txtright'>Discount:</td>
@@ -305,55 +307,58 @@ else { ?>
                         <td id="test">   </td>
                     </tr>
                 </table>
-             
+
             </div>
 
 
-            </div>
-            
-            
-            
-            
-            
-            
-            
-            
-      <div class="clear"></div>       
+        </div>
+
+
+
+
+
+
+
+
+        <div class="clear"></div>       
     </div>
-</div>
+    </div>
 
-</div>
+    </div>
 
-<?php } else {
-    
-    if(isset($error))
-    {
+<?php
+} else {
+
+    if (isset($error)) {
         echo $error;
     }
-     echo form_open('cartdetails/insert_cart_item');
+    echo form_open('cartdetails/insert_cart_item');
     ?>
- <p id="sucessmsg">
-<?php if($this->session->flashdata('message')){echo $this->session->flashdata('message');}
-    echo validation_errors(); ?> </p>
+    <p id="sucessmsg">
+        <?php if ($this->session->flashdata('message')) {
+            echo $this->session->flashdata('message');
+        }
+        echo validation_errors();
+        ?> </p>
 
     <div id="login">
-       
-        
- <div > <strong id="showcoupon">Click here to enter your coupon code</strong>
-      <div id="nfcoupon"></div>
- <div id="coupontext" style="display:none;">
-        <input type="text" name="couponkey" id="couponkey" placeholder="type your key here" /> <br/>
-        <input type="button" id="checkkey" value="Apply Coupon" />
- </div>
- </div> 
-             <div id="topRegister">
-                <p><input type="checkbox" id="continueRegister" value="=1" name="register"/>Register</p>
-                <div id="table_register" style="display: none;" >
+
+
+        <div > <strong id="showcoupon">Click here to enter your coupon code</strong>
+            <div id="nfcoupon"></div>
+            <div id="coupontext" style="display:none;">
+                <input type="text" name="couponkey" id="couponkey" placeholder="type your key here" /> <br/>
+                <input type="button" id="checkkey" value="Apply Coupon" />
+            </div>
+        </div> 
+        <div id="topRegister">
+            <p><input type="checkbox" id="continueRegister" value="=1" name="register"/>Register</p>
+            <div id="table_register" style="display: none;" >
                 <table border="0" width="82%" >
-                   <tr>
+                    <tr>
                         <td><p style="margin: 0px; padding: 2px;">User Name</p></td>
                         <td><p style="margin: 0px; padding: 2px;">Email</p></td>
-                         <td><p style="margin: 0px; padding: 2px;">Password</p></td>
+                        <td><p style="margin: 0px; padding: 2px;">Password</p></td>
                     </tr>
                     <tr>
                         <td ><input type="text" name="u_name" placeholder="User Name" size="35" style="outline: none; border: 1px solid #dddddd; padding: 10px; border-radius: 5px;" /></td>
@@ -361,17 +366,17 @@ else { ?>
                         <td ><input type="password" name="u_pass" placeholder="Password" size="35" style="outline: none; border: 1px solid #dddddd; padding: 10px; border-radius: 5px;" /></td>
                     </tr> 
                 </table>
-                </div>
             </div>
-            <div id="leftRegister">
-          <div id="RegisterLeft">
+        </div>
+        <div id="leftRegister">
+            <div id="RegisterLeft">
 
                 <table border="0" width="50%">
                     <tr>
                         <td colspan="2"><h3 style="margin: 0px 0px 10px 0px; padding: 2px;">Personal Details</h3></td>
 
                     </tr>
-                   
+
                     <tr>
                         <td><p style="margin: 0px; padding: 2px;">First Name</p></td>
                         <td><p style="margin: 0px; padding: 2px;">Last Name</p></td>
@@ -403,11 +408,11 @@ else { ?>
                     <tr>
                         <td colspan="2"><input type="text" name="u_contact" placeholder="Contact Number" size="48" style="outline: none; border: 1px solid #dddddd; padding: 10px; border-radius: 5px;" required/></td>
                     </tr>
-                    
+
                     <tr>
                         <td colspan="2"><input type="radio" name="pickup" onclick="handleClick(this);" class="pick" value="pickup">Pick Up</td>
                     </tr>
-                   
+
                     <td id='shipenable' colspan="2"><input type="radio"  name="pickup" class="ship" onclick="handleClick(this);" value="shipDifferent">Ship to different Address</td>
                     </tr>
                     <tr style="text-align: center">
@@ -417,11 +422,11 @@ else { ?>
                 </table>
 
             </div>      
-                
-                <div id="RegisterRight">
+
+            <div id="RegisterRight">
 
                 <table border="0" width="50%">
-<tr>
+                    <tr>
                         <td colspan="2"><h3 style="margin: 0px 0px 10px 0px; padding: 2px;">Shipping Details</h3></td>
 
                     </tr>
@@ -466,64 +471,64 @@ else { ?>
                 </table>
 
             </div> 
-                
-                
-                
-            </div>
-            
-            
-            
-            
-            <div id="RegisterLeftCart">
-                            <?php if ($this->cart->contents()) {  ?>
-<div id="total_item"><h4>Total: <?php echo $this->cart->total_items(); ?> items</h4></div>
-<table width="97%" style="margin: 0px 0px 10px 12px;">
+
+
+
+        </div>
+
+
+
+
+        <div id="RegisterLeftCart">
+    <?php if ($this->cart->contents()) { ?>
+                <div id="total_item"><h4>Total: <?php echo $this->cart->total_items(); ?> items</h4></div>
+                <table width="97%" style="margin: 0px 0px 10px 12px;">
                     <tr>
                         <th class="hide" width='55px'></th>
                         <th style="text-align: left; padding: 0px 0px 0px 15px;">Name</th>
                         <th>Qty</th>
                         <th></th>
                         <th>Price</th>
-                        
+
                         <th> </th>
                     </tr>
-                    <?php if ($cart = $this->cart->contents()) { ?>
-                        <?php foreach ($cart as $item) { ?>                                      
-                       
+        <?php if ($cart = $this->cart->contents()) { ?>
+            <?php foreach ($cart as $item) { ?>                                      
+
                             <tr>
 
-                                <td class="hide"><img class="hide" src="<?php echo base_url().'content/uploads//images/'.$item['image1']; ?>" height="50" width="50"> </td>
+                                <td class="hide"><img class="hide" src="<?php echo base_url() . 'content/uploads//images/' . $item['image1']; ?>" height="50" width="50"> </td>
 
-                                
+
 
                                 <td style="padding: 0px 0px 0px 10px;"><?php echo $item['name']; ?> </td>
                                 <td style="text-align: center;"><?php echo $item['qty'] ?></td>
                                 <td>x</td>
                                 <td style="text-align: center;"><?php get_currency($item['price']); ?></td>
-                            <td style="text-align: center;"></td>
+                                <td style="text-align: center;"></td>
                             </tr>
-                            
-                        <?php }
-                    } ?>
-                            <tr >
+
+            <?php }
+        }
+        ?>
+                    <tr >
                         <td style="padding: 0px 0px 0px 15px; border-top: 1px solid #222;"><b>Total</b>:</td>
                         <td class="hide"></td>
                         <td></td>
                         <td></td>
                         <td style="text-align: center; border-top: 1px solid #222;"> <b><?php get_currency($this->cart->total()); ?></b></td>
-                        
-                    </tr>
-                   
-                </table>
-<?php }
 
-else { ?>
-<div id="total_item"><h4>Your cart is empty</h4></div>
-    <?php }  
+                    </tr>
+
+                </table>
+            <?php } else {
+                ?>
+                <div id="total_item"><h4>Your cart is empty</h4></div>
+    <?php }
     ?>
 
-<h4>Cart Summary</h4>
-<div id="order_summary">
+            <h4>Cart Summary</h4>
+            <div id="order_summary">
                 <table width="100%">
                     <tr class='amt_summary'>
                         <td class='txtright' width='50%'>Total: </td>
@@ -532,7 +537,7 @@ else { ?>
                     <tr class='amt_summary'>
                         <td class='txtright'>Shipping Cost:</td>
                         <td id="cost"></td>
-                        
+
                     </tr>
                     <tr class='amt_summary'>
                         <td class='txtright'>Discount:</td>
@@ -543,44 +548,44 @@ else { ?>
                         <td id="test">   </td>
                     </tr>
                 </table>
-             
-            </div>
-
 
             </div>
 
-             
-            
+
+        </div>
 
 
-            <div class="clear"></div>
-        </div> 
-
-          </div>
- <div class="clear"></div>
-</div>
 
 
-<?php echo form_close(); ?>
+
+        <div class="clear"></div>
+    </div> 
+
+    </div>
+    <div class="clear"></div>
+    </div>
+
+
+    <?php echo form_close(); ?>
 
 
 
 <?php } ?>
 <script>
-        var currentValue = 0;
-        function handleClick(pickup) {
-            ('Old value: ' + currentValue);
-            ('New value: ' + pickup.value);
-            currentValue = pickup.value;
+    var currentValue = 0;
+    function handleClick(pickup) {
+        ('Old value: ' + currentValue);
+        ('New value: ' + pickup.value);
+        currentValue = pickup.value;
             
-            if (pickup.value === "shipDifferent") {
+        if (pickup.value === "shipDifferent") {
 
-                document.getElementById('RegisterRight').style.display = 'block';
+            document.getElementById('RegisterRight').style.display = 'block';
 
-            }
-            else
-            {
-                document.getElementById('RegisterRight').style.display = 'none';
-            }
         }
-    </script>
+        else
+        {
+            document.getElementById('RegisterRight').style.display = 'none';
+        }
+    }
+</script>
