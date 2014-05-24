@@ -18,12 +18,12 @@ $this->load->helper('currency');
         margin-left: 15px;  
 
         /* additional features, can be omitted */
-        border:2px solid #ff0000;  	
+        border:1px solid black;  	
         padding:25px;  
         font-size:15px;  
         -moz-box-shadow: 0 0 5px #ff0000;
         -webkit-box-shadow: 0 0 5px #ff0000;
-        box-shadow: 0 0 5px #ff0000;
+        box-shadow: 0 0 2px #ff0000;
 
     }
     a{  
@@ -80,6 +80,67 @@ $this->load->helper('currency');
 	
 </script>
 <script>
+var base_url = '<?php echo base_url(); ?>';
+$(document).ready(function() {
+    //adding item to the cart...
+    $(".addToCart").click(function() {
+        $(this).parent().parent().parent().css("opacity","0.3");
+        $(this).parent().parent().prev().css("display","block");
+        var id = $(this).val();
+        var dataString = 'itemid=' + id;
+        $.ajax({
+            type: "POST",
+            url: base_url + 'index.php/view/add',
+            data: dataString,
+            success: function(msgs)
+            {
+
+                $("#shopping_cart").html(msgs);
+
+
+            },
+            complete: function() {
+                $(".contentContainerBox").css("opacity","1.0");
+                $(".contentContainerBottom").css("opacity","1.0")
+                $(".loadingImg").css("display","none");
+            }
+        });
+
+    });
+
+});
+
+
+//for cart//
+
+$(document).ready(function() {
+
+    //adding item to the cart...
+
+    $(".addToCarts").live('click', function() {
+
+        $('.slide').css({opacity: 0.3});
+        var id = $(this).val();
+        var dataString = 'itemid=' + id;
+        $.ajax({
+            type: "POST",
+            url: base_url + 'index.php/view/add',
+            data: dataString,
+            success: function(msgs)
+            {
+
+                $("#shopping_cart").html(msgs);
+
+
+            },
+            complete: function() {
+                $('.slide').css({opacity: 1});
+            }
+        });
+
+    });
+</script>
+<script>
     var base_url = "http://localhost/smartaservice/";
     $(document).ready(function() {
        
@@ -124,27 +185,28 @@ $this->load->helper('currency');
                     <div class='contentContainerDetails'>
                         
                             <div id='detailsImageLarge'>
+                                <div class="detailsImageLargeLeft">
                                 <img src="<?php echo base_url() . "content/uploads/images/" . $productDet->image1; ?>" alt="<?php echo $productDet->name; ?>"/>   
-                              
-
+                                </div>
+<div class="detailsImageLargeLeft">
                             <div id="detailsDetail">
                                 <h2><?php echo $productDet->name; ?></h2>
                                 <p> <?php echo $productDet->name; ?> </p> 
 
                             </div>
                            
-                            <div class='contentContainerFooterLeft' style="width:90px; float: left;height:15px;padding:10px 0px 21px 0px;"><h4><?php get_currency(500); ?></h4></div>
-                             <div class="redColouredDiv" class='contentContainerFooterRight' style="width: 100px; float: left;">
+                            <div class="detailsBottom"> 
+                    <div class='contentContainerFooterLeft'><h4><?php get_currency($productDet->price); ?></h4></div>
+                    <div class="redColouredDiv" class='contentContainerFooterRight'>
 
-                        <input type="button" value="<?php ?>" class="addToCart" id="addToCartBtn"/>  
-                        
-                            
- 
-                        </div>
+                        <input type="button" value="<?php echo $productDet->id ?>" class="addToCart" id="addToCartBtn">  
 
+                    </div>
+                </div>
+</div>
                           </div>
                             
-                       
+                        <div class="clear"></div>
 
                         <div class='detailsImage'>
                             <img id="srcimage" src="<?php echo base_url() . "content/uploads/images/" . $productDet->image1; ?>" alt="<?php echo $productDet->name; ?>"/>   

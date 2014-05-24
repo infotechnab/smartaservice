@@ -50,7 +50,6 @@ class View extends CI_Controller {
                 $this->load->view('templates/navigation');
                 $this->load->view('templates/details', $data);
                 $this->load->view('templates/cart');
-                $this->load->view('templates/sidebarview', $data);
                 $this->load->view('templates/footer');
             }
  else {
@@ -61,8 +60,7 @@ class View extends CI_Controller {
         public function login(){
             $this->load->view('templates/header');
                 $this->load->view('templates/navigation');
-                $this->load->view('templates/login');
-             
+                $this->load->view('templates/login');      
                 $this->load->view('templates/footer');
         }
         

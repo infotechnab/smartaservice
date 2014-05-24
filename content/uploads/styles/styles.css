@@ -9,19 +9,23 @@ and open the template in the editor.
 */
 
 
-::-webkit-input-placeholder { padding:0px; font-size: 10px; }
-:-moz-placeholder {line-height: normal;}
-
-::-moz-placeholder { line-height: normal;}
-
-:-ms-input-placeholder {line-height: normal;}
-
-[data-icon]:before {
-    font-family: icons; /* BYO icon font, mapped smartly */
-    content: attr(data-icon);
-    speak: none; /* Not to be trusted, but hey. */
+input.placeholder:-moz-placeholder, input.search:-moz-placeholder {  
+    font-size: inherit;
+    font-weight: 100;
 }
-
+input.placeholder::-webkit-input-placeholder, input.search::-webkit-input-placeholder
+{
+    font-size: inherit;
+    font-weight: 100;
+}
+input.placeholder
+{
+    outline: none; border: 1px solid #dddddd; padding: 10px; border-radius: 5px;
+}
+input.search
+{
+    outline: none; border: 1px solid #dddddd; padding: 6px; margin: 0px;
+}
 body
 {
     margin: 0px;
@@ -60,12 +64,7 @@ body
     margin: 0% 0% 0% 3%;
     padding: 0px;
 }
-#topRegister{
-    width: 96%;
-    margin: 0 auto 0 auto;
-    padding: 0% 0% 0% 2%;
-    float: left;
-}
+
 #headerBackground
 {
     margin: 0px;
@@ -214,12 +213,12 @@ body
 }
 #login
 {
-    margin: 0 auto 0 auto;
+    margin: 0px;
     padding: 0px;
     background-color: #fff;
-    min-height: 410px;
-    margin-bottom: 25px;
+    height: auto;
     width: 100%;
+    float: left;
 }
 #register
 {
@@ -249,13 +248,13 @@ body
 }
 #RegisterLeft, #RegisterRight, #RegisterLeftCart
 {
-    margin: 2%;
+    margin:0% 2% 0% 2%;
     padding: 1%;
     
 }
 #RegisterLeftCart
 {
-    //outline: 1px solid black;
+    
     float: left;
 }
 .contentContainer
@@ -299,7 +298,8 @@ body
 {
     margin: 0px;
     padding: 5px 0px 0px 5px;
-    min-height: 76px;
+ min-height: 80px;
+ 
 }
 .contentContainerFooter{
      margin: 0px;
@@ -313,7 +313,13 @@ body
     min-height: 30px;
     width: 100%;
 }
-
+.detailsBottom
+{
+    margin: 0px;
+    padding: 0px;
+    min-height: 30px;
+    width: 70%;
+}
 .contentContainerHeader h3
 {
     margin: 0px;
@@ -363,10 +369,9 @@ body
 }
 .detailsImage
 {
-
     float: left;
     width: 33%;
-
+    min-height: 225px;
 }
 
 .detailsImage img
@@ -377,12 +382,17 @@ body
 }
 #detailsImageLarge
 {
-    margin: 6px;
+    margin: 1%;
     padding: 0px;
-
-    width: 100%;
+    width: 98%;
     float: left;
-
+}
+.detailsImageLargeLeft
+{
+    margin: 0px;
+    padding: 0px;
+    width: 50%;
+    float: left;
 }
 #detailsImageLarge img
 {
@@ -648,12 +658,12 @@ div.vertical-line{
     }
     #detailsImageLarge img
     {
-        width: 315px;
+        width: 93%;
     }
     #searchbox
     {
         width: 10%;
-        margin: 11px 20px 10px 0px;
+        margin: 13px 20px 10px 0px;
 
     }
     #addToCartBtn
@@ -688,7 +698,7 @@ div.vertical-line{
     }
     #detailsImageLarge img
     {
-        width: 310px;
+        width: 93%;
     }
     #cartDetailsContent
     {
@@ -717,7 +727,7 @@ div.vertical-line{
     }
     .loginLeft
 {
-    width: 35%;
+    width: 39%;
 }
 /*for slider */
 #slideshow #slideshowWindow .slide 
@@ -782,10 +792,7 @@ div.vertical-line{
     {
         min-height: 200px;
     }
-    #detailsImageLarge img
-    {
-        width: 310px;
-    }
+    
 
     #searchbox
     {
@@ -799,7 +806,7 @@ div.vertical-line{
     }
     .loginLeft
 {
-    width: 35%;
+    width: 39%;
 }
 /* for slider */
 #slideshow #slideshowWindow .slide 
@@ -855,17 +862,14 @@ div.vertical-line{
     {
         min-height: 200px;
     }
-    #detailsImageLarge img
-    {
-        width: 95%;
-    }
+    
     #register
 {
     width: 35%;
 }
 .loginLeft
 {
-    width: 35%;
+    width: 39%;
 }
     #searchbox
     {
@@ -925,10 +929,7 @@ div.vertical-line{
         float: left;
         margin-right: 10px;
     }
-    #detailsImageLarge img
-    {
-        width: 290px;
-    }
+  
     .contentContainerBox
     {
         margin: 2% 3.5% 0% 3.5%;
@@ -953,6 +954,10 @@ div.vertical-line{
         background-size: 45%;
         height: 48px;
     }
+    .loginLeft
+{
+    width: 39%;
+}
     /* for slider */
     #slideshow #slideshowWindow .slide 
         {
@@ -1000,7 +1005,7 @@ div.vertical-line{
     }
     #leftRegister, #RegisterLeftCart
 {
-    width: 47%;
+    width: 45%;
    
 }
     #register
@@ -1009,7 +1014,7 @@ div.vertical-line{
 }
 .loginLeft
 {
-    width: 30%;
+    width: 38%;
 }
     #cssmenu ul 
     {
@@ -1029,10 +1034,7 @@ div.vertical-line{
     {
         width: 170%;
     }
-    #detailsImageLarge img
-    {
-        width: 210px;
-    }
+
     .contentContainerBox
     {
         margin: 2% 3.5% 0% 3.5%;
@@ -1100,7 +1102,7 @@ div.vertical-line{
 @media only screen and (max-width : 650px)
 {#cssmenu ul 
     {
-        width: 100%;
+        width: 103%;
     }
 #cssmenu ul li.has-sub
     {
@@ -1122,8 +1124,15 @@ div.vertical-line{
     }
     #leftRegister, #RegisterLeftCart
 {
+    width: 95%; 
+}
+.loginLeft
+{
     width: 95%;
-   
+}
+.vertical-line
+{
+    display: none;
 }
     #headerContent, #contentWrapper
     {
@@ -1133,6 +1142,13 @@ div.vertical-line{
     {
         width: 100%; float: left;
         background-color: #c0021c;
+    }
+    .detailsImageLargeLeft{
+        width: 100%;
+    }
+    .detailsImage
+    {
+        width: 48%;
     }
     #content, #sidebar
     {
@@ -1158,10 +1174,7 @@ div.vertical-line{
         padding: 15px 5px 15px 5px;
         float: left;
     }
-    #detailsImageLarge img
-    {
-        width: 150px;
-    }
+   
     .contentContainerBox
     {
         margin: 2% 3.5% 0% 3.5%;
@@ -1202,7 +1215,7 @@ div.vertical-line{
     }
 #cssmenu ul li.has-sub
     {
-        width: 101%;
+        width: 100%;
         display: block;
     }
 #cssmenu ul li.has-sub a
@@ -1247,10 +1260,7 @@ div.vertical-line{
 
     }
     
-    #detailsImageLarge img
-    {
-        width: 125px;
-    }
+ 
     .contentContainerBox
     {
         margin: 2% 1.5% 0% 1.5%;
@@ -1343,7 +1353,7 @@ div.vertical-line{
    
     #detailsImageLarge img
     {
-        width: 95%;
+        width: 93%;
     }
     .contentContainerBox
     {

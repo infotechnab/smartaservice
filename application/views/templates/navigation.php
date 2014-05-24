@@ -21,7 +21,7 @@
                        
     </div>
                             <div id='searchbox'>
-<input type="text" placeholder="Search" style="box-shadow: inset 0px  #888, inset 0px  #888; outline: none; border: 1px solid #dddddd; padding: 6px; margin: 0px;" required/>
+<input type="text" placeholder="Search" class="search" required/>
                             </div>
                         
                     </div>

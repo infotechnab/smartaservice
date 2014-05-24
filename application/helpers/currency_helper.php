@@ -8,7 +8,7 @@
         }
         else
         {
-         echo '<span> $ </span>'.'<span class="priceTag">'.$data.'</span>'."<span> /- </span>";
+         echo '<span> $ </span>'.'<span class="priceTag">'.$data.'</span>';
         
          
         }

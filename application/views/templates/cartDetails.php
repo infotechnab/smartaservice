@@ -27,7 +27,7 @@ $this->load->helper('currency');
 </script>
 
 
-<div id="msg" style="background: white; width: 99%; padding: 10px 0px 5px 10px; margin: 0px 0px 10px 0px; float: left;">   
+<div id="msg" style="background: white; width: 98%; padding: 10px 0px 5px 10px; margin: 0px 0px 10px 0px; float: left;">   
        
             <div style="text-align: right;"><a href="<?php echo base_url() . 'index.php/view' ?>" id="continue_shop">Continue Shooping</a></div>
             <div><h2>Your Shopping Cart - <?php echo $this->cart->total_items(); ?> 
@@ -42,21 +42,21 @@ $this->load->helper('currency');
 <?php if ($this->cart->contents()) { ?>
 
                 
-                    <table width='100%' cellpadding='15px' class="cart">
+                    <table width='100%' class="cart">
                         <tr class="forTopBorder">
-                            <th width='8%'>Image</th>
-                            <th width='35%'>Name</th>
-                            <th width='5%'>Qty</th>
-                            <th width='18%'>Price</th>
-                            <th width='9%'>Sub-Total</th>
-                            <th width='2%'>Remove</th>
+                            <th class="hide">Image</th>
+                            <th style="margin: 0px; padding: 0px;">Name</th>
+                            <th>Qty</th>
+                            <th>Price</th>
+                            <th>Sub-Total</th>
+                            <th>Remove</th>
                         </tr>
     <?php if ($cart = $this->cart->contents()) { ?>
         <?php foreach ($cart as $item) { ?>   
 
             <?php echo form_open('cartDetails/update'); ?>
                                 <tr class='forTopBorder'>
-                                    <td><img src="<?php echo base_url() . 'content/uploads/images/' . $item['image1']; ?>" height="50" width="50"> </td>
+                                    <td class="hide"><img class="hide" src="<?php echo base_url() . 'content/uploads/images/' . $item['image1']; ?>" height="50" width="50"> </td>
                                     <td><?php echo $item['name']; ?> </td>
                                     <td><input type="text" value="<?php echo $item['qty'] ?>" id="update_qty" size="3" name="item_qnt_<?php echo $item['id']; ?>" class="updateQuantity"> 
                                         <input type="hidden" value="<?php echo $item['rowid']; ?>" name="item_row_<?php echo $item['id']; ?>">

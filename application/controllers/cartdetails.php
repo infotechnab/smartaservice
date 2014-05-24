@@ -355,7 +355,7 @@ class CartDetails extends CI_Controller {
         $this->form_validation->set_rules('email', 'Email', 'trim|required|xss_clean');
         $this->form_validation->set_rules('pass', 'Password', 'trim|required|xss_clean|callback_check_database');
         if ($this->form_validation->run() == FALSE) {
-            //$this->index();
+            redirect('view/login');
         } else {
                      $this->load->model('dbmodel');
                         $data['detail'] = $this->productmodel->validate();
@@ -365,9 +365,7 @@ class CartDetails extends CI_Controller {
                                   $data['shiping']=$this->productmodel->getship();
                $this->load->view('templates/header');
         $this->load->view('templates/navigation');
-         //$this->load->view('templates/cartLogin');
-        $this->load->view('templates/userRegistrationAndShipping',$data);
-       
+        $this->load->view('templates/userRegistrationAndShipping',$data);       
         $this->load->view('templates/footer');     
             }else
             {
