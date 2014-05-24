@@ -54,6 +54,12 @@ class bnw extends CI_Controller {
     
     function checkcoupon()
     {
+        $data['abc']=array(
+            'coupon' => $_POST['coupon'],
+            'subtotal' => $_POST['subtotal']
+                    );
+                    print_r($data['abc']);
+        
         $key = $_POST['id'];
         $today = date("Y-m-d");
         $token = $this->dbmodel->getdate($key);

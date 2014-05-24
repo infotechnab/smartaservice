@@ -57,13 +57,16 @@ if (!empty($shiping)) {
     $(document).ready(function() {
         $('#checkkey').click(function() {
             var key = $('#couponkey').val();
-
-            var dataString = 'id=' + key;
-            // alert(dataString);
+            var subtotal = parseInt("<?php echo $this->cart->total(); ?>");
+            //var dataString = 'id=' + key;
+             
             $.ajax({
                 type: "POST",
                 url: base_url + 'index.php/bnw/checkcoupon',
-                data: dataString,
+                data: {
+                    'coupon' : key,
+                    'subtotal' : subtotal
+                },
                 success: function(msgs)
                 {
                     $("#nfcoupon").html(msgs);
@@ -88,7 +91,7 @@ if (!empty($shiping)) {
 </style>
 <?php
 if (!empty($detail)) {
-    // die("entdfdfer");
+    
     foreach ($detail as $userdetail) {
         $username = $userdetail->user_name;
         $fname = $userdetail->user_fname;
@@ -114,14 +117,9 @@ if (!empty($detail)) {
 
     <div id="login">
 
-        <div > <strong id="showcoupon">Click here to enter your coupon code</strong>
+      
 
-            <div id="coupontext" style="none">
-                <div id="nfcoupon"></div>
-                <input type="text" name="couponkey" id="couponkey" placeholder="type your key here" /> <br/>
-                <input type="button" id="checkkey" value="Apply Coupon" />
-            </div>
-        </div>
+            
         <div id="leftRegister">
             <div id="RegisterLeft">
 
@@ -295,10 +293,21 @@ if (!empty($detail)) {
     ?>
 
            <h3 style="margin: 10px 0px 10px 10px; padding: 2px;">Payment Details</h3>
+           <div id="coupontext" style="width: 96%; margin: 0px; padding: 2%;">
+               <div id="nfcoupon"></div>
+               <table>
+                   <tr>
+                       <td><input class="placeholder" size="22" type="text" name="couponkey" id="couponkey" placeholder="Type your key here" /></td>
+                       <td><input type="button" id="checkkey" value="Apply Coupon" style="padding: 5px; width: 100%; background-color: black;" class="updateBtnStyle" /></td>
+                   </tr>
+               </table>
+                
+                 
+            </div>
             <div id="order_summary">
                 <table width="100%">
                     <tr class='amt_summary'>
-                        <td class='txtright' width='50%'>Total: </td>
+                        <td class='txtright' width='50%'><span>Sub-total:</span> </td>
                         <td><b><?php get_currency($this->cart->total()); ?></b></td>
                     </tr>
                     <tr class='amt_summary'>
@@ -311,7 +320,7 @@ if (!empty($detail)) {
                         <td></td>
                     </tr>
                     <tr class='amt_summary'>
-                        <td class='txtright'>Total:</td>
+                        <td class='txtright'><b>Grand Total:</b></td>
                         <td id="test">   </td>
                     </tr>
                 </table>
