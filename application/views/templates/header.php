@@ -1,12 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
+        <?php if ($meta)
+{
+    $i=0;
+    foreach ($meta as $data)
+    {        
+       $meta_data[$i] = $data->value;
+       $i++;      
+    }
+ }
+                     ?>
         <meta charset="utf-8">
-        <title>Welcome to Online Shopping</title> 
+         <?php foreach ($headertitle as $header) {
+                    ?>
+        <title><?php echo $header->description ; ?></title>
+<?php } ?>
         <script src="<?php echo base_url() . 'content/jquery.js'; ?>" type="text/javascript"></script>
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <link rel="stylesheet" media="only screen" href="<?php echo base_url() . "content/uploads/styles/styles.css"; ?>" type="text/css">     
-        <link rel="shortcut icon" href="<?php echo base_url() . "content/images/menu.png"; ?>" type="image/x-icon"> 
+       <link rel="shortcut icon" href="<?php echo base_url().'content/uploads/images/'. $meta_data[4]; ?>" type="image/x-icon">
         
         <link rel="shortcut icon" href="<?php echo base_url() . "content/uploads/images/favicon1.jpg"; ?>" type="image/x-icon"> 
         
@@ -21,11 +34,17 @@
         <div id="container">
             <div id="headerBackground">
                 <div id="headerContent">
+                     <?php foreach ($headerlogo as $header) {
+                    ?>
                     <div id="headerLogo">
-                        <img src="<?php echo base_url() . "content/uploads/images/shopping-cart-icon-614x460.png"; ?>" alt="Smartaservices logo"/>
+                        <img src="<?php echo base_url().'content/uploads/images/'.$header->description ; ?>" alt="Smartaservices logo"/>
                     </div>
-                    <div id="headerLogoContent">
-                        <h1>Smart Access Services</h1>
-                    </div>
+                     <?php } ?>
                     
+                    <?php foreach ($headerdescription as $header) {
+                    ?>
+                    <div id="headerLogoContent">
+                        <h1><?php echo $header->description ; ?></h1>
+                    </div>
+                    <?php } ?>  
                     <div class="clear"></div>

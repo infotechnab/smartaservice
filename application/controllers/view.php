@@ -9,6 +9,8 @@ class View extends CI_Controller {
         parent::__construct();
 
         $this->load->model('productmodel');
+         $this->load->model('viewmodel');
+          $this->load->model('dbmodel');
         $this->load->helper('url');
         $this->load->library('cart');
         $this->load->helper(array('form', 'url', 'date'));
@@ -17,14 +19,16 @@ class View extends CI_Controller {
     public function index() {     //fetching data from database of the product
         
       
-
-        $data['product_info'] = $this->productmodel->product_info();
-        
+        $data['headertitle']= $this->viewmodel->get_header_title();          
+        $data['headerlogo']= $this->viewmodel->get_header_logo();         
+        $data['meta'] = $this->dbmodel->get_meta_data();
+        $data['headerdescription']= $this->viewmodel->get_header_description();
+        $data['product_info'] = $this->productmodel->product_info();     
           $data['featureItem'] = $this->productmodel->featured_item();
           $data['category'] = $this->productmodel->category_list();
           //var_dump($data);
            $data['slider_json'] = json_encode($data['featureItem']);
-        $this->load->view('templates/header');
+        $this->load->view('templates/header', $data);
         $this->load->view('templates/navigation');
        
         $this->load->view('templates/content', $data);
@@ -39,6 +43,11 @@ class View extends CI_Controller {
         
         
         public function details($id){
+            $data['headertitle']= $this->viewmodel->get_header_title();          
+        $data['headerlogo']= $this->viewmodel->get_header_logo();         
+        $data['meta'] = $this->dbmodel->get_meta_data();
+        $data['headerdescription']= $this->viewmodel->get_header_description();
+            
             $data['product_info'] = $this->productmodel->product_info();
         
           $data['featureItem'] = $this->productmodel->featured_item();
@@ -46,7 +55,7 @@ class View extends CI_Controller {
             if(isset($id)){
             $data['product'] = $this->productmodel->getProductById($id);
            
-            $this->load->view('templates/header');
+            $this->load->view('templates/header', $data);
                 $this->load->view('templates/navigation');
                 $this->load->view('templates/details', $data);
                 $this->load->view('templates/cart');
@@ -58,7 +67,12 @@ class View extends CI_Controller {
         }
         
         public function login(){
-            $this->load->view('templates/header');
+            $data['headertitle']= $this->viewmodel->get_header_title();          
+        $data['headerlogo']= $this->viewmodel->get_header_logo();         
+        $data['meta'] = $this->dbmodel->get_meta_data();
+        $data['headerdescription']= $this->viewmodel->get_header_description();
+            
+            $this->load->view('templates/header', $data);
                 $this->load->view('templates/navigation');
                 $this->load->view('templates/login');      
                 $this->load->view('templates/footer');
@@ -121,7 +135,12 @@ class View extends CI_Controller {
     }
 
     function cart_details() {   //function to goto cart details
-        $this->load->view('templates/header');
+        $data['headertitle']= $this->viewmodel->get_header_title();          
+        $data['headerlogo']= $this->viewmodel->get_header_logo();         
+        $data['meta'] = $this->dbmodel->get_meta_data();
+        $data['headerdescription']= $this->viewmodel->get_header_description();
+        
+        $this->load->view('templates/header', $data);
         $this->load->view('templates/navigation');
         $this->load->view('templates/cartDetails');
         $this->load->view('templates/footer');
@@ -129,6 +148,11 @@ class View extends CI_Controller {
     
     function category($id)
     {
+        $data['headertitle']= $this->viewmodel->get_header_title();          
+        $data['headerlogo']= $this->viewmodel->get_header_logo();         
+        $data['meta'] = $this->dbmodel->get_meta_data();
+        $data['headerdescription']= $this->viewmodel->get_header_description();
+        
           $data['product_info'] = $this->productmodel->product_info();
         
           $data['featureItem'] = $this->productmodel->featured_item();
@@ -137,7 +161,7 @@ class View extends CI_Controller {
           $data['product'] = $this->productmodel->get_product($id);
           //var_dump($data);
            $data['slider_json'] = json_encode($data['featureItem']);
-        $this->load->view('templates/header');
+        $this->load->view('templates/header', $data);
         $this->load->view('templates/navigation');
        
         $this->load->view('templates/category_page', $data);
@@ -149,6 +173,12 @@ class View extends CI_Controller {
 
     function page($id)
     {
+        $data['headertitle']= $this->viewmodel->get_header_title();          
+        $data['headerlogo']= $this->viewmodel->get_header_logo();         
+        $data['meta'] = $this->dbmodel->get_meta_data();
+        $data['headerdescription']= $this->viewmodel->get_header_description();
+        
+        
          $data['product_info'] = $this->productmodel->product_info();
         
           $data['featureItem'] = $this->productmodel->featured_item();
@@ -158,7 +188,7 @@ class View extends CI_Controller {
           //var_dump($data);
           $data['get_page'] = $this->productmodel->get_page($id);
            $data['slider_json'] = json_encode($data['featureItem']);
-        $this->load->view('templates/header');
+        $this->load->view('templates/header', $data);
         $this->load->view('templates/navigation');
        
         $this->load->view('templates/single_page', $data);
@@ -170,9 +200,14 @@ class View extends CI_Controller {
     public function registeruser()
         {
         
+        $data['headertitle']= $this->viewmodel->get_header_title();          
+        $data['headerlogo']= $this->viewmodel->get_header_logo();         
+        $data['meta'] = $this->dbmodel->get_meta_data();
+        $data['headerdescription']= $this->viewmodel->get_header_description();
+        
         $data['shiping']=$this->productmodel->getship();
         
-     $this->load->view('templates/header');
+     $this->load->view('templates/header', $data);
         $this->load->view('templates/navigation');
         $this->load->view('templates/userRegistrationAndShipping',$data);
         $this->load->view('templates/cartLogin');
