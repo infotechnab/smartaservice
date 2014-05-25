@@ -159,7 +159,7 @@ $this->load->helper('currency');
     <!-- the slider ends here-->
     
 <div class='contentHeader'>
-    <h3><?php if(!empty($categoryId)){ foreach ($categoryId as $pages){ $pageTitle = $pages->category_name; echo $pages->category_name;} }
+    <h3><?php if(!empty($categoryId)){ foreach ($categoryId as $pages){ echo $pages->category_name;} }
     else{
         echo "<h3>The product you are searching is not found! </h3>";
     }?></h3>

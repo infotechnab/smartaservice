@@ -100,10 +100,9 @@ function disrate(){
         var total = price + shiping;
         
         var dis = total * parseInt(rate)/100;
-        var grandtotal = total - dis;
       // var price = rate+'%';
        $('#rate').html(rate+'%');
-        $('#test').html(grandtotal);
+        $('#test').html(dis);
 }
 
 </script>

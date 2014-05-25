@@ -52,12 +52,6 @@ class bnw extends CI_Controller {
        
     }
     
-    function couponlist()
-    {
-        
-    }
-
-
     function checkcoupon()
     {
         $data['abc']=array(
@@ -103,7 +97,7 @@ class bnw extends CI_Controller {
               $data['username'] = Array($this->session->userdata('logged_in'));
             $data['meta'] = $this->dbmodel->get_meta_data();
             $data['category'] = $this->dbmodel->get_category();
-            $data['coupon'] = $this->dbmodel->get_coupon();
+
             $this->load->view('bnw/templates/header', $data);
             $this->load->view('bnw/templates/menu');
             $this->load->view('product/have_coupon');                    
