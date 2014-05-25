@@ -217,13 +217,18 @@ $(document).ready(function() {
                         <div class='detailsImage'>
                             <img id="srcimage" src="<?php echo base_url() . "content/uploads/images/" . $productDet->image3; ?>" alt="<?php echo $productDet->name; ?>"/>   
                         </div>
+    
                       <div class="clear"></div>
-                    </div>
+                                   
+     </div>
+
             
                 <?php
                 }
             } else {
-                ?><div class='contentContainerDetails'> <?php echo '<h3>This page does not contain any content.</h3>'; ?> </div> 
+                ?><div class='contentContainerDetails'> 
+                    <?php echo '<h3>This page does not contain any content.</h3>'; ?>
+                </div> 
 <?php }
 ?>
 
@@ -233,6 +238,7 @@ $(document).ready(function() {
 </div>
 
         </div>
+
 
 
 
