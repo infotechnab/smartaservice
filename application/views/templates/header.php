@@ -22,7 +22,7 @@
        <link rel="shortcut icon" href="<?php echo base_url().'content/uploads/images/'. $meta_data[4]; ?>" type="image/x-icon">
         
         <link rel="shortcut icon" href="<?php echo base_url() . "content/uploads/images/favicon1.jpg"; ?>" type="image/x-icon"> 
-        
+        <script src="<?php echo base_url() . 'content/uploads/scripts/jquery-placeholder.js'; ?>" type="text/javascript"></script>
 
         
         
@@ -30,6 +30,7 @@
         <meta name="description" content="Smart Access Services">
         <meta name="keywords" content="Shopping cart, Cart, Jackek, Smart Access Services">
     </head>
+    
     <body>
         <div id="container">
             <div id="headerBackground">

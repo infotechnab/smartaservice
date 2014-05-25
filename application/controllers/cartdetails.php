@@ -206,13 +206,17 @@ class CartDetails extends CI_Controller {
        VALUES ('".$oId."','" . $item['id'] . "', '" . $item['qty'] . "', '$tid', '$tr')");
             }
         }
-        
+        $this->email($tid, $username, $s_username  );
         $this->load->view('templates/inserted');
                 
         
             }
     }
 
+    
+    public function email(){
+     $this->load->view('templates/email');
+ }
     function insert_cart_item() {
         $this->load->model('dbmodel');
          $this->load->helper('form');

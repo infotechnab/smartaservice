@@ -38,11 +38,158 @@ class View extends CI_Controller {
         $this->load->view('templates/footer');
     }
 
- 
- 
+ public function error(){
+     $data['headertitle']= $this->viewmodel->get_header_title();          
+        $data['headerlogo']= $this->viewmodel->get_header_logo();         
+        $data['meta'] = $this->dbmodel->get_meta_data();
+        $data['headerdescription']= $this->viewmodel->get_header_description();
+            
+            $data['product_info'] = $this->productmodel->product_info();
         
-        
-        public function details($id){
+          $data['featureItem'] = $this->productmodel->featured_item();
+          $data['category'] = $this->productmodel->category_list();
+            
+            //$data['product'] = $this->productmodel->getProductById($id);
+           
+            $this->load->view('templates/header', $data);
+                $this->load->view('templates/navigation');
+                $this->load->view('templates/error_landing_page');
+                $this->load->view('templates/cart');
+                 $this->load->view('templates/sidebarview',$data);
+                $this->load->view('templates/footer');
+ 
+ }
+
+ public function forgotPassword(){
+     $data['headertitle']= $this->viewmodel->get_header_title();          
+        $data['headerlogo']= $this->viewmodel->get_header_logo();         
+        $data['meta'] = $this->dbmodel->get_meta_data();
+        $data['headerdescription']= $this->viewmodel->get_header_description();         
+            $this->load->view('templates/header', $data);
+            $this->load->view('templates/forgot_password');
+            $this->load->view('templates/footer');
+ }
+
+ public function authenticate_user(){
+     $data['headertitle']= $this->viewmodel->get_header_title();          
+        $data['headerlogo']= $this->viewmodel->get_header_logo();         
+        $data['meta'] = $this->dbmodel->get_meta_data();
+        $data['headerdescription']= $this->viewmodel->get_header_description();         
+            $this->load->view('templates/header', $data);
+     
+     $useremail = $_POST['email'];
+     
+     $username = $this->dbmodel->get_selected_user($useremail);
+
+        foreach ($username as $dbemail) {
+            $to = $dbemail->user_email;
+        }
+        if ($to == $useremail) {
+            $token = $this->getRandomString(10);
+            $this->dbmodel->update_emailed_user($to, $token);
+            $this->test($token);
+
+            $this->mailresetlink($to, $token);
+        } else {
+            $this->session->set_flashdata('message', 'Please type valid Email Address');
+            redirect("login/forgotPassword");
+        }
+        $this->load->view('bnw/templates/footer', $data);
+ }
+    public function test($token) {
+
+        $data['query'] = $this->dbmodel->find_user_auth_key($token);
+        $data['headertitle']= $this->viewmodel->get_header_title();          
+        $data['headerlogo']= $this->viewmodel->get_header_logo();         
+        $data['meta'] = $this->dbmodel->get_meta_data();
+        $data['headerdescription']= $this->viewmodel->get_header_description();         
+            $this->load->view('templates/header', $data);
+        $this->load->view('login/messageSent', $data);
+        $this->load->view('template/imageDiv');
+        $this->load->view('template/reservation_template');
+        $this->load->view('template/footer');
+    }
+
+    function getRandomString($length) {
+        $validCharacters = "ABCDEFGHIJKLMNPQRSTUXYVWZ123456789";
+        $validCharNumber = strlen($validCharacters);
+        $result = "";
+
+        for ($i = 0; $i < $length; $i++) {
+            $index = mt_rand(0, $validCharNumber - 1);
+            $result .= $validCharacters[$index];
+        }
+        return $result;
+    }
+
+    function mailresetlink($to, $token) {
+        $to;
+        $uri = 'http://' . $_SERVER['HTTP_HOST'];
+        $subject = "This is subject";
+        $message = '
+    <html>
+    <head>
+    <title>Password reset link</title>
+    </head>
+    <body>
+    <p>Click on the given link to reset your password <a href="' . $uri . '/reset.php?token=' . $token . '">Reset Password</a></p>
+
+    </body>
+    </html>';
+        $header = 'From: admin<info@smartaservices.com>' . "\r\n";
+        $retval = mail($to, $subject, $message, $header);
+        if ($retval == true) {
+            echo "Email sent successfully...";
+        } else {
+            echo "Message could not be sent...";
+        }
+    }
+
+    public function resetPassword() {
+
+
+        if (isset($_GET['resetPassword']))
+            $a = $_GET['resetPassword'];
+
+        $data['query'] = $this->dbmodel->get_user_email($a);
+        //var_dump($data);
+        if ($data['query']) {
+            $this->load->view('template/header');
+            $this->load->view("login/resetPassword", $data);
+            $this->load->view('template/reservation_template');
+            $this->load->view('template/footer');
+        } else {
+            $this->load->view('template/header');
+            $this->load->view("template/errorMessage");
+            $this->load->view('template/reservation_template');
+            $this->load->view('template/footer');
+        }
+    }
+
+    public function setpassword() {
+
+
+        $password = $_POST['user_pass'];
+        $email = $_POST['userEmail'];
+        //die($token);  
+        $confirmPassword = $_POST['user_confirm_pass'];
+        if ($password == $confirmPassword) {
+
+            $userPassword = $this->input->post('user_pass');
+
+            $this->dbmodel->update_user_password($email, $userPassword);
+            //$this->dbmodel->update_user_token($token);
+
+            $this->session->set_flashdata('message', 'Your password has been changed successfully');
+            redirect('welcome/mailSentMessage', 'refresh');
+        } else {
+
+            $this->session->set_flashdata('message', 'Password didnot match');
+            redirect('login/forgotPassword', 'refresh');
+        }
+    }
+
+ public function details($id){
             $data['headertitle']= $this->viewmodel->get_header_title();          
         $data['headerlogo']= $this->viewmodel->get_header_logo();         
         $data['meta'] = $this->dbmodel->get_meta_data();
@@ -59,6 +206,7 @@ class View extends CI_Controller {
                 $this->load->view('templates/navigation');
                 $this->load->view('templates/details', $data);
                 $this->load->view('templates/cart');
+                 $this->load->view('templates/sidebarview',$data);
                 $this->load->view('templates/footer');
             }
  else {
