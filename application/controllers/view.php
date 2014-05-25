@@ -188,7 +188,8 @@ class View extends CI_Controller {
         }
     }
 
- public function details($id){
+ public function details($id=0){
+     
             $data['headertitle']= $this->viewmodel->get_header_title();          
         $data['headerlogo']= $this->viewmodel->get_header_logo();         
         $data['meta'] = $this->dbmodel->get_meta_data();
@@ -200,7 +201,10 @@ class View extends CI_Controller {
           $data['category'] = $this->productmodel->category_list();
             if(isset($id)){
             $data['product'] = $this->productmodel->getProductById($id);
-           
+            foreach ($data['product'] as $page)
+            {
+                $data['pageTitle'] = $page->name;
+            }
             $this->load->view('templates/header', $data);
                 $this->load->view('templates/navigation');
                 $this->load->view('templates/details', $data);
@@ -293,7 +297,7 @@ class View extends CI_Controller {
         $this->load->view('templates/footer');
     }
     
-    function category($id)
+    function category($id=0)
     {
         $data['headertitle']= $this->viewmodel->get_header_title();          
         $data['headerlogo']= $this->viewmodel->get_header_logo();         
@@ -305,6 +309,10 @@ class View extends CI_Controller {
           $data['featureItem'] = $this->productmodel->featured_item();
           $data['category'] = $this->productmodel->category_list();
           $data['categoryId'] = $this->productmodel->category_list_id($id);
+           foreach ($data['categoryId'] as $page)
+            {
+                $data['pageTitle'] = $page->category_name;
+            }
           $data['product'] = $this->productmodel->get_product($id);
           //var_dump($data);
            $data['slider_json'] = json_encode($data['featureItem']);
@@ -334,6 +342,10 @@ class View extends CI_Controller {
        //  $data['category'] = $this->productmodel->category_list_id();
           //var_dump($data);
           $data['get_page'] = $this->productmodel->get_page($id);
+           foreach ($data['get_page'] as $page)
+            {
+                $data['pageTitle'] = $page->page_name;
+            }
            $data['slider_json'] = json_encode($data['featureItem']);
         $this->load->view('templates/header', $data);
         $this->load->view('templates/navigation');

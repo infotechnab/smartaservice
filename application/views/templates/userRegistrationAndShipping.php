@@ -98,11 +98,24 @@ function disrate(){
     var shiping = parseInt("<?php if(isset($shiping_cost)==true){ echo $cost;}else{$cost = 0 ;} ?>");
      var price = parseInt("<?php echo $this->cart->total(); ?>");
         var total = price + shiping;
-        
-        var dis = total * parseInt(rate)/100;
+       
+       if(rate>0)
+           {
+                var dis = total * parseInt(rate)/100;
+        var grandtotal = total - dis;
       // var price = rate+'%';
        $('#rate').html(rate+'%');
-        $('#test').html(dis);
+        $('#test').html(grandtotal);
+           }
+           else
+               {
+                   rate = 0;
+                   $('#rate').html(rate+'%');
+                    $('#test').html(total);
+               }
+           
+       
+          
 }
 
 </script>
@@ -447,8 +460,8 @@ if (!empty($detail)) {
 
                     </tr>
                     <tr>
-                        <td><input type="text" name="District_address" placeholder="District/ State" size="20" class="placeholder" required/></td>
-                        <td><input type="text" name="zip" placeholder="zip" size="20" class="placeholder" required/></td>
+                        <td><input type="text" name="District_address" placeholder=" State" size="20" class="placeholder" required/></td>
+                        <td><input type="text" name="zip" placeholder="Post Code" size="20" class="placeholder" required/></td>
                     </tr>
                     <tr>
                         <td colspan="2"><input type="text" name="country" placeholder="Country" size="47" class="placeholder" required/></td>

@@ -13,9 +13,20 @@
                      ?>
         <meta charset="utf-8">
          <?php foreach ($headertitle as $header) {
-                    ?>
-        <title><?php echo $header->description ; ?></title>
-<?php } ?>
+                   $title = $header->description ;
+             echo $title; }?>
+        <title>
+            <?php 
+            if(isset($pageTitle))
+            {
+                echo $pageTitle."-".$title;
+            } 
+            else{
+               echo $pageTitle = $title;
+            }
+            ?>
+        </title>
+
         <script src="<?php echo base_url() . 'content/jquery.js'; ?>" type="text/javascript"></script>
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <link rel="stylesheet" media="only screen" href="<?php echo base_url() . "content/uploads/styles/styles.css"; ?>" type="text/css">     
