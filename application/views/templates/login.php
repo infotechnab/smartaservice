@@ -24,7 +24,7 @@
                     <td><input type="submit" value="Sign In" style="padding: 5px; width: 80px; background-color: black;" class="updateBtnStyle" /></td>
                 </tr>
                 <tr style="text-align: center">
-                    <td><a href="view/forgotPassword"><p>Forgot Password?</p></a></td>
+                    <td><a href="forgotPassword"><p style="color: #000;">Forgot Password?</p></a></td>
                 </tr>
             </table>
             <?php form_close(); ?>

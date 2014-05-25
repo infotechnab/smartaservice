@@ -64,6 +64,7 @@ class View extends CI_Controller {
      $data['headertitle']= $this->viewmodel->get_header_title();          
         $data['headerlogo']= $this->viewmodel->get_header_logo();         
         $data['meta'] = $this->dbmodel->get_meta_data();
+        
         $data['headerdescription']= $this->viewmodel->get_header_description();         
             $this->load->view('templates/header', $data);
             $this->load->view('templates/forgot_password');
@@ -71,11 +72,6 @@ class View extends CI_Controller {
  }
 
  public function authenticate_user(){
-     $data['headertitle']= $this->viewmodel->get_header_title();          
-        $data['headerlogo']= $this->viewmodel->get_header_logo();         
-        $data['meta'] = $this->dbmodel->get_meta_data();
-        $data['headerdescription']= $this->viewmodel->get_header_description();         
-            $this->load->view('templates/header', $data);
      
      $useremail = $_POST['email'];
      
@@ -89,12 +85,11 @@ class View extends CI_Controller {
             $this->dbmodel->update_emailed_user($to, $token);
             $this->test($token);
 
-            $this->mailresetlink($to, $token);
+           // $this->mailresetlink($to, $token);
         } else {
             $this->session->set_flashdata('message', 'Please type valid Email Address');
-            redirect("login/forgotPassword");
+            redirect("view/forgotPassword");
         }
-        $this->load->view('bnw/templates/footer', $data);
  }
     public function test($token) {
 
@@ -104,10 +99,10 @@ class View extends CI_Controller {
         $data['meta'] = $this->dbmodel->get_meta_data();
         $data['headerdescription']= $this->viewmodel->get_header_description();         
             $this->load->view('templates/header', $data);
-        $this->load->view('login/messageSent', $data);
-        $this->load->view('template/imageDiv');
-        $this->load->view('template/reservation_template');
-        $this->load->view('template/footer');
+        $this->load->view('templates/messageSent', $data);
+        $this->load->view('templates/footer');
+        
+       
     }
 
     function getRandomString($length) {
@@ -146,23 +141,27 @@ class View extends CI_Controller {
     }
 
     public function resetPassword() {
-
+ 
+        $data['headertitle']= $this->viewmodel->get_header_title();          
+        $data['headerlogo']= $this->viewmodel->get_header_logo();         
+        $data['meta'] = $this->dbmodel->get_meta_data();
+        $data['headerdescription']= $this->viewmodel->get_header_description();         
+            
 
         if (isset($_GET['resetPassword']))
             $a = $_GET['resetPassword'];
 
-        $data['query'] = $this->dbmodel->get_user_email($a);
-        //var_dump($data);
+        $data['query'] = $this->dbmodel->find_user_auth_key($a);
+        var_dump($data['query']);
         if ($data['query']) {
-            $this->load->view('template/header');
-            $this->load->view("login/resetPassword", $data);
-            $this->load->view('template/reservation_template');
-            $this->load->view('template/footer');
+           $this->load->view('templates/header', $data);
+            $this->load->view("templates/resetPassword", $data);
+            
+            $this->load->view('templates/footer');
         } else {
-            $this->load->view('template/header');
-            $this->load->view("template/errorMessage");
-            $this->load->view('template/reservation_template');
-            $this->load->view('template/footer');
+            $this->load->view('templates/header', $data);
+           
+            $this->load->view('templates/footer');
         }
     }
 
@@ -181,7 +180,7 @@ class View extends CI_Controller {
             //$this->dbmodel->update_user_token($token);
 
             $this->session->set_flashdata('message', 'Your password has been changed successfully');
-            redirect('welcome/mailSentMessage', 'refresh');
+            redirect('view/index', 'refresh');
         } else {
 
             $this->session->set_flashdata('message', 'Password didnot match');

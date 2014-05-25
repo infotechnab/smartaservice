@@ -1390,7 +1390,14 @@ div.vertical-line{
     }
 
 }
-
+#forgotpass{
+     margin: 20px 0px 0px 0px;
+     padding: 0px;
+    float: left;
+    width: 100%;
+    height: auto;
+    background-color: #fff;
+}
 
 /* these css are for cart details */
 #cartDetailsContent

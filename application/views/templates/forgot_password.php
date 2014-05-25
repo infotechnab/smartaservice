@@ -1,6 +1,5 @@
-<div id="contentBackground">
-    <div id='contentWrapper'>
-        <div>
+</div><div id="contentBackground">
+        <div id="forgotpass">
             <p id="sucessmsg">
                                     <?php if($this->session->flashdata('message')){echo $this->session->flashdata('message');}
                                 echo validation_errors(); ?> </p>
