@@ -17,16 +17,6 @@ class View extends CI_Controller {
     }
 
     public function index() {     //fetching data from database of the product
-<<<<<<< HEAD
-        $data['pageTitle'] = "Smart Access Services";
-        $data['product_info'] = $this->productmodel->product_info();
-        $data['featureItem'] = $this->productmodel->featured_item();
-        $data['category'] = $this->productmodel->category_list();
-        //var_dump($data);
-        $data['slider_json'] = json_encode($data['featureItem']);
-=======
-        
-      
         $data['headertitle']= $this->viewmodel->get_header_title();          
         $data['headerlogo']= $this->viewmodel->get_header_logo();         
         $data['meta'] = $this->dbmodel->get_meta_data();
@@ -36,7 +26,8 @@ class View extends CI_Controller {
           $data['category'] = $this->productmodel->category_list();
           //var_dump($data);
            $data['slider_json'] = json_encode($data['featureItem']);
->>>>>>> e63b96a3010d24d007c95e6473a7341a696248a9
+           $data['pageTitle'] = "Smart Access Services";
+           
         $this->load->view('templates/header', $data);
         $this->load->view('templates/navigation');
 
@@ -47,26 +38,7 @@ class View extends CI_Controller {
         $this->load->view('templates/footer');
     }
 
-<<<<<<< HEAD
-    public function details($id=0) {        
-        $data['product_info'] = $this->productmodel->product_info();
-        $data['featureItem'] = $this->productmodel->featured_item();
-        $data['category'] = $this->productmodel->category_list();
-        if (isset($id)) {
-            $data['product'] = $this->productmodel->getProductById($id);
-            foreach ($data['product'] as $row)
-             {
-              $data['pageTitle'] = $row->name;
-             }
-            
-            $this->load->view('templates/header', $data);
-            $this->load->view('templates/navigation');
-            $this->load->view('templates/details', $data);
-            $this->load->view('templates/cart');
-            $this->load->view('templates/footer');
-        } else {
-            redirect();
-=======
+
  public function error(){
      $data['headertitle']= $this->viewmodel->get_header_title();          
         $data['headerlogo']= $this->viewmodel->get_header_logo();         
@@ -252,16 +224,11 @@ class View extends CI_Controller {
                 $this->load->view('templates/navigation');
                 $this->load->view('templates/login');      
                 $this->load->view('templates/footer');
->>>>>>> e63b96a3010d24d007c95e6473a7341a696248a9
+
         }
     }
 
-    public function login() {
-        $this->load->view('templates/header');
-        $this->load->view('templates/navigation');
-        $this->load->view('templates/login');
-        $this->load->view('templates/footer');
-    }
+    
 
     function add() {   //function to add item to the cart
         $id = $_POST['itemid'];
@@ -327,20 +294,7 @@ class View extends CI_Controller {
         $this->load->view('templates/cartDetails');
         $this->load->view('templates/footer');
     }
-<<<<<<< HEAD
 
-    function category($id) {
-        $data['product_info'] = $this->productmodel->product_info();
-
-        $data['featureItem'] = $this->productmodel->featured_item();
-        $data['category'] = $this->productmodel->category_list();
-        $data['categoryId'] = $this->productmodel->category_list_id($id);
-        $data['product'] = $this->productmodel->get_product($id);
-        //var_dump($data);
-        $data['slider_json'] = json_encode($data['featureItem']);
-        $this->load->view('templates/header');
-=======
-    
     function category($id)
     {
         $data['headertitle']= $this->viewmodel->get_header_title();          
@@ -357,7 +311,7 @@ class View extends CI_Controller {
           //var_dump($data);
            $data['slider_json'] = json_encode($data['featureItem']);
         $this->load->view('templates/header', $data);
->>>>>>> e63b96a3010d24d007c95e6473a7341a696248a9
+
         $this->load->view('templates/navigation');
 
         $this->load->view('templates/category_page', $data);
@@ -367,38 +321,21 @@ class View extends CI_Controller {
         $this->load->view('templates/footer');
     }
 
-<<<<<<< HEAD
-    function page($id) {
-        $data['product_info'] = $this->productmodel->product_info();
 
-        $data['featureItem'] = $this->productmodel->featured_item();
-        $data['category'] = $this->productmodel->category_list();
-        // $data['categoryId'] = $this->productmodel->category_list_id($id);
-        //  $data['category'] = $this->productmodel->category_list_id();
-        //var_dump($data);
-        $data['get_page'] = $this->productmodel->get_page($id);
-        $data['slider_json'] = json_encode($data['featureItem']);
-        $this->load->view('templates/header');
-=======
     function page($id)
     {
+        die($id);
         $data['headertitle']= $this->viewmodel->get_header_title();          
         $data['headerlogo']= $this->viewmodel->get_header_logo();         
         $data['meta'] = $this->dbmodel->get_meta_data();
         $data['headerdescription']= $this->viewmodel->get_header_description();
-        
-        
-         $data['product_info'] = $this->productmodel->product_info();
-        
+        $data['product_info'] = $this->productmodel->product_info();
           $data['featureItem'] = $this->productmodel->featured_item();
           $data['category'] = $this->productmodel->category_list();
-         // $data['categoryId'] = $this->productmodel->category_list_id($id);
-       //  $data['category'] = $this->productmodel->category_list_id();
-          //var_dump($data);
           $data['get_page'] = $this->productmodel->get_page($id);
            $data['slider_json'] = json_encode($data['featureItem']);
         $this->load->view('templates/header', $data);
->>>>>>> e63b96a3010d24d007c95e6473a7341a696248a9
+
         $this->load->view('templates/navigation');
 
         $this->load->view('templates/single_page', $data);
@@ -407,40 +344,8 @@ class View extends CI_Controller {
         $this->load->view('templates/sidebarview', $data);
         $this->load->view('templates/footer');
     }
-<<<<<<< HEAD
-
-    public function registeruser() {
-
-        $data['shiping'] = $this->productmodel->getship();
-
-        $this->load->view('templates/header');
-=======
-    public function registeruser()
-        {
-        
-        $data['headertitle']= $this->viewmodel->get_header_title();          
-        $data['headerlogo']= $this->viewmodel->get_header_logo();         
-        $data['meta'] = $this->dbmodel->get_meta_data();
-        $data['headerdescription']= $this->viewmodel->get_header_description();
-        
-        $data['shiping']=$this->productmodel->getship();
-        
-     $this->load->view('templates/header', $data);
->>>>>>> e63b96a3010d24d007c95e6473a7341a696248a9
-        $this->load->view('templates/navigation');
-        $this->load->view('templates/userRegistrationAndShipping', $data);
-        // $this->load->view('templates/cartLogin');
-        $this->load->view('templates/footer');
-    }
-
-    public function shippingAddress() {
-        $this->load->view('templates/header');
-        $this->load->view('templates/navigation');
-        $this->load->view('templates/shipping');
-        $this->load->view('templates/footer');
-    }
-
-    public function adduser() {
+    
+    function adduser() {
         $this->load->model('dbmodel');
         $this->load->helper('form');
         $this->load->library(array('form_validation', 'session'));
@@ -522,7 +427,8 @@ class View extends CI_Controller {
         }
     }
 
-}
+
+
 
 /* End of file welcome.php */
 /* Location: ./application/controllers/welcome.php */

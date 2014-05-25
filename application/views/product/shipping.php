@@ -22,7 +22,7 @@
 
 
 <p>Shipping Charges:
-<input type="text" name="shipping_charge" size="2" value="<?php  ?>" required/> %</p>
+<input type="text" name="shipping_charge" size="2" value="<?php  ?>" required/> </p>
 
 
 

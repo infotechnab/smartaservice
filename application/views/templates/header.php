@@ -12,27 +12,18 @@
  }
                      ?>
         <meta charset="utf-8">
-<<<<<<< HEAD
-        <title>  
-            <?php
-            if (isset($pageTitle)) {
-                echo $pageTitle.'-Smart Access Services';
-            } else {
-                $pageTitle = 'Smart access services';
-            }
-            ?>
-        </title> 
-        <script src="<?php echo base_url() . 'content/jquery.js'; ?>" type="text/javascript"></script>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <link rel="stylesheet" media="only screen" href="<?php echo base_url() . "content/uploads/styles/styles.css"; ?>" type="text/css">     
-        <link rel="shortcut icon" href="<?php echo base_url() . "content/images/menu.png"; ?>" type="image/x-icon"> 
 
-        <link rel="shortcut icon" href="<?php echo base_url() . "content/uploads/images/favicon1.jpg"; ?>" type="image/x-icon"> 
-=======
          <?php foreach ($headertitle as $header) {
                     ?>
-        <title><?php echo $header->description ; ?></title>
+        <?php $pageTitle =  $header->description ; ?>
 <?php } ?>
+        <title> <?php if(isset($pageTitle))
+        {
+            echo $pageTitle;
+        }
+        else{
+            echo $pageTitle = "Smart Access Services ";
+        }?>  </title>
         <script src="<?php echo base_url() . 'content/jquery.js'; ?>" type="text/javascript"></script>
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <link rel="stylesheet" media="only screen" href="<?php echo base_url() . "content/uploads/styles/styles.css"; ?>" type="text/css">     
@@ -40,7 +31,7 @@
         
         <link rel="shortcut icon" href="<?php echo base_url() . "content/uploads/images/favicon1.jpg"; ?>" type="image/x-icon"> 
         <script src="<?php echo base_url() . 'content/uploads/scripts/jquery-placeholder.js'; ?>" type="text/javascript"></script>
->>>>>>> e63b96a3010d24d007c95e6473a7341a696248a9
+
 
 
 
@@ -66,9 +57,7 @@
                     <div id="headerLogoContent">
                         <h1><?php echo $header->description ; ?></h1>
                     </div>
-<<<<<<< HEAD
 
-=======
                     <?php } ?>  
->>>>>>> e63b96a3010d24d007c95e6473a7341a696248a9
+
                     <div class="clear"></div>

@@ -179,8 +179,8 @@ if (!empty($detail)) {
 
                     </tr>
                     <tr>
-                        <td><input type="text" name="District_address" value="<?php echo $state; ?>" placeholder="District/ State" size="20" class="placeholder" required/></td>
-                        <td><input type="text" name="zip" value="<?php echo $zip; ?>" placeholder="zip" size="20" class="placeholder" required/></td>
+                        <td><input type="text" name="District_address" value="<?php echo $state; ?>" placeholder="State" size="20" class="placeholder" required/></td>
+                        <td><input type="text" name="zip" value="<?php echo $zip; ?>" placeholder="Post Code" size="20" class="placeholder" required/></td>
                     </tr>
                     <tr>
                         <td colspan="2"><input type="text" name="country" value="<?php echo $country; ?>" placeholder="Country" size="47" class="placeholder" required/></td>
