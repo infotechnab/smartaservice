@@ -4,7 +4,7 @@
                     <li class="mainMenuItem"> <a href="#">Product</a>
                         <ul class="subMenu">
                             <li><?php echo anchor('bnw/product', 'Add New Product') ?></li>
-                            <li><?php echo anchor('bnw/productList', 'List All Products') ?></li>
+                            <li><?php echo anchor('bnw/productList', 'Products') ?></li>
                            <li><?php echo anchor('bnw/disproduct', 'Sale Info') ?></li>
                             <li><?php echo anchor('bnw/productShipping', 'Shipping ') ?></li>
                             <li><?php echo anchor('bnw/coupon', 'Create Coupon ') ?></li>
@@ -20,12 +20,12 @@
                             <li><?php echo anchor('bnw/category', 'Categories') ?></li>
                         </ul>
                     </li>
-                     <li class="mainMenuItem"><a href="#">Posts</a>
+<!--                     <li class="mainMenuItem"><a href="#">Posts</a>
                         <ul class="subMenu">
-                            <li><?php echo anchor('bnw/posts', 'All Posts') ?></li>
-                            <li><?php echo anchor('bnw/addpost', 'Add New Post') ?></li>
+                            <li><?php //echo anchor('bnw/posts', 'All Posts') ?></li>
+                            <li><?php //echo anchor('bnw/addpost', 'Add New Post') ?></li>
                         </ul>
-                    </li>
+                    </li>-->
                     <li class="mainMenuItem"><a href="#">Pages</a>
                         <ul class="subMenu">
                             <li><?php echo anchor('bnw/pages', 'All Pages') ?></li>
@@ -39,18 +39,18 @@
                             <li><?php echo anchor('bnw/profile', 'My Profile') ?></li>
                         </ul>
                     </li>
-                    <li class="mainMenuItem"><a href="#">Media</a>
+<!--                    <li class="mainMenuItem"><a href="#">Media</a>
                         <ul class="subMenu">
-                            <li><?php echo anchor('bnw/media', 'Library') ?></li>
-                            <li><?php echo anchor('bnw/addmedia', 'Add New') ?></li>                           
+                            <li><?php //echo anchor('bnw/media', 'Library') ?></li>
+                            <li><?php //echo anchor('bnw/addmedia', 'Add New') ?></li>                           
                         </ul>
                     </li>
                     <li class="mainMenuItem"><a href="#">Social Share</a>
                         <ul class="subMenu">
-                            <li><?php echo anchor('social_share', 'Accounts') ?></li>
+                            <li><?php //echo anchor('social_share', 'Accounts') ?></li>
                             
                         </ul>
-                    </li>
+                    </li>-->
                     <li class="mainMenuItem"><a href="#">Settings</a>
                         <ul class="subMenu">
                             <li><?php echo anchor('bnw/header', 'Header') ?></li>
@@ -62,19 +62,19 @@
                         </ul>
                     </li>
                     
-                    <li class="mainMenuItem"><a href="#">Album</a>
+<!--                    <li class="mainMenuItem"><a href="#">Album</a>
                         <ul class="subMenu">
-                            <li><?php echo anchor('bnw/addalbum', 'Add New') ?></li>
+                            <li><?php //echo anchor('bnw/addalbum', 'Add New') ?></li>
                             
                         </ul>
                     </li>
                     
                     <li class="mainMenuItem"><a href="#">Slider</a>
                         <ul class="subMenu">
-                            <li><?php echo anchor('bnw/addslider', 'Add New') ?></li>
-                            <li><?php echo anchor('bnw/slider', 'View All Slider') ?></li>
+                            <li><?php //echo anchor('bnw/addslider', 'Add New') ?></li>
+                            <li><?php //echo anchor('bnw/slider', 'View All Slider') ?></li>
                         </ul>
-                    </li>                    
+                    </li>                    -->
                    
                </ul>   
             </div>

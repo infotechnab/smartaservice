@@ -6,7 +6,7 @@
   {
      echo $error;
   }
-        if(isset($query)){
+        if(!empty($query)){
             foreach ($query as $data){
             $id = $data->id;
             $name= $data->name;
@@ -22,10 +22,8 @@
             $share= $data->share;
            
             //$listOfCategory = $this->dbmodel->get_list_of_category();
-       }
-        }
-    ?>
-   <div class="titleArea">
+       } ?>
+        <div class="titleArea">
      <h2>Edit Product</h2>
 <hr class="hr-gradient"/>   
     </div> 
@@ -116,6 +114,13 @@
   <?php echo form_close();?>
     
 <p><b>Note:</b> Max file size: 500KB, Max Width: 1024px, Max Height: 768px </p>
+     <?php    }
+    else {
+    echo " Contant not found! ";    
+    }
+     
+    ?>
+  
   
 </div>
 <div class="clear"></div>

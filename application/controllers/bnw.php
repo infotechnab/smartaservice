@@ -58,9 +58,9 @@ class bnw extends CI_Controller {
             'coupon' => $_POST['coupon'],
             'subtotal' => $_POST['subtotal']
                     );
-                    print_r($data['abc']);
+                   // print_r($data['abc']);
         
-        $key = $_POST['id'];
+        $key = $_POST['coupon'];
         $today = date("Y-m-d");
         $token = $this->dbmodel->getdate($key);
         if(!empty($token))
@@ -76,7 +76,8 @@ class bnw extends CI_Controller {
             {
                 $disRate = $rate->rate;
             }
-            echo '<script> var rate ='.$disRate.'</script> <p> You have a discount '.$disRate.' % </p> ';
+            echo '<script> var rate ='.$disRate.'; </script> 
+<p> You have a discount '.$disRate.' % </p> ';
        
             }
             else{

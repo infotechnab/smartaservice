@@ -77,6 +77,7 @@ class View extends CI_Controller {
             $price = $prod->price;
             $desc = $prod->description;
             $image1 = $prod->image1;
+            $shiping = $prod->shiping;
             
         }
         $newQnt = 1;
@@ -101,7 +102,8 @@ class View extends CI_Controller {
             'price' => $price,
             'name' => $name,
             'desc' =>$desc,
-            'image1' => $image1
+            'image1' => $image1,
+            'shiping'=>$shiping
         );
         $this->cart->insert($insert);
         $this->load->view('templates/cart');
@@ -175,7 +177,7 @@ class View extends CI_Controller {
      $this->load->view('templates/header');
         $this->load->view('templates/navigation');
         $this->load->view('templates/userRegistrationAndShipping',$data);
-        $this->load->view('templates/cartLogin');
+       // $this->load->view('templates/cartLogin');
         $this->load->view('templates/footer');
 }
 public function shippingAddress()

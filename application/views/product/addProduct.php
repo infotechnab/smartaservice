@@ -14,7 +14,7 @@
  <p> Description : <br/>
 <textarea name="pDescription" id="area1" cols="50" rows="5" ><?php echo set_value('pDescription'); ?></textarea> </p>
  <p>Price:<br />
-      <input type="text" name="pPrice" /> </p>
+      <input type="number" name="pPrice" min="1" /> </p>
 
  <p> Select Category : <br/>
      

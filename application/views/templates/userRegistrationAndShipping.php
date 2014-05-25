@@ -10,12 +10,22 @@ if (!empty($shiping)) {
     $cost = 0;
 }
 ?>
+ <?php if ($cart = $this->cart->contents()) { ?>
+            <?php foreach ($cart as $item) { 
+                    $ship = $item['shiping'];
+                   if($ship =='enabled') 
+                   {
+                       $shiping_cost = TRUE;
+                        break;
+                   }
+                  
+             } }?>
 
 <script>
 
     $(document).ready(function() {
         $(function() {
-            var shiping = parseInt("<?php echo $cost; ?>");
+            var shiping = parseInt("<?php if(isset($shiping_cost)==true){ echo $cost;}else{$cost = 0 ;} ?>");
             $('#cost').html(shiping);
             ship(shiping);
         });
@@ -43,23 +53,24 @@ if (!empty($shiping)) {
 
 
     function ship(shiping) {
-
         var price = parseInt("<?php echo $this->cart->total(); ?>");
         var total = price + shiping;
         // alert(shiping);
         $('#test').html(total);
+        
     }
 
     //document.getElementById("test").innerHTML = total;
 </script>
+
 <script>
     var base_url = '<?php echo base_url(); ?>';
     $(document).ready(function() {
-        $('#checkkey').click(function() {
+        $('.checkkey').click(function() {
             var key = $('#couponkey').val();
             var subtotal = parseInt("<?php echo $this->cart->total(); ?>");
-            //var dataString = 'id=' + key;
-             
+           // var dataString = 'id=' + key;
+             //alert('sdfdsf');
             $.ajax({
                 type: "POST",
                 url: base_url + 'index.php/bnw/checkcoupon',
@@ -70,7 +81,9 @@ if (!empty($shiping)) {
                 success: function(msgs)
                 {
                     $("#nfcoupon").html(msgs);
+                    disrate();
                 }
+                
             });
         });
 
@@ -79,6 +92,18 @@ if (!empty($shiping)) {
         });
 
     });
+
+function disrate(){
+    
+    var shiping = parseInt("<?php if(isset($shiping_cost)==true){ echo $cost;}else{$cost = 0 ;} ?>");
+     var price = parseInt("<?php echo $this->cart->total(); ?>");
+        var total = price + shiping;
+        
+        var dis = total * parseInt(rate)/100;
+      // var price = rate+'%';
+       $('#rate').html(rate+'%');
+        $('#test').html(dis);
+}
 
 </script>
 <style>
@@ -298,7 +323,7 @@ if (!empty($detail)) {
                <table>
                    <tr>
                        <td><input class="placeholder" size="22" type="text" name="couponkey" id="couponkey" placeholder="Type your key here" /></td>
-                       <td><input type="button" id="checkkey" value="Apply Coupon" style="padding: 5px; width: 100%; background-color: black;" class="updateBtnStyle" /></td>
+                       <td><input type="button" class="checkkey" value="Apply Coupon" style="padding: 5px; width: 100%; background-color: black;" class="updateBtnStyle" /></td>
                    </tr>
                </table>
                 
@@ -367,13 +392,7 @@ if (!empty($detail)) {
     <div id="login">
 
 
-        <div > <strong id="showcoupon">Click here to enter your coupon code</strong>
-            <div id="nfcoupon"></div>
-            <div id="coupontext" style="display:none;">
-                <input type="text" name="couponkey" id="couponkey" placeholder="type your key here" /> <br/>
-                <input type="button" id="checkkey" value="Apply Coupon" />
-            </div>
-        </div> 
+       
     
         <div id="leftRegister">
             <div id="RegisterLeft">
@@ -525,9 +544,12 @@ if (!empty($detail)) {
 
                         <th> </th>
                     </tr>
+                    
+                    
+                    
         <?php if ($cart = $this->cart->contents()) { ?>
             <?php foreach ($cart as $item) { ?>                                      
-
+                   
                             <tr>
 
                                 <td class="hide"><img class="hide" src="<?php echo base_url() . 'content/uploads//images/' . $item['image1']; ?>" height="50" width="50"> </td>
@@ -562,6 +584,17 @@ if (!empty($detail)) {
     ?>
 
             <h4>Cart Summary</h4>
+            <div id="coupontext" style="width: 96%; margin: 0px; padding: 2%;">
+               <div id="nfcoupon"></div>
+               <table>
+                   <tr>
+                       <td><input class="placeholder" size="22" type="text" name="couponkey" id="couponkey" placeholder="Type your key here" /></td>
+                       <td><input type="button" class="checkkey"  value="Apply Coupon" style="padding: 5px; width: 100%; background-color: black;" class="updateBtnStyle" /></td>
+                   </tr>
+               </table>
+                
+                 
+            </div>
             <div id="order_summary">
                 <table width="100%">
                     <tr class='amt_summary'>
@@ -570,12 +603,17 @@ if (!empty($detail)) {
                     </tr>
                     <tr class='amt_summary'>
                         <td class='txtright'>Shipping Cost:</td>
-                        <td id="cost"></td>
+                        <td id="cost"><?php if(isset($shiping_cost) == TRUE){
+                            echo $cost;
+                        }
+ else {
+    '0';
+ }?></td>
 
                     </tr>
                     <tr class='amt_summary'>
                         <td class='txtright'>Discount:</td>
-                        <td></td>
+                        <td id="rate"></td>
                     </tr>
                     <tr class='amt_summary'>
                         <td class='txtright'>Total:</td>
