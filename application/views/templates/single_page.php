@@ -89,7 +89,7 @@ $this->load->helper('currency');
             $name = "Sory the page not fount";
             $content = " ";
         }?>
-    <h3><?php echo $name; ?></h3>
+    <h3><?php echo $name; $pageTitle=$name; ?></h3>
 
 </div>
 <div class="contentContainer">

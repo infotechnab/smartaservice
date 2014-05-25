@@ -64,6 +64,12 @@ class Dbmodel extends CI_Model {
          $query = $this->db->get('coupon');
         return $query->result();
     }
+    
+    function get_coupon()
+    {
+         $query = $this->db->get('coupon');
+        return $query->result();
+    }
 
 
     function checkkey($id,$today)

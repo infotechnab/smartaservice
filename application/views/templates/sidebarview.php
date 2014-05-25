@@ -1,6 +1,6 @@
 <?php foreach ($category as $catList) {
     $category_id = $catList->id; ?>
-<div class="redColouredDiv" id='sidebarContent'><h3><?php echo $catList->category_name; ?></h3></div>
+<div class="redColouredDiv" id='sidebarContent'><h3><?php echo $catList->category_name;?></h3></div>
             <?php $catProduct = $this->productmodel->get_product($category_id);
  foreach ($catProduct as $product_list) {
                 ?>

@@ -52,6 +52,25 @@ $( "#datepicker" ).datepicker();
         <input type="submit" value="Create Copon" />
         <?php echo form_close(); ?>
     </div>
+    
+    <div>
+        <table>
+            <tr>
+            <th>Coupon Key </th>
+            <th>Discount rate</th>
+            <th>Expired Date</th>
+            </tr>
+        <?php foreach($coupon as $data){ ?>
+            <tr>
+                <td><?php echo $data->key; ?></td>
+                <td><?php echo $data->rate; ?></td>
+                <td><?php echo $data->exp_date; ?></td>
+            </tr>
+            <?php } ?>
+        </table>
+    </div>
+    
+    
  </div>
 <div class="clear"></div>
 </div>
