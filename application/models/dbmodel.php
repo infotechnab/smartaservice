@@ -858,7 +858,9 @@ public function get_navigation_info($navigationName)
     public function get_selected_user($useremail){
        $this->db->where('user_email', $useremail );
         $query = $this->db->get('user');
+      
         return $query->result();
+        
     }
     public function update_emailed_user($to, $token){
         $data = array(
@@ -902,7 +904,6 @@ public function get_navigation_info($navigationName)
     }  
     
     function find_user($email) {
-        $this->db->select();
 
        $this -> db -> from('user');
         $this->db->where('user_email', $email );

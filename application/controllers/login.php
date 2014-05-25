@@ -66,7 +66,7 @@ class Login extends CI_Controller {
             $this->load->view('bnw/templates/forgotPassword', $data);
             $this->load->view('bnw/templates/footer', $data);
         } else {
-            $this->session->set_flashdata('message', 'UIncorrect User Email');
+            $this->session->set_flashdata('message', 'Incorrect User Email');
             redirect('login/forgotPassword');
         }
     }
@@ -90,9 +90,9 @@ class Login extends CI_Controller {
             $this->mailresetlink($to, $token);
         } else {
             $this->session->set_flashdata('message', 'Please type valid Email Address');
-            redirect("login/forgotPassword");
+            redirect("view/forgotPassword");
         }
-        $this->load->view('bnw/templates/footer', $data);
+        $this->load->view('templates/footer');
     }
 
     public function test($token) {

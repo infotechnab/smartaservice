@@ -9,6 +9,8 @@ class CartDetails extends CI_Controller {
         parent::__construct();
         $this->load->library('session');
         $this->load->model('productmodel');
+         $this->load->model('dbmodel');
+          $this->load->model('viewmodel');
         $this->load->helper('url');
         $this->load->library('cart');
         $this->load->helper(array('form', 'url', 'date'));
@@ -19,7 +21,12 @@ class CartDetails extends CI_Controller {
 
     public function index() {
 
-        $this->load->view('templates/header');
+        $data['headertitle']= $this->viewmodel->get_header_title();          
+        $data['headerlogo']= $this->viewmodel->get_header_logo();         
+        $data['meta'] = $this->dbmodel->get_meta_data();
+        $data['headerdescription']= $this->viewmodel->get_header_description();
+        
+        $this->load->view('templates/header', $data);
         $this->load->view('templates/navigation');
 
         $this->load->view('templates/cartDetails');
@@ -41,7 +48,12 @@ class CartDetails extends CI_Controller {
     }
 
     function checkout() {
-        $this->load->view('templates/header');
+        $data['headertitle']= $this->viewmodel->get_header_title();          
+        $data['headerlogo']= $this->viewmodel->get_header_logo();         
+        $data['meta'] = $this->dbmodel->get_meta_data();
+        $data['headerdescription']= $this->viewmodel->get_header_description();
+        
+        $this->load->view('templates/header', $data);
         $this->load->view('templates/navigation');
 
         $this->load->view('templates/checkout_form');
@@ -77,6 +89,12 @@ class CartDetails extends CI_Controller {
     
     function login_insert_cart_item()
     {
+        $data['headertitle']= $this->viewmodel->get_header_title();          
+        $data['headerlogo']= $this->viewmodel->get_header_logo();         
+        $data['meta'] = $this->dbmodel->get_meta_data();
+        $data['headerdescription']= $this->viewmodel->get_header_description();
+        
+        
              $this->load->helper('form');
             $this->load->library(array('form_validation', 'session'));
             $this->form_validation->set_rules('u_name', 'User Name', 'required|xss_clean|max_length[200]');
@@ -94,7 +112,7 @@ class CartDetails extends CI_Controller {
             
             if ($this->form_validation->run() == FALSE) {
               
-                $this->load->view('templates/header');
+                $this->load->view('templates/header', $data);
         $this->load->view('templates/navigation');
         $this->load->view('templates/userRegistrationAndShipping');
         $this->load->view('templates/footer');
@@ -188,13 +206,17 @@ class CartDetails extends CI_Controller {
        VALUES ('".$oId."','" . $item['id'] . "', '" . $item['qty'] . "', '$tid', '$tr')");
             }
         }
-        
+        $this->email($tid, $username, $s_username  );
         $this->load->view('templates/inserted');
                 
         
             }
     }
 
+    
+    public function email(){
+     $this->load->view('templates/email');
+ }
     function insert_cart_item() {
         $this->load->model('dbmodel');
          $this->load->helper('form');
@@ -351,6 +373,11 @@ class CartDetails extends CI_Controller {
 
     function login()
     {
+        $data['headertitle']= $this->viewmodel->get_header_title();          
+        $data['headerlogo']= $this->viewmodel->get_header_logo();         
+        $data['meta'] = $this->dbmodel->get_meta_data();
+        $data['headerdescription']= $this->viewmodel->get_header_description();
+        
          $this->load->library('form_validation');
         $this->form_validation->set_rules('email', 'Email', 'trim|required|xss_clean');
         $this->form_validation->set_rules('pass', 'Password', 'trim|required|xss_clean|callback_check_database');
@@ -363,7 +390,7 @@ class CartDetails extends CI_Controller {
                              if(!empty($data['detail']))
                          { 
                                   $data['shiping']=$this->productmodel->getship();
-               $this->load->view('templates/header');
+               $this->load->view('templates/header', $data);
         $this->load->view('templates/navigation');
         $this->load->view('templates/userRegistrationAndShipping',$data);       
         $this->load->view('templates/footer');     

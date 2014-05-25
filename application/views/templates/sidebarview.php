@@ -29,7 +29,7 @@
                 <div class='sidebarContentNext'></div>
 
 <?php } ?>
- <div class="clear"> </div>
+
         </div>  
        
  </div> 

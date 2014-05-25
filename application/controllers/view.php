@@ -9,18 +9,34 @@ class View extends CI_Controller {
         parent::__construct();
 
         $this->load->model('productmodel');
+         $this->load->model('viewmodel');
+          $this->load->model('dbmodel');
         $this->load->helper('url');
         $this->load->library('cart');
         $this->load->helper(array('form', 'url', 'date'));
     }
 
     public function index() {     //fetching data from database of the product
+<<<<<<< HEAD
         $data['pageTitle'] = "Smart Access Services";
         $data['product_info'] = $this->productmodel->product_info();
         $data['featureItem'] = $this->productmodel->featured_item();
         $data['category'] = $this->productmodel->category_list();
         //var_dump($data);
         $data['slider_json'] = json_encode($data['featureItem']);
+=======
+        
+      
+        $data['headertitle']= $this->viewmodel->get_header_title();          
+        $data['headerlogo']= $this->viewmodel->get_header_logo();         
+        $data['meta'] = $this->dbmodel->get_meta_data();
+        $data['headerdescription']= $this->viewmodel->get_header_description();
+        $data['product_info'] = $this->productmodel->product_info();     
+          $data['featureItem'] = $this->productmodel->featured_item();
+          $data['category'] = $this->productmodel->category_list();
+          //var_dump($data);
+           $data['slider_json'] = json_encode($data['featureItem']);
+>>>>>>> e63b96a3010d24d007c95e6473a7341a696248a9
         $this->load->view('templates/header', $data);
         $this->load->view('templates/navigation');
 
@@ -31,6 +47,7 @@ class View extends CI_Controller {
         $this->load->view('templates/footer');
     }
 
+<<<<<<< HEAD
     public function details($id=0) {        
         $data['product_info'] = $this->productmodel->product_info();
         $data['featureItem'] = $this->productmodel->featured_item();
@@ -49,6 +66,193 @@ class View extends CI_Controller {
             $this->load->view('templates/footer');
         } else {
             redirect();
+=======
+ public function error(){
+     $data['headertitle']= $this->viewmodel->get_header_title();          
+        $data['headerlogo']= $this->viewmodel->get_header_logo();         
+        $data['meta'] = $this->dbmodel->get_meta_data();
+        $data['headerdescription']= $this->viewmodel->get_header_description();
+            
+            $data['product_info'] = $this->productmodel->product_info();
+        
+          $data['featureItem'] = $this->productmodel->featured_item();
+          $data['category'] = $this->productmodel->category_list();
+            
+            //$data['product'] = $this->productmodel->getProductById($id);
+           
+            $this->load->view('templates/header', $data);
+                $this->load->view('templates/navigation');
+                $this->load->view('templates/error_landing_page');
+                $this->load->view('templates/cart');
+                 $this->load->view('templates/sidebarview',$data);
+                $this->load->view('templates/footer');
+ 
+ }
+
+ public function forgotPassword(){
+     $data['headertitle']= $this->viewmodel->get_header_title();          
+        $data['headerlogo']= $this->viewmodel->get_header_logo();         
+        $data['meta'] = $this->dbmodel->get_meta_data();
+        
+        $data['headerdescription']= $this->viewmodel->get_header_description();         
+            $this->load->view('templates/header', $data);
+            $this->load->view('templates/forgot_password');
+            $this->load->view('templates/footer');
+ }
+
+ public function authenticate_user(){
+     
+     $useremail = $_POST['email'];
+     
+     $username = $this->dbmodel->get_selected_user($useremail);
+
+        foreach ($username as $dbemail) {
+            $to = $dbemail->user_email;
+        }
+        if ($to == $useremail) {
+            $token = $this->getRandomString(10);
+            $this->dbmodel->update_emailed_user($to, $token);
+            $this->test($token);
+
+           // $this->mailresetlink($to, $token);
+        } else {
+            $this->session->set_flashdata('message', 'Please type valid Email Address');
+            redirect("view/forgotPassword");
+        }
+ }
+    public function test($token) {
+
+        $data['query'] = $this->dbmodel->find_user_auth_key($token);
+        $data['headertitle']= $this->viewmodel->get_header_title();          
+        $data['headerlogo']= $this->viewmodel->get_header_logo();         
+        $data['meta'] = $this->dbmodel->get_meta_data();
+        $data['headerdescription']= $this->viewmodel->get_header_description();         
+            $this->load->view('templates/header', $data);
+        $this->load->view('templates/messageSent', $data);
+        $this->load->view('templates/footer');
+        
+       
+    }
+
+    function getRandomString($length) {
+        $validCharacters = "ABCDEFGHIJKLMNPQRSTUXYVWZ123456789";
+        $validCharNumber = strlen($validCharacters);
+        $result = "";
+
+        for ($i = 0; $i < $length; $i++) {
+            $index = mt_rand(0, $validCharNumber - 1);
+            $result .= $validCharacters[$index];
+        }
+        return $result;
+    }
+
+    function mailresetlink($to, $token) {
+        $to;
+        $uri = 'http://' . $_SERVER['HTTP_HOST'];
+        $subject = "This is subject";
+        $message = '
+    <html>
+    <head>
+    <title>Password reset link</title>
+    </head>
+    <body>
+    <p>Click on the given link to reset your password <a href="' . $uri . '/reset.php?token=' . $token . '">Reset Password</a></p>
+
+    </body>
+    </html>';
+        $header = 'From: admin<info@smartaservices.com>' . "\r\n";
+        $retval = mail($to, $subject, $message, $header);
+        if ($retval == true) {
+            echo "Email sent successfully...";
+        } else {
+            echo "Message could not be sent...";
+        }
+    }
+
+    public function resetPassword() {
+ 
+        $data['headertitle']= $this->viewmodel->get_header_title();          
+        $data['headerlogo']= $this->viewmodel->get_header_logo();         
+        $data['meta'] = $this->dbmodel->get_meta_data();
+        $data['headerdescription']= $this->viewmodel->get_header_description();         
+            
+
+        if (isset($_GET['resetPassword']))
+            $a = $_GET['resetPassword'];
+
+        $data['query'] = $this->dbmodel->find_user_auth_key($a);
+        var_dump($data['query']);
+        if ($data['query']) {
+           $this->load->view('templates/header', $data);
+            $this->load->view("templates/resetPassword", $data);
+            
+            $this->load->view('templates/footer');
+        } else {
+            $this->load->view('templates/header', $data);
+           
+            $this->load->view('templates/footer');
+        }
+    }
+
+    public function setpassword() {
+
+
+        $password = $_POST['user_pass'];
+        $email = $_POST['userEmail'];
+        //die($token);  
+        $confirmPassword = $_POST['user_confirm_pass'];
+        if ($password == $confirmPassword) {
+
+            $userPassword = $this->input->post('user_pass');
+
+            $this->dbmodel->update_user_password($email, $userPassword);
+            //$this->dbmodel->update_user_token($token);
+
+            $this->session->set_flashdata('message', 'Your password has been changed successfully');
+            redirect('view/index', 'refresh');
+        } else {
+
+            $this->session->set_flashdata('message', 'Password didnot match');
+            redirect('login/forgotPassword', 'refresh');
+        }
+    }
+
+ public function details($id){
+            $data['headertitle']= $this->viewmodel->get_header_title();          
+        $data['headerlogo']= $this->viewmodel->get_header_logo();         
+        $data['meta'] = $this->dbmodel->get_meta_data();
+        $data['headerdescription']= $this->viewmodel->get_header_description();
+            
+            $data['product_info'] = $this->productmodel->product_info();
+        
+          $data['featureItem'] = $this->productmodel->featured_item();
+          $data['category'] = $this->productmodel->category_list();
+            if(isset($id)){
+            $data['product'] = $this->productmodel->getProductById($id);
+           
+            $this->load->view('templates/header', $data);
+                $this->load->view('templates/navigation');
+                $this->load->view('templates/details', $data);
+                $this->load->view('templates/cart');
+                 $this->load->view('templates/sidebarview',$data);
+                $this->load->view('templates/footer');
+            }
+ else {
+                redirect();
+ }
+        }
+        
+        public function login(){
+            $data['headertitle']= $this->viewmodel->get_header_title();          
+        $data['headerlogo']= $this->viewmodel->get_header_logo();         
+        $data['meta'] = $this->dbmodel->get_meta_data();
+        $data['headerdescription']= $this->viewmodel->get_header_description();
+            
+            $this->load->view('templates/header', $data);
+                $this->load->view('templates/navigation');
+                $this->load->view('templates/login');      
+                $this->load->view('templates/footer');
+>>>>>>> e63b96a3010d24d007c95e6473a7341a696248a9
         }
     }
 
@@ -113,11 +317,17 @@ class View extends CI_Controller {
     }
 
     function cart_details() {   //function to goto cart details
-        $this->load->view('templates/header');
+        $data['headertitle']= $this->viewmodel->get_header_title();          
+        $data['headerlogo']= $this->viewmodel->get_header_logo();         
+        $data['meta'] = $this->dbmodel->get_meta_data();
+        $data['headerdescription']= $this->viewmodel->get_header_description();
+        
+        $this->load->view('templates/header', $data);
         $this->load->view('templates/navigation');
         $this->load->view('templates/cartDetails');
         $this->load->view('templates/footer');
     }
+<<<<<<< HEAD
 
     function category($id) {
         $data['product_info'] = $this->productmodel->product_info();
@@ -129,6 +339,25 @@ class View extends CI_Controller {
         //var_dump($data);
         $data['slider_json'] = json_encode($data['featureItem']);
         $this->load->view('templates/header');
+=======
+    
+    function category($id)
+    {
+        $data['headertitle']= $this->viewmodel->get_header_title();          
+        $data['headerlogo']= $this->viewmodel->get_header_logo();         
+        $data['meta'] = $this->dbmodel->get_meta_data();
+        $data['headerdescription']= $this->viewmodel->get_header_description();
+        
+          $data['product_info'] = $this->productmodel->product_info();
+        
+          $data['featureItem'] = $this->productmodel->featured_item();
+          $data['category'] = $this->productmodel->category_list();
+          $data['categoryId'] = $this->productmodel->category_list_id($id);
+          $data['product'] = $this->productmodel->get_product($id);
+          //var_dump($data);
+           $data['slider_json'] = json_encode($data['featureItem']);
+        $this->load->view('templates/header', $data);
+>>>>>>> e63b96a3010d24d007c95e6473a7341a696248a9
         $this->load->view('templates/navigation');
 
         $this->load->view('templates/category_page', $data);
@@ -138,6 +367,7 @@ class View extends CI_Controller {
         $this->load->view('templates/footer');
     }
 
+<<<<<<< HEAD
     function page($id) {
         $data['product_info'] = $this->productmodel->product_info();
 
@@ -149,6 +379,26 @@ class View extends CI_Controller {
         $data['get_page'] = $this->productmodel->get_page($id);
         $data['slider_json'] = json_encode($data['featureItem']);
         $this->load->view('templates/header');
+=======
+    function page($id)
+    {
+        $data['headertitle']= $this->viewmodel->get_header_title();          
+        $data['headerlogo']= $this->viewmodel->get_header_logo();         
+        $data['meta'] = $this->dbmodel->get_meta_data();
+        $data['headerdescription']= $this->viewmodel->get_header_description();
+        
+        
+         $data['product_info'] = $this->productmodel->product_info();
+        
+          $data['featureItem'] = $this->productmodel->featured_item();
+          $data['category'] = $this->productmodel->category_list();
+         // $data['categoryId'] = $this->productmodel->category_list_id($id);
+       //  $data['category'] = $this->productmodel->category_list_id();
+          //var_dump($data);
+          $data['get_page'] = $this->productmodel->get_page($id);
+           $data['slider_json'] = json_encode($data['featureItem']);
+        $this->load->view('templates/header', $data);
+>>>>>>> e63b96a3010d24d007c95e6473a7341a696248a9
         $this->load->view('templates/navigation');
 
         $this->load->view('templates/single_page', $data);
@@ -157,12 +407,26 @@ class View extends CI_Controller {
         $this->load->view('templates/sidebarview', $data);
         $this->load->view('templates/footer');
     }
+<<<<<<< HEAD
 
     public function registeruser() {
 
         $data['shiping'] = $this->productmodel->getship();
 
         $this->load->view('templates/header');
+=======
+    public function registeruser()
+        {
+        
+        $data['headertitle']= $this->viewmodel->get_header_title();          
+        $data['headerlogo']= $this->viewmodel->get_header_logo();         
+        $data['meta'] = $this->dbmodel->get_meta_data();
+        $data['headerdescription']= $this->viewmodel->get_header_description();
+        
+        $data['shiping']=$this->productmodel->getship();
+        
+     $this->load->view('templates/header', $data);
+>>>>>>> e63b96a3010d24d007c95e6473a7341a696248a9
         $this->load->view('templates/navigation');
         $this->load->view('templates/userRegistrationAndShipping', $data);
         // $this->load->view('templates/cartLogin');
