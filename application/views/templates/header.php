@@ -12,18 +12,10 @@
  }
                      ?>
         <meta charset="utf-8">
-
          <?php foreach ($headertitle as $header) {
                     ?>
-        <?php $pageTitle =  $header->description ; ?>
+        <title><?php echo $header->description ; ?></title>
 <?php } ?>
-        <title> <?php if(isset($pageTitle))
-        {
-            echo $pageTitle;
-        }
-        else{
-            echo $pageTitle = "Smart Access Services ";
-        }?>  </title>
         <script src="<?php echo base_url() . 'content/jquery.js'; ?>" type="text/javascript"></script>
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <link rel="stylesheet" media="only screen" href="<?php echo base_url() . "content/uploads/styles/styles.css"; ?>" type="text/css">     
@@ -32,10 +24,8 @@
         <link rel="shortcut icon" href="<?php echo base_url() . "content/uploads/images/favicon1.jpg"; ?>" type="image/x-icon"> 
         <script src="<?php echo base_url() . 'content/uploads/scripts/jquery-placeholder.js'; ?>" type="text/javascript"></script>
 
-
-
-
-
+        
+        
         <meta name="title" content="Smart Access Services">
         <meta name="description" content="Smart Access Services">
         <meta name="keywords" content="Shopping cart, Cart, Jackek, Smart Access Services">
@@ -57,7 +47,5 @@
                     <div id="headerLogoContent">
                         <h1><?php echo $header->description ; ?></h1>
                     </div>
-
                     <?php } ?>  
-
                     <div class="clear"></div>
