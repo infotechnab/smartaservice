@@ -342,7 +342,7 @@ if (!empty($detail)) {
                     </tr>
                     <tr class='amt_summary'>
                         <td class='txtright'>Discount:</td>
-                        <td></td>
+                        <td id="rate"></td>
                     </tr>
                     <tr class='amt_summary'>
                         <td class='txtright'><b>Grand Total:</b></td>
