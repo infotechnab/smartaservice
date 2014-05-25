@@ -3,9 +3,12 @@
     <div id="outerBorder">
         <div class="loginLeft">
             <p id="sucessmsg">
-<?php if($this->session->flashdata('message')){echo $this->session->flashdata('message');}
-    echo validation_errors(); ?> </p>
-            <?php echo form_open('cartdetails/login'); ?>
+                <?php if ($this->session->flashdata('message')) {
+                    echo $this->session->flashdata('message');
+                }
+                echo validation_errors();
+                ?> </p>
+<?php echo form_open('cartdetails/login'); ?>
             <table border="0" width="100%">
 
                 <tr style="text-align: center">
@@ -21,22 +24,25 @@
                 <tr><td></td></tr>
                 <tr><td></td></tr>
                 <tr style="text-align: center">
-                    <td><input type="submit" value="Sign In" style="padding: 5px; width: 80px; background-color: black;" class="updateBtnStyle" /></td>
+                    <td><input type="submit" value="Sign In" style="padding:12px 100px 12px 101px; background-color: black; font-weight: bold;" class="updateBtnStyle" /></td>
                 </tr>
                 <tr style="text-align: center">
                     <td><a href="forgotPassword"><p style="color: #000;">Forgot Password?</p></a></td>
                 </tr>
             </table>
-            <?php form_close(); ?>
+<?php form_close(); ?>
         </div>
         <div class="vertical-line">
             <div class="number" id='verticalOr'>OR</div>  
         </div>
         <div class="loginLeft">
             <p id="sucessmsg">
-<?php if($this->session->flashdata('message')){echo $this->session->flashdata('message');}
-    echo validation_errors(); ?> </p>
-            
+<?php if ($this->session->flashdata('message')) {
+    echo $this->session->flashdata('message');
+}
+echo validation_errors();
+?> </p>
+
             <table border="0" width="100%">
                 <tr style="text-align: center">
                     <td><h3>Don't have an account yet?</h3></td>
@@ -50,20 +56,20 @@
                 <tr><td></td></tr>
                 <tr><td></td></tr>
                 <tr style="text-align: center">
-                    <td><b><div class="updateBtnStyle" style="background:black; width: 28%; text-align: center; margin: 0 auto 0 auto;"><?php echo anchor('view/registeruser', 'Continue') ?></div></b></td>
+                    <td><b><div class="updateBtnStyle" style=" padding: 12px; width: 252px; background:black; text-align: center; margin: 0 auto 0 auto;"><?php echo anchor('view/registeruser', 'Register') ?></div></b></td>
                 </tr>
-               
-                             
+
+
             </table>
-            <?php ?>
-           
+<?php ?>
+
         </div>    
         <div class="clear"></div>
 
 
 
 
-        
+
     </div> 
 </div> 
 <div class="clear"></div>

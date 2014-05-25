@@ -94,10 +94,7 @@ $(document).ready(function() {
             data: dataString,
             success: function(msgs)
             {
-
                 $("#shopping_cart").html(msgs);
-
-
             },
             complete: function() {
                 $(".contentContainerBox").css("opacity","1.0");
@@ -110,15 +107,12 @@ $(document).ready(function() {
 
 });
 
-
 //for cart//
-
 $(document).ready(function() {
 
     //adding item to the cart...
 
     $(".addToCarts").live('click', function() {
-
         $('.slide').css({opacity: 0.3});
         var id = $(this).val();
         var dataString = 'itemid=' + id;
@@ -128,10 +122,7 @@ $(document).ready(function() {
             data: dataString,
             success: function(msgs)
             {
-
                 $("#shopping_cart").html(msgs);
-
-
             },
             complete: function() {
                 $('.slide').css({opacity: 1});
@@ -154,10 +145,7 @@ $(document).ready(function() {
                 data: dataString,
                 success: function(msgs)
                 {
-
                     $("#shopping_cart").html(msgs);
-
-
                 },
                 complete: function() {
 

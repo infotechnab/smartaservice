@@ -3,7 +3,7 @@
 if (!defined('BASEPATH'))
     exit('No direct script access allowed');
 
-class CartDetails extends CI_Controller {
+class Cartdetails extends CI_Controller {
 
     function __construct() {
         parent::__construct();
@@ -24,13 +24,10 @@ class CartDetails extends CI_Controller {
         $data['headertitle']= $this->viewmodel->get_header_title();          
         $data['headerlogo']= $this->viewmodel->get_header_logo();         
         $data['meta'] = $this->dbmodel->get_meta_data();
-        $data['headerdescription']= $this->viewmodel->get_header_description();
-        
+        $data['headerdescription']= $this->viewmodel->get_header_description();        
         $this->load->view('templates/header', $data);
         $this->load->view('templates/navigation');
-
-        $this->load->view('templates/cartDetails');
-
+        $this->load->view('templates/cartdetails');
         $this->load->view('templates/footer');
     }
 
@@ -39,12 +36,12 @@ class CartDetails extends CI_Controller {
             'rowid' => $rowid,
             'qty' => 0
         ));
-        redirect('cartDetails');
+        redirect('cartdetails');
     }
 
     function clear() {
         $this->cart->destroy();
-        redirect('cartDetails');
+        redirect('cartdetails');
     }
 
     function checkout() {
@@ -84,7 +81,7 @@ class CartDetails extends CI_Controller {
                 }
             }
         }
-        redirect('cartDetails');
+        redirect('cartdetails');
     }
     
     function login_insert_cart_item()
