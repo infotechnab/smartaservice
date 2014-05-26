@@ -244,6 +244,7 @@ $(document).ready(function() {
                 $(".contentContainerBox").css("opacity","1.0");
                 $(".contentContainerBottom").css("opacity","1.0")
                 $(".loadingImg").css("display","none");
+                $(this).parent().parent().parent().css("opacity","1");
             }
         });
 
