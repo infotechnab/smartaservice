@@ -731,7 +731,7 @@ class bnw extends CI_Controller {
     }
 
     public function menu_id_from_ajax() {
-        $this->load->helper('myHelper_helper');
+        $this->load->helper('myhelper_helper');
         $menu_id_next = ($_POST['menu_id_next']);
         fetch_menu(query(0));
     }
