@@ -242,6 +242,7 @@ class View extends CI_Controller {
             $price = $prod->price;
             $desc = $prod->description;
             $image1 = $prod->image1;
+            $shiping = $prod->shiping;
             
         }
         $newQnt = 1;
@@ -266,7 +267,8 @@ class View extends CI_Controller {
             'price' => $price,
             'name' => $name,
             'desc' =>$desc,
-            'image1' => $image1
+            'image1' => $image1,
+            'shiping' =>$shiping
         );
         $this->cart->insert($insert);
         $this->load->view('templates/cart');

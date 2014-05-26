@@ -12,7 +12,7 @@ if ($cart = $this->cart->contents()) {
 
         if (isset($item['shiping']) == 'enabled') {
             $shiping_cost = TRUE;
-            echo "shipping is enabled";
+            break;
         }
     }
 }
@@ -22,13 +22,8 @@ if ($cart = $this->cart->contents()) {
 
     $(document).ready(function() {
         $(function() {
-            var shiping = parseInt("<?php
-if (isset($shiping_cost) == true) {
-    echo $cost;
-} else {
-    $cost = 0;
-}
-?>");
+           var shiping = 0;
+           // alert(shiping);
             $('#cost').html(shiping);
             ship(shiping);
         });
@@ -54,6 +49,48 @@ if (isset($shiping_cost) == true) {
         
         //Toggle for Shipping option
            $('#myonoffswitch').click(function() {
+           var price = parseInt("<?php echo $this->cart->total(); ?>");
+             if($(this).is(':checked'))
+            {
+                var shiping = parseInt("<?php if (isset($shiping_cost) == TRUE) {  echo $cost; } else  {  echo  $cost = 0;}?>");
+                if(rate>0){
+                    
+                    var dis = price * parceInt(rate)/100;
+                    var total = price - dis;
+                    var grandtotal = total + shiping;
+                     $('#cost').html(shiping);
+                    $('#rate').html(rate+'%');
+                     $('#test').html(grandtotal);
+                }else{
+                        rate = 0;
+                     var grandtotal = price + shiping;
+                     $('#cost').html(shiping);
+                    $('#rate').html(rate+'%');
+                     $('#test').html(grandtotal);
+                }
+                
+                
+            }
+        else
+            {
+                 var shiping = 0;
+                if(rate>0){
+                    
+                    var dis = price * parceInt(rate)/100;
+                    var total = price - dis;
+                    var grandtotal = total + shiping;
+                     $('#cost').html(shiping);
+                    $('#rate').html(rate+'%');
+                     $('#test').html(grandtotal);
+                }else{
+                        rate = 0;
+                     var grandtotal = price + shiping;
+                     $('#cost').html(shiping);
+                    $('#rate').html(rate+'%');
+                     $('#test').html(grandtotal);
+                }
+            }
+           
            
             $('#shippingInfoTable').toggle();
             
@@ -68,9 +105,7 @@ if (isset($shiping_cost) == true) {
     }
 
     //document.getElementById("test").innerHTML = total;
-</script>
 
-<script>
     var base_url = '<?php echo base_url(); ?>';
     $(document).ready(function() {
         $('.checkkey').click(function() {
@@ -102,20 +137,19 @@ if (isset($shiping_cost) == true) {
 
     function disrate(){
     
-        var shiping = parseInt("<?php
-if (isset($shiping_cost) == true) {
-    echo $cost;
-} else {
-    $cost = 0;
-}
-?>");
+    
+        var shiping = parseInt("<?phpif (isset($shiping_cost) == true) {    echo $cost;} else {    $cost = 0;}?>");
         var price = parseInt("<?php echo $this->cart->total(); ?>");
-        var total = price + shiping;
+       // var total = price + shiping;
        
         if(rate>0)
         {
-            var dis = total * parseInt(rate)/100;
-            var grandtotal = total - dis;
+          //  if(('#myonoffswitch').is(':checked')){
+           //     alert('dsfdsfd');
+          //  }
+            var dis = price * parseInt(rate)/100;
+            var total = price - dis;
+            var grandtotal = total + shiping;
             // var price = rate+'%';
             $('#rate').html(rate+'%');
             $('#test').html(grandtotal);
@@ -130,6 +164,35 @@ if (isset($shiping_cost) == true) {
        
           
     }
+        
+        $('#userAdd').click(function(){
+              var username = $('#u_name').val();
+              var email = $('#email').val();
+              var pass = $('#u_pass').val();
+              var re_pass = $('#u_pass_re').val();
+            // var dataString = 'id=' + key;
+            //alert('sdfdsf');
+            if(pass == re_pass ){
+            $.ajax({
+                type: "POST",
+                url: base_url + 'index.php/bnw/checkcoupon',
+                data: {
+                    'name' : username,
+                    'subtotal' : subtotal
+                },
+                success: function(msgs)
+                {
+                    $("#nfcoupon").html(msgs);
+                    disrate();
+                }
+                
+            });
+            }
+            else{}
+        });
+
+
+
 
 </script>
 <style>
@@ -390,6 +453,7 @@ if (!empty($detail)) {
                 <div class="clear"></div>
                 <hr>
                 <p>Register yourself you are returning user. </p>
+                <div id="user_register_div"></div>
                 <div id="table_register" >
                     <table border="0" width="70%" >
                         <tr>
@@ -400,20 +464,20 @@ if (!empty($detail)) {
                             <td colspan="2"><p style="margin: 0px; padding: 2px;">User Name</p></td>
                         </tr>
                         <tr>
-                            <td colspan="2" ><input type="text" name="u_name" placeholder="User Name" size="47" class="placeholder" /></td>
+                            <td colspan="2" ><input type="text" id="u_name" name="u_name" placeholder="User Name" size="47" class="placeholder" /></td>
                         </tr>
                         <tr>
                             <td colspan="2"><p style="margin: 0px; padding: 2px;">Email</p></td>
                         </tr>
                         <tr>
-                            <td colspan="2"><input type="email" name="u_email" placeholder="Email" size="47" class="placeholder" /></td>
+                            <td colspan="2"><input type="email" id="email" name="u_email" placeholder="Email" size="47" class="placeholder" /></td>
                         </tr>
                         <tr>
                             <td colspan="2"><p style="margin: 0px; padding: 2px;">Password</p></td>
                         </tr>
                         <tr>
-                            <td><input type="password" name="u_pass" placeholder="Password"  class="placeholder" /></td>
-                            <td ><input type="password" name="u_pass" placeholder="Confirm Password"  class="placeholder" /></td>
+                            <td><input type="password" name="u_pass" id="u_pass" placeholder="Password"  class="placeholder" /></td>
+                            <td ><input type="password" name="u_pass_re" id="u_pass_re" placeholder="Confirm Password"  class="placeholder" /></td>
                         </tr> 
                         <tr>
                             <td colspan="2">
@@ -424,7 +488,7 @@ if (!empty($detail)) {
                             <td colspan="2">
 
                                 <!-- Add Ajax method to add user into database on this button click  -->
-                                <input type="button" value="Register" size="47" style="padding:12px 125px 12px 125px; text-align: center; background-color: black; font-weight: bold;" class="updateBtnStyle" />
+                                <input id="userAdd" type="button" value="Register" size="47" style="padding:12px 125px 12px 125px; text-align: center; background-color: black; font-weight: bold;" class="updateBtnStyle" />
 
                             </td>
                         </tr>

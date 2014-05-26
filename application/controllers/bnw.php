@@ -203,7 +203,7 @@ class bnw extends CI_Controller {
 
                 //for cropper
                 //require_once(APPPATH.'Imagemanipulator.php');
-                include_once 'Imagemanipulator.php';
+                include_once 'imagemanipulator.php';
 
                 $manipulator = new ImageManipulator($_FILES['myfile']['tmp_name']);
                 $width = $manipulator->getWidth();
@@ -233,7 +233,7 @@ class bnw extends CI_Controller {
                     
                     //for cropper
                 //require_once(APPPATH.'Imagemanipulator.php');
-                include_once 'Imagemanipulator.php';
+                include_once 'imagemanipulator.php';
 
                 $manipulator = new ImageManipulator($_FILES['myfileTwo']['tmp_name']);
                 $width = $manipulator->getWidth();
@@ -260,7 +260,7 @@ class bnw extends CI_Controller {
                     $data = array('upload_data' => $this->upload->data('myfileThree'));
                     $productImgThree = $data['upload_data']['file_name'];
                     
-                    include_once 'Imagemanipulator.php';
+                    include_once 'imagemanipulator.php';
 
                 $manipulator = new ImageManipulator($_FILES['myfileThree']['tmp_name']);
                 $width = $manipulator->getWidth();
