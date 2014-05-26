@@ -201,7 +201,7 @@ $(document).ready(function(){
                  // var msg = email+" is now registred!";
                   $("#msg").html(msgs);
                  //alert('sdfdsf');
-                 ajaxEmail();
+                // ajaxEmail();
                  // $("#email").html(email);
                   }
                    
