@@ -207,16 +207,15 @@ class Login extends CI_Controller {
         $pass = $_POST['pass'];
         $check = $this->dbmodel->check_data($email);
          if ($check > 0) { //if the data exists show error message
-              $arr = array(
-             'success'=>false,
-                 'errors'=>'This email is already registred!'
-                  );
-           echo json_encode($arr);
-         
+            
+             return FALSE;
+           // echo "Email already registerd";         
                            
          }
       else {
-               echo " ldsjf";     
+          $registred = $this->dbmodel->add_ajax_user($user,$email, $pass);
+          echo '<script > var email = '.$email.' ; </script> <p style="color:"> '.$email.' is now registred </p>';
+              // echo $email." is now registred  ";     
         }
     }
 }

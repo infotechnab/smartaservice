@@ -1579,4 +1579,19 @@ function delete_favicone($id) {
         }
     }
     
+     public function add_ajax_user($name,$email, $pass)
+    {   
+         $user_type = 1;
+          $pass = md5($pass);      
+        $data = array(
+            'user_name'=>$name,
+            
+            'user_email'=> $email,
+            'user_pass'=> $pass,
+            
+            'user_type'=> $user_type );
+         $this->db->insert('user', $data); 
+         
+    }
+    
        }

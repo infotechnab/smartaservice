@@ -176,8 +176,8 @@ $(document).ready(function(){
        var email = $('#email').val();
         var pass = $('#u_pass').val();
         var re_pass = $('#u_pass_re').val();
-        
-        if(pass==re_pass){
+        if(pass !=="" || pass==!null){
+        if(pass==re_pass ){
            // alert('sdfdf');
               $.ajax({
                 type: "POST",
@@ -190,26 +190,43 @@ $(document).ready(function(){
                 
                 success: function(msgs)
                 {
-                     alert(msgs.errors);
-                    if(msgs.success==false)
-                        {
-                            $("#msg").html(msgs.errors); 
-                        }
+                  if(msgs == false){
+                      //alert('message');
+                      var msg = "Email already registred!";
+                      $("#msg").html(msg);
+                  }
+                 else
+                  {
+                  $('#table_user').css("display", "none");
+                 // var msg = email+" is now registred!";
+                  $("#msg").html(msgs);
+                 //alert('sdfdsf');
+                 ajaxEmail();
+                 // $("#email").html(email);
+                  }
                    
-                  //  $('#table_user').css("display", "none");
-                  //  $("#msg").html(msgs);
-                      
                 }
-                
-            });
+              });
         }
         else
             {
                  var msg = "Password not matched!";
                $('#msg').html(msg);
             }
-        });
+        }
+        else{
+             var msg = "Fill up password field!";
+               $('#msg').html(msg);
+        }
+        }); 
 });
+
+function ajaxEmail()
+{
+    alert('working');
+   // alert(email);
+}
+
 
 </script>
 <style>
@@ -360,7 +377,7 @@ if (!empty($detail)) {
                         <td colspan="2"><p style="margin: 0px; padding: 2px;">Email</p></td>
                     </tr>
                     <tr>
-                        <td colspan="2"><input type="email" name="s_email" placeholder="Email" size="47" class="placeholder" /></td>
+                        <td colspan="2"><input type="email" name="s_email" placeholder="Email" size="47" class="placeholder" id="register_email" /></td>
                     </tr>
 
 
