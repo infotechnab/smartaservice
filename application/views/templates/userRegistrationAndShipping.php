@@ -51,6 +51,13 @@ if (isset($shiping_cost) == true) {
             $('#table_register').toggle();
             // alert('sdfdf');
         });
+        
+        //Toggle for Shipping option
+           $('#myonoffswitch').click(function() {
+           
+            $('#shippingInfoTable').toggle();
+            
+        });
     });
     function ship(shiping) {
         var price = parseInt("<?php echo $this->cart->total(); ?>");
@@ -163,7 +170,7 @@ if (!empty($detail)) {
         <div id="leftRegister">
             <div id="RegisterLeft">
 
-                <table border="0" width="77%">
+                <table border="0" width="70%">
                     <tr>
                         <td colspan="2"><h3 style="margin: 0px 0px 10px 0px; padding: 2px;">Personal Details</h3></td>
 
@@ -226,7 +233,7 @@ if (!empty($detail)) {
 
             <div id="RegisterRight">
 
-                <table border="0" width="68%">
+                <table border="0" width="70%">
 
                     <tr>
                         <td><p style="margin: 0px; padding: 2px;">First Name</p></td>
@@ -247,8 +254,8 @@ if (!empty($detail)) {
 
                     </tr>
                     <tr>
-                        <td><input type="text" name="s_state" placeholder="District/ State" size="20" class="placeholder" /></td>
-                        <td><input type="text" name="s_zip" placeholder="zip" size="20" class="placeholder" /></td>
+                        <td><input type="text" name="s_state" placeholder="State" size="20" class="placeholder" /></td>
+                        <td><input type="text" name="s_zip" placeholder="post code " size="20" class="placeholder" /></td>
                     </tr>
                     <tr>
                         <td colspan="2"><input type="text" name="country" placeholder="Country" size="47" class="placeholder" /></td>
@@ -361,24 +368,83 @@ if (!empty($detail)) {
     echo form_open('cartdetails/insert_cart_item');
     ?>
     <p id="sucessmsg">
-        <?php
-        if ($this->session->flashdata('message')) {
-            echo $this->session->flashdata('message');
-        }
-        echo validation_errors();
-        ?> </p>
+    <?php
+    if ($this->session->flashdata('message')) {
+        echo $this->session->flashdata('message');
+    }
+    echo validation_errors();
+    ?> </p>
     <div id="login">
         <div id="leftRegister">
-            
+
             <div id="RegisterLeft">
-                <table border="0" width="77%">
+                <h3 style="margin: 0px 0px 10px 0px; padding: 2px; float: left; width: 55%">User Registration (Optional)</h3>
+<!--<div class="onoffswitch" style="float: right;">
+                <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="myonoffswitch" checked>
+                <label class="onoffswitch-label" for="myonoffswitch">
+                    <span class="onoffswitch-inner"></span>
+                    <span class="onoffswitch-switch"></span>
+                </label>
+                </div> -->
+
+                <div class="clear"></div>
+                <hr>
+                <p>Register yourself you are returning user. </p>
+                <div id="table_register" >
+                    <table border="0" width="70%" >
+                        <tr>
+                            <td colspan="2"></td>
+
+                        </tr>
+                        <tr>
+                            <td colspan="2"><p style="margin: 0px; padding: 2px;">User Name</p></td>
+                        </tr>
+                        <tr>
+                            <td colspan="2" ><input type="text" name="u_name" placeholder="User Name" size="47" class="placeholder" /></td>
+                        </tr>
+                        <tr>
+                            <td colspan="2"><p style="margin: 0px; padding: 2px;">Email</p></td>
+                        </tr>
+                        <tr>
+                            <td colspan="2"><input type="email" name="u_email" placeholder="Email" size="47" class="placeholder" /></td>
+                        </tr>
+                        <tr>
+                            <td colspan="2"><p style="margin: 0px; padding: 2px;">Password</p></td>
+                        </tr>
+                        <tr>
+                            <td><input type="password" name="u_pass" placeholder="Password"  class="placeholder" /></td>
+                            <td ><input type="password" name="u_pass" placeholder="Confirm Password"  class="placeholder" /></td>
+                        </tr> 
+                        <tr>
+                            <td colspan="2">
+
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">
+
+                                <!-- Add Ajax method to add user into database on this button click  -->
+                                <input type="button" value="Register" size="47" style="padding:12px 125px 12px 125px; text-align: center; background-color: black; font-weight: bold;" class="updateBtnStyle" />
+
+                            </td>
+                        </tr>
+
+                    </table>
+
+                </div>
+            </div>
+
+            <div id="RegisterLeft">
+                <h3 style="margin: 0px 0px 10px 0px; padding: 2px;">Personal Details</h3>
+                <hr>
+                <table border="0" width="70%">
                     <tr>
-                        <td colspan="2"><h3 style="margin: 0px 0px 10px 0px; padding: 2px;">Personal Details</h3></td>
+                        <td colspan="2"></td>
+
 
                     </tr>
-
                     <tr>
-                         <td colspan="2"><p style="margin: 0px; padding: 2px;">Full Name</p></td>
+                        <td colspan="2"><p style="margin: 0px; padding: 2px;">Full Name</p></td>
                     </tr>
                     <tr >
                         <td><input type="text" name="u_fname" placeholder="First Name" size="20" class="placeholder" required/></td>
@@ -406,25 +472,116 @@ if (!empty($detail)) {
                     <tr>
                         <td colspan="2"><input type="text" name="u_contact" placeholder="Contact Number" size="47" class="placeholder" required/></td>
                     </tr>
+
                     <tr>
-                        <td colspan="2"><p style="margin: 0px; padding: 2px;">Delivery Options</p></td>
+                        <td colspan="2"><p style="margin: 0px; padding: 2px;">Email</p></td>
                     </tr>
                     <tr>
-                        <td><input type="radio" name="pickup" onclick="handleClick(this);" class="pick" value="pickup" checked>Right to my address</td>
+                        <td colspan="2"><input type="email" name="s_email" placeholder="Email" size="47" class="placeholder" /></td>
+                    </tr>
+
+
+                </table>
+            </div> 
+
+            <style>
+             .onoffswitch {
+    position: relative; width: 85px;
+    -webkit-user-select:none; -moz-user-select:none; -ms-user-select: none;
+    }
+    .onoffswitch-checkbox {
+    display: none;
+    }
+    .onoffswitch-label {
+    display: block; overflow: hidden; cursor: pointer;
+    border: 2px solid #999999; border-radius: 13px;
+    }
+    .onoffswitch-inner {
+    display: block; width: 200%; margin-left: -100%;
+    -moz-transition: margin 0.3s ease-in 0s; -webkit-transition: margin 0.3s ease-in 0s;
+    -o-transition: margin 0.3s ease-in 0s; transition: margin 0.3s ease-in 0s;
+    }
+    .onoffswitch-inner:before, .onoffswitch-inner:after {
+    display: block; float: left; width: 50%; height: 25px; padding: 0; line-height: 25px;
+    font-size: 17px; color: white; font-family: Trebuchet, Arial, sans-serif; font-weight: bold;
+    -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box;
+    }
+    .onoffswitch-inner:before {
+    content: "ON";
+    padding-left: 8px;
+    background-color: #000405; color: #FFFFFF;
+    }
+    .onoffswitch-inner:after {
+    content: "OFF";
+    padding-right: 8px;
+    background-color: #EEEEEE; color: #999999;
+    text-align: right;
+    }
+    .onoffswitch-switch {
+    display: block; width: 17px; margin: 4px;
+    background: #FFFFFF;
+    border: 2px solid #999999; border-radius: 13px;
+    position: absolute; top: 0; bottom: 0; right: 56px;
+    -moz-transition: all 0.3s ease-in 0s; -webkit-transition: all 0.3s ease-in 0s;
+    -o-transition: all 0.3s ease-in 0s; transition: all 0.3s ease-in 0s;
+    }
+    .onoffswitch-checkbox:checked + .onoffswitch-label .onoffswitch-inner {
+    margin-left: 0;
+    }
+    .onoffswitch-checkbox:checked + .onoffswitch-label .onoffswitch-switch {
+    right: 0px;
+    }
+            </style>
+<script>
+    var currentValue = 0;
+    function handleClick(pickup) {
+        ('Old value:' + currentValue);
+        ('New value:' + pickup.value);
+        currentValue = pickup.value;
+        if (pickup.value === "shipDifferent") {
+
+            document.getElementById('RegisterRight').style.display = 'block';
+            document.getElementById('registeres').style.display = 'none';
+            document.getElementById('registereslast').style.display = 'block';
+        }
+        else
+        {
+            document.getElementById('RegisterRight').style.display = 'block';
+            document.getElementById('registeres').style.display = 'block';
+            document.getElementById('registereslast').style.display = 'none';
+        }
+    }
+    
+   
+</script>
+            
+
+            <div id="RegisterRight">
+                 <h3 style="width:40%; margin: 0px 0px 10px 0px; padding: 2px; float: left;">Shipping Options
+                </h3>
+                <div class="onoffswitch" style="float: right; margin-right: 20%">
+                <input type="checkbox" name="onoffswitch" onclick="myOnOffSwitch();" class="onoffswitch-checkbox" id="myonoffswitch" >
+                <label class="onoffswitch-label" for="myonoffswitch">
+                    <span class="onoffswitch-inner"></span>
+                    <span class="onoffswitch-switch"></span>
+                </label>
+                </div> 
+               
+                
+                 <div class="clear"></div>
+                
+
+                <hr>
+                <table id="shippingInfoTable" border="0" width="70%">
+                    
+                    <tr>
+                        <td><input type="radio" name="pickup" onclick="handleClick(this);" class="pick" value="pickup" checked>To above address</td>
                         <td id='shipenable' colspan="2">
                             <input type="radio"  name="pickup" class="ship" onclick="handleClick(this);" value="shipDifferent">To different address</td>
                     </tr>
-                    
-                </table>
-            </div>   
-            <div id="RegisterRight">
-                <table border="0" width="68%">
-                    <tr>
-                        <td colspan="2"><h3 style="margin: 0px 0px 10px 0px; padding: 2px;">Shipping Details</h3></td>
-                    </tr>
                     <tr>
                         <td colspan="2"><p style="margin: 0px; padding: 2px;">Full Name</p></td>
-                        
+
                     </tr>
                     <tr>
                         <td><input type="text" name="s_fname" placeholder="First Name" size="20" class="placeholder" /></td>
@@ -459,51 +616,23 @@ if (!empty($detail)) {
                     <tr>
                         <td colspan="2"><input type="email" name="s_email" placeholder="Email" size="47" class="placeholder" /></td>
                     </tr>
-                    
+
                 </table>
             </div> 
-            
-            <div id="RegisterLeft">
-                <h3 style="margin: 0px 0px 10px 0px; padding: 2px; float: left; width: 55%">User Registration (Optional)</h3>
-                <span href="" id="continueRegister">Register</span>
-                
-                <div class="clear"></div>
-                <p>Register yourself you are returning user. </p>
-                <div id="table_register" style="display: none;" >
-                    <table border="0" width="77%" >
-                        <tr>
-                        <td colspan="2"></td>
 
-                    </tr>
-                        <tr>
-                            <td colspan="2"><p style="margin: 0px; padding: 2px;">User Name</p></td>
-                        </tr>
-                        <tr>
-                            <td colspan="2" ><input type="text" name="u_name" placeholder="User Name" size="47" class="placeholder" /></td>
-                        </tr>
-                        <tr>
-                            <td colspan="2"><p style="margin: 0px; padding: 2px;">Email</p></td>
-                        </tr>
-                        <tr>
-                            <td colspan="2"><input type="email" name="u_email" placeholder="Email" size="47" class="placeholder" /></td>
-                        </tr>
-                        <tr>
-                            <td colspan="2"><p style="margin: 0px; padding: 2px;">Password</p></td>
-                        </tr>
-                        <tr>
-                            <td><input type="password" name="u_pass" placeholder="Password"  class="placeholder" /></td>
-                            <td ><input type="password" name="u_pass" placeholder="Confirm Password"  class="placeholder" /></td>
-                        </tr> 
-                         
-                    </table>
-                </div>
-            </div>
+
         </div>
         <div id="verticalline" style="width: 1px; min-height: 460px; background-color: #222; float: left;"></div>
         <div id="RegisterLeftCart">
+            <h3 style="width:40%; margin: 0px 0px 10px 0px; padding: 2px; float: left;">Shopping Detail
+                </h3>
             <?php if ($this->cart->contents()) { ?>
                 <div id="total_item"><h4 style="margin: 0px 0px 5px 0px">Total: <?php echo $this->cart->total_items(); ?> items</h4></div>
-                <table width="97%" style="margin: 0px 0px 10px 12px;">
+             <?php }?>
+            <div class="clear"></div>
+            <hr>
+    <?php if ($this->cart->contents()) { ?>
+                  <table width="97%" style="margin: 0px 0px 10px 12px;">
                     <tr>
                         <th class="hide" width='55px'></th>
                         <th style="text-align: left; padding: 0px 0px 0px 15px;">Name</th>
@@ -512,8 +641,8 @@ if (!empty($detail)) {
                         <th>Price</th>
                         <th> </th>
                     </tr>
-                    <?php if ($cart = $this->cart->contents()) { ?>
-                        <?php foreach ($cart as $item) { ?>                               
+        <?php if ($cart = $this->cart->contents()) { ?>
+            <?php foreach ($cart as $item) { ?>                               
                             <tr>
                                 <td class="hide"><img class="hide" src="<?php echo base_url() . 'content/uploads//images/' . $item['image1']; ?>" height="50" width="50"> </td>
                                 <td style="padding: 0px 0px 0px 10px;"><?php echo $item['name']; ?> </td>
@@ -522,12 +651,12 @@ if (!empty($detail)) {
                                 <td style="text-align: center;"><?php get_currency($item['price']); ?></td>
                                 <td style="text-align: center;"></td>
                             </tr>
-                            <?php
-                        }
-                    }
-                    ?>
-                    <tr>
-                        <td style="padding: 0px 0px 0px 15px; border-top: 1px solid #222;"><b>Total</b>:</td>
+                <?php
+            }
+        }
+        ?>
+                    <tr style="border-top: 1px solid #222;">
+                        <td style="padding: 0px 0px 0px 15px; "><b>Total</b>:</td>
                         <td class="hide"></td>
                         <td></td>
                         <td></td>
@@ -536,24 +665,30 @@ if (!empty($detail)) {
                     </tr>
 
                 </table>
-            <?php } else {
-                ?>
+    <?php } else {
+        ?>
                 <div id="total_item"><h4>Your cart is empty</h4></div>
             <?php }
             ?>
 
-            <h4>Cart Summary</h4>
+           
             <div id="coupontext" style="width: 96%; margin: 0px; padding: 2%;">
                 <div id="nfcoupon"></div>
                 <table>
                     <tr>
-                        <td><input class="placeholder" size="22" type="text" name="couponkey" id="couponkey" placeholder="Type your key here" /></td>
-                        <td><input type="button" class="checkkey"  value="Apply Coupon" style="padding: 5px; width: 100%; background-color: black;" class="updateBtnStyle" /></td>
+                        <td><input class="placeholder" size="22" type="text" name="couponkey" id="couponkey" placeholder="your coupon here" /></td>
+                        <td><input type="button" class="checkkey"  value="Apply Coupon" /></td>
                     </tr>
                 </table>
 
 
             </div>
+                
+                 <h3 style="width:40%; margin: 0px 0px 10px 0px; padding: 2px; float: left;">Order Summery
+                </h3>
+            
+            <div class="clear"></div>
+            <hr>
             <div id="order_summary">
                 <table width="100%">
                     <tr class='amt_summary'>
@@ -575,11 +710,14 @@ if (!empty($detail)) {
                         <td id="rate"></td>
                     </tr>
                     <tr class='amt_summary'>
-                        <td class='txtright'>Total:</td>
+                    <td class='txtright'><b>Grand Total:</b></td>
                         <td id="test">   </td>
-                    </tr>
+                                            </tr>
                 </table>
             </div>
+            <input type="button" id="cancelBtn"  value="Cancel" />
+            <input type="submit" id="payNowBtn"  value="Pay Now" />
+            
         </div>
         <div class="clear"></div>
     </div> 
@@ -588,23 +726,3 @@ if (!empty($detail)) {
     </div>
     <?php echo form_close(); ?>
 <?php } ?>
-<script>
-    var currentValue = 0;
-    function handleClick(pickup) {
-        ('Old value:' + currentValue);
-        ('New value:' + pickup.value);
-        currentValue = pickup.value;
-        if (pickup.value === "shipDifferent") {
-
-            document.getElementById('RegisterRight').style.display = 'block';
-            document.getElementById('registeres').style.display = 'none';
-            document.getElementById('registereslast').style.display = 'block';
-        }
-        else
-        {
-            document.getElementById('RegisterRight').style.display = 'none';
-            document.getElementById('registeres').style.display = 'block';
-            document.getElementById('registereslast').style.display = 'none';
-        }
-    }
-</script>

@@ -56,7 +56,10 @@ echo validation_errors();
                 <tr><td></td></tr>
                 <tr><td></td></tr>
                 <tr style="text-align: center">
-                    <td><b><div class="updateBtnStyle" style=" padding: 12px; width: 252px; background:black; text-align: center; margin: 0 auto 0 auto;"><?php echo anchor('view/registeruser', 'Register') ?></div></b></td>
+                    <td><b>
+                            <div class="updateBtnStyle" style=" padding: 12px; width: 252px; background:black; text-align: center; margin: 0 auto 0 auto;">
+                                <?php echo anchor('view/registeruser', 'Register') ?>
+                            </div></b></td>
                 </tr>
 
 
