@@ -213,7 +213,7 @@ function slider()
             sliderJson[i].name + 
             '</h2><p></a>' +
             sliderJson[i].summary + '</p> <div class="sliderContent"><div class="contentContainerFooterLeft"><h4>' +
-            currencyTag + sliderJson[i].price + '</h4></div><div  id="contentContainerFooterRight" ><input style="background-size:30%; height:53px" type="button" value="' + sliderJson[i].id + '"' +
+            currencyTag + sliderJson[i].price + '</h4></div><div  id="contentContainerFooterRight" ><input style="background-size:30%; height:51px" type="button" value="' + sliderJson[i].id + '"' +
             'class="addToCarts" id="addToCartBtn"></div></div></div></td></tr>';
         var ltbl = '</table></div>';
         $("#slideshowWindow").append(ftbl + tbl + ltbl);
@@ -314,7 +314,7 @@ $(document).ready(function() {
                     <img src="<?php echo base_url() . "content/uploads/images/" . $product->image1; ?>" alt="No images" height="150" width="130"/>   
                 </div></a>
                  
-                <div class="loadingImg" style="display: none; position: relative; margin:-137px auto 84px 79px;">
+                <div class="loadingImg" style="display: none; position: relative; margin:-137px auto 83px 79px;">
                     <img width="30" src="<?php echo base_url() . 'content/uploads/images/page-loader.gif'; ?>" alt="loading.."/>
                     <br><b style="">Loading...</b>
                 </div>
