@@ -190,14 +190,15 @@ $(document).ready(function(){
                 
                 success: function(msgs)
                 {
-                    if(msgs==true)
+                     alert(console.log(msgs.success));
+                    if(msgs.success==false)
                         {
-                            $("#msg").html(msgs);
+                            $("#msg").html(msgs.errors); 
                         }
-                        else{
-                    $('#table_user').css("display", "none");
-                    $("#msg").html(msgs);
-                        }
+                   
+                  //  $('#table_user').css("display", "none");
+                  //  $("#msg").html(msgs);
+                      
                 }
                 
             });

@@ -207,10 +207,13 @@ class Login extends CI_Controller {
         $pass = $_POST['pass'];
         $check = $this->dbmodel->check_data($email);
          if ($check > 0) { //if the data exists show error message
-                   
-            echo " This email is already registred!";
-            return FALSE;
-                
+              $arr = array(
+             'success'=>false,
+                 'errors'=>'This email is already registred!'
+                  );
+           echo json_encode($arr);
+         
+                           
          }
       else {
                echo " ldsjf";     
