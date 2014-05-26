@@ -21,9 +21,9 @@ $this->load->helper('currency');
         border:1px solid black;  	
         padding:25px;  
         font-size:15px;  
-        -moz-box-shadow: 0 0 5px #ff0000;
-        -webkit-box-shadow: 0 0 5px #ff0000;
-        box-shadow: 0 0 2px #ff0000;
+        -moz-box-shadow: 0 0 5px #a9a4a4;
+        -webkit-box-shadow: 0 0 5px #a9a4a4;
+        box-shadow: 0 0 2px #a9a4a4;
 
     }
     a{  
