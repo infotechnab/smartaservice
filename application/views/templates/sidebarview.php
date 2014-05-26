@@ -5,15 +5,17 @@
  foreach ($catProduct as $product_list) {
                 ?>
                 <div class='sidebarContentNext'>
-                    <table>
-                        <tr>
-                            <td><img src="<?php echo base_url().'content/uploads/images/'.$product_list->image1; ?>" width="50" height="50" /></td>
+                    <table class="sidebarProductListTable" cellpadding="10">
+                        <tbody class="tbodyClass">
+                        <tr >
+                            <td><img src="<?php echo base_url().'content/uploads/images/'.$product_list->image1; ?>" width="50" height="50"  /></td>
                             <td><b><?php echo $product_list->name;  ?></b></td>
                             <td><b><?php echo $product_list->price; ?></b></td>
-                            <td style="border-right: 1px solid #000;">                               
-                                <input type="button" value="<?php echo $product_list->id ?>" class="addToCart">
+                            <td style="border-left: 1px solid #000; text-align: right;">                               
+                                <input type="button" value="<?php echo $product_list->id ?>" class="addToCart" id="addToCartBtn" >
                             </td>
                         </tr>
+                        </tbody>
                     </table>                    
                 </div>
 
