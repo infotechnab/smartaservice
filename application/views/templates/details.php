@@ -169,6 +169,8 @@ $(document).ready(function() {
             if (!empty($product)) {
                
                 foreach ($product as $productDet) {
+                    
+          
                     ?>
                     <div class='contentContainerDetails'>
                         
@@ -178,6 +180,26 @@ $(document).ready(function() {
                                 </div>
 <div class="detailsImageLargeLeft">
                             <div id="detailsDetail">
+                                
+                                 <?php
+                                 //Facebook like and share 
+                                 if ($productDet->like == "enabled") { ?>
+                            <div class="fb-like" data-href="<?php echo base_url() . "/index.php/view/details/".$productDet->id; ?>" data-layout="button_count" data-action="like" data-show-faces="false" data-share="false"></div>
+                            <?php
+                        } else {
+                            
+                        }
+                        ?> 
+                        <?php if ($productDet->share == "enabled") { ?>
+                            <div class="fb-share-button" data-href="<?php echo base_url() . "/index.php/view/details/".$productDet->id; ?>" data-type="button_count"></div>
+                            <script src="//connect.facebook.net/en_US/all.js"></script>
+                            <?php
+                        } else {
+                            
+                        }
+                        ?>
+                            
+                            
                                 <h2><?php echo $productDet->name; ?></h2>
                                 <p> <?php echo $productDet->name; ?> </p> 
 
