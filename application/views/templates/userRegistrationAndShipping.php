@@ -167,25 +167,48 @@ if ($cart = $this->cart->contents()) {
        
           
     }
-    
-    
-    $('#userAdd').click(function(){
-       
-       
-       
-    });
-    
-    
-    
-    
-    
-    
-    
-    
-    </script>
-   
 
 
+$(document).ready(function(){
+    var base_url = "<?php echo base_url(); ?>";
+        $('#userajaxBtn').click(function(){
+       var username = $('#u_name').val();
+       var email = $('#email').val();
+        var pass = $('#u_pass').val();
+        var re_pass = $('#u_pass_re').val();
+        
+        if(pass==re_pass){
+           // alert('sdfdf');
+              $.ajax({
+                type: "POST",
+                url: base_url + 'index.php/login/userregister',
+                data: {
+                    'name' : username,
+                    'email' : email,
+                    'pass' : pass
+                },
+                
+                success: function(msgs)
+                {
+                    if(msgs==true)
+                        {
+                            $("#msg").html(msgs);
+                        }
+                        else{
+                    $('#table_user').css("display", "none");
+                    $("#msg").html(msgs);
+                        }
+                }
+                
+            });
+        }
+        else
+            {
+                 var msg = "Password not matched!";
+               $('#msg').html(msg);
+            }
+        });
+});
 
 </script>
 <style>
@@ -211,213 +234,14 @@ if (!empty($detail)) {
         $zip = $userdetail->zip;
         $country = $userdetail->country;
     }
-
-    echo form_open_multipart('cartdetails/login_insert_cart_item');
+    
+}
+   
     ?>
-    <p id="sucessmsg">
-        <?php
-        if ($this->session->flashdata('message')) {
-            echo $this->session->flashdata('message');
-        }
-        echo validation_errors();
-        ?> </p>
-
-    <div id="login">
-        <div id="leftRegister">
-            <div id="RegisterLeft">
-
-                <table border="0" width="70%">
-                    <tr>
-                        <td colspan="2"><h3 style="margin: 0px 0px 10px 0px; padding: 2px;">Personal Details</h3></td>
-
-                    </tr>
-                    <tr>
-                        <td colspan="2"><p style="margin: 0px; padding: 2px;">User Name</p></td>
-                    </tr>
-                    <tr>
-                        <td colspan="2"><input type="text" name="u_name" value="<?php echo $username; ?>" placeholder="User Name" size="47" class="placeholder" required/></td>
-                    </tr>
-                    <tr>
-                        <td><p style="margin: 0px; padding: 2px;">First Name</p></td>
-                        <td><p style="margin: 0px; padding: 2px;">Last Name</p></td>
-                    </tr>
-                    <tr >
-                        <td><input type="text" name="u_fname" value="<?php echo $fname; ?>" placeholder="First Name" size="20" class="placeholder" required/></td>
-                        <td><input type="text" name="u_lname" value="<?php echo $lname; ?>" placeholder="Last Name" size="20" class="placeholder" required/></td>
-                    </tr>
-                    <tr>
-                        <td colspan="2"><p style="margin: 0px; padding: 2px;">Address</p></td>
-                    </tr>
-                    <tr>
-                        <td colspan="2"><input type="text" value="<?php echo $address; ?>" name="street_address" size="47" placeholder="Street Address" class="placeholder" required/></td>
-                    </tr>
-                    <tr>
-                        <td colspan="2"><input type="text" name="Town_address" value="<?php echo $city; ?>" placeholder="Town/ City" size="47" class="placeholder" required/></td>
-
-                    </tr>
-                    <tr>
-                        <td><input type="text" name="District_address" value="<?php echo $state; ?>" placeholder="State" size="20" class="placeholder" required/></td>
-                        <td><input type="text" name="zip" value="<?php echo $zip; ?>" placeholder="Post Code" size="20" class="placeholder" required/></td>
-                    </tr>
-                    <tr>
-                        <td colspan="2"><input type="text" name="country" value="<?php echo $country; ?>" placeholder="Country" size="47" class="placeholder" required/></td>
-                    </tr>
-                    <tr>
-                        <td colspan="2"><p style="margin: 0px; padding: 2px;">Contact Number</p></td>
-                    </tr>
-                    <tr>
-                        <td colspan="2"><input type="text" name="u_contact" placeholder="Contact Number" size="47" class="placeholder" required/></td> 
-                    </tr>
-                    <tr>
-                        <td colspan="2"><p style="margin: 0px; padding: 2px;">Email</p></td>
-                    </tr>
-                    <tr>
-                        <td colspan="2"><input type="text" name="u_email" value="<?php echo $email; ?>" placeholder="Contact Number" size="47" class="placeholder" required/></td>
-                    </tr>
-                    <tr>
-                        <td><input type="radio" name="pickup" onclick="handleClick(this);" value="pickup">Pick Up</td>
-                        <td id='shipenable'><input type="radio"  name="pickup" onclick="handleClick(this);" value="shipDifferent">Ship to different Address</td>
-                    </tr>
-
-                    <tr style="text-align: center">
-                        <td colspan="2"><input id="registeres" type="submit" value="Continue" style="padding: 5px; width: 80px; background-color: black;" class="updateBtnStyle"/></td>
-                    </tr>
-
-                </table>
-
-            </div>
-
-            <div id="RegisterRight">
-
-                <table border="0" width="70%">
-
-                    <tr>
-                        <td><p style="margin: 0px; padding: 2px;">First Name</p></td>
-                        <td><p style="margin: 0px; padding: 2px;">Last Name</p></td>
-                    </tr>
-                    <tr >
-                        <td><input type="text" name="s_fname" placeholder="First Name" size="20" class="placeholder" /></td>
-                        <td><input type="text" name="s_lname" placeholder="Last Name" size="20" class="placeholder" /></td>
-                    </tr>
-                    <tr>
-                        <td colspan="2"><p style="margin: 0px; padding: 2px;">Address</p></td>
-                    </tr>
-                    <tr>
-                        <td colspan="2"><input type="text" name="s_address" placeholder="Street Address" size="47" class="placeholder" /></td>
-                    </tr>
-                    <tr>
-                        <td colspan="2"><input type="text" name="c_city" placeholder="Town/ City" size="47" class="placeholder" /></td>
-
-                    </tr>
-                    <tr>
-                        <td><input type="text" name="s_state" placeholder="State" size="20" class="placeholder" /></td>
-                        <td><input type="text" name="s_zip" placeholder="post code " size="20" class="placeholder" /></td>
-                    </tr>
-                    <tr>
-                        <td colspan="2"><input type="text" name="country" placeholder="Country" size="47" class="placeholder" /></td>
-                    </tr>
-                    <tr>
-                        <td colspan="2"><p style="margin: 0px; padding: 2px;">Contact Number</p></td>
-                    </tr>
-                    <tr>
-                        <td colspan="2"><input type="text" name="s_contact" placeholder="Contact Number" size="47" class="placeholder" /></td>
-                    </tr>
-                    <tr>
-                        <td colspan="2"><p style="margin: 0px; padding: 2px;">Email</p></td>
-                    </tr>
-                    <tr>
-                        <td colspan="2"><input type="email" name="s_email" placeholder="Email" size="47" class="placeholder" /></td>
-                    </tr>
-                    <tr style="text-align: center">
-                        <td colspan="2"><input id="registereslast" type="submit" value="Continue" style="padding: 5px; width: 80px; background-color: black;" class="updateBtnStyle"/></td>
-                    </tr>
-
-                </table>
-
-            </div>    
-            <?php echo form_close(); ?>
-        </div> 
-        <div id="verticalline" style="width: 1px; min-height: 460px; background-color: #222; float: left;"></div>
-        <div id="RegisterLeftCart">
-            <?php if ($this->cart->contents()) { ?>
-                <h3 style="margin: 0px 0px 10px 10px; padding: 2px;">Cart Details</h3>
-                <div id="total_item"><h4 style="margin: 0px 0px 5px 0px">Total: <?php echo $this->cart->total_items(); ?> items</h4></div>
-                <table width="97%" style="margin: 0px 0px 10px 12px;">
-                    <tr>
-                        <th class="hide" width='55px'></th>
-                        <th style="text-align: left; padding: 0px 0px 0px 15px;">Name</th>
-                        <th>Qty</th>
-                        <th></th>
-                        <th>Price</th>
-                        <th> </th>
-                    </tr>
-                    <?php if ($cart = $this->cart->contents()) { ?>
-                        <?php foreach ($cart as $item) { ?>                                      
-                            <tr>
-                                <td class="hide"><img class="hide" src="<?php echo base_url() . 'content/uploads//images/' . $item['image1']; ?>" height="50" width="50"> </td>
-                                <td style="padding: 0px 0px 0px 10px;"><?php echo $item['name']; ?> </td>
-                                <td style="text-align: center;"><?php echo $item['qty'] ?></td>
-                                <td>x</td>
-                                <td style="text-align: center;"><?php get_currency($item['price']); ?></td>
-                                <td style="text-align: center;"></td>
-                            </tr>
-                            <?php
-                        }
-                    }
-                    ?>
-                    <tr>
-                        <td style="padding: 0px 0px 0px 15px; border-top: 1px solid #222;"><b>Total</b>:</td>
-                        <td style="padding: 0px 0px 0px 15px; border-top: 1px solid #222;" class="hide"></td>
-                        <td style="padding: 0px 0px 0px 15px; border-top: 1px solid #222;"></td>
-                        <td style="padding: 0px 0px 0px 15px; border-top: 1px solid #222;"></td>
-                        <td style="text-align: center; border-top: 1px solid #222;"> <b><?php get_currency($this->cart->total()); ?></b></td>
-                    </tr>
-                </table>
-            <?php } else {
-                ?>
-                <div id="total_item"><h4>Your cart is empty</h4></div>
-            <?php }
-            ?>
-            <h3 style="margin: 10px 0px 10px 10px; padding: 2px;">Payment Details</h3>
-            <div id="coupontext" style="width: 96%; margin: 0px; padding: 2%;">
-                <div id="nfcoupon"></div>
-                <table>
-                    <tr>
-                        <td><input class="placeholder" size="22" type="text" name="couponkey" id="couponkey" placeholder="Type your key here" /></td>
-                        <td><input type="button" class="checkkey" value="Apply Coupon" style="padding: 5px; width: 100%; background-color: black;" class="updateBtnStyle" /></td>
-                    </tr>
-                </table>
-            </div>
-            <div id="order_summary">
-                <table width="100%">
-                    <tr class='amt_summary'>
-                        <td class='txtright' width='50%'><span>Sub-total:</span> </td>
-                        <td><b><?php get_currency($this->cart->total()); ?></b></td>
-                    </tr>
-                    <tr class='amt_summary'>
-                        <td class='txtright'>Shipping Cost:</td>
-                        <td id="cost"></td>
-                    </tr>
-                    <tr class='amt_summary'>
-                        <td class='txtright'>Discount:</td>
-                        <td id="rate"></td>
-                    </tr>
-                    <tr class='amt_summary'>
-                        <td class='txtright'><b>Grand Total:</b></td>
-                        <td id="test">   </td>
-                    </tr>
-                </table>
-            </div>
-        </div>
-        <div class="clear"></div>       
-    </div>
-    </div>
-    <div class="clear"></div>    
-    </div>
     <!-- if logged in the above view works but 
     if clicked in continue the following view works -->
     <?php
-} else {
+
     if (isset($error)) {
         echo $error;
     }
@@ -446,9 +270,10 @@ if (!empty($detail)) {
                 <div class="clear"></div>
                 <hr>
                 <p>Register yourself you are returning user. </p>
-                <div id="user_register_div"></div>
+               
                 <div id="table_register" >
-                    <table border="0" width="70%" >
+                    <strong id="msg" style="color:#990000 ;"></strong>
+                    <table id="table_user" border="0" width="70%" >
                         <tr>
                             <td colspan="2"></td>
 
@@ -457,7 +282,7 @@ if (!empty($detail)) {
                             <td colspan="2"><p style="margin: 0px; padding: 2px;">User Name</p></td>
                         </tr>
                         <tr>
-                            <td colspan="2" ><input type="text" id="u_name" name="u_name" placeholder="User Name" size="47" class="placeholder" /></td>
+                            <td colspan="2" ><input type="text" id="u_name" name="u_name" placeholder="User Name" size="47" value="<?php if(isset($username)){echo $username;} ?>" class="placeholder" /></td>
                         </tr>
                         <tr>
                             <td colspan="2"><p style="margin: 0px; padding: 2px;">Email</p></td>
@@ -481,7 +306,7 @@ if (!empty($detail)) {
                             <td colspan="2">
 
                                 <!-- Add Ajax method to add user into database on this button click  -->
-                                <input id="userAdd" type="button" value="Register" size="47" style="padding:12px 125px 12px 125px; text-align: center; background-color: black; font-weight: bold;" class="updateBtnStyle" />
+                                <input type="button" value="Register" size="47" id="userajaxBtn" onclick="ajaxcall()" style="padding:12px 125px 12px 125px; text-align: center; background-color: black; font-weight: bold;" class="updateBtnStyle" />
 
                             </td>
                         </tr>
@@ -782,4 +607,4 @@ if (!empty($detail)) {
     <div class="clear"></div>
     </div>
     <?php echo form_close(); ?>
-<?php } ?>
+

@@ -199,6 +199,23 @@ class Login extends CI_Controller {
         }
     }
 
+    function userregister()
+    {
+        //die('user');
+        $user = $_POST['name'];
+        $email = $_POST['email'];
+        $pass = $_POST['pass'];
+        $check = $this->dbmodel->check_data($email);
+         if ($check > 0) { //if the data exists show error message
+                   
+            echo " This email is already registred!";
+            return FALSE;
+                
+         }
+      else {
+               echo " ldsjf";     
+        }
+    }
 }
 
 ?>
