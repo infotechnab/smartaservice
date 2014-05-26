@@ -105,7 +105,9 @@ if ($cart = $this->cart->contents()) {
     }
 
     //document.getElementById("test").innerHTML = total;
+</script>
 
+<script>
     var base_url = '<?php echo base_url(); ?>';
     $(document).ready(function() {
         $('.checkkey').click(function() {
@@ -138,7 +140,7 @@ if ($cart = $this->cart->contents()) {
     function disrate(){
     
     
-        var shiping = parseInt("<?phpif (isset($shiping_cost) == true) {    echo $cost;} else {    $cost = 0;}?>");
+        var shiping = parseInt("<?php if (isset($shiping_cost) == true) {    echo $cost; } else {  echo  $cost = 0; } ?>");
         var price = parseInt("<?php echo $this->cart->total(); ?>");
        // var total = price + shiping;
        
@@ -147,6 +149,7 @@ if ($cart = $this->cart->contents()) {
           //  if(('#myonoffswitch').is(':checked')){
            //     alert('dsfdsfd');
           //  }
+          alert('sdff');
             var dis = price * parseInt(rate)/100;
             var total = price - dis;
             var grandtotal = total + shiping;
@@ -164,33 +167,23 @@ if ($cart = $this->cart->contents()) {
        
           
     }
-        
-        $('#userAdd').click(function(){
-              var username = $('#u_name').val();
-              var email = $('#email').val();
-              var pass = $('#u_pass').val();
-              var re_pass = $('#u_pass_re').val();
-            // var dataString = 'id=' + key;
-            //alert('sdfdsf');
-            if(pass == re_pass ){
-            $.ajax({
-                type: "POST",
-                url: base_url + 'index.php/bnw/checkcoupon',
-                data: {
-                    'name' : username,
-                    'subtotal' : subtotal
-                },
-                success: function(msgs)
-                {
-                    $("#nfcoupon").html(msgs);
-                    disrate();
-                }
-                
-            });
-            }
-            else{}
-        });
-
+    
+    
+    $('#userAdd').click(function(){
+       
+       
+       
+    });
+    
+    
+    
+    
+    
+    
+    
+    
+    </script>
+   
 
 
 
