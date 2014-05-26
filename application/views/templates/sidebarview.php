@@ -10,9 +10,11 @@
                             <td><img src="<?php echo base_url().'content/uploads/images/'.$product_list->image1; ?>" width="50" height="50" /></td>
                             <td><b><?php echo $product_list->name;  ?></b></td>
                             <td><b><?php echo $product_list->price; ?></b></td>
+                            <td style="border-right: 1px solid #000;">                               
+                                <input type="button" value="<?php echo $product_list->id ?>" class="addToCart">
+                            </td>
                         </tr>
-                    </table>
-                    
+                    </table>                    
                 </div>
 
 <?php } } ?>
@@ -20,7 +22,6 @@
             <?php for ($i = 0; $i < 4; $i++) {
                 ?>
                 <div class='sidebarContentNext'></div>
-
 <?php } ?>
 
             <div class="redColouredDiv" id='sidebarContent'><h3>Sponsors</h3></div>
