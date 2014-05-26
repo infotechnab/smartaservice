@@ -635,6 +635,13 @@ public function get_navigation_info($navigationName)
         $query = $this->db->get('category');
         return $query->result();
     } 
+     public function get_coupon()
+ {
+            
+        //$this->db->where('type','page');
+        $query = $this->db->get('coupon');
+        return $query->result();
+ }
     public function get_category_id($id) {
             
         $this->db->where('id',$id);

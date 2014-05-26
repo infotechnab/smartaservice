@@ -52,6 +52,7 @@ $( "#datepicker" ).datepicker();
         <input type="submit" value="Create Copon" />
         <?php echo form_close(); ?>
     </div>
+   
  </div>
 <div class="clear"></div>
 </div>
