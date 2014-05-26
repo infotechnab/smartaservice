@@ -45,10 +45,12 @@ $this->load->helper('currency');
 
     $(document).ready( function() {
         // When site loaded, load the Popupbox First
-        $('.detailsImage').click(function(){
+        $('.srcimage').click(function(){
             $('.popup_box').fadeIn(500);
             var srcimg = $(this).attr('src');
-			
+		
+                
+               
             $("#pqr").attr({
                 src: srcimg
 			
@@ -156,12 +158,9 @@ $(document).ready(function() {
     });
 
 </script>
-
-
-
 <div id='content'>
-        <div class='contentHeaderDetails'>
-            <p>Current location</p>
+        <div class='contentHeader'>
+            <h3><a href="<?php base_url();?>">home </a> >> <?php echo $pageTitle; ?></h3>
         </div>
 
         
@@ -172,7 +171,7 @@ $(document).ready(function() {
                     
           
                     ?>
-                    <div class='contentContainerDetails'>
+                    <div class='contentContainer'>
                         
                             <div id='detailsImageLarge'>
                                 <div class="detailsImageLargeLeft">
@@ -217,17 +216,22 @@ $(document).ready(function() {
                           </div>
                             
                         <div class="clear"></div>
-
+<?php if(strlen($productDet->image1)>2){ ?>
                         <div class='detailsImage'>
-                            <img id="srcimage" src="<?php echo base_url() . "content/uploads/images/" . $productDet->image1; ?>" alt="<?php echo $productDet->name; ?>"/>   
+                            <img class="srcimage" src="<?php echo base_url() . "content/uploads/images/" . $productDet->image1; ?>" alt="<?php echo $productDet->name; ?>"/>   
                         </div>
+                        
+                        <?php } ?>
+                        <?php if(strlen($productDet->image2)>2){ ?>
                         <div class='detailsImage'>
-                            <img id="srcimage" src="<?php echo base_url() . "content/uploads/images/" . $productDet->image2; ?>" alt="<?php echo $productDet->name; ?>"/>   
+                            <img class="srcimage" src="<?php echo base_url() . "content/uploads/images/" . $productDet->image2; ?>" alt="<?php echo $productDet->name; ?>"/>   
                         </div>
+                         <?php } ?>
+                        <?php if(strlen($productDet->image3)>2){ ?>
                         <div class='detailsImage'>
-                            <img id="srcimage" src="<?php echo base_url() . "content/uploads/images/" . $productDet->image3; ?>" alt="<?php echo $productDet->name; ?>"/>   
+                            <img class="srcimage" src="<?php echo base_url() . "content/uploads/images/" . $productDet->image3; ?>" alt="<?php echo $productDet->name; ?>"/>   
                         </div>
-    
+     <?php } ?>
                       <div class="clear"></div>
                                    
      </div>

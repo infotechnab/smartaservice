@@ -209,7 +209,7 @@ function slider()
         var ftbl = '<div class="slide"><table class="sliderTable">';
         tbl = '<tr><td rowspan="3"><img src=' +
             base_url + 'content/uploads/images/' +
-            sliderJson[i].image1 + ' id="sliderImage" ></td><td style=" vertical-align: top;" ><div class="slideContents"><a style="color:#000;" href="'+base_url+'/index.php/view/details/'+sliderJson[i].id+'"><h2>' +
+            sliderJson[i].image1 + ' id="sliderImage" ></td><td style=" vertical-align: top;" ><div class="slideContents"><a style="color:#000;" href="'+base_url+'index.php/view/details/'+sliderJson[i].id+'"><h2>' +
             sliderJson[i].name + 
             '</h2><p></a>' +
             sliderJson[i].summary + '</p> <div class="sliderContent"><div class="contentContainerFooterLeft"><h4>' +
