@@ -200,7 +200,7 @@ $(document).ready(function() {
                             
                             
                                 <h2><?php echo $productDet->name; ?></h2>
-                                <p> <?php echo $productDet->name; ?> </p> 
+                                <p> <?php echo $productDet->description; ?> </p> 
 
                             </div>
                            
