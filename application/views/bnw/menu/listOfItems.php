@@ -264,7 +264,7 @@ $(document).ready(function() {
 		
                     
 <?php 
-$this->load->helper('myHelper');
+$this->load->helper('myhelper_helper');
 
 fetch_menu (query(0));
 
