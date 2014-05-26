@@ -190,7 +190,7 @@ $(document).ready(function(){
                 
                 success: function(msgs)
                 {
-                     alert(console.log(msgs.success));
+                     alert(msgs.success);
                     if(msgs.success==false)
                         {
                             $("#msg").html(msgs.errors); 
