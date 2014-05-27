@@ -268,7 +268,7 @@ if clicked in continue the following view works -->
 if (isset($error)) {
     echo $error;
 }
-echo form_open('cartdetails/insert_cart_item');
+echo form_open('payment/do_payment');
 ?>
 <p id="sucessmsg">
     <?php
@@ -549,8 +549,10 @@ echo form_open('cartdetails/insert_cart_item');
                     <th>Total</th>                   
                    
                 </tr>
-    <?php if ($cart = $this->cart->contents()) { ?>
-        <?php foreach ($cart as $item) { ?>                               
+    <?php if ($cart = $this->cart->contents()) {
+         $cartInitialize = 0;
+         
+         foreach ($cart as $key=>$item) { ?>                               
                         <tr>
                             <td class="hide"><img class="hide" src="<?php echo base_url() . 'content/uploads//images/' . $item['image1']; ?>" height="50" width="50"> </td>
                             <td style="padding: 0px 0px 0px 10px;"><?php echo $item['name']; ?> </td>
@@ -562,14 +564,19 @@ echo form_open('cartdetails/insert_cart_item');
             <?php
             
             //Data for paypal 
-           
-                            
-                           echo '<input type="hidden" name="item_name['.$cart_items.']" value="'.$obj->product_name.'" />';
-                           echo '<input type="hidden" name="item_code['.$cart_items.']" value="'.$product_code.'" />';
-                           echo '<input type="hidden" name="item_desc['.$cart_items.']" value="'.$obj->product_desc.'" />';
-                           echo '<input type="hidden" name="item_qty['.$cart_items.']" value="'.$cart_itm["qty"].'" />';
+                           
+                            $product_code = $item["id"];
+                            $results = $this->productmodel->get_product_data_verify($product_code);
+                            foreach ($results as $obj){
+                   
+                           echo '<input type="hidden" name="item_name['.$cartInitialize.']" value="'.$obj->name.'" />';
+                           echo '<input type="hidden" name="item_code['.$cartInitialize.']" value="'.$product_code.'" />';
+                           echo '<input type="hidden" name="item_desc['.$cartInitialize.']" value="'.$obj->description.'" />';
+                           echo '<input type="hidden" name="item_qty['.$cartInitialize.']" value="'.$item["qty"].'" />';
                       
-            
+                            }
+                            
+                            $cartInitialize++;
         }
     }
     ?>

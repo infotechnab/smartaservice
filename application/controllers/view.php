@@ -376,11 +376,9 @@ class View extends CI_Controller {
         $data['headertitle']= $this->viewmodel->get_header_title();          
         $data['headerlogo']= $this->viewmodel->get_header_logo();         
         $data['meta'] = $this->dbmodel->get_meta_data();
-        $data['headerdescription']= $this->viewmodel->get_header_description();
-        
-        $data['shiping']=$this->productmodel->getship();
-        
-     $this->load->view('templates/header', $data);
+        $data['headerdescription']= $this->viewmodel->get_header_description();        
+        $data['shiping']=$this->productmodel->getship();        
+        $this->load->view('templates/header', $data);
         $this->load->view('templates/navigation');
         $this->load->view('templates/userRegistrationAndShipping',$data);
         $this->load->view('templates/cartLogin');
