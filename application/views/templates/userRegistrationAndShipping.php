@@ -541,22 +541,25 @@ echo form_open('cartdetails/insert_cart_item');
 <?php if ($this->cart->contents()) { ?>
             <table width="97%" style="margin: 0px 0px 10px 12px;">
                 <tr>
-                    <th class="hide" width='55px'></th>
+                    <th class="hide" width='55px'>Product</th>
                     <th style="text-align: left; padding: 0px 0px 0px 15px;">Name</th>
+                     <th>Price</th>
+                      <th> </th>
                     <th>Qty</th>
-                    <th></th>
-                    <th>Price</th>
-                    <th> </th>
+                    <th>Total</th>                   
+                   
                 </tr>
     <?php if ($cart = $this->cart->contents()) { ?>
         <?php foreach ($cart as $item) { ?>                               
                         <tr>
                             <td class="hide"><img class="hide" src="<?php echo base_url() . 'content/uploads//images/' . $item['image1']; ?>" height="50" width="50"> </td>
                             <td style="padding: 0px 0px 0px 10px;"><?php echo $item['name']; ?> </td>
+                             <td style="text-align: center;"><?php get_currency($item['price']); ?></td>
+                             <td>x</td>
                             <td style="text-align: center;"><?php echo $item['qty'] ?></td>
-                            <td>x</td>
-                            <td style="text-align: center;"><?php get_currency($item['price']); ?></td>
-                            <td style="text-align: center;"></td>
+                            
+                           
+                            <td style="text-align: center;"><?php echo $item['price']*$item['qty'];?> </td>
                         </tr>
             <?php
         }
@@ -567,6 +570,7 @@ echo form_open('cartdetails/insert_cart_item');
                     <td class="hide"></td>
                     <td></td>
                     <td></td>
+                     <td></td>
                     <td style="text-align: center; border-top: 1px solid #222;"> <b><?php get_currency($this->cart->total()); ?></b></td>
 
                 </tr>
