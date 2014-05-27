@@ -188,8 +188,10 @@ class Dbmodel extends CI_Model {
     
     function get_all_productTrn($limit,$start)
     {
-        $this->db->limit($limit, $start);
+        
         $this->db->distinct();
+        
+        $this->db->limit($limit, $start);
         $this->db->order_by('trans_id','DESC');
         $query = $this->db->get('product_oder_detail');
         return $query->result();
@@ -289,8 +291,11 @@ class Dbmodel extends CI_Model {
     
         function record_count_catproduct($name)
     {
+           
         $this->db->where('category',$name);
-         return $this->db->count_all("product");
+         return  $this->db->count_all("product");
+      
+        
     }
     function get_all_product_orderID($id)
     {

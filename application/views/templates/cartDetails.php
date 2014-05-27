@@ -67,7 +67,7 @@ $this->load->helper('currency');
                             </td>
                             <td> <?php get_currency($item['price']); ?></td>
                             <td class="sub_total_price"></td>
-                            <td><a href="<?php echo base_url(); ?>index.php/cartdetails/remove/<?php echo $item['rowid']; ?>"><div id="closeSymbol">X</div></a></td>
+                            <td><a href="<?php echo base_url(); ?>index.php/view/remove/<?php echo $item['rowid']; ?>"><div id="closeSymbol">X</div></a></td>
                         </tr>
 <?php
                            
