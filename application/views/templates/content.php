@@ -244,7 +244,7 @@ $(document).ready(function() {
                 $(".contentContainerBox").css("opacity","1.0");
                 $(".contentContainerBottom").css("opacity","1.0")
                 $(".loadingImg").css("display","none");
-                $(this).parent().parent().parent().css("opacity","1");
+                
             }
         });
 
@@ -341,7 +341,7 @@ $(document).ready(function() {
 
 <div id='sidebar'>
     <div class="redColouredDiv" id='sidebarContent'>
-        <div id="sideBarImage"><img src="<?php echo base_url() . "content/uploads/images/shopping-cart-icon-614x460.png"; ?>"/> </div>   
+        <div id="sideBarImage"><img src="<?php echo base_url() . "content/uploads/images/addtocart.png"; ?>"/> </div>   
         <h3>Shopping Cart</h3>
     </div>
     <div class='cartItems' id="shopping_cart">

@@ -90,7 +90,7 @@ body
 }
 #headerLogo
 {
-    width: 10%;
+    
     float: left;
     margin: 0px;
 
@@ -197,6 +197,9 @@ body
 {
     margin: 0px;
     padding: 5px 0px 5px 20px;
+    max-height: 30px;
+    overflow-wrap: hyphenate;   
+    z-index: 100;
 }
 .contentHeaderDetails
 {
@@ -556,7 +559,7 @@ div.vertical-line{
 
 #addToCartBtn
 {
-    background-image: url('../images/shopping-cart-icon-614x460.png') ;
+    background-image: url('../images/addtocart.png') ;
     background-repeat: no-repeat;
     text-indent: 500px;
     border: none;
@@ -570,7 +573,7 @@ div.vertical-line{
 }
 #addToCartInSidebar
 {
-     background-image: url('../images/shopping-cart-icon-614x460.png') ;
+     background-image: url('../images/addtocart.png') ;
     background-repeat: no-repeat;
     text-indent: 500px;
     border: none;
@@ -686,6 +689,8 @@ div.vertical-line{
     {
         margin: 2% 2% 0% 1%;
         width: 30%;
+        max-width: 341px;
+        
     }
 
     .contentContainerImage img
