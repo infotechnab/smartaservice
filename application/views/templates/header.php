@@ -16,7 +16,7 @@
            
             foreach ($headertitle as $header) {
                 $title = $header->description;
-                echo $title;
+               // echo $title;
             }
        
             if (isset($pageTitle)) {

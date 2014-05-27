@@ -501,7 +501,7 @@ class bnw extends CI_Controller {
         echo ' Processing ';
     }
 
-    function delProduct($id) {
+    function delProduct($id=0) {
         if ($this->session->userdata('logged_in')) {
             
             $delimages = $this->dbmodel->findproduct($id);
@@ -529,10 +529,19 @@ class bnw extends CI_Controller {
           //  else{}
             
             
-            $this->dbmodel->delProduct($id);
+            $result =$this->dbmodel->delProduct($id);
+             if($result == true)
+            {
+                $this->session->set_flashdata('message', 'Data Delete Sucessfully');
+                 redirect('bnw/productList');
+                
+            }
+           else {
+                 $this->session->set_flashdata('message', 'Cannot delete or update a parent row');
+                 redirect('bnw/productList');
+                  }
             
-            $this->session->set_flashdata('message', 'Data Deleted Sucessfully');
-            redirect('bnw/productList');
+           
         } else {
             redirect('login', 'refresh');
         }
@@ -674,10 +683,10 @@ class bnw extends CI_Controller {
             if ($this->session->userdata('logged_in')) {
             $data['username'] = Array($this->session->userdata('logged_in'));
             $data['meta'] = $this->dbmodel->get_meta_data();
-
+            $data['getship'] = $this->productmodel->getship();
             $this->load->view('bnw/templates/header', $data);
             $this->load->view('bnw/templates/menu');
-            $this->load->view('product/shipping');
+            $this->load->view('product/shipping',$data);
             $this->load->view('bnw/templates/footer', $data);
         } else {
             redirect('login', 'refresh');
@@ -688,7 +697,7 @@ class bnw extends CI_Controller {
         if ($this->session->userdata('logged_in')) {
 
             $data['meta'] = $this->dbmodel->get_meta_data();
-            
+            $data['getship'] = $this->productmodel->getship();
             $this->load->view('bnw/templates/header', $data);
             $this->load->view('bnw/templates/menu');
             $this->load->helper('form');
@@ -697,9 +706,9 @@ class bnw extends CI_Controller {
 
 
             if ($this->form_validation->run() == FALSE) {
-                 $data['error'] = $this->upload->display_errors();
+                // $data['error'] = $this->upload->display_errors();
 
-                $this->load->view('bnw/product/shipping', $data);
+                $this->load->view('product/shipping', $data);
             } else {
 
                 //if valid
@@ -710,8 +719,8 @@ class bnw extends CI_Controller {
                 
                
                 $this->productmodel->update_shipping_cost($charge);
-                //$this->session->set_flashdata('message', 'Header setting done sucessfully');
-                redirect('bnw/index');
+                $this->session->set_flashdata('message', 'Shipping updated sucessfully');
+                redirect('bnw/shippingupdate');
             }
             $this->load->view('bnw/templates/footer', $data);
         } else {
@@ -811,10 +820,14 @@ class bnw extends CI_Controller {
 
             if (($_SERVER['REQUEST_METHOD'] == 'POST')) {
                 $menuSelected = $_POST['departments'];
+                die($menuSelected);
                 $menu_info = $this->dbmodel->get_menu_info($menuSelected);
+              
                 foreach ($menu_info as $id) {
                     $menu_id = $id->id;
                 }
+               
+              
                 $navigationName = $_POST['jobs'];
                 if ($navigationName == 'Make Parent')
                     $parent_id = '0';

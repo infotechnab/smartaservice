@@ -275,7 +275,16 @@ class Dbmodel extends CI_Model {
     }
     function delProduct($id){
        // die($id);
-         $this->db->delete('product', array('id' => $id));
+         $resutl = $this->db->delete('product', array('id' => $id));
+          if(!$result)
+        {
+            return false;
+                }
+        else
+        {
+            return true;
+           // die('its work');
+        }
     }
     
         function record_count_catproduct($name)

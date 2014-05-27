@@ -1,10 +1,17 @@
 <div class="rightSide">
  <?php 
 
-    
-
+ if(isset($getship))
+ {
+    foreach ($getship as $cost)
+    {
+        $ship = $cost->price;
+    }
+ }
  ?>
-
+ <p id="sucessmsg">
+  <?php echo $this->session->flashdata('message'); ?>
+    </p>
  <?php echo validation_errors();
   if(isset($error))
   {
@@ -22,7 +29,7 @@
 
 
 <p>Shipping Charges:
-<input type="text" name="shipping_charge" size="2" value="<?php  ?>" required/> </p>
+    <input type="text" name="shipping_charge" size="2" value="<?php if(isset($ship)){ echo $ship;}  ?>" required/> </p>
 
 
 
