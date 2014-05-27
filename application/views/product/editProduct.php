@@ -116,7 +116,7 @@
 <p><b>Note:</b> Max file size: 500KB, Max Width: 1024px, Max Height: 768px </p>
      <?php    }
     else {
-    echo " Contant not found! ";    
+    echo " <b> Content not found! </b> ";    
     }
      
     ?>

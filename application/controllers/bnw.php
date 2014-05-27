@@ -357,7 +357,7 @@ class bnw extends CI_Controller {
     }
 
     //================================ Product Editing ===================================================//
-    function editproduct($id) {
+    function editproduct($id=0) {
         if ($this->session->userdata('logged_in')) {
             $data['query'] = $this->dbmodel->findproduct($id);
             $data['meta'] = $this->dbmodel->get_meta_data();
@@ -947,7 +947,7 @@ class bnw extends CI_Controller {
 
 
 
-    public function editnavigation($id) {
+    public function editnavigation($id=0) {
         if ($this->session->userdata('logged_in')) {
 
             $data['query'] = $this->dbmodel->findnavigation($id);
@@ -962,7 +962,7 @@ class bnw extends CI_Controller {
         }
     }
 
-    public function showNavigation($id) {
+    public function showNavigation($id=0) {
         if ($this->session->userdata('logged_in')) {
             $data['meta'] = $this->dbmodel->get_meta_data();
 
@@ -1011,7 +1011,7 @@ class bnw extends CI_Controller {
         }
     }
 
-    function deletenavigation($id) {
+    function deletenavigation($id=0) {
         if ($this->session->userdata('logged_in')) {
             $this->dbmodel->delnavigation($id);
             //die($id);
@@ -1112,7 +1112,7 @@ class bnw extends CI_Controller {
     }
 
     //==================================To edit category=======================================================
-    public function editcategory($id) {
+    public function editcategory($id=0) {
         if ($this->session->userdata('logged_in')) {
             $data['query'] = $this->dbmodel->findcategory($id);
             $data['meta'] = $this->dbmodel->get_meta_data();
@@ -1189,7 +1189,7 @@ class bnw extends CI_Controller {
     //========================================To delete category=============================================
 
 
-    public function deletecategory($id) {
+    public function deletecategory($id=0) {
         if ($this->session->userdata('logged_in')) {
            $result = $this->dbmodel->delete_category($id);
             if($result == true)
@@ -1322,7 +1322,7 @@ class bnw extends CI_Controller {
 
     //======================================To Edit Post===========================================================//
 
-    function editpost($id) {
+    function editpost($id=0) {
         if ($this->session->userdata('logged_in')) {
             $data['query'] = $this->dbmodel->findpost($id);
             $data['meta'] = $this->dbmodel->get_meta_data();
@@ -1339,7 +1339,7 @@ class bnw extends CI_Controller {
     }
 
     //=========================================To Delete Post======================================================//
-    public function deletepost($id) {
+    public function deletepost($id=0) {
         if ($this->session->userdata('logged_in')) {
             $this->dbmodel->deletepost($id);
             $this->session->set_flashdata('message', 'Data Deleted Sucessfully');
@@ -1562,7 +1562,7 @@ class bnw extends CI_Controller {
 
     //======================EDIT PAGE===============================//
 
-    function editpage($id) {
+    function editpage($id=0) {
         if ($this->session->userdata('logged_in')) {
             $data['query'] = $this->dbmodel->findpage($id);
 
@@ -1762,8 +1762,11 @@ class bnw extends CI_Controller {
         }
     }
 
-    public function edituser($id) {
+    public function edituser($id=0) {
         if ($this->session->userdata('logged_in')) {
+           // $this->load->helper('form');
+           // $this->load->library(array('form_validation', 'session'));
+           // $this->form_validation->set_rules('user_pass', 'Password', 'required|md5|xss_clean|max_length[200]');
             $data['query'] = $this->dbmodel->finduser($id);
             $data['meta'] = $this->dbmodel->get_meta_data();
 
@@ -1796,7 +1799,7 @@ class bnw extends CI_Controller {
                 //if not valid
                 $id = $this->input->post('id');
                 $data['query'] = $this->dbmodel->finduser($id);
-                $this->load->view('bnw/user/userListing', $data);
+                $this->load->view('bnw/users/editUser', $data);
             } else {
                 //if valid
                 $id = $this->input->post('id');
@@ -1821,7 +1824,7 @@ class bnw extends CI_Controller {
 
     
 
-    public function deleteuser($id) {
+    public function deleteuser($id=0) {
         if ($this->session->userdata('logged_in')) {
             $uNAme = $this->session->userdata('username');
             //die($uNAme);
@@ -1833,7 +1836,7 @@ class bnw extends CI_Controller {
                 $userid = $user->user_name;
             }
             if ($uNAme !== $userid) {
-                die($uNAme);
+               // die($uNAme);
                 $this->dbmodel->delete_user($id);
                 $this->session->set_flashdata('message', 'Data Delete Sucessfully');
                 redirect('bnw/users');
@@ -1952,7 +1955,7 @@ class bnw extends CI_Controller {
 
     //==================================To edit media==================================================
 
-    public function editmedia($id) {
+    public function editmedia($id=0) {
         if ($this->session->userdata('logged_in')) {
             $data['query'] = $this->dbmodel->findmedia($id);
             $data['meta'] = $this->dbmodel->get_meta_data();
@@ -2022,7 +2025,7 @@ class bnw extends CI_Controller {
         }
     }
 
-    public function delmedia($id) {
+    public function delmedia($id=0) {
         if ($this->session->userdata('logged_in')) {
             $data['query'] = $this->dbmodel->findmedia($id);
             $data['meta'] = $this->dbmodel->get_meta_data();
@@ -2159,7 +2162,7 @@ class bnw extends CI_Controller {
         }
     }
 
-    public function delphoto($photoid) {
+    public function delphoto($photoid=0) {
         if ($this->session->userdata('logged_in')) {
             $data['query'] = $this->dbmodel->get_photo_media_id($photoid);
 
@@ -2173,7 +2176,7 @@ class bnw extends CI_Controller {
         }
     }
 
-    public function deletephoto($a) {
+    public function deletephoto($a=0) {
 
         if ($this->session->userdata('logged_in')) {
             $a = $_GET['image'];
@@ -2290,7 +2293,7 @@ class bnw extends CI_Controller {
         }
     }
 
-    public function editslider($id) {
+    public function editslider($id=0) {
         if ($this->session->userdata('logged_in')) {
             $data['query'] = $this->dbmodel->findslider($id);
             $data['meta'] = $this->dbmodel->get_meta_data();
@@ -2303,7 +2306,7 @@ class bnw extends CI_Controller {
         }
     }
 
-    public function delslider($id) {
+    public function delslider($id=0) {
         if ($this->session->userdata('logged_in')) {
             $data['query'] = $this->dbmodel->findslider($id);
             $data['meta'] = $this->dbmodel->get_meta_data();
@@ -2361,7 +2364,7 @@ class bnw extends CI_Controller {
         }
     }
 
-    public function deleteslider($a) {
+    public function deleteslider($a=0) {
         if ($this->session->userdata('logged_in')) {
             $a = $_GET['image'];
 
@@ -2393,7 +2396,7 @@ class bnw extends CI_Controller {
         }
     }
 
-    public function deletefavicone($id) {
+    public function deletefavicone($id=0) {
 
         if ($this->session->userdata('logged_in')) {
 
@@ -2637,7 +2640,7 @@ class bnw extends CI_Controller {
         }
     }
 
-    public function delalbum($id) {
+    public function delalbum($id=0) {
         if ($this->session->userdata('logged_in')) {
             $data['photoquery'] = $this->dbmodel->get_all_photos($id);
             $data['albumquery'] = $this->dbmodel->get_selected_album($id);
@@ -2669,7 +2672,7 @@ class bnw extends CI_Controller {
         }
     }
 
-    function editalbum($aid) {
+    function editalbum($aid=0) {
         if ($this->session->userdata('logged_in')) {
             $this->dbmodel->edit_album($aid);
             redirect('bnw/album');
@@ -2678,7 +2681,7 @@ class bnw extends CI_Controller {
         }
     }
 
-    public function photos($id) {
+    public function photos($id=0) {
 
         $data['query'] = $this->dbmodel->get_media($id);
         $data['meta'] = $this->dbmodel->get_meta_data();
@@ -2761,7 +2764,7 @@ class bnw extends CI_Controller {
         }
     }
 
-    public function editmenu($mid) {
+    public function editmenu($mid=0) {
         if ($this->session->userdata('logged_in')) {
             $data['query'] = $this->dbmodel->findmenu($mid);
             $data['meta'] = $this->dbmodel->get_meta_data();
@@ -2809,7 +2812,7 @@ class bnw extends CI_Controller {
         }
     }
 
-    public function deletemenu($id) {
+    public function deletemenu($id=0) {
         if ($this->session->userdata('logged_in')) {
             $this->dbmodel->delete_menu($id);
             $this->session->set_flashdata('message', 'Data Delete Sucessfully');
