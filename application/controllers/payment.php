@@ -47,7 +47,7 @@ class Payment extends CI_Controller {
     }
 
     function cancel_payment() {
-        echo "Sorry  budy you didnt get the payemnt. Its canceled";
+        echo "Its canceled";
     }
 
     function products() {
