@@ -16,9 +16,11 @@
         <tr  >
             <th>Transection ID</th>
             <th>Product Detail</th>
+             <th>Total</th>
             <th>User Detail</th>
             <th>Shipping Address</th>
             <th>PayPal Information</th>
+           
             <th>Action</th>
         </tr>
         <?php
@@ -58,6 +60,7 @@
                 <?php  } ?>
                 </div>
             </td>
+            <td> </td>
             <!--<td></td>-->
             <td id="userDetail" style="font-size: 14px; vertical-align: top;"><?php 
 //            $oderDetail = $this->dbmodel->get_all_product_order_oid($oid);
@@ -92,6 +95,7 @@
             <td id="userDetail" style="font-size: 14px; vertical-align: top;">
                 <?php echo "<b>".$uName."</b><br/>".$email."<br/>".$contact."<br/>".$shpAddress.",".$city."<br/>".$country;  ?></td>
             <td></td>
+            
              <td><?php echo anchor('bnw/delProductOrder/'.$tid,'Delete'); ?></td>
         </tr>
             <?php    

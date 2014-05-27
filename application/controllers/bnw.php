@@ -1749,7 +1749,9 @@ class bnw extends CI_Controller {
                 $pass = $this->input->post('user_pass');
                 $status = $this->input->post('user_status');
                 $user_type = $this->input->post('user_type');
-                $this->dbmodel->add_new_user($name, $fname, $lname, $email, $pass, $status, $user_type);
+                $contact = $this->input->post('phone');
+                $address = $this->input->post('address');
+                $this->dbmodel->add_new_user($name, $fname, $lname, $email, $pass, $status, $user_type,$contact,$address);
                 $this->session->set_flashdata('message', 'One user added sucessfully');
                 redirect('bnw/users/userListing');
             }

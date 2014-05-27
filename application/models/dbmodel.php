@@ -938,6 +938,7 @@ public function get_navigation_info($navigationName)
             'contact'=>$contact,
             'user_status'=> $status,
             'user_type'=> $user_type );
+       // var_dump($data);
          $this->db->insert('user', $data);        
     }
      function check_data($user)
