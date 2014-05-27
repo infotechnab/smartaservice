@@ -117,8 +117,7 @@ if ($cart = $this->cart->contents()) {
         $('.checkkey').click(function() {
             var key = $('#couponkey').val();
             var subtotal = parseInt("<?php echo $this->cart->total(); ?>");
-            // var dataString = 'id=' + key;
-            //alert('sdfdsf');
+           
             $.ajax({
                 type: "POST",
                 url: base_url + 'index.php/bnw/checkcoupon',
@@ -154,10 +153,6 @@ if ($cart = $this->cart->contents()) {
        
         if(rate>0)
         {
-            //  if(('#myonoffswitch').is(':checked')){
-            //     alert('dsfdsfd');
-            //  }
-            alert('sdff');
             var dis = price * parseInt(rate)/100;
             var total = price - dis;
             var grandtotal = total + shiping;
@@ -186,7 +181,7 @@ if ($cart = $this->cart->contents()) {
             var re_pass = $('#u_pass_re').val();
             if(pass !=="" || pass==!null){
                 if(pass==re_pass ){
-                    // alert('sdfdf');
+                   
                     $.ajax({
                         type: "POST",
                         url: base_url + 'index.php/login/userregister',
@@ -199,7 +194,7 @@ if ($cart = $this->cart->contents()) {
                         success: function(msgs)
                         {
                             if(msgs == false){
-                                //alert('message');
+                               
                                 var msg = "Email already registred!";
                                 $("#msg").html(msg);
                             }
@@ -208,9 +203,7 @@ if ($cart = $this->cart->contents()) {
                                 $('#table_user').css("display", "none");
                                 // var msg = email+" is now registred!";
                                 $("#msg").html(msgs);
-                                //alert('sdfdsf');
-                                // ajaxEmail();
-                                // $("#email").html(email);
+                               
                             }
                    
                         }
@@ -231,7 +224,7 @@ if ($cart = $this->cart->contents()) {
 
     function ajaxEmail()
     {
-        alert('working');
+       // alert('working');
         // alert(email);
     }
 
