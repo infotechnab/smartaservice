@@ -31,6 +31,7 @@ $this->load->helper('currency');
         padding:0;
         position:relative;
         overflow:hidden;
+        min-height: 150px;
     }
 
     #slideshow #slideshowWindow .slide {
@@ -38,6 +39,7 @@ $this->load->helper('currency');
         padding:0;
         float:left;
         position:relative;
+        width: 800px;
     }
 
     #slideshow #slideshowWindow .slide .slideText {
