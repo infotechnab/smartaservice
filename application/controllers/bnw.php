@@ -767,6 +767,8 @@ class bnw extends CI_Controller {
                     }
                 }
                 $menuSelected = $_POST['departments'];
+                 if($menuSelected==!"0")
+                {
                 $menu_info = $this->dbmodel->get_menu_info($menuSelected);
                 foreach ($menu_info as $id) {
                     $menu_id = $id->id;
@@ -792,7 +794,13 @@ class bnw extends CI_Controller {
                 }
 
                 redirect('bnw/navigation');
-            } else {
+                }
+                else{
+                   echo ' Select at least one menu list!'; 
+                }
+            } 
+            
+            else {
                 $data['meta'] = $this->dbmodel->get_meta_data();
                 $data["listOfPage"] = $this->dbmodel->get_list_of_pages();
                 $data["listOfCategory"] = $this->dbmodel->get_list_of_category();
@@ -869,7 +877,8 @@ class bnw extends CI_Controller {
                 $this->load->view('bnw/templates/menu', $data);
                 $this->load->view('bnw/menu/listOfItems', $data);
                 $this->load->view('bnw/templates/footer', $data);
-                }else{
+                }
+                else{
                    echo ' Select at least one menu list!'; 
                 }
             } else {

@@ -13,6 +13,7 @@ class View extends CI_Controller {
           $this->load->model('dbmodel');
         $this->load->helper('url');
         $this->load->library('cart');
+        $this->load->library('pagination');
         $this->load->helper(array('form', 'url', 'date'));
     }
 
@@ -23,8 +24,27 @@ class View extends CI_Controller {
         $data['headerlogo']= $this->viewmodel->get_header_logo();         
         $data['meta'] = $this->dbmodel->get_meta_data();
         $data['headerdescription']= $this->viewmodel->get_header_description();
-        $data['product_info'] = $this->productmodel->product_info();     
+        //$data['product_info'] = $this->productmodel->product_info();     
           $data['featureItem'] = $this->productmodel->featured_item();
+          
+          $config = array();
+            $config["base_url"] = base_url()."index.php/view/index" ;
+            $config["total_rows"] = $this->dbmodel->record_count_product();
+           // var_dump($config["total_rows"]);
+            $config["per_page"] = 6;
+            $this->pagination->initialize($config);
+            $page = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
+
+            $data["product_info"] = $this->dbmodel->get_all_product($config["per_page"], $page);
+          //  $config['first_link'] = 'First';
+          //  $config['first_tag_open'] = '<div>';
+           // $config['first_tag_close'] = '</div>';
+           // $config['last_link'] = 'Last';
+           // $config['last_tag_open'] = '<div>';
+           // $config['last_tag_close'] = '</div>';
+            $config['display_pages'] = FALSE; 
+           $data["links"] = $this->pagination->create_links();
+            
           $data['category'] = $this->productmodel->category_list();
           //var_dump($data);
            $data['slider_json'] = json_encode($data['featureItem']);
