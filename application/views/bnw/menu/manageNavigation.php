@@ -16,9 +16,7 @@
             <th>Title</th> 
             <th>Link</th>
             <th>Parent</th>
-            <th>Type</th>
-            <th>Navigation Slug</th>
-            
+                    
             <th>Action</th>
         </tr>
     
@@ -31,11 +29,9 @@
             <td><?php echo $data->navigation_name; ?></td>
             <td><?php echo $data->navigation_link; ?>  </td>
             <td><?php echo $data->parent_id; ?>  </td>
-            <td><?php echo $data->navigation_type; ?>  </td>
-            <td><?php echo $data->navigation_slug; ?>  </td>
-            
-            <td><?php echo anchor('bnw/editnavigation/'.$data->id,'Edit'); ?> / 
-            <?php echo anchor('bnw/deletenavigation/'.$data->id,'Delete'); ?></td>
+          
+            <td><?php echo anchor('bnw/up/'.$data->id,'UP'); ?> | 
+            <?php echo anchor('bnw/down/'.$data->id,'Down'); ?></td>
         </tr>
             <?php    
             }

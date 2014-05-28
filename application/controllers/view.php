@@ -347,7 +347,21 @@ class View extends CI_Controller {
             {
                 $data['pageTitle'] = $page->category_name;
             }
-          $data['product'] = $this->productmodel->get_product($id);
+          $data['product'] = $this->productmodel->get_productList($id);
+          
+         // $config = array();
+         //   $config["base_url"] = base_url()."index.php/view/category/".$id ;
+         //   $config["total_rows"] = $this->dbmodel->record_count_cat($id);
+           // var_dump($config["total_rows"]);
+         //   $config["per_page"] = 6;
+         //   $this->pagination->initialize($config);
+          //  $page = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
+
+         //   $data["product"] = $this->productmodel->get_productList($config["per_page"], $page,$id);
+          
+          // $config['display_pages'] = FALSE; 
+         //  $data["links"] = $this->pagination->create_links();
+          
           //var_dump($data);
            $data['slider_json'] = json_encode($data['featureItem']);
         $this->load->view('templates/header', $data);

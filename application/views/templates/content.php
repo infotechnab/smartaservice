@@ -340,7 +340,7 @@ $(document).ready(function() {
         <?php } ?>
     </div >
     <div style="clear:both;"></div>
-   <div style="margin-top: 10px; background-color: #fff; color: #3399ff; ">
+   <div style="margin-top: 10px; background-color: #999; color: #3399ff; ">
     <?php echo $links; ?>
     </div>
 </div>

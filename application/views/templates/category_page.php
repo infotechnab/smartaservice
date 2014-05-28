@@ -155,6 +155,10 @@ if (!empty($product)) {
 
 <?php } ?>
     </div>
+      <div style="clear:both;"></div>
+   <div style="margin-top: 10px; background-color: #fff; color: #3399ff; ">
+    
+    </div>
 </div>
 <!-- left side content closed here -->
 

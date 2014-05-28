@@ -1006,6 +1006,55 @@ class bnw extends CI_Controller {
             redirect('login', 'refresh');
         }
     }
+    
+    function manageNavigation($id=0)
+    {
+         if ($this->session->userdata('logged_in')) {
+         $data['meta'] = $this->dbmodel->get_meta_data();
+
+            $data['query'] = $this->dbmodel->get_list_of_selected_menu_navigation($id);
+            $this->load->view("bnw/templates/header", $data);
+            $this->load->view("bnw/templates/menu");
+            $this->load->view('bnw/menu/manageNavigation', $data);
+            $this->load->view('bnw/templates/footer', $data);
+             
+             } else {
+            redirect('login', 'refresh');
+        }
+         
+    }
+    
+    function up($id=0)
+    {
+       if ($this->session->userdata('logged_in')) {
+         
+           $parent = $this->dbmodel->get_parent_id($id);
+           foreach ($parent as $pid)
+           {
+               $parentID = $pid->parent_id;
+           }
+           
+           $getID = $this->dbmodel->get_data($parentID);
+            $ptID = json_encode($getID);
+            var_dump($ptID);
+       }
+       else
+       {
+           
+       } 
+    }
+
+    function down()
+    {
+        if ($this->session->userdata('logged_in')) {
+         
+           
+       }
+       else
+       {
+           
+       } 
+    }
 
     public function updatenavigation() {
         if ($this->session->userdata('logged_in')) {

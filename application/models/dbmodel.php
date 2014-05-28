@@ -54,7 +54,26 @@ class Dbmodel extends CI_Model {
          $this->db->insert('comment_store', $data);
     }
 
+    // ========================== Navigation ==================================//
     
+    function get_parent_id($id)
+    {
+        $this->db->select('parent_id');
+        $this->db->where('id',$id);
+       $result =  $this->db->get('navigation');
+       return $result->result();
+    }
+
+    function get_data($id)
+    {
+        $this->db->select('id');
+        $this->db->where('parent_id',$id);
+        $resut = $this->db->get('navigation');   
+        return $resut->result();
+    }
+
+
+    ////==============================//////
 
 //============================    For Cart System         ========================================//
     function getdate($key)
@@ -138,6 +157,13 @@ class Dbmodel extends CI_Model {
     
     function record_count_product()
     {
+        return $this->db->count_all("product");
+    }
+    
+    function record_count_cat($id)
+    {
+        
+        $this->db->where('category',$id);
         return $this->db->count_all("product");
     }
     
