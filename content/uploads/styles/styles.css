@@ -36,6 +36,14 @@ body
 .clear{
     clear: both;
 }
+#signupHeader a
+{
+    color: #ccc;
+}
+ .sucessmsg
+{
+    color: red;  
+}
 #itemContent a:link, a:visited, a:active
 {
     text-decoration: none;

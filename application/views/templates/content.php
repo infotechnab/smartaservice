@@ -23,6 +23,7 @@ $this->load->helper('currency');
         width: 300px;
         float: left;
         margin-right: 10px;
+        height: 400px;
     }
 
     #slideshow #slideshowWindow {
@@ -40,6 +41,7 @@ $this->load->helper('currency');
         float:left;
         position:relative;
         width: 800px;
+        height: 400px;
     }
 
     #slideshow #slideshowWindow .slide .slideText {
@@ -209,13 +211,13 @@ function slider()
     for (i = 0; i < sliderJson.length; i++)
     {
         var ftbl = '<div class="slide"><table class="sliderTable">';
-        tbl = '<tr><td rowspan="3"><img src=' +
+        tbl = '<tr><td><img src=' +
             base_url + 'content/uploads/images/' +
-            sliderJson[i].image1 + ' id="sliderImage" ></td><td style=" vertical-align: top;" ><div class="slideContents"><a style="color:#000;" href="'+base_url+'index.php/view/details/'+sliderJson[i].id+'"><h2>' +
+            sliderJson[i].image1 + ' id="sliderImage" ></td><td style="vertical-align:top;"><div class="slideContents"><a style="color:#000;" href="'+base_url+'index.php/view/details/'+sliderJson[i].id+'"><h2>' +
             sliderJson[i].name + 
             '</h2><p></a>' +
             sliderJson[i].summary + '</p> <div class="sliderContent"><div class="contentContainerFooterLeft"><h4>' +
-            currencyTag + sliderJson[i].price + '</h4></div><div  id="contentContainerFooterRight" ><input style="background-size:30%; height:51px" type="button" value="' + sliderJson[i].id + '"' +
+            currencyTag + sliderJson[i].price + '</h4></div><div  id="contentContainerFooterRight" ><input style="background-size:30%; height:50px" type="button" value="' + sliderJson[i].id + '"' +
             'class="addToCarts" id="addToCartBtn"></div></div></div></td></tr>';
         var ltbl = '</table></div>';
         $("#slideshowWindow").append(ftbl + tbl + ltbl);

@@ -404,7 +404,109 @@ class View extends CI_Controller {
         $this->load->view('templates/cartLogin');
         $this->load->view('templates/footer');
 }
-public function shippingAddress()
+
+public function homeLogin(){
+    $data['headertitle']= $this->viewmodel->get_header_title();          
+        $data['headerlogo']= $this->viewmodel->get_header_logo();         
+        $data['meta'] = $this->dbmodel->get_meta_data();
+        $data['headerdescription']= $this->viewmodel->get_header_description();        
+        $data['shiping']=$this->productmodel->getship();        
+        $this->load->view('templates/header', $data);
+        $this->load->view('templates/navigation');
+        $this->load->view('templates/home_login');
+        $this->load->view('templates/footer');
+}
+public function validate_login()
+    {
+        $data['headertitle']= $this->viewmodel->get_header_title();          
+        $data['headerlogo']= $this->viewmodel->get_header_logo();         
+        $data['meta'] = $this->dbmodel->get_meta_data();
+        $data['headerdescription']= $this->viewmodel->get_header_description();
+        
+         $this->load->library('form_validation');
+        $this->form_validation->set_rules('email', 'Email', 'trim|required|xss_clean');
+        $this->form_validation->set_rules('pass', 'Password', 'trim|required|xss_clean|callback_check_database');
+        if ($this->form_validation->run() == FALSE) {
+            redirect('view/homeLogin');
+        } else {
+                     $this->load->model('dbmodel');
+                        $data['detail'] = $this->productmodel->validate();
+                      
+                             if(!empty($data['detail']))
+                         { 
+           die('here');                      
+        $this->load->view('templates/header', $data);
+        $this->load->view('templates/navigation');
+        //$this->load->view('templates/userRegistrationAndShipping',$data);       
+        $this->load->view('templates/footer');     
+            }else
+            {
+                $this->session->set_flashdata('message', 'Username or password incorrect');
+                redirect('view/homeLogin');
+            }
+        }
+    }
+    
+    public function userRegistration(){
+        $data['headertitle']= $this->viewmodel->get_header_title();          
+        $data['headerlogo']= $this->viewmodel->get_header_logo();         
+        $data['meta'] = $this->dbmodel->get_meta_data();
+        $data['headerdescription']= $this->viewmodel->get_header_description();        
+        $data['shiping']=$this->productmodel->getship();        
+        $this->load->view('templates/header', $data);
+        $this->load->view('templates/navigation');
+        $this->load->view('templates/user_registration');
+        $this->load->view('templates/footer');
+    }
+    public function addNewUser(){
+        $this->load->library('form_validation');
+        $users = $this->dbmodel->get_all_user();
+        $this->form_validation->set_rules('u_name', 'Username', 'trim|required|xss_clean');
+        $this->form_validation->set_rules('u_email', 'Email', 'trim|required|xss_clean');
+        $this->form_validation->set_rules('u_pass', 'Password', 'trim|required|xss_clean|md5|callback_check_database');
+         $this->form_validation->set_rules('u_pass_re', 'Password', 'trim|required|xss_clean|md5|callback_check_database');
+        if ($this->form_validation->run() == FALSE)  {
+            $this->userRegistration();
+        } else {
+            foreach ($users as $user) {
+                $userName = $user->user_name;
+                $userEmail = $user->user_email;
+            }
+            if (isset($_POST['u_name']))
+                $inputuserName = $_POST['u_name'];
+            if ($userName === $inputuserName) {
+                $this->session->set_flashdata('message', 'User Name already exsists');
+                redirect('view/userRegistration', 'refresh');
+            } else {
+                $user_name = $this->input->post('u_name');
+            }
+            if (isset($_POST['u_email']));
+            $inputuserEmail = $_POST['u_email'];
+
+            if ($userEmail === $inputuserEmail) {
+                $this->session->set_flashdata('message', 'User Email already exsists');
+                 redirect('view/userRegistration', 'refresh');
+            } else {
+                $user_email = $this->input->post('u_email');
+            }
+            if (isset($_POST['u_pass']));
+            $pass=$_POST['u_pass'];
+            if (isset($_POST['u_pass_re']));
+            $re_pass=$_POST['u_pass_re'];
+            if ($pass !== $re_pass) {
+                $this->session->set_flashdata('message', 'Password did not match');
+                 redirect('view/userRegistration', 'refresh');
+            } else {
+                $user_pass = $this->input->post('u_pass');
+                $this->dbmodel->add_ajax_user($user_name,$user_email, $user_pass);
+                $this->session->set_flashdata('message', 'User Registered Successfully');
+                redirect('view/index');
+            }
+        }
+    }
+
+    
+    public function shippingAddress()
         {
      $this->load->view('templates/header');
         $this->load->view('templates/navigation');
