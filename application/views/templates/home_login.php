@@ -16,10 +16,10 @@
                 </tr>
 
                 <tr style="text-align: center">
-                    <td><input name="email" type="email" placeholder="Email" size="35" class="placeholder" required/></td>
+                    <td><input name="user_email" type="email" placeholder="Email" size="35" class="placeholder" required/></td>
                 </tr>
                 <tr style="text-align: center">
-                    <td><input name="pass" type="password" placeholder="Password" size="35" class="placeholder" required/></td> 
+                    <td><input name="user_pass" type="password" placeholder="Password" size="35" class="placeholder" required/></td> 
                 </tr>
                 <tr><td></td></tr>
                 <tr><td></td></tr>

@@ -20,16 +20,11 @@ class Dbmodel extends CI_Model {
         }
     }
 function validate_user() {
-        $this->db->where('user_email', $this->input->post('email'));
-        $this->db->where('user_pass', md5($this->input->post('pass')));
+        $this->db->where('user_email', $this->input->post('user_email'));
+        $this->db->where('user_pass', md5($this->input->post('user_pass')));
         $this->db->where('user_type',1);
         $query = $this->db->get('user');
-
-        if ($query->num_rows == 1) {
-            return true;
-        } else {
-            return FALSE;
-        }
+        return $query->result();
     }
     
     
