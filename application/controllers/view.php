@@ -86,26 +86,27 @@ class View extends CI_Controller {
 
         $data['headerdescription'] = $this->viewmodel->get_header_description();
         $this->load->view('templates/header', $data);
+        $this->load->view('templates/navigation');
         $this->load->view('templates/forgot_password');
         $this->load->view('templates/footer');
     }
 
     public function authenticate_user() {
-
+if(!empty($_POST['email'])){
         $useremail = $_POST['email'];
-
+}
         $username = $this->dbmodel->get_selected_user($useremail);
 
         foreach ($username as $dbemail) {
             $to = $dbemail->user_email;
         }
-        if ($to == $useremail) {
+        if ($to === $useremail) {
             $token = $this->getRandomString(10);
             $this->dbmodel->update_emailed_user($to, $token);
             $this->test($token);
 
             // $this->mailresetlink($to, $token);
-        } else {
+} else {
             $this->session->set_flashdata('message', 'Please type valid Email Address');
             redirect("view/forgotPassword");
         }
@@ -119,6 +120,7 @@ class View extends CI_Controller {
         $data['meta'] = $this->dbmodel->get_meta_data();
         $data['headerdescription'] = $this->viewmodel->get_header_description();
         $this->load->view('templates/header', $data);
+        $this->load->view('templates/navigation');
         $this->load->view('templates/messageSent', $data);
         $this->load->view('templates/footer');
     }
@@ -166,43 +168,44 @@ class View extends CI_Controller {
         $data['headerdescription'] = $this->viewmodel->get_header_description();
 
 
-        if (isset($_GET['resetPassword']))
-            $a = $_GET['resetPassword'];
-
+        if (!empty($_GET['resetPassword']))
+             $a = $_GET['resetPassword'];
         $data['query'] = $this->dbmodel->find_user_auth_key($a);
-        var_dump($data['query']);
         if ($data['query']) {
             $this->load->view('templates/header', $data);
+            $this->load->view('templates/navigation');
             $this->load->view("templates/resetPassword", $data);
-
             $this->load->view('templates/footer');
         } else {
             $this->load->view('templates/header', $data);
-
+            $this->load->view('templates/navigation');
+            $this->load->view('templates/error_landing_page');
             $this->load->view('templates/footer');
         }
     }
 
     public function setpassword() {
-
-
+if(!empty($_POST['user_pass']));
+if(!empty($_POST['tokenid']))
+{
         $password = $_POST['user_pass'];
-        $email = $_POST['userEmail'];
-        //die($token);  
+
+        $token = $_POST['tokenid'];
+        
         $confirmPassword = $_POST['user_confirm_pass'];
         if ($password == $confirmPassword) {
 
             $userPassword = $this->input->post('user_pass');
 
-            $this->dbmodel->update_user_password($email, $userPassword);
-            //$this->dbmodel->update_user_token($token);
+            $this->dbmodel->update_user_password($token, $userPassword);
+           
 
             $this->session->set_flashdata('message', 'Your password has been changed successfully');
             redirect('view/index', 'refresh');
-        } else {
+        } }else {
 
             $this->session->set_flashdata('message', 'Password didnot match');
-            redirect('login/forgotPassword', 'refresh');
+            redirect('view/forgotPassword', 'refresh');
         }
     }
 
@@ -421,18 +424,22 @@ class View extends CI_Controller {
         if ($this->form_validation->run() == FALSE) {
             redirect('view/homeLogin');
         } else {
-            $data['detail'] = $this->dbmodel->validate_user();
-            foreach ($data['detail'] as $users){
+            $email = $this->input->post('user_email');
+            $pass=$this->input->post('user_pass');
+            
+            $query = $this->dbmodel->validate_user($email, $pass);
+            
+            if ($query) { // if the user's credentials validated...
+               foreach ($query as $users){
                 $userName= $users->user_name;
             }
-            if (!empty($data['detail'])) {
                 $data = array(
                     'useremail' => $this->input->post('user_email'),
                     'username'=> $userName,
                     'logged_in' => true);
                 $this->session->set_userdata($data);
-                var_dump($data);
                 redirect('view/index');
+                
             } else {
                 $this->session->set_flashdata('message', 'Username or password incorrect');
                 redirect('view/homeLogin');
@@ -458,32 +465,29 @@ class View extends CI_Controller {
                 $inputuserName = $_POST['u_name'];
             if ($userName === $inputuserName) {
                 $this->session->set_flashdata('message', 'User Name already exsists');
-                redirect('view/home_login', 'refresh');
+                redirect('view/homeLogin', 'refresh');
             } else {
                 $user_name = $this->input->post('u_name');
             }
-            if (isset($_POST['u_email']))
-                ;
+            if (isset($_POST['u_email']));
             $inputuserEmail = $_POST['u_email'];
 
             if ($userEmail === $inputuserEmail) {
                 $this->session->set_flashdata('message', 'User Email already exsists');
-                redirect('view/home_login', 'refresh');
+                redirect('view/homeLogin', 'refresh');
             } else {
                 $user_email = $this->input->post('u_email');
             }
-            if (isset($_POST['u_pass']))
-                ;
+            if (isset($_POST['u_pass']));
             $pass = $_POST['u_pass'];
-            if (isset($_POST['u_pass_re']))
-                ;
+            if (isset($_POST['u_pass_re']));
             $re_pass = $_POST['u_pass_re'];
-            if ($pass !== $re_pass) {
+            if ($pass != $re_pass) {
                 $this->session->set_flashdata('message', 'Password did not match');
-                redirect('view/home_login', 'refresh');
+                redirect('view/homeLogin', 'refresh');
             } else {
-                $user_pass = $this->input->post('u_pass');
-                $this->dbmodel->add_ajax_user($user_name, $user_email, $user_pass);
+                
+                $this->dbmodel->add_new_user_for($user_name, $user_email, $re_pass);
                 $this->session->set_flashdata('message', 'User Registered Successfully');
                 redirect('view/index');
             }

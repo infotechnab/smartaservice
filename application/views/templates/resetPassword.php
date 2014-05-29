@@ -1,7 +1,7 @@
 
 
 
-<div><?php echo form_open_multipart('login/setpassword');?>
+<div><?php echo form_open_multipart('view/setpassword');?>
   
     <?php $token = $_GET['resetPassword'];
    ?>

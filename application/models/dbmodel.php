@@ -19,9 +19,10 @@ class Dbmodel extends CI_Model {
             return FALSE;
         }
     }
-function validate_user() {
-        $this->db->where('user_email', $this->input->post('user_email'));
-        $this->db->where('user_pass', md5($this->input->post('user_pass')));
+function validate_user($email, $pass) {
+    
+        $this->db->where('user_email',$email );
+        $this->db->where('user_pass', $pass);
         $this->db->where('user_type',1);
         $query = $this->db->get('user');
         return $query->result();
@@ -917,7 +918,9 @@ public function get_navigation_info($navigationName)
     }
     public function update_user_password($token, $userPassword){
         $data = array(
+            'user_auth_key'=>"",
             'user_pass'=> md5($userPassword));
+        
         $this->db->where('user_auth_key', $token);
         $this->db->update('user', $data);
     }
@@ -1637,6 +1640,19 @@ function delete_favicone($id) {
     {   
          $user_type = 1;
           $pass = md5($pass);      
+        $data = array(
+            'user_name'=>$name,
+            
+            'user_email'=> $email,
+            'user_pass'=> $pass,
+            
+            'user_type'=> $user_type );
+         $this->db->insert('user', $data); 
+         
+    }
+    public function add_new_user_for($name,$email, $pass)
+    {   
+         $user_type = 1;   
         $data = array(
             'user_name'=>$name,
             
