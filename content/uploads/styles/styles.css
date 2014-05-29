@@ -325,6 +325,13 @@ body
     min-height: 30px;
     width: 100%;
 }
+.sidebarCart
+{
+    margin: 0px;
+    padding: 0px;
+    min-height: 30px;
+    width: 100%;
+}
 .detailsBottom
 {
     margin: 0px;
@@ -350,7 +357,18 @@ body
     color: #fff;
     width: 40%
 }
-.contentContainerFooterLeft h4
+.sidebarCartLeft
+{
+    margin: 0px;
+    padding: 2.5%;
+    float: left;
+    height: 35px;
+    border-radius: 0px 0px 0px 5px;
+    border: 1px solid #ccc;
+    color: #fff;
+    width: 38%
+}
+.contentContainerFooterLeft h4, .sidebarCartLeft h4
 {
     margin: 0px;
     padding: 7px 0px 5px 5px;

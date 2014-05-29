@@ -10,9 +10,20 @@
                         <tr >
                             <td><img src="<?php echo base_url().'content/uploads/images/'.$product_list->image1; ?>" width="50" height="50"  /></td>
                             <td><b><?php echo $product_list->name;  ?></b></td>
-                            <td><b><?php echo $product_list->price; ?></b></td>
-                            <td style="border-left: 1px solid #000; text-align: right;">                               
-                                <input type="button" value="<?php echo $product_list->id ?>" class="addToCart" id="addToCartBtn" >
+                          <!--  <td><b><?php echo $product_list->price; ?></b></td> -->
+                            <td style="border-left: 1px solid #000;"> 
+                                
+                                <div class="sidebarCart"> 
+                    <div class='sidebarCartLeft'><h4><?php get_currency($product_list->price); ?></h4></div>
+                    <div class='contentContainerFooterRight'>
+
+                        <input type="button" value="<?php echo $product_list->id ?>" class="addToCart" id="addToCartBtn">  
+
+                    </div>
+                </div>
+                                
+                                
+                                
                             </td>
                         </tr>
                         </tbody>

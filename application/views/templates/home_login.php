@@ -2,7 +2,7 @@
 <div id="login">
     <div id="outerBorder">
         <div class="loginLeft">
-            <p id="sucessmsg">
+            <p class="sucessmsg">
                 <?php if ($this->session->flashdata('message')) {
                     echo $this->session->flashdata('message');
                 }

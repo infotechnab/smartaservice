@@ -20,7 +20,7 @@ class View extends CI_Controller {
 
     public function index() {     //fetching data from database of the product
         
-       if ($this->session->userdata('logged_in')) {
+       
             $data['username'] = Array($this->session->userdata('logged_in'));
         $data['headertitle']= $this->viewmodel->get_header_title();          
         $data['headerlogo']= $this->viewmodel->get_header_logo();         
@@ -58,21 +58,6 @@ class View extends CI_Controller {
         $this->load->view('templates/cart');
         $this->load->view('templates/sidebarview',$data);
         $this->load->view('templates/footer');
-        
-      
-//$db = mysql_connect('localhost','root','');
-//if(!$db) echo "Cannot connect to the database – incorrect details";
-//mysql_select_db('smartaservice'); $result=mysql_query('show tables');
-//while($tables = mysql_fetch_array($result)) {
-//foreach ($tables as $key => $value) {
-//mysql_query("ALTER TABLE $value COLLATE utf8_general_ci");
-//}}
-//echo "The collation of your database has been successfully changed!";
-       }
-       
-       else{
-           
-       }
        
     }
 
@@ -429,6 +414,7 @@ function logout() {
         $this->index();
         redirect('view/index', 'refresh');
     }
+    
 public function homeLogin(){
     $data['headertitle']= $this->viewmodel->get_header_title();          
         $data['headerlogo']= $this->viewmodel->get_header_logo();         
@@ -447,29 +433,31 @@ public function validate_login()
         $data['meta'] = $this->dbmodel->get_meta_data();
         $data['headerdescription']= $this->viewmodel->get_header_description();
         
-         $this->load->library('form_validation');
+        
+        $this->load->library('form_validation');
         $this->form_validation->set_rules('email', 'Email', 'trim|required|xss_clean');
         $this->form_validation->set_rules('pass', 'Password', 'trim|required|xss_clean|callback_check_database');
         if ($this->form_validation->run() == FALSE) {
             redirect('view/homeLogin');
         } else {
-                     $this->load->model('dbmodel');
-                        $data['detail'] = $this->productmodel->validate();
-                      
-                             if(!empty($data['detail']))
-                         { 
-           die('here');                      
-        $this->load->view('templates/header', $data);
-        $this->load->view('templates/navigation');
-        //$this->load->view('templates/userRegistrationAndShipping',$data);       
-        $this->load->view('templates/footer');     
-            }else
-            {
+            $this->load->model('dbmodel');
+            $query = $this->dbmodel->validate_user();
+            if ($query) { // if the user's credentials validated...
+                $data = array(
+                    'username' => $this->input->post('email'),
+                    'logged_in' => true
+                );
+                die('i am here');
+                $this->session->set_userdata($data);
+                redirect('view/index');
+            } else { // incorrect username or password
                 $this->session->set_flashdata('message', 'Username or password incorrect');
+                
                 redirect('view/homeLogin');
             }
         }
     }
+        
     
     public function userRegistration(){
         $data['headertitle']= $this->viewmodel->get_header_title();          
