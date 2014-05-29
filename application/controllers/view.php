@@ -459,17 +459,7 @@ public function validate_login()
     }
         
     
-    public function userRegistration(){
-        $data['headertitle']= $this->viewmodel->get_header_title();          
-        $data['headerlogo']= $this->viewmodel->get_header_logo();         
-        $data['meta'] = $this->dbmodel->get_meta_data();
-        $data['headerdescription']= $this->viewmodel->get_header_description();        
-        $data['shiping']=$this->productmodel->getship();        
-        $this->load->view('templates/header', $data);
-        $this->load->view('templates/navigation');
-        $this->load->view('templates/user_registration');
-        $this->load->view('templates/footer');
-    }
+    
     public function addNewUser(){
         $this->load->library('form_validation');
         $users = $this->dbmodel->get_all_user();
@@ -488,7 +478,7 @@ public function validate_login()
                 $inputuserName = $_POST['u_name'];
             if ($userName === $inputuserName) {
                 $this->session->set_flashdata('message', 'User Name already exsists');
-                redirect('view/userRegistration', 'refresh');
+                redirect('view/home_login', 'refresh');
             } else {
                 $user_name = $this->input->post('u_name');
             }
@@ -497,7 +487,7 @@ public function validate_login()
 
             if ($userEmail === $inputuserEmail) {
                 $this->session->set_flashdata('message', 'User Email already exsists');
-                 redirect('view/userRegistration', 'refresh');
+                 redirect('view/home_login', 'refresh');
             } else {
                 $user_email = $this->input->post('u_email');
             }
@@ -507,7 +497,7 @@ public function validate_login()
             $re_pass=$_POST['u_pass_re'];
             if ($pass !== $re_pass) {
                 $this->session->set_flashdata('message', 'Password did not match');
-                 redirect('view/userRegistration', 'refresh');
+                 redirect('view/home_login', 'refresh');
             } else {
                 $user_pass = $this->input->post('u_pass');
                 $this->dbmodel->add_ajax_user($user_name,$user_email, $user_pass);

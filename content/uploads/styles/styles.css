@@ -330,7 +330,10 @@ body
     margin: 0px;
     padding: 0px;
     min-height: 30px;
-    width: 100%;
+    width: 53%;
+   *width:35%;
+  _width:35%;
+  float: left;
 }
 .detailsBottom
 {
@@ -362,11 +365,10 @@ body
     margin: 0px;
     padding: 2.5%;
     float: left;
-    height: 35px;
+    height: 34px;
     border-radius: 0px 0px 0px 5px;
     border: 1px solid #ccc;
-    color: #fff;
-    width: 38%
+    width: 38%;
 }
 .contentContainerFooterLeft h4, .sidebarCartLeft h4
 {
@@ -493,11 +495,12 @@ body
 }
 .sidebarContentNext
 {
-    margin: 5px 0px 5px 0px;
+    margin: 5px;
     padding: 0px;
     background-color: #fff;
-    min-height: 40px;
+    min-height: 52px;
     border-radius: 5px;
+    width: 98%;
 }
 
 .cartItems
@@ -617,10 +620,7 @@ div.vertical-line{
     background-color: #f61938;
 }
 
-.sidebarProductListTable tr td
-{
-    
-}
+
 #total_item
 {
     margin: 0px;
