@@ -14,12 +14,14 @@ class View extends CI_Controller {
         $this->load->helper('url');
         $this->load->library('cart');
         $this->load->library('pagination');
+        
         $this->load->helper(array('form', 'url', 'date'));
     }
 
     public function index() {     //fetching data from database of the product
         
-      
+       if ($this->session->userdata('logged_in')) {
+            $data['username'] = Array($this->session->userdata('logged_in'));
         $data['headertitle']= $this->viewmodel->get_header_title();          
         $data['headerlogo']= $this->viewmodel->get_header_logo();         
         $data['meta'] = $this->dbmodel->get_meta_data();
@@ -31,7 +33,7 @@ class View extends CI_Controller {
             $config["base_url"] = base_url()."index.php/view/index" ;
             $config["total_rows"] = $this->dbmodel->record_count_product();
            // var_dump($config["total_rows"]);
-            $config["per_page"] = 6;
+            $config["per_page"] = 15;
             $this->pagination->initialize($config);
             $page = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
 
@@ -66,7 +68,11 @@ class View extends CI_Controller {
 //mysql_query("ALTER TABLE $value COLLATE utf8_general_ci");
 //}}
 //echo "The collation of your database has been successfully changed!";
-
+       }
+       
+       else{
+           
+       }
        
     }
 
@@ -418,7 +424,11 @@ class View extends CI_Controller {
         $this->load->view('templates/cartLogin');
         $this->load->view('templates/footer');
 }
-
+function logout() {
+        $this->session->sess_destroy();
+        $this->index();
+        redirect('view/index', 'refresh');
+    }
 public function homeLogin(){
     $data['headertitle']= $this->viewmodel->get_header_title();          
         $data['headerlogo']= $this->viewmodel->get_header_logo();         

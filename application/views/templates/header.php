@@ -134,9 +134,17 @@
                         <div id="headerLogoContent">
                             <h1><?php echo $header->description; ?></h1>
                         </div>
-                        <div id="signupHeader" style="width: 20%; float: right;">
+                     <?php  if ($this->session->userdata('logged_in')){ ?>
+            <div id="signupHeader" style="width: 20%; float: right;">
+                            <div style="width:45%; text-align: center; margin: 15% 1% 0% 1.5%; float: left; color: #CA021E;"><?php echo $this->session->userdata ('username'); ?></div>
+                            <div style="width:45%; text-align: center; margin: 15% 1% 0% 1.5%; float: left; color: #CA021E;"><<?php echo anchor('view/logout','Log Out') ?></div>
+                        </div>
+            <?php }
+            else{ ?>
+                <div id="signupHeader" style="width: 20%; float: right;">
                             <div style="width:45%; text-align: center; margin: 15% 1% 0% 1.5%; float: left; color: #CA021E;"><?php echo anchor('view/homeLogin', 'login') ?></div>
                             <div style="width:45%; text-align: center; margin: 15% 1% 0% 1.5%; float: left; color: #CA021E;"><?php echo anchor('view/homeLogin', 'signup') ?></div>
                         </div>
-                    <?php } ?>  
+         <?php   }
+                 } ?>  
                     <div class="clear"></div>
