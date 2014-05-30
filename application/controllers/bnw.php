@@ -339,6 +339,7 @@ class bnw extends CI_Controller {
             $config = array();
             $config["base_url"] = base_url() . "index.php/bnw/productList";
             $config["total_rows"] = $this->dbmodel->record_count_product();
+           // var_dump($config["total_rows"]);
             $config["per_page"] = 6;
             $this->pagination->initialize($config);
             $page = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
@@ -501,7 +502,7 @@ class bnw extends CI_Controller {
         echo ' Processing ';
     }
 
-    function delProduct($id) {
+    function delProduct($id=0) {
         if ($this->session->userdata('logged_in')) {
             
             $delimages = $this->dbmodel->findproduct($id);
@@ -529,10 +530,19 @@ class bnw extends CI_Controller {
           //  else{}
             
             
-            $this->dbmodel->delProduct($id);
+            $result =$this->dbmodel->delProduct($id);
+             if($result == true)
+            {
+                $this->session->set_flashdata('message', 'Data Delete Sucessfully');
+                 redirect('bnw/productList');
+                
+            }
+           else {
+                 $this->session->set_flashdata('message', 'Cannot delete or update a parent row');
+                 redirect('bnw/productList');
+                  }
             
-            $this->session->set_flashdata('message', 'Data Deleted Sucessfully');
-            redirect('bnw/productList');
+           
         } else {
             redirect('login', 'refresh');
         }
@@ -541,24 +551,24 @@ class bnw extends CI_Controller {
         {
             if ($this->session->userdata('logged_in')) {
             $data['username'] = Array($this->session->userdata('logged_in'));
-           // $config = array();
-           // $config["base_url"] = base_url() . "index.php/bnw/disproduct";
-           // $config["total_rows"] = $this->dbmodel->get_record_all_product_orderDis();
+            $config = array();
+            $config["base_url"] = base_url() . "index.php/bnw/disproduct";
+            $config["total_rows"] = count($this->dbmodel->get_record_all_product_orderDis());
             
-           // $config["per_page"] = 6;
-           // $this->pagination->initialize($config);
-           // $page = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
+            $config["per_page"] = 6;
+            $this->pagination->initialize($config);
+            $page = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
 
-           // $data["query"] = $this->dbmodel->get_all_productTrn($config["per_page"], $page);
-           // var_dump($data);
-           // $data["links"] = $this->pagination->create_links();
+            $data["query"] = $this->dbmodel->get_all_productTrn($config["per_page"], $page);
+           
+            $data["links"] = $this->pagination->create_links();
             
-           $data['query'] = $this->dbmodel->get_all_product_orderDis();
+          // $data['query'] = $this->dbmodel->get_all_product_orderDis();
             $data['meta'] = $this->dbmodel->get_meta_data();
 
             $this->load->view('bnw/templates/header', $data);
             $this->load->view('bnw/templates/menu');
-            $this->load->view('product/test');
+            $this->load->view('product/test',$data);
             $this->load->view('bnw/templates/footer', $data);
         } else {
             redirect('login', 'refresh');
@@ -594,9 +604,10 @@ class bnw extends CI_Controller {
        if ($this->session->userdata('logged_in')) {
             $data['username'] = Array($this->session->userdata('logged_in'));
             $categoryValue = $this->input->post('categoryProduct');
-           $config = array();
+             $config = array();
             $config["base_url"] = base_url() . "index.php/bnw/catproduct";
-            $config["total_rows"] = $this->dbmodel->record_count_catproduct($categoryValue);
+            $config["total_rows"] = count($this->dbmodel->record_count_catproduct($categoryValue));
+           
             $config["per_page"] = 6;
             $this->pagination->initialize($config);
             $page = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
@@ -674,10 +685,10 @@ class bnw extends CI_Controller {
             if ($this->session->userdata('logged_in')) {
             $data['username'] = Array($this->session->userdata('logged_in'));
             $data['meta'] = $this->dbmodel->get_meta_data();
-
+            $data['getship'] = $this->productmodel->getship();
             $this->load->view('bnw/templates/header', $data);
             $this->load->view('bnw/templates/menu');
-            $this->load->view('product/shipping');
+            $this->load->view('product/shipping',$data);
             $this->load->view('bnw/templates/footer', $data);
         } else {
             redirect('login', 'refresh');
@@ -688,7 +699,7 @@ class bnw extends CI_Controller {
         if ($this->session->userdata('logged_in')) {
 
             $data['meta'] = $this->dbmodel->get_meta_data();
-            
+            $data['getship'] = $this->productmodel->getship();
             $this->load->view('bnw/templates/header', $data);
             $this->load->view('bnw/templates/menu');
             $this->load->helper('form');
@@ -697,9 +708,9 @@ class bnw extends CI_Controller {
 
 
             if ($this->form_validation->run() == FALSE) {
-                 $data['error'] = $this->upload->display_errors();
+                // $data['error'] = $this->upload->display_errors();
 
-                $this->load->view('bnw/product/shipping', $data);
+                $this->load->view('product/shipping', $data);
             } else {
 
                 //if valid
@@ -710,8 +721,8 @@ class bnw extends CI_Controller {
                 
                
                 $this->productmodel->update_shipping_cost($charge);
-                //$this->session->set_flashdata('message', 'Header setting done sucessfully');
-                redirect('bnw/index');
+                $this->session->set_flashdata('message', 'Shipping updated sucessfully');
+                redirect('bnw/shippingupdate');
             }
             $this->load->view('bnw/templates/footer', $data);
         } else {
@@ -756,6 +767,8 @@ class bnw extends CI_Controller {
                     }
                 }
                 $menuSelected = $_POST['departments'];
+                 if($menuSelected==!"0")
+                {
                 $menu_info = $this->dbmodel->get_menu_info($menuSelected);
                 foreach ($menu_info as $id) {
                     $menu_id = $id->id;
@@ -774,14 +787,20 @@ class bnw extends CI_Controller {
                     foreach ($myData as $k => $v) {
                         $navigation_type = "page";
                         $navigation_name = $v;
-                        $navigation_link = $navigation_type . "/" . $k;
+                        $navigation_link = base_url()."index.php/view/".$navigation_type . "/" . $k;
                         $navigation_slug = preg_replace('/\s+/', '', $v);
                     }
                     $this->dbmodel->add_new_navigation_item($navigation_name, $navigation_link, $parent_id, $navigation_type, $navigation_slug, $menu_id);
                 }
 
                 redirect('bnw/navigation');
-            } else {
+                }
+                else{
+                   echo ' Select at least one menu list!'; 
+                }
+            } 
+            
+            else {
                 $data['meta'] = $this->dbmodel->get_meta_data();
                 $data["listOfPage"] = $this->dbmodel->get_list_of_pages();
                 $data["listOfCategory"] = $this->dbmodel->get_list_of_category();
@@ -811,10 +830,17 @@ class bnw extends CI_Controller {
 
             if (($_SERVER['REQUEST_METHOD'] == 'POST')) {
                 $menuSelected = $_POST['departments'];
+               // die($menuSelected);
+                if($menuSelected==!"0")
+                {
+                   // die($menuSelected."dfdsfds");
                 $menu_info = $this->dbmodel->get_menu_info($menuSelected);
+              
                 foreach ($menu_info as $id) {
                     $menu_id = $id->id;
                 }
+               
+              
                 $navigationName = $_POST['jobs'];
                 if ($navigationName == 'Make Parent')
                     $parent_id = '0';
@@ -839,7 +865,7 @@ class bnw extends CI_Controller {
                     foreach ($myData as $k => $v) {
                         $navigation_name = $v;
                         $navigation_type = "category";
-                        $navigation_link = $navigation_type . "/" . $k;
+                        $navigation_link = base_url()."index.php/view/".$navigation_type . "/" . $k;
                         $navigation_slug = preg_replace('/\s+/', '', $v);
                         ;
                     }
@@ -851,6 +877,10 @@ class bnw extends CI_Controller {
                 $this->load->view('bnw/templates/menu', $data);
                 $this->load->view('bnw/menu/listOfItems', $data);
                 $this->load->view('bnw/templates/footer', $data);
+                }
+                else{
+                   echo ' Select at least one menu list!'; 
+                }
             } else {
                 $data['meta'] = $this->dbmodel->get_meta_data();
                 $data["listOfPage"] = $this->dbmodel->get_list_of_pages();
@@ -921,6 +951,7 @@ class bnw extends CI_Controller {
         if ($this->session->userdata('logged_in')) {
 
             $config["total_rows"] = $this->dbmodel->record_count_navigation();
+          
             $config["per_navigation"] = 6;
             $this->pagination->initialize($config);
             $navigation = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
@@ -974,6 +1005,55 @@ class bnw extends CI_Controller {
         } else {
             redirect('login', 'refresh');
         }
+    }
+    
+    function manageNavigation($id=0)
+    {
+         if ($this->session->userdata('logged_in')) {
+         $data['meta'] = $this->dbmodel->get_meta_data();
+
+            $data['query'] = $this->dbmodel->get_list_of_selected_menu_navigation($id);
+            $this->load->view("bnw/templates/header", $data);
+            $this->load->view("bnw/templates/menu");
+            $this->load->view('bnw/menu/manageNavigation', $data);
+            $this->load->view('bnw/templates/footer', $data);
+             
+             } else {
+            redirect('login', 'refresh');
+        }
+         
+    }
+    
+    function up($id=0)
+    {
+       if ($this->session->userdata('logged_in')) {
+         
+           $parent = $this->dbmodel->get_parent_id($id);
+           foreach ($parent as $pid)
+           {
+               $parentID = $pid->parent_id;
+           }
+           
+           $getID = $this->dbmodel->get_data($parentID);
+            $ptID = json_encode($getID);
+            var_dump($ptID);
+       }
+       else
+       {
+           
+       } 
+    }
+
+    function down()
+    {
+        if ($this->session->userdata('logged_in')) {
+         
+           
+       }
+       else
+       {
+           
+       } 
     }
 
     public function updatenavigation() {

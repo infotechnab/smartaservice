@@ -134,7 +134,7 @@ $(document).ready(function() {
     });
 </script>
 <script>
-    var base_url = "http://localhost/smartaservice/";
+        var base_url = "<?php echo base_url(); ?>";
     $(document).ready(function() {
        
         $(".addToCart").click(function() {

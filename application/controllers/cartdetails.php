@@ -27,7 +27,7 @@ class Cartdetails extends CI_Controller {
         $data['headerdescription']= $this->viewmodel->get_header_description();        
         $this->load->view('templates/header', $data);
         $this->load->view('templates/navigation');
-        $this->load->view('templates/cartdetails');
+        $this->load->view('templates/cartDetails');
         $this->load->view('templates/footer');
     }
 

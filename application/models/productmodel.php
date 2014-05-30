@@ -68,6 +68,16 @@ public function product_info(){
          return $query->result();
                 
     }
+    function get_productList($id)
+    {
+        //die($id);
+        //$this->db->limit($a, $b);
+         $this->db->where('category',$id);
+         $query = $this->db->get('product');
+        // var_dump($query);
+         return $query->result();
+                
+    }
     
     function get_page($id)
     {

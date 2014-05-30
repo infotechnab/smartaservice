@@ -19,7 +19,14 @@ class Dbmodel extends CI_Model {
             return FALSE;
         }
     }
-
+function validate_user($email, $pass) {
+    
+        $this->db->where('user_email',$email );
+        $this->db->where('user_pass', $pass);
+        $this->db->where('user_type',1);
+        $query = $this->db->get('user');
+        return $query->result();
+    }
     
     
     // this is another method to get user verified 
@@ -54,7 +61,26 @@ class Dbmodel extends CI_Model {
          $this->db->insert('comment_store', $data);
     }
 
+    // ========================== Navigation ==================================//
     
+    function get_parent_id($id)
+    {
+        $this->db->select('parent_id');
+        $this->db->where('id',$id);
+       $result =  $this->db->get('navigation');
+       return $result->result();
+    }
+
+    function get_data($id)
+    {
+        $this->db->select('id');
+        $this->db->where('parent_id',$id);
+        $resut = $this->db->get('navigation');   
+        return $resut->result();
+    }
+
+
+    ////==============================//////
 
 //============================    For Cart System         ========================================//
     function getdate($key)
@@ -141,6 +167,13 @@ class Dbmodel extends CI_Model {
         return $this->db->count_all("product");
     }
     
+    function record_count_cat($id)
+    {
+        
+        $this->db->where('category',$id);
+        return $this->db->count_all("product");
+    }
+    
     function record_count_product_order()
     {
         return $this->db->count_all("product_oder_detail");
@@ -188,8 +221,10 @@ class Dbmodel extends CI_Model {
     
     function get_all_productTrn($limit,$start)
     {
-        $this->db->limit($limit, $start);
+        
         $this->db->distinct();
+        
+        $this->db->limit($limit, $start);
         $this->db->order_by('trans_id','DESC');
         $query = $this->db->get('product_oder_detail');
         return $query->result();
@@ -275,13 +310,25 @@ class Dbmodel extends CI_Model {
     }
     function delProduct($id){
        // die($id);
-         $this->db->delete('product', array('id' => $id));
+         $resutl = $this->db->delete('product', array('id' => $id));
+          if(!$result)
+        {
+            return false;
+                }
+        else
+        {
+            return true;
+           // die('its work');
+        }
     }
     
         function record_count_catproduct($name)
     {
+           
         $this->db->where('category',$name);
-         return $this->db->count_all("product");
+         return  $this->db->count_all("product");
+      
+        
     }
     function get_all_product_orderID($id)
     {
@@ -871,7 +918,9 @@ public function get_navigation_info($navigationName)
     }
     public function update_user_password($token, $userPassword){
         $data = array(
+            'user_auth_key'=>"",
             'user_pass'=> md5($userPassword));
+        
         $this->db->where('user_auth_key', $token);
         $this->db->update('user', $data);
     }
@@ -1591,6 +1640,19 @@ function delete_favicone($id) {
     {   
          $user_type = 1;
           $pass = md5($pass);      
+        $data = array(
+            'user_name'=>$name,
+            
+            'user_email'=> $email,
+            'user_pass'=> $pass,
+            
+            'user_type'=> $user_type );
+         $this->db->insert('user', $data); 
+         
+    }
+    public function add_new_user_for($name,$email, $pass)
+    {   
+         $user_type = 1;   
         $data = array(
             'user_name'=>$name,
             

@@ -2,7 +2,7 @@
 <div id="login">
     <div id="outerBorder">
         <div class="loginLeft">
-            <p id="sucessmsg">
+            <p class="sucessmsg">
                 <?php if ($this->session->flashdata('message')) {
                     echo $this->session->flashdata('message');
                 }
@@ -36,12 +36,7 @@
             <div class="number" id='verticalOr'>OR</div>  
         </div>
         <div class="loginLeft">
-            <p id="sucessmsg">
-<?php if ($this->session->flashdata('message')) {
-    echo $this->session->flashdata('message');
-}
-echo validation_errors();
-?> </p>
+            
 
             <table border="0" width="100%">
                 <tr style="text-align: center">

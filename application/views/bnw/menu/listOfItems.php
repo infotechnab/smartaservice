@@ -45,7 +45,7 @@ $.fn.changeType = function(){
               ?>
 
 
-        var options_departments = '<option>Select Menu<\/option>';
+        var options_departments = '<option value="0">Select Menu<\/option>';
         $.each(data, function(i,d){
             options_departments += '<option value="' + d.department + '">' + d.department + '<\/option>';
         });
@@ -112,7 +112,7 @@ $(document).ready(function() {
     
     <div id="navigationLeftDown">
      <select style="width: 110px" name="departments" id="departments">
-        <option>Select Menu</option>
+        <option value ="0">Select Menu</option>
     </select>
            
     <select style="width: 150px" name="jobs" id="jobs">
@@ -157,7 +157,7 @@ $(document).ready(function() {
         
         <div id="navigationLeftDown">
             <select style="width: 110px" name="departments" id="departments">
-        <option>Select Menu</option>
+        <option value="0" >Select Menu</option>
     </select>
            
     <select style="width: 150px" name="jobs" id="jobs">
@@ -227,6 +227,8 @@ $(document).ready(function() {
     $a= dataString;
     var link = '<?php echo base_url();?>'+'index.php/bnw/showNavigation/'+selectedValue;
     var editLink = '<a href='+link+'>'+'Edit Navigation'+'</a>';
+    var mLink = '<?php echo base_url();?>'+'index.php/bnw/manageNavigation/'+selectedValue;
+    var manageLink = '<a href='+mLink+'>'+'Manage Navigation'+'</a>';
    
   $.ajax({
   type: "POST",
@@ -236,6 +238,7 @@ $(document).ready(function() {
          {
              $("#cssmenu").html(msg);
              $("#editLink").html(editLink);
+             $("#manLink").html(manageLink);
          }
   
     
@@ -274,9 +277,7 @@ fetch_menu (query(0));
 	</div>
   </div> 
   
-  <p id="editLink">
-      <?php  ?>
- <?php //echo anchor('bnw/editSelectedNavigation/'.$sel,'Edit Navigation'); ?>  </p>
+  <p id="editLink"> </p>   <p id="manLink" > </p>
     </div>
     
     <div class="clear"></div> 

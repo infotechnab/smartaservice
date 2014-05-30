@@ -36,6 +36,14 @@ body
 .clear{
     clear: both;
 }
+#signupHeader a
+{
+    color: #000;
+}
+ .sucessmsg
+{
+    color: red;  
+}
 #itemContent a:link, a:visited, a:active
 {
     text-decoration: none;
@@ -317,6 +325,16 @@ body
     min-height: 30px;
     width: 100%;
 }
+.sidebarCart
+{
+    margin: 0px;
+    padding: 0px;
+    min-height: 30px;
+    width: 53%;
+   *width:35%;
+  _width:35%;
+  float: left;
+}
 .detailsBottom
 {
     margin: 0px;
@@ -342,7 +360,17 @@ body
     color: #fff;
     width: 40%
 }
-.contentContainerFooterLeft h4
+.sidebarCartLeft
+{
+    margin: 0px;
+    padding: 2.5%;
+    float: left;
+    height: 34px;
+    border-radius: 0px 0px 0px 5px;
+    border: 1px solid #ccc;
+    width: 38%;
+}
+.contentContainerFooterLeft h4, .sidebarCartLeft h4
 {
     margin: 0px;
     padding: 7px 0px 5px 5px;
@@ -467,11 +495,12 @@ body
 }
 .sidebarContentNext
 {
-    margin: 5px 0px 5px 0px;
+    margin: 5px;
     padding: 0px;
     background-color: #fff;
-    min-height: 40px;
+    min-height: 52px;
     border-radius: 5px;
+    width: 98%;
 }
 
 .cartItems
@@ -591,10 +620,7 @@ div.vertical-line{
     background-color: #f61938;
 }
 
-.sidebarProductListTable tr td
-{
-    
-}
+
 #total_item
 {
     margin: 0px;
