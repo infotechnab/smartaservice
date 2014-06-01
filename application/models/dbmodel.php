@@ -70,6 +70,15 @@ function validate_user($email, $pass) {
        $result =  $this->db->get('navigation');
        return $result->result();
     }
+    
+    function get_parent_id_down($id)
+    {
+        $this->db->select('parent_id');
+        $this->db->where('id',$id);
+        $this->db->order_by('parent_id','DESC');
+       $result =  $this->db->get('navigation');
+       return $result->result();
+    }
 
     function get_data($id)
     {
@@ -78,6 +87,80 @@ function validate_user($email, $pass) {
         $resut = $this->db->get('navigation');   
         return $resut->result();
     }
+    
+    function get_data_down($id)
+    {
+        $this->db->select('id');
+        $this->db->where('parent_id',$id);
+        $this->db->order_by('id','DESC');
+        $resut = $this->db->get('navigation');   
+        return $resut->result();
+    }
+    
+    function update_navID($id , $tempID)
+    {
+        $data = array(
+            'id'=>$tempID
+        );
+        $this->db->where('id',$id);
+        $this->db->update('navigation',$data);
+        
+    }
+    
+    function update_navParentID($id , $tempID)
+    {
+        $data = array(
+            'parent_id'=>$tempID
+        );
+        $this->db->where('parent_id',$id);
+        $this->db->update('navigation',$data);
+        
+    }
+    
+ function update_previousID($id,$previousID)
+    {
+        $data = array(
+            'id'=>$id
+        );
+        $this->db->where('id',$previousID);
+        $this->db->update('navigation',$data);
+        
+    }
+    
+    function update_Previous_ParentID($id,$previousID)
+    {
+        $data = array(
+            'parent_id'=>$id
+        );
+        
+        $this->db->where('parent_id',$previousID);
+        $this->db->update('navigation',$data);
+    }
+    
+    function update_up($tempID,$previousID)
+    {
+        $data = array(
+            'id'=>$previousID
+        );
+        $this->db->where('id',$tempID);
+        $this->db->update('navigation',$data); 
+    }
+
+    function update_parentID_UP($tempID,$previousID)
+    {
+         $data = array(
+            'parent_id'=>$previousID
+        );
+        
+        $this->db->where('parent_id',$tempID);
+        $this->db->update('navigation',$data);
+    }
+
+
+
+
+
+
 
 
     ////==============================//////

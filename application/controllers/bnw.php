@@ -1027,33 +1027,131 @@ class bnw extends CI_Controller {
     function up($id=0)
     {
        if ($this->session->userdata('logged_in')) {
-         
+           $action = $_GET['action'];
+           
+         if($id == !0)
+         {
            $parent = $this->dbmodel->get_parent_id($id);
          //  var_dump($parent);
+           if(!empty($parent))
+           {
            foreach ($parent as $pid)
            {
                $parentID = $pid->parent_id;
            }
            
            $getID = $this->dbmodel->get_data($parentID);
-          //  $ptID = json_encode($getID);
-            var_dump($getID);
+           
+          $previousID = 0;
+          $tempID = 999;
+      foreach ($getID as $data)
+      {
+          if($id == $data->id )
+          {
+              break;
+          }
+          else
+          {
+             
+              $previousID = $data->id;
+          }
+      }
+           //die($previousID." ".$tempID);
+           if($previousID !==0)
+           {
+              // die('not work');
+           $updateID = $this->dbmodel->update_navID($id , $tempID);
+           $updateParentID = $this->dbmodel->update_navParentID($id , $tempID);
+           $updatePreviousID = $this->dbmodel->update_previousID($id,$previousID);
+           $updatePreviousParentID = $this->dbmodel->update_Previous_ParentID($id,$previousID);
+           $updateUP = $this->dbmodel->update_up($tempID,$previousID);
+           $updateParentID_UP = $this->dbmodel->update_parentID_UP($tempID,$previousID);
+           
+           redirect('bnw/manageNavigation/4');
+           }
+           else
+           {
+               echo 'Can not process';
+           }
+         } 
+         else {
+             echo ' Page not found ';
+         }
        }
+    else {
+           
+            echo ' Page not found ';
+     
+            }
+       }
+       
        else
        {
-           
+            redirect('login', 'refresh');
        } 
     }
 
-    function down()
+    function down($id)
     {
         if ($this->session->userdata('logged_in')) {
          
+            if($id ==!0)
+            {
+             $parent = $this->dbmodel->get_parent_id_down($id);
+         //  var_dump($parent);
+              if(!empty($parent))
+           {
+           foreach ($parent as $pid)
+           {
+               $parentID = $pid->parent_id;
+           }
            
+           $getID = $this->dbmodel->get_data_down($parentID);
+          $previousID = 0;
+          $tempID = 999;
+      foreach ($getID as $data)
+      {
+          if($id == $data->id )
+          {
+              break;
+          }
+          else
+          {
+             
+              $previousID = $data->id;
+          }
+      }
+          // die($previousID);
+           
+           if($previousID !==0)
+           {
+              // die('not work');
+           $updateID = $this->dbmodel->update_navID($id , $tempID);
+           $updateParentID = $this->dbmodel->update_navParentID($id , $tempID);
+           $updatePreviousID = $this->dbmodel->update_previousID($id,$previousID);
+           $updatePreviousParentID = $this->dbmodel->update_Previous_ParentID($id,$previousID);
+           $updateUP = $this->dbmodel->update_up($tempID,$previousID);
+           $updateParentID_UP = $this->dbmodel->update_parentID_UP($tempID,$previousID);
+           
+           redirect('bnw/manageNavigation/4');
+           }
+           else
+           {
+               echo 'Can not process';
+           }
+           }
+           else{
+           
+               echo ' page not found';
+           }
+           }
+       else{
+           echo 'page not found';
        }
+        }
        else
        {
-           
+          redirect('login', 'refresh');  
        } 
     }
 
