@@ -176,7 +176,7 @@ class bnw extends CI_Controller {
 
             $this->load->library('upload', $config);
             $data['meta'] = $this->dbmodel->get_meta_data();
-
+            $data['category'] = $this->dbmodel->get_category();
             $this->load->view('bnw/templates/header', $data);
             $this->load->view('bnw/templates/menu');
             $this->load->helper('form');
@@ -1029,14 +1029,15 @@ class bnw extends CI_Controller {
        if ($this->session->userdata('logged_in')) {
          
            $parent = $this->dbmodel->get_parent_id($id);
+         //  var_dump($parent);
            foreach ($parent as $pid)
            {
                $parentID = $pid->parent_id;
            }
            
            $getID = $this->dbmodel->get_data($parentID);
-            $ptID = json_encode($getID);
-            var_dump($ptID);
+          //  $ptID = json_encode($getID);
+            var_dump($getID);
        }
        else
        {
