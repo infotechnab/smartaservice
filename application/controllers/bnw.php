@@ -1027,8 +1027,7 @@ class bnw extends CI_Controller {
     function up($id=0)
     {
        if ($this->session->userdata('logged_in')) {
-           $action = $_GET['action'];
-           
+          
          if($id == !0)
          {
            $parent = $this->dbmodel->get_parent_id($id);
