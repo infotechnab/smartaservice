@@ -1369,17 +1369,11 @@ class bnw extends CI_Controller {
 
     public function deletecategory($id=0) {
         if ($this->session->userdata('logged_in')) {
-           $result = $this->dbmodel->delete_category($id);
-            if($result == true)
-            {
-                $this->session->set_flashdata('message', 'Data Delete Sucessfully');
+          $this->dbmodel->delete_category($id);
+              $this->session->set_flashdata('message', 'Data Delete Sucessfully');
                  redirect('bnw/category');
                 
-            }
-           else {
-                 $this->session->set_flashdata('message', 'Cannot delete or update a parent row');
-                 redirect('bnw/category');
-                  }
+          
             
             //$this->dbmodel->delete_category($id);
            // $this->session->set_flashdata('message', 'Data Delete Sucessfully');
@@ -1388,7 +1382,38 @@ class bnw extends CI_Controller {
             redirect('login', 'refresh');
         }
     }
-
+    
+    function delete_category($id=0)
+    {
+        if ($this->session->userdata('logged_in')) {
+             $data['meta'] = $this->dbmodel->get_meta_data();
+             $data['category'] = $this->dbmodel->get_category_id($id);
+             
+            $this->load->view('bnw/templates/header', $data);
+            $this->load->view('bnw/templates/menu', $data);
+            $this->load->view('bnw/category/delcategory', $data);
+            $this->load->view('bnw/templates/footer', $data);
+        }
+        else
+        {
+             redirect('login', 'refresh');
+        }
+        
+    }
+    function delete_Product_cat()
+    {
+        if ($this->session->userdata('logged_in')) {
+        $id = $_POST['id'];
+        $this->dbmodel->delRelPro($id);
+        $this->dbmodel->delete_category($id);
+        $this->session->set_flashdata('message', 'Data Delete Sucessfully');
+       redirect('bnw/category');
+        }
+        else
+        {
+             redirect('login', 'refresh'); 
+        }
+    }
     //==========================================================================================================//
     //====================================POST==================================================================//
     //===========================================================================================================//

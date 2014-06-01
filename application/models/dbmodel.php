@@ -61,6 +61,12 @@ function validate_user($email, $pass) {
          $this->db->insert('comment_store', $data);
     }
 
+    function get_file($id)
+    {
+        $this->db->where('category',$id);
+        $query = $this->db->get('product');
+        return $query->result();
+    }
     // ========================== Navigation ==================================//
     
     function get_parent_id($id)
@@ -765,7 +771,9 @@ public function get_navigation_info($navigationName)
         $query = $this->db->get('category');
         return $query->result();
     } 
-     public function get_coupon()
+    
+
+    public function get_coupon()
  {
             
         //$this->db->where('type','page');
@@ -860,25 +868,17 @@ public function get_navigation_info($navigationName)
 
     public function delete_category($id) {
 //==== working ================= //
-       $result =  $this->db->delete('category', array('id' => $id));
-       //return $result->result();
-        //$this->db->_error_message();
-        if(!$result)
-        {
-            return false;
-                }
-        else
-        {
-            return true;
-           // die('its work');
-        }
+        //die($id);
+        $this->db->delete('category', array('id' => $id));
        
-        //======================
-       
-        
     }
     
-       
+       function delRelPro($id)
+    {
+       //die($id);
+       $this->db->where('category',$id);
+        $this->db->delete('product');
+    }
 //pages -----------------------------------------------
     public function record_count_page() {
         return $this->db->count_all("page");
