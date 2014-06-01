@@ -117,6 +117,7 @@ $(document).ready(function() {
     });
     // end of add to cart
 
+
     slider();
     var currentPosition = 0;
     var slideWidth = 800;
